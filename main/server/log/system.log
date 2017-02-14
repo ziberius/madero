@@ -1,0 +1,121 @@
+2017-02-14 02:44:32,234 News.getNewsFromCategory (49) INFO  startDate[01/02/2017], endDate[28/02/2017], limit[5], offset[0], category[EXTERNAL] 
+2017-02-14 02:44:32,235 DataBaseConnection.__construct (36) DEBUG DataBase connection successful
+2017-02-14 02:44:32,235 Query.selectPostFromCategory (85) DEBUG SELECT   p.ID as id,   p.post_title as title,   p.post_author as id_author,   p.post_content as content,   p.post_date as date,   p.post_date_gmt as date_gmt,   p.post_status as status,   p.post_type as type,   p.post_name as name,   p.post_parent as id_parent,   p.guid as guid,   p.post_mime_type as mime_type,   p.post_modified as modified,   p.post_modified_gmt as modified_gmt,   ter.name as category FROM wp_posts p   INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id)   INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id   INNER JOIN wp_terms ter ON ter.term_id = tax.term_id WHERE DATE(p.post_date) >= STR_TO_DATE(:startDate, '%d/%m/%Y')       AND DATE(p.post_date) <= STR_TO_DATE(:endDate, '%d/%m/%Y')       AND p.post_status = 'publish'     AND p.post_type = 'post'     AND ter.name = :category LIMIT :limit OFFSET :offset 
+2017-02-14 02:44:32,236 Query.selectPostMeta (164) DEBUG SELECT   meta_id as id,   post_id as idPost,   meta_key as key,   meta_value as value FROM wp_postmeta WHERE post_id = :idPost  
+2017-02-14 02:44:32,236 Query.selectPostMeta (173) ERROR PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'key,   meta_value as value FROM wp_postmeta WHERE post_id = '16753'' at line 1 in /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/database/Query.php:170
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/database/Query.php(170): PDOStatement->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/service/News.php(101): Query->selectPostMeta('16753')
+#2 /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/service/News.php(58): News->retrieveMetaPost(Object(Post))
+#3 /Applications/XAMPP/xamppfiles/htdocs/madero/test/server/service/NewsTest.php(12): News->getNewsFromCategory('01/02/2017', '28/02/2017', 5, 0, 'EXTERNAL')
+#4 {main}
+2017-02-14 02:44:32,236 News.getNewsFromCategory (71) ERROR PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'key,   meta_value as value FROM wp_postmeta WHERE post_id = '16753'' at line 1 in /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/database/Query.php:170
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/database/Query.php(170): PDOStatement->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/service/News.php(101): Query->selectPostMeta('16753')
+#2 /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/service/News.php(58): News->retrieveMetaPost(Object(Post))
+#3 /Applications/XAMPP/xamppfiles/htdocs/madero/test/server/service/NewsTest.php(12): News->getNewsFromCategory('01/02/2017', '28/02/2017', 5, 0, 'EXTERNAL')
+#4 {main}
+2017-02-14 02:46:35,905 News.getNewsFromCategory (49) INFO  startDate[01/02/2017], endDate[28/02/2017], limit[5], offset[0], category[EXTERNAL] 
+2017-02-14 02:46:35,906 DataBaseConnection.__construct (36) DEBUG DataBase connection successful
+2017-02-14 02:46:35,906 Query.selectPostFromCategory (85) DEBUG SELECT   p.ID as id,   p.post_title as title,   p.post_author as id_author,   p.post_content as content,   p.post_date as date,   p.post_date_gmt as date_gmt,   p.post_status as status,   p.post_type as type,   p.post_name as name,   p.post_parent as id_parent,   p.guid as guid,   p.post_mime_type as mime_type,   p.post_modified as modified,   p.post_modified_gmt as modified_gmt,   ter.name as category FROM wp_posts p   INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id)   INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id   INNER JOIN wp_terms ter ON ter.term_id = tax.term_id WHERE DATE(p.post_date) >= STR_TO_DATE(:startDate, '%d/%m/%Y')       AND DATE(p.post_date) <= STR_TO_DATE(:endDate, '%d/%m/%Y')       AND p.post_status = 'publish'     AND p.post_type = 'post'     AND ter.name = :category LIMIT :limit OFFSET :offset 
+2017-02-14 02:46:35,907 Query.selectPostMeta (164) DEBUG SELECT   meta_id as id,   post_id as idPost,   meta_key,   meta_value as value FROM wp_postmeta WHERE post_id = :idPost  
+2017-02-14 02:46:35,907 Query.selectAuthor (128) DEBUG SELECT   ID as id,   user_login as login,   user_nicename as nicename,   user_email as email,   display_name FROM wp_users WHERE ID = :idAuthor AND user_status = 0  
+2017-02-14 02:46:35,907 News.retrieveEmbledy (134) DEBUG content is a validated url [http://www.latercera.com/noticia/inflacion-registro-aumento-05-enero/]
+2017-02-14 02:46:35,907 Embedly.getResponse (89) INFO  URL to Api: http://api.embedly.com/1/oembed?urls=http%3A%2F%2Fwww.latercera.com%2Fnoticia%2Finflacion-registro-aumento-05-enero%2F&key=8119dab982524714a5f8660d46ec61f8
+2017-02-14 02:46:36,375 News.retrieveEmbledy (138) DEBUG Array
+(
+    [0] => Array
+        (
+            [provider_url] => http://www.latercera.com
+            [description] => El Indice de Precios al Consumidor (IPC) registró un alza de 0,5% en enero, acumulando un aumento de 2,8% en doce meses, informó este miércoles el Instituto Nacional de Estadísticas (INE). La variación se ubicó sobre las expectativas de los analistas que habían apostado por un incremento de 0,2% para la inflación en el primer mes del año.
+            [title] => Inflación subió 0,5% en enero y se ubicó sobre las expectativas - LA TERCERA
+            [thumbnail_width] => 1400
+            [url] => http://www.latercera.com/noticia/inflacion-registro-aumento-05-enero/
+            [thumbnail_url] => http://d2vpb0i3hb2k8a.cloudfront.net/wp-content/uploads/sites/7/2016/12/07/comercio-2.jpg
+            [version] => 1.0
+            [provider_name] => La Tercera
+            [type] => link
+            [thumbnail_height] => 657
+        )
+
+)
+
+2017-02-14 02:46:36,375 Query.selectPostMeta (164) DEBUG SELECT   meta_id as id,   post_id as idPost,   meta_key,   meta_value as value FROM wp_postmeta WHERE post_id = :idPost  
+2017-02-14 02:46:36,376 News.getNewsFromCategory (71) ERROR Exception: There are not records: idPost[16754]  in /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/database/Query.php:179
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/service/News.php(101): Query->selectPostMeta('16754')
+#1 /Applications/XAMPP/xamppfiles/htdocs/madero/main/server/service/News.php(58): News->retrieveMetaPost(Object(Post))
+#2 /Applications/XAMPP/xamppfiles/htdocs/madero/test/server/service/NewsTest.php(12): News->getNewsFromCategory('01/02/2017', '28/02/2017', 5, 0, 'EXTERNAL')
+#3 {main}
+2017-02-14 02:47:03,469 News.getNewsFromCategory (49) INFO  startDate[01/02/2017], endDate[28/02/2017], limit[5], offset[0], category[EXTERNAL] 
+2017-02-14 02:47:03,470 DataBaseConnection.__construct (36) DEBUG DataBase connection successful
+2017-02-14 02:47:03,470 Query.selectPostFromCategory (85) DEBUG SELECT   p.ID as id,   p.post_title as title,   p.post_author as id_author,   p.post_content as content,   p.post_date as date,   p.post_date_gmt as date_gmt,   p.post_status as status,   p.post_type as type,   p.post_name as name,   p.post_parent as id_parent,   p.guid as guid,   p.post_mime_type as mime_type,   p.post_modified as modified,   p.post_modified_gmt as modified_gmt,   ter.name as category FROM wp_posts p   INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id)   INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id   INNER JOIN wp_terms ter ON ter.term_id = tax.term_id WHERE DATE(p.post_date) >= STR_TO_DATE(:startDate, '%d/%m/%Y')       AND DATE(p.post_date) <= STR_TO_DATE(:endDate, '%d/%m/%Y')       AND p.post_status = 'publish'     AND p.post_type = 'post'     AND ter.name = :category LIMIT :limit OFFSET :offset 
+2017-02-14 02:47:03,471 Query.selectPostMeta (164) DEBUG SELECT   meta_id as id,   post_id as idPost,   meta_key,   meta_value as value FROM wp_postmeta WHERE post_id = :idPost  
+2017-02-14 02:47:03,472 Query.selectAuthor (128) DEBUG SELECT   ID as id,   user_login as login,   user_nicename as nicename,   user_email as email,   display_name FROM wp_users WHERE ID = :idAuthor AND user_status = 0  
+2017-02-14 02:47:03,472 News.retrieveEmbledy (134) DEBUG content is a validated url [http://www.latercera.com/noticia/inflacion-registro-aumento-05-enero/]
+2017-02-14 02:47:03,472 Embedly.getResponse (89) INFO  URL to Api: http://api.embedly.com/1/oembed?urls=http%3A%2F%2Fwww.latercera.com%2Fnoticia%2Finflacion-registro-aumento-05-enero%2F&key=8119dab982524714a5f8660d46ec61f8
+2017-02-14 02:47:03,817 News.retrieveEmbledy (138) DEBUG Array
+(
+    [0] => Array
+        (
+            [provider_url] => http://www.latercera.com
+            [description] => El Indice de Precios al Consumidor (IPC) registró un alza de 0,5% en enero, acumulando un aumento de 2,8% en doce meses, informó este miércoles el Instituto Nacional de Estadísticas (INE). La variación se ubicó sobre las expectativas de los analistas que habían apostado por un incremento de 0,2% para la inflación en el primer mes del año.
+            [title] => Inflación subió 0,5% en enero y se ubicó sobre las expectativas - LA TERCERA
+            [thumbnail_width] => 1400
+            [url] => http://www.latercera.com/noticia/inflacion-registro-aumento-05-enero/
+            [thumbnail_url] => http://d2vpb0i3hb2k8a.cloudfront.net/wp-content/uploads/sites/7/2016/12/07/comercio-2.jpg
+            [version] => 1.0
+            [provider_name] => La Tercera
+            [type] => link
+            [thumbnail_height] => 657
+        )
+
+)
+
+2017-02-14 02:47:03,817 Query.selectPostMeta (164) DEBUG SELECT   meta_id as id,   post_id as idPost,   meta_key,   meta_value as value FROM wp_postmeta WHERE post_id = :idPost  
+2017-02-14 02:47:03,818 Query.selectAuthor (128) DEBUG SELECT   ID as id,   user_login as login,   user_nicename as nicename,   user_email as email,   display_name FROM wp_users WHERE ID = :idAuthor AND user_status = 0  
+2017-02-14 02:47:03,818 News.retrieveEmbledy (134) DEBUG content is a validated url [https://www.youtube.com/watch?v=0VJm0mi7aUc]
+2017-02-14 02:47:03,818 Embedly.getResponse (89) INFO  URL to Api: http://api.embedly.com/1/oembed?urls=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D0VJm0mi7aUc&key=8119dab982524714a5f8660d46ec61f8
+2017-02-14 02:47:04,149 News.retrieveEmbledy (138) DEBUG Array
+(
+    [0] => Array
+        (
+            [provider_url] => https://www.youtube.com/
+            [description] => Watch the all-in-one DJ system TRAKTOR KONTROL S2 showcased in this video with controllerism guru Ean Golden. Introducing the innovative "2.1" design with a third channel for mixing in TRAKTOR's Sample Decks, the S4's smaller brother also contains the flagship TRAKTOR PRO 2 software.
+            [title] => TRAKTOR KONTROL S2: Ean Golden Depeche Mode Live Remix
+            [url] => http://www.youtube.com/watch?v=0VJm0mi7aUc
+            [author_name] => Native Instruments
+            [height] => 480
+            [thumbnail_width] => 480
+            [width] => 854
+            [html] => <iframe class="embedly-embed" src="//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F0VJm0mi7aUc%3Ffeature%3Doembed&url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D0VJm0mi7aUc&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2F0VJm0mi7aUc%2Fhqdefault.jpg&key=4bacb040bc8b490c98598e501fb2d3a7&type=text%2Fhtml&schema=youtube" width="854" height="480" scrolling="no" frameborder="0" allowfullscreen></iframe>
+            [author_url] => https://www.youtube.com/user/NativeInstruments
+            [version] => 1.0
+            [provider_name] => YouTube
+            [thumbnail_url] => https://i.ytimg.com/vi/0VJm0mi7aUc/hqdefault.jpg
+            [type] => video
+            [thumbnail_height] => 360
+        )
+
+)
+
+2017-02-14 02:47:04,149 Query.selectPostMeta (164) DEBUG SELECT   meta_id as id,   post_id as idPost,   meta_key,   meta_value as value FROM wp_postmeta WHERE post_id = :idPost  
+2017-02-14 02:47:04,149 Query.selectAuthor (128) DEBUG SELECT   ID as id,   user_login as login,   user_nicename as nicename,   user_email as email,   display_name FROM wp_users WHERE ID = :idAuthor AND user_status = 0  
+2017-02-14 02:47:04,150 News.retrieveEmbledy (134) DEBUG content is a validated url [https://ubuntulife.files.wordpress.com/2010/03/montaje.jpg]
+2017-02-14 02:47:04,150 Embedly.getResponse (89) INFO  URL to Api: http://api.embedly.com/1/oembed?urls=https%3A%2F%2Fubuntulife.files.wordpress.com%2F2010%2F03%2Fmontaje.jpg&key=8119dab982524714a5f8660d46ec61f8
+2017-02-14 02:47:04,474 News.retrieveEmbledy (138) DEBUG Array
+(
+    [0] => Array
+        (
+            [provider_url] => https://ubuntulife.files.wordpress.com
+            [height] => 300
+            [width] => 500
+            [version] => 1.0
+            [url] => https://ubuntulife.files.wordpress.com/2010/03/montaje.jpg
+            [provider_name] => Wordpress
+            [type] => photo
+        )
+
+)
+
