@@ -3,6 +3,7 @@
 class Response
 {
     private $data;
+    private $service;
     private $method;
     private $status;
     private $error_response;
@@ -13,12 +14,13 @@ class Response
     const STATUS_OK = 'OK';
     const STATUS_NOK = 'NOK';
 
-    public static function instance($data, $status, $method)
+    public static function instance($data, $status, $method, $service)
     {
         $instance = new self();
         $instance->setData($data);
         $instance->setMethod($method);
         $instance->setStatus($status);
+        $instance->setService($service);
         return $instance;
     }
 
@@ -72,5 +74,16 @@ class Response
     {
         $this->error_response = $error_response;
     }
+
+    public function getService()
+    {
+        return $this->service;
+    }
+
+    public function setService($service)
+    {
+        $this->service = $service;
+    }
+
 
 }

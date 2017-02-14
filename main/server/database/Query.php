@@ -33,6 +33,8 @@ class Query
 
     public function selectPostFromCategory($startDate, $endDate, $limit, $offset, $category)
     {
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], category[%s]'
+            , $startDate, $endDate, $limit, $offset, $category));
 
         if (!Validate::date($startDate)) {
             throw new Exception(sprintf('startDate must be formatted as dd/mm/yyyy [%s]', $startDate));
@@ -42,12 +44,12 @@ class Query
             throw new Exception(sprintf('endDate must be formatted as dd/mm/yyyy [%s]', $endDate));
         }
 
-        if (!is_numeric($limit)) {
-            throw new Exception(sprintf('limit must be numeric [%s]', $limit));
+        if (!Validate::isNaturalNumber($limit)) {
+            throw new Exception(sprintf('limit must be natural number [%s]', $limit));
         }
 
-        if (!is_numeric($offset)) {
-            throw new Exception(sprintf('offset must be numeric [%s]', $offset));
+        if (!Validate::isNaturalNumber($offset)) {
+            throw new Exception(sprintf('offset must be natural number [%s]', $offset));
         }
 
         if (!is_string($category)) {
@@ -89,6 +91,9 @@ class Query
             $stmt->bindParam(':startDate', $startDate);
             $stmt->bindParam(':endDate', $endDate);
             $stmt->bindParam(':category', $category);
+
+            $limit = (int)$limit;
+            $offset = (int)$offset;
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 
@@ -101,17 +106,15 @@ class Query
 
         }
 
-        if ($stmt->rowCount() <= 0) {
-            throw new Exception(sprintf('There are not records: startDate[%s], endDate[%s], limit[%s], offset[%s], category[%s]'
-                , $startDate, $endDate, $limit, $offset, $category));
-        }
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->log->debug(sprintf('Number of records found:[%d]', count($results)));
+        return $results;
     }
 
     public function selectAuthor($idAuthor)
     {
+        $this->log->debug(sprintf('parameters: idAuthor[%s]', $idAuthor));
+
         if (!is_numeric($idAuthor)) {
             throw new Exception(sprintf('idAuthor must be numeric [%s]', $idAuthor));
         }
@@ -139,16 +142,14 @@ class Query
 
         }
 
-        /*if ($stmt->rowCount() <= 0) {
-            throw new Exception(sprintf('There are not records: idAuthor[%s] ', $idAuthor));
-        }*/
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->log->debug(sprintf('Number of records found:[%d]', count($results)));
+        return $results;
     }
 
     public function selectPostMeta($idPost)
     {
+        $this->log->debug(sprintf('parameters: idPost[%s]', $idPost));
 
         if (!is_numeric($idPost)) {
             throw new Exception(sprintf('idPost must be numeric [%s]', $idPost));
@@ -175,16 +176,16 @@ class Query
 
         }
 
-        /*if ($stmt->rowCount() <= 0) {
-            throw new Exception(sprintf('There are not records: idPost[%s] ', $idPost));
-        }*/
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->log->debug(sprintf('Number of records found:[%d]', count($results)));
+        return $results;
     }
 
-    function selectPostFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor)
+    public function selectPostFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor)
     {
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idAuthor[%s]'
+            , $startDate, $endDate, $limit, $offset, $idAuthor));
+
         if (!Validate::date($startDate)) {
             throw new Exception(sprintf('startDate must be formatted as dd/mm/yyyy [%s]', $startDate));
         }
@@ -193,12 +194,12 @@ class Query
             throw new Exception(sprintf('endDate must be formatted as dd/mm/yyyy [%s]', $endDate));
         }
 
-        if (!is_numeric($limit)) {
-            throw new Exception(sprintf('limit must be numeric [%s]', $limit));
+        if (!Validate::isNaturalNumber($limit)) {
+            throw new Exception(sprintf('limit must be natural number [%s]', $limit));
         }
 
-        if (!is_numeric($offset)) {
-            throw new Exception(sprintf('offset must be numeric [%s]', $offset));
+        if (!Validate::isNaturalNumber($offset)) {
+            throw new Exception(sprintf('offset must be natural number [%s]', $offset));
         }
 
         if (!is_numeric($idAuthor)) {
@@ -206,20 +207,20 @@ class Query
         }
 
         $sql = "SELECT ";
-        $sql .= "  p.ID, ";
-        $sql .= "  p.post_title, ";
-        $sql .= "  p.post_author, ";
-        $sql .= "  p.post_content, ";
-        $sql .= "  p.post_date, ";
-        $sql .= "  p.post_date_gmt, ";
-        $sql .= "  p.post_status, ";
-        $sql .= "  p.post_type, ";
-        $sql .= "  p.post_name, ";
-        $sql .= "  p.post_parent, ";
-        $sql .= "  p.guid, ";
-        $sql .= "  p.post_mime_type, ";
-        $sql .= "  p.post_modified, ";
-        $sql .= "  p.post_modified_gmt, ";
+        $sql .= "  p.ID as id, ";
+        $sql .= "  p.post_title as title, ";
+        $sql .= "  p.post_author as id_author, ";
+        $sql .= "  p.post_content as content, ";
+        $sql .= "  p.post_date as date, ";
+        $sql .= "  p.post_date_gmt as date_gmt, ";
+        $sql .= "  p.post_status as status, ";
+        $sql .= "  p.post_type as type, ";
+        $sql .= "  p.post_name as name, ";
+        $sql .= "  p.post_parent as id_parent, ";
+        $sql .= "  p.guid as guid, ";
+        $sql .= "  p.post_mime_type as mime_type, ";
+        $sql .= "  p.post_modified as modified, ";
+        $sql .= "  p.post_modified_gmt as modified_gmt, ";
         $sql .= "  ter.name as category ";
         $sql .= "FROM wp_posts p ";
         $sql .= "  INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id) ";
@@ -232,6 +233,7 @@ class Query
         $sql .= "    AND p.post_author = :idAuthor ";
         $sql .= "LIMIT :limit OFFSET :offset ";
 
+
         $this->log->debug($sql);
 
         try {
@@ -239,6 +241,8 @@ class Query
             $stmt->bindParam(':startDate', $startDate);
             $stmt->bindParam(':endDate', $endDate);
             $stmt->bindParam(':idAuthor', $idAuthor, PDO::PARAM_INT);
+            $limit = (int)$limit;
+            $offset = (int)$offset;
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 
@@ -251,40 +255,38 @@ class Query
 
         }
 
-        if ($stmt->rowCount() <= 0) {
-            throw new Exception(sprintf('There are not records: startDate[%s], endDate[%s], limit[%s], offset[%s], idAuthor[%s]'
-                , $startDate, $endDate, $limit, $offset, $idAuthor));
-        }
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->log->debug(sprintf('Number of records found:[%d]', count($results)));
+        return $results;
     }
 
+//TODO quizas eliminar mas adelante
+    /* public function insertOption($optionNames, $optionValue, $autoload)
+     {
+         $sql = "INSERT INTO wp_options (option_name, option_value, autoload) ";
+         $sql .= "VALUES ( :optionNames, :optionValue, :autoload );";
+         $this->log->debug($sql);
 
-    public function insertOption($optionNames, $optionValue, $autoload)
-    {
-        $sql = "INSERT INTO wp_options (option_name, option_value, autoload) ";
-        $sql .= "VALUES ( :optionNames, :optionValue, :autoload );";
-        $this->log->debug($sql);
+         $stmt = $this->connection->prepare($sql);
+         $stmt->bindParam(":optionNames", $optionNames);
+         $stmt->bindParam(":optionValue", $optionValue);
+         $stmt->bindParam(":autoload", $autoload);
 
-        $stmt = $this->connection->prepare($sql);
-        $stmt->bindParam(":optionNames", $optionNames);
-        $stmt->bindParam(":optionValue", $optionValue);
-        $stmt->bindParam(":autoload", $autoload);
+         try {
+             $this->connection->beginTransaction();
+             $stmt->execute();
+             $this->connection->commit();
 
-        try {
-            $this->connection->beginTransaction();
-            $stmt->execute();
-            $this->connection->commit();
+         } catch (Exception $exception) {
+             try {
+                 $this->connection->rollBack();
+             } catch (PDOException $PDOException) {
+                 $this->log->error($PDOException);
+             }
+             throw $exception;
 
-        } catch (Exception $exception) {
-            try {
-                $this->connection->rollBack();
-            } catch (PDOException $PDOException) {
-                $this->log->error($PDOException);
-            }
-            throw $exception;
+         }
 
-        }
-
-    }
+     }*/
 
 }
