@@ -260,6 +260,109 @@ class Query
         return $results;
     }
 
+    public function selectPostFromId($id)
+    {
+        $this->log->debug(sprintf('parameters: id[%s]', $id));
+
+        if (!is_numeric($id)) {
+            throw new Exception(sprintf('id must be numeric [%s]', $id));
+        }
+
+        $sql = "SELECT ";
+        $sql .= "  p.ID as id, ";
+        $sql .= "  p.post_title as title, ";
+        $sql .= "  p.post_author as id_author, ";
+        $sql .= "  p.post_content as content, ";
+        $sql .= "  p.post_date as date, ";
+        $sql .= "  p.post_date_gmt as date_gmt, ";
+        $sql .= "  p.post_status as status, ";
+        $sql .= "  p.post_type as type, ";
+        $sql .= "  p.post_name as name, ";
+        $sql .= "  p.post_parent as id_parent, ";
+        $sql .= "  p.guid as guid, ";
+        $sql .= "  p.post_mime_type as mime_type, ";
+        $sql .= "  p.post_modified as modified, ";
+        $sql .= "  p.post_modified_gmt as modified_gmt, ";
+        $sql .= "  ter.name as category ";
+        $sql .= "FROM wp_posts p ";
+        $sql .= "  INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id) ";
+        $sql .= "  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ";
+        $sql .= "  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id ";
+        $sql .= "WHERE p.ID =:id ";
+
+
+        $this->log->debug($sql);
+
+        try {
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+        } catch (Exception $exception) {
+            $this->log->error($exception);
+            throw $exception;
+
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->log->debug(sprintf('Number of records found:[%d]', count($results)));
+        return $results;
+
+    }
+
+    public function selectPostFromIdParent($idParent)
+    {
+        $this->log->debug(sprintf('parameters: idParent[%s]', $idParent));
+
+        if (!is_numeric($idParent) || $idParent <= 0) {
+            throw new Exception(sprintf('idParent must be numeric and more than zero [%s] ', $idParent));
+        }
+
+        $sql = "SELECT ";
+        $sql .= "  p.ID as id, ";
+        $sql .= "  p.post_title as title, ";
+        $sql .= "  p.post_author as id_author, ";
+        $sql .= "  p.post_content as content, ";
+        $sql .= "  p.post_date as date, ";
+        $sql .= "  p.post_date_gmt as date_gmt, ";
+        $sql .= "  p.post_status as status, ";
+        $sql .= "  p.post_type as type, ";
+        $sql .= "  p.post_name as name, ";
+        $sql .= "  p.post_parent as id_parent, ";
+        $sql .= "  p.guid as guid, ";
+        $sql .= "  p.post_mime_type as mime_type, ";
+        $sql .= "  p.post_modified as modified, ";
+        $sql .= "  p.post_modified_gmt as modified_gmt, ";
+        $sql .= "  ter.name as category ";
+        $sql .= "FROM wp_posts p ";
+        $sql .= "  LEFT JOIN wp_term_relationships rel ON (p.ID = rel.object_id) ";
+        $sql .= "  LEFT JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ";
+        $sql .= "  LEFT JOIN wp_terms ter ON ter.term_id = tax.term_id ";
+        $sql .= "WHERE p.post_parent =:idParent ";
+        $sql .= "AND p.post_type ='attachment' ";
+
+        $this->log->debug($sql);
+
+        try {
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(':idParent', $idParent, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+        } catch (Exception $exception) {
+            $this->log->error($exception);
+            throw $exception;
+
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->log->debug(sprintf('Number of records found:[%d]', count($results)));
+        return $results;
+
+    }
+
+
 //TODO quizas eliminar mas adelante
     /* public function insertOption($optionNames, $optionValue, $autoload)
      {

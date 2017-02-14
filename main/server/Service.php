@@ -30,6 +30,9 @@ try {
         case 'getNewsFromAuthor':
             $result = getNewsFromAuthor($parameters);
             break;
+        case 'getNewsFromId':
+            $result = getNewsFromId($parameters);
+            break;
         default:
             throw new Exception(sprintf('service [%s] not exist', $service));
     }
@@ -107,4 +110,17 @@ function getNewsFromAuthor($parameters)
 
     $news = new News();
     return $news->getNewsFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor);
+}
+
+
+function getNewsFromId($parameters)
+{
+    if (!isset($parameters['id-post'])) {
+        throw new Exception('index parameters[id-post] is not set');
+    }
+
+    $idPost = $parameters['id-post'];
+
+    $news = new News();
+    return $news->getNewsFromId($idPost);
 }

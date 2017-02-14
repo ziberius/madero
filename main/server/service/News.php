@@ -116,6 +116,41 @@ class News
 
     }
 
+    public function getNewsFromId($idPost)
+    {
+        $this->log->info(sprintf('parameters: idPost[%s]', $idPost));
+
+        if (!is_numeric($idPost)) {
+            throw new Exception(sprintf('idPost must be numeric [%s]', $idPost));
+        }
+
+        $posts = $this->retriever->postFromId($idPost);
+
+        $result = null;
+        if (!empty($posts)) {
+            foreach ($posts as $post) {
+                $this->retriever->metaPost($post);
+
+                $this->retriever->author($post);
+
+                $this->retriever->embedly($post);
+
+                if ($idPost > 0) {
+                    $this->log->info(sprintf('getting resources idPost[%s]', $idPost));
+                    $resources = $this->retriever->postFromIdParent($idPost);
+                    $resourcesArray = Converter::postsToArray($resources);
+                    $post->setResources($resourcesArray);
+                }
+            }
+
+            $result = Converter::postsToArray($posts);
+        }
+
+        return $result;
+
+    }
+
+
 
 //TODO quizas eliminar mas adelante
     /*public function insertOption($optionNames, $optionValue, $autoload)

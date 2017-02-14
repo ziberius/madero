@@ -57,6 +57,34 @@ class Retriever
 
     }
 
+    public function postFromId($idPost)
+    {
+        $query = Query::getInstance();
+        $results = $query->selectPostFromId($idPost);
+        $posts = array();
+        foreach ($results as $item) {
+            $post = Converter::toPost($item);
+            array_push($posts, $post);
+        }
+
+        return $posts;
+
+    }
+
+    public function postFromIdParent($idParent)
+    {
+        $query = Query::getInstance();
+        $results = $query->selectPostFromIdParent($idParent);
+        $posts = array();
+        foreach ($results as $item) {
+            $post = Converter::toPost($item);
+            array_push($posts, $post);
+        }
+
+        return $posts;
+
+    }
+
     public function metaPost(&$post)
     {
         $query = Query::getInstance();

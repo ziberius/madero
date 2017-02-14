@@ -10,4 +10,5 @@ $news = new News();
 
 //echo $news->getInternationalNews();
 //echo $news->getNewsFromCategory('01/02/2016', '28/02/2017',4, 0, 'EXTERNO');
-echo $news->getNewsFromAuthor('01/02/2016', '28/02/2017', 10, 0, 'asaas');
+//echo $news->getNewsFromAuthor('01/02/2016', '28/02/2017', 10, 0, 'asaas');
+print_r($news->getNewsFromId(16250));
