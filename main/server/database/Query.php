@@ -81,6 +81,7 @@ class Query
         $sql .= "      AND p.post_status = 'publish' ";
         $sql .= "    AND p.post_type = 'post' ";
         $sql .= "    AND ter.name = :category ";
+        $sql .= "ORDER BY p.post_date DESC ";
         $sql .= "LIMIT :limit OFFSET :offset ";
 
 
@@ -231,6 +232,7 @@ class Query
         $sql .= "      AND p.post_status = 'publish' ";
         $sql .= "    AND p.post_type = 'post' ";
         $sql .= "    AND p.post_author = :idAuthor ";
+        $sql .= "ORDER BY p.post_date DESC ";
         $sql .= "LIMIT :limit OFFSET :offset ";
 
 
@@ -341,6 +343,7 @@ class Query
         $sql .= "  LEFT JOIN wp_terms ter ON ter.term_id = tax.term_id ";
         $sql .= "WHERE p.post_parent =:idParent ";
         $sql .= "AND p.post_type ='attachment' ";
+        $sql .= "ORDER BY p.post_date DESC ";
 
         $this->log->debug($sql);
 
