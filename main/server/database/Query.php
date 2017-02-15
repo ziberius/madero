@@ -204,7 +204,7 @@ class Query
         }
 
         if (!is_numeric($idAuthor)) {
-            throw new Exception(sprintf('idAuthor must be string [%s]', $idAuthor));
+            throw new Exception(sprintf('idAuthor must be numeric [%s]', $idAuthor));
         }
 
         $sql = "SELECT ";
@@ -364,6 +364,84 @@ class Query
         return $results;
 
     }
+
+
+    //TODO deberia buscar todo a partir de una palabra, o debo buscar sumando más filtros como: $startDate, $endDate, $limit, $offset
+    //TODO quizas solo ocupar el limit y offset, mediante un boton buscar más ir a buscar el resto.
+
+    //TODO se incluyen las opiniones?, sino hay que excluirlas en al query
+    public function selectPostFromTitleAndContent($limit, $offset, $keyword)
+    {
+        $this->log->debug(sprintf('parameters: limit[%s], offset[%s], keyword[%s]', $limit, $offset, $keyword));
+
+        if (!Validate::isNaturalNumber($limit)) {
+            throw new Exception(sprintf('limit must be natural number [%s]', $limit));
+        }
+
+        if (!Validate::isNaturalNumber($offset)) {
+            throw new Exception(sprintf('offset must be natural number [%s]', $offset));
+        }
+
+        if (!is_string($keyword)) {
+            throw new Exception(sprintf('keyword must be string [%s]', $keyword));
+        }
+
+        $sql = "SELECT ";
+        $sql .= "  p.ID as id, ";
+        $sql .= "  p.post_title as title, ";
+        $sql .= "  p.post_author as id_author, ";
+        $sql .= "  p.post_content as content, ";
+        $sql .= "  p.post_date as date, ";
+        $sql .= "  p.post_date_gmt as date_gmt, ";
+        $sql .= "  p.post_status as status, ";
+        $sql .= "  p.post_type as type, ";
+        $sql .= "  p.post_name as name, ";
+        $sql .= "  p.post_parent as id_parent, ";
+        $sql .= "  p.guid as guid, ";
+        $sql .= "  p.post_mime_type as mime_type, ";
+        $sql .= "  p.post_modified as modified, ";
+        $sql .= "  p.post_modified_gmt as modified_gmt, ";
+        $sql .= "  ter.name as category ";
+        $sql .= "FROM wp_posts p ";
+        $sql .= "  INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id) ";
+        $sql .= "  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ";
+        $sql .= "  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id ";
+        $sql .= "WHERE p.post_status = 'publish' ";
+        $sql .= "    AND p.post_type = 'post' ";
+        $sql .= "    AND (p.post_title LIKE :keyword OR p.post_content LIKE :keyword) ";
+        $sql .= "ORDER BY p.post_date DESC ";
+        $sql .= "LIMIT :limit OFFSET :offset ";
+
+
+        $this->log->debug($sql);
+
+        try {
+            $stmt = $this->connection->prepare($sql);
+
+            $limit = (int)$limit;
+            $offset = (int)$offset;
+            $keyword = '%' . $keyword . '%';
+
+
+            $stmt->bindParam(':keyword', $keyword, PDO::PARAM_STR);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+
+
+            $stmt->execute();
+
+        } catch (Exception $exception) {
+            $this->log->error($exception);
+            throw $exception;
+
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->log->debug(sprintf('Number of records found:[%d]', count($results)));
+        return $results;
+    }
+
+
 
 
 //TODO quizas eliminar mas adelante

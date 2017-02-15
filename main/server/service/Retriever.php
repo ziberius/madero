@@ -85,6 +85,22 @@ class Retriever
 
     }
 
+    public function postsFromTitleAndContent($limit, $offset, $keyword)
+    {
+        $query = Query::getInstance();
+        $results = $query->selectPostFromTitleAndContent($limit, $offset, $keyword);
+
+        $posts = array();
+        foreach ($results as $item) {
+            $post = Converter::toPost($item);
+            array_push($posts, $post);
+        }
+
+        return $posts;
+
+    }
+
+
     public function metaPost(&$post)
     {
         $query = Query::getInstance();
@@ -131,6 +147,7 @@ class Retriever
             $post->setEmbedly($oembeds);
 
         }
-
     }
+
+
 }

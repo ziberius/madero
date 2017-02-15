@@ -116,6 +116,45 @@ class News
 
     }
 
+    public function searchNews($limit, $offset, $keyword)
+    {
+
+        $this->log->info(sprintf('parameters: limit[%s], offset[%s], keyword[%s]', $limit, $offset, $keyword));
+
+        if (!Validate::isNaturalNumber($limit)) {
+            throw new Exception(sprintf('limit must be natural number [%s]', $limit));
+        }
+
+        if (!Validate::isNaturalNumber($offset)) {
+            throw new Exception(sprintf('offset must be natural number [%s]', $offset));
+        }
+
+        if (!is_string($keyword)) {
+            throw new Exception(sprintf('keyword must be string [%s]', $keyword));
+        }
+
+        $posts = $this->retriever->postsFromTitleAndContent($limit, $offset, $keyword);
+
+        $result = null;
+        if (!empty($posts)) {
+            foreach ($posts as $post) {
+
+                //TODO $this->retriever->metaPost($post);
+
+                $this->retriever->author($post);
+
+                //TODO $this->retriever->embedly($post);
+
+            }
+
+            $result = Converter::postsToArray($posts);
+        }
+
+        return $result;
+
+    }
+
+
     public function getNewsFromId($idPost)
     {
         $this->log->info(sprintf('parameters: idPost[%s]', $idPost));

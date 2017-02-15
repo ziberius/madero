@@ -33,6 +33,9 @@ try {
         case 'getNewsFromId':
             $result = getNewsFromId($parameters);
             break;
+        case 'searchNews':
+            $result = searchNews($parameters);
+            break;
         default:
             throw new Exception(sprintf('service [%s] not exist', $service));
     }
@@ -123,4 +126,26 @@ function getNewsFromId($parameters)
 
     $news = new News();
     return $news->getNewsFromId($idPost);
+}
+
+function searchNews($parameters)
+{
+    if (!isset($parameters['limit'])) {
+        throw new Exception('index parameters[limit] is not set');
+    }
+
+    if (!isset($parameters['offset'])) {
+        throw new Exception('index parameters[offset] is not set');
+    }
+
+    if (!isset($parameters['keyword'])) {
+        throw new Exception('index parameters[keyword] is not set');
+    }
+
+    $limit = $parameters['limit'];
+    $offset = $parameters['offset'];
+    $keyword = $parameters['keyword'];
+
+    $news = new News();
+    return $news->searchNews($limit, $offset, $keyword);
 }

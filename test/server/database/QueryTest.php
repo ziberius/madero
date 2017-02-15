@@ -14,5 +14,6 @@ $query = Query::getInstance();
 //print_r($query->selectPostFromId('-23'));
 
 
-print_r($query->selectPostFromIdParent(0));
+//print_r($query->selectPostFromIdParent(0));
 
+print_r($query->selectPostFromTitleAndContent(10, 0, 'toconao'));
