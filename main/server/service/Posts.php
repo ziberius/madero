@@ -11,7 +11,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/lib/log4php/Logger
 Logger::configure($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/log/log4phpConfig.xml');
 
 
-class News
+class Posts
 {
     private $log;
     private $retriever;
@@ -22,7 +22,7 @@ class News
         $this->retriever = Retriever::getInstance();
     }
 
-    public function getNewsFromCategory($startDate, $endDate, $limit, $offset, $category)
+    public function getFromCategory($startDate, $endDate, $limit, $offset, $category)
     {
         $this->log->info(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], category[%s]'
             , $startDate, $endDate, $limit, $offset, $category));
@@ -68,7 +68,7 @@ class News
 
     }
 
-    public function getNewsFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor)
+    public function getFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor)
     {
         $this->log->info(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idAuthor[%s]'
             , $startDate, $endDate, $limit, $offset, $idAuthor));
@@ -113,7 +113,7 @@ class News
 
     }
 
-    public function searchNews($limit, $offset, $keyword)
+    public function search($limit, $offset, $keyword)
     {
 
         $this->log->info(sprintf('parameters: limit[%s], offset[%s], keyword[%s]', $limit, $offset, $keyword));
@@ -150,7 +150,7 @@ class News
     }
 
 
-    public function getNewsFromId($idPost)
+    public function getFromId($idPost)
     {
         $this->log->info(sprintf('parameters: idPost[%s]', $idPost));
 
@@ -163,7 +163,7 @@ class News
         $result = null;
         if (!empty($posts)) {
             foreach ($posts as $post) {
-                $this->retriever->metaPost($post);
+                $this->retriever->postMetaOpinion($post);
 
                 $this->retriever->author($post);
 
@@ -183,71 +183,6 @@ class News
         return $result;
 
     }
-
-
-
-//TODO quizas eliminar mas adelante
-    /*public function insertOption($optionNames, $optionValue, $autoload)
-    {
-        $this->log->debug('$optionNames [' . $optionNames . ']');
-        $this->log->debug('$optionValue [' . $optionValue . ']');
-        $this->log->debug('$autoload [' . $autoload . ']');
-        $data = '';
-        try {
-            $query = Query::getInstance();
-            $query->insertOption($optionNames, $optionValue, $autoload);
-            $data = Response::instance('insert ok', Response::POST_TYPE, Response::STATUS_OK, Response::METHOD_POST);
-
-        } catch (Exception $exception) {
-            $this->log->error($exception);
-            $data = Response::instance('', Response::POST_TYPE, Response::STATUS_NOK, Response::METHOD_POST);
-            $data->setErrorResponse(ErrorResponse::withMessage($exception->getMessage()));
-        }
-
-        return json_encode($data->getPreparedJsonData());
-    }*/
-
-
-    /*public function getExternalNewsWithWidthHeight($startDate, $endDate, $limit, $offset, $width, $height)
-    {
-        $this->log->info(sprintf('getExternalNews: startDate[%s], endDate[%s], limit[%s], offset[%s], width[%s], height[%s] '
-            , $startDate, $endDate, $limit, $offset, $width, $height));
-        $data = '';
-        try {
-            $urls = $this->getUrls($startDate, $endDate, $limit, $offset);
-            $this->log->debug($urls);
-
-            $embedly = new Embedly();
-            $cardsJson = $embedly->getOEmbedsWithWidthHeight($urls, $width, $height);
-            $this->log->debug($cardsJson);
-
-            $data = Response::instance($cardsJson, Response::EXTERNAL_TYPE, Response::STATUS_OK, Response::METHOD_POST);
-
-        } catch (Exception $exception) {
-            $this->log->error($exception);
-            $data = Response::instance('', Response::EXTERNAL_TYPE, Response::STATUS_NOK, Response::METHOD_POST);
-            $data->setErrorResponse(ErrorResponse::withMessage($exception->getMessage()));
-
-        }
-        return json_encode($data->getPreparedJsonData());
-
-    }*/
-
-    /*private function getUrls($startDate, $endDate, $limit, $offset)
-    {
-
-        //$query = new Query();
-        //return $query->($startDate, $endDate, $limit, $offset);
-
-        /*return array(
-            "http://video.google.com/videoplay?docid=-5427138374898988918&q=easter+bunny&pl=true",
-            "http://www.emol.com/noticias/Nacional/2017/02/08/843997/Arancibia-declara-ante-la-fiscalia-por-caso-de-informaciones-falsas-y-critica-a-Aleuy-Los-almirantes-no-mienten.html",
-            "http://seguroweb.com.ar/autos/img/parallax_bg/auto.png",
-            "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"
-
-
-        );*/
-
 
 }
 

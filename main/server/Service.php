@@ -2,7 +2,7 @@
 
 require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/response/Response.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/response/ErrorResponse.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/service/News.php');
+require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/service/Posts.php');
 
 $service = null;
 try {
@@ -21,20 +21,18 @@ try {
     $service = $request['service'];
     $parameters = $request['parameters'];
 
-
-    $news = new News();
     switch ($service) {
-        case 'getNewsFromCategory':
-            $result = getNewsFromCategory($parameters);
+        case 'getPostsFromCategory':
+            $result = getPostsFromCategory($parameters);
             break;
-        case 'getNewsFromAuthor':
-            $result = getNewsFromAuthor($parameters);
+        case 'getPostsFromAuthor':
+            $result = getPostsFromAuthor($parameters);
             break;
-        case 'getNewsFromId':
-            $result = getNewsFromId($parameters);
+        case 'getPostsFromId':
+            $result = getPostsFromId($parameters);
             break;
-        case 'searchNews':
-            $result = searchNews($parameters);
+        case 'searchPosts':
+            $result = searchPosts($parameters);
             break;
         default:
             throw new Exception(sprintf('service [%s] not exist', $service));
@@ -50,7 +48,7 @@ try {
 
 }
 
-function getNewsFromCategory($parameters)
+function getPostsFromCategory($parameters)
 {
     if (!isset($parameters['start-date'])) {
         throw new Exception('index parameters[start-date] is not set');
@@ -78,12 +76,12 @@ function getNewsFromCategory($parameters)
     $offset = $parameters['offset'];
     $category = $parameters['category'];
 
-    $news = new News();
-    return $news->getNewsFromCategory($startDate, $endDate, $limit, $offset, $category);
+    $posts = new Posts();
+    return $posts->getFromCategory($startDate, $endDate, $limit, $offset, $category);
 
 }
 
-function getNewsFromAuthor($parameters)
+function getPostsFromAuthor($parameters)
 {
     if (!isset($parameters['start-date'])) {
         throw new Exception('index parameters[start-date] is not set');
@@ -111,12 +109,12 @@ function getNewsFromAuthor($parameters)
     $offset = $parameters['offset'];
     $idAuthor = $parameters['id-author'];
 
-    $news = new News();
-    return $news->getNewsFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor);
+    $posts = new Posts();
+    return $posts->getFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor);
 }
 
 
-function getNewsFromId($parameters)
+function getPostsFromId($parameters)
 {
     if (!isset($parameters['id-post'])) {
         throw new Exception('index parameters[id-post] is not set');
@@ -124,11 +122,11 @@ function getNewsFromId($parameters)
 
     $idPost = $parameters['id-post'];
 
-    $news = new News();
-    return $news->getNewsFromId($idPost);
+    $posts = new Posts();
+    return $posts->getFromId($idPost);
 }
 
-function searchNews($parameters)
+function searchPosts($parameters)
 {
     if (!isset($parameters['limit'])) {
         throw new Exception('index parameters[limit] is not set');
@@ -146,6 +144,6 @@ function searchNews($parameters)
     $offset = $parameters['offset'];
     $keyword = $parameters['keyword'];
 
-    $news = new News();
-    return $news->searchNews($limit, $offset, $keyword);
+    $posts = new Posts();
+    return $posts->search($limit, $offset, $keyword);
 }

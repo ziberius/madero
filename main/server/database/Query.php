@@ -443,36 +443,4 @@ class Query
         return $results;
     }
 
-
-
-
-//TODO quizas eliminar mas adelante
-    /* public function insertOption($optionNames, $optionValue, $autoload)
-     {
-         $sql = "INSERT INTO wp_options (option_name, option_value, autoload) ";
-         $sql .= "VALUES ( :optionNames, :optionValue, :autoload );";
-         $this->log->debug($sql);
-
-         $stmt = $this->connection->prepare($sql);
-         $stmt->bindParam(":optionNames", $optionNames);
-         $stmt->bindParam(":optionValue", $optionValue);
-         $stmt->bindParam(":autoload", $autoload);
-
-         try {
-             $this->connection->beginTransaction();
-             $stmt->execute();
-             $this->connection->commit();
-
-         } catch (Exception $exception) {
-             try {
-                 $this->connection->rollBack();
-             } catch (PDOException $PDOException) {
-                 $this->log->error($PDOException);
-             }
-             throw $exception;
-
-         }
-
-     }*/
-
 }
