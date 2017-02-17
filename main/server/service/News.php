@@ -52,8 +52,8 @@ class News
         $result = null;
         if (!empty($posts)) {
             foreach ($posts as $post) {
-//TODO quizas solo es necesario obtener las meta data solo cuando sean opiniones!
-                $this->retriever->metaPost($post);
+
+                $this->retriever->postMetaOpinion($post);
 
                 $this->retriever->author($post);
 
@@ -68,7 +68,6 @@ class News
 
     }
 
-//TODO ojo que al traerse todo lo del autor, me traeria tambien las opiniones que posteó, quizas deba filtrarlas !!!!-->revisar query
     public function getNewsFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor)
     {
         $this->log->info(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idAuthor[%s]'
@@ -100,8 +99,6 @@ class News
         $result = null;
         if (!empty($posts)) {
             foreach ($posts as $post) {
-
-                $this->retriever->metaPost($post);
 
                 $this->retriever->author($post);
 
@@ -139,11 +136,9 @@ class News
         if (!empty($posts)) {
             foreach ($posts as $post) {
 
-                //TODO $this->retriever->metaPost($post);
+                $this->retriever->postMetaOpinion($post);
 
                 $this->retriever->author($post);
-
-                //TODO $this->retriever->embedly($post);
 
             }
 

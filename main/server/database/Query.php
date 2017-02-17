@@ -80,6 +80,7 @@ class Query
         $sql .= "      AND DATE(p.post_date) <= STR_TO_DATE(:endDate, '%d/%m/%Y') ";
         $sql .= "      AND p.post_status = 'publish' ";
         $sql .= "    AND p.post_type = 'post' ";
+        $sql .= "    AND tax.taxonomy = 'category' ";
         $sql .= "    AND ter.name = :category ";
         $sql .= "ORDER BY p.post_date DESC ";
         $sql .= "LIMIT :limit OFFSET :offset ";
@@ -148,7 +149,7 @@ class Query
         return $results;
     }
 
-    public function selectPostMeta($idPost)
+    public function selectPostMetaOpinion($idPost)
     {
         $this->log->debug(sprintf('parameters: idPost[%s]', $idPost));
 
@@ -162,6 +163,7 @@ class Query
         $sql .= "  meta_value as value ";
         $sql .= "FROM wp_postmeta ";
         $sql .= "WHERE post_id = :idPost  ";
+        $sql .= "  AND meta_key IN ('OPINION-AUTOR','OPINION-TWITTER','OPINION-CARGO') ";
 
         $this->log->debug($sql);
 
@@ -228,10 +230,12 @@ class Query
         $sql .= "  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ";
         $sql .= "  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id ";
         $sql .= "WHERE DATE(p.post_date) >= STR_TO_DATE(:startDate, '%d/%m/%Y') ";
-        $sql .= "      AND DATE(p.post_date) <= STR_TO_DATE(:endDate, '%d/%m/%Y') ";
-        $sql .= "      AND p.post_status = 'publish' ";
+        $sql .= "    AND DATE(p.post_date) <= STR_TO_DATE(:endDate, '%d/%m/%Y') ";
+        $sql .= "    AND p.post_status = 'publish' ";
         $sql .= "    AND p.post_type = 'post' ";
         $sql .= "    AND p.post_author = :idAuthor ";
+        $sql .= "    AND tax.taxonomy = 'category' ";
+        $sql .= "    AND ter.name <> 'OPINION' ";
         $sql .= "ORDER BY p.post_date DESC ";
         $sql .= "LIMIT :limit OFFSET :offset ";
 
@@ -291,6 +295,7 @@ class Query
         $sql .= "  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ";
         $sql .= "  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id ";
         $sql .= "WHERE p.ID =:id ";
+        $sql .= "  AND tax.taxonomy = 'category' ";
 
 
         $this->log->debug($sql);
@@ -365,11 +370,6 @@ class Query
 
     }
 
-
-    //TODO deberia buscar todo a partir de una palabra, o debo buscar sumando más filtros como: $startDate, $endDate, $limit, $offset
-    //TODO quizas solo ocupar el limit y offset, mediante un boton buscar más ir a buscar el resto.
-
-    //TODO se incluyen las opiniones?, sino hay que excluirlas en al query
     public function selectPostFromTitleAndContent($limit, $offset, $keyword)
     {
         $this->log->debug(sprintf('parameters: limit[%s], offset[%s], keyword[%s]', $limit, $offset, $keyword));
@@ -409,6 +409,8 @@ class Query
         $sql .= "WHERE p.post_status = 'publish' ";
         $sql .= "    AND p.post_type = 'post' ";
         $sql .= "    AND (p.post_title LIKE :keyword OR p.post_content LIKE :keyword) ";
+        $sql .= "    AND tax.taxonomy = 'category' ";
+        $sql .= "    AND ter.name <> 'EXTERNO' ";
         $sql .= "ORDER BY p.post_date DESC ";
         $sql .= "LIMIT :limit OFFSET :offset ";
 

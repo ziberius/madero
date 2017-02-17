@@ -314,3 +314,14 @@ SELECT
   meta_value AS VALUE
 FROM wp_postmeta
 WHERE post_id = :idPost
+
+SELECT
+  DISTINCT ter.name
+FROM wp_term_taxonomy tax
+  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id
+WHERE
+AND tax.taxonomy = 'category'
+-- AND ter.name = 'EXTERNO'
+
+
+

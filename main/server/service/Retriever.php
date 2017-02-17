@@ -101,13 +101,13 @@ class Retriever
     }
 
 
-    public function metaPost(&$post)
+    public function postMetaOpinion(&$post)
     {
         $query = Query::getInstance();
 
         $idPost = $post->getId();
 
-        $results = $query->selectPostMeta($idPost);
+        $results = $query->selectPostMetaOpinion($idPost);
         if (!empty($results)) {
             $postMetas = array();
             foreach ($results as $item) {
