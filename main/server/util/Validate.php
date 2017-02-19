@@ -19,10 +19,6 @@ class Validate
      */
     public static function isNaturalNumber($number)
     {
-        //echo (float)$number;
-        //echo !(filter_var((float)$number, FILTER_VALIDATE_INT) === false);
-
-
         return is_numeric($number) && $number >= 0 && !(filter_var((float)$number, FILTER_VALIDATE_INT) === false);
     }
 

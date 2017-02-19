@@ -1,10 +1,10 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/database/DataBaseConnection.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/util/Validate.php');
+require_once 'DataBaseConnection.php';
+require_once '../util/Validate.php';
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/lib/log4php/Logger.php');
-Logger::configure($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/log/log4phpConfig.xml');
+require_once '../lib/log4php/Logger.php';
+Logger::configure('../log/log4phpConfig.xml');
 
 
 class Query

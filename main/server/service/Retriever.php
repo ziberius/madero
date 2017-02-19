@@ -1,11 +1,11 @@
 <?php
 
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/database/Query.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/service/Embedly.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/service/Converter.php');
+require_once '../database/Query.php';
+require_once 'Embedly.php';
+require_once 'Converter.php';
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/lib/log4php/Logger.php');
-Logger::configure($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/log/log4phpConfig.xml');
+require_once '../lib/log4php/Logger.php';
+Logger::configure('../log/log4phpConfig.xml');
 
 class Retriever
 {

@@ -1,8 +1,8 @@
 <?php
 
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/ini/IniFile.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/lib/log4php/Logger.php');
-Logger::configure($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/log/log4phpConfig.xml');
+require_once '../ini/IniFile.php';
+require_once '../lib/log4php/Logger.php';
+Logger::configure('../log/log4phpConfig.xml');
 
 class DataBaseConnection
 {

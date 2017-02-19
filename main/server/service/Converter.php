@@ -1,7 +1,7 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/response/Post.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/response/Author.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/response/PostMeta.php');
+require_once '../response/Post.php';
+require_once '../response/Author.php';
+require_once '../response/PostMeta.php';
 
 class Converter
 {

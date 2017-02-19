@@ -1,8 +1,8 @@
 <?php
 
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/response/Response.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/response/ErrorResponse.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/service/Posts.php');
+require_once './response/Response.php';
+require_once './response/ErrorResponse.php';
+require_once './service/Posts.php';
 
 $service = null;
 try {
