@@ -78,9 +78,17 @@
     </div>		
 </footer>
 
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="js/owl.carousel.min.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/jquery.simpleWeather.min.js"></script>
+<script type="text/javascript" src="/main/web/lib/jquery.js"></script>
+<script type="text/javascript" src="/main/web/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="/main/web/lib/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="/main/web/lib/owl.carousel.min.js"></script> 
+<script type="text/javascript" src="/main/web/js/main.js"></script>
+<script type="text/javascript" src="/main/web/lib/jquery.simpleWeather.min.js"></script>
+<script src="/main/web/lib/angular.min.js"></script>
+<script src="/main/web/lib/angular-route.min.js"></script>
+<script src="/main/web/lib/angular-animate.min.js"></script>
+<script src="/main/web/lib/angular-locale_es-cl.min.js" type="text/javascript"></script>
+<script src="/main/web/lib/lodash.min.js" type="text/javascript" ></script>
+<script src="/main/web/lib/angular-simple-logger.min.js" type="text/javascript" ></script>
+<script src="/main/web/js/controller.js" type="text/javascript" ></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.js"></script>

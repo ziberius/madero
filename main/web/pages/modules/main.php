@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <!--title-->
-        <title>Madero FM</title>
-
-        <?php require_once("web/include/head.php"); ?>
-    </head><!--/head-->
-    <body>
-        <div id="main-wrapper">
-            <?php require_once("web/include/header.php"); ?>
-            <div class="main">
-                <div class="container-fluid">			
+<div class="main">
+<div class="container-fluid">			
                     <div class="section" id="main-slider">
-                        <div class="post feature-post" style="background-image:url(images/post/carcel.jpg); background-size:cover;">
+                        <div class="post feature-post" style="background-image:url(/main/web/images/post/carcel.jpg); background-size:cover;">
                             <div class="post-content">
                                 <div class="catagory"><a href="#">Internacional</a></div>
                                 <h2 class="entry-title">
@@ -25,7 +9,7 @@
                                 </h2>
                             </div>
                         </div><!--/post-->
-                        <div class="post feature-post video-post" style="background-image:url(images/post/teleserie.jpg); background-size:cover;">
+                        <div class="post feature-post video-post" style="background-image:url(/main/web/images/post/teleserie.jpg); background-size:cover;">
                             <div class="post-content">
                                 <div class="catagory"><a href="#">Antofagasta</a></div>
                                 <h2 class="entry-title">
@@ -33,7 +17,7 @@
                                 </h2>
                             </div>
                         </div><!--/post-->
-                        <div class="post feature-post" style="background-image:url(images/post/atacama.jpg); background-size:cover;">
+                        <div class="post feature-post" style="background-image:url(/main/web/images/post/atacama.jpg); background-size:cover;">
                             <div class="post-content">
                                 <div class="catagory"><a href="#">Atacama</a></div>
                                 <h2 class="entry-title">
@@ -41,7 +25,7 @@
                                 </h2>
                             </div>
                         </div><!--/post-->
-                        <div class="post feature-post" style="background-image:url(images/post/uruguayo.jpg); background-size:cover;">
+                        <div class="post feature-post" style="background-image:url(/main/web/images/post/uruguayo.jpg); background-size:cover;">
                             <div class="post-content">
                                 <div class="catagory"><a href="#">La Serena - Coquimbo</a></div>
                                 <h2 class="entry-title">
@@ -49,7 +33,7 @@
                                 </h2>
                             </div>
                         </div><!--/post-->
-                        <div class="post feature-post" style="background-image:url(images/post/futbolista.jpg); background-size:cover;">
+                        <div class="post feature-post" style="background-image:url(/main/web/images/post/futbolista.jpg); background-size:cover;">
 
                             <div class="post-content">
                                 <div class="catagory"><a href="#">Deportes</a></div>
@@ -58,7 +42,7 @@
                                 </h2>
                             </div>
                         </div><!--/post-->		
-                        <div class="post feature-post" style="background-image:url(images/post/valparaiso.jpg); background-size:cover;">
+                        <div class="post feature-post" style="background-image:url(/main/web/images/post/valparaiso.jpg); background-size:cover;">
                             <div class="post-content">
                                 <div class="catagory"><a href="#">Nacional</a></div>
                                 <h2 class="entry-title">
@@ -68,12 +52,12 @@
                         </div><!--/post-->
                     </div><!-- #main-slider -->
                     <!--                <div class="section add inner-add">
-                                        <a href="#"><img class="img-responsive" src="images/post/add/add2.jpg" alt="" /></a>
+                                        <a href="#"><img class="img-responsive" src="/main/web/images/post/add/add2.jpg" alt="" /></a>
                                     </div>/.section	-->
 
                     <div class="section">
                         <div class="row">
-                            <img class="img-responsive center-block" style="max-height:120px" src="images/post/banner.jpg" />
+                            <img class="img-responsive center-block" style="max-height:120px" src="/main/web/images/post/banner.jpg" />
                         </div>
                     </div>                
 
@@ -88,7 +72,7 @@
                                                 <a href="#">Antofagasta</a>
                                             </div>                                        
                                             <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="images/post/antofagasta/1.jpg" alt="" /></a>
+                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/1.jpg" alt="" /></a>
                                             </div>
                                         </div>
                                         <div class="post-content">								
@@ -111,7 +95,7 @@
                                                 <a href="#">Antofagasta</a>
                                             </div>                                          
                                             <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="images/post/antofagasta/2.jpg" alt="" /></a>
+                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/2.jpg" alt="" /></a>
                                             </div>
                                         </div>
                                         <div class="post-content">								
@@ -133,7 +117,7 @@
                                                 <a href="#">Antofagasta</a>
                                             </div>                                          
                                             <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="images/post/antofagasta/3.png" alt="" /></a>
+                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/3.png" alt="" /></a>
                                             </div>
                                         </div>
                                         <div class="post-content">								
@@ -156,7 +140,7 @@
                                                 <a href="#">Atacama</a>
                                             </div>                                          
                                             <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="images/post/atacama/4.bmp" alt="" /></a>
+                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/4.bmp" alt="" /></a>
                                             </div>
 
                                         </div>
@@ -180,7 +164,7 @@
                                                 <a href="#">Atacama</a>
                                             </div>                                          
                                             <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="images/post/atacama/2.jpg" alt="" /></a>
+                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/2.jpg" alt="" /></a>
                                             </div>
                                         </div>
                                         <div class="post-content">								
@@ -203,7 +187,7 @@
                                                 <a href="#">Atacama</a>
                                             </div>                                          
                                             <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="images/post/atacama/5.bmp" alt="" /></a>
+                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/5.bmp" alt="" /></a>
                                             </div>
                                         </div>
                                         <div class="post-content">								
@@ -225,7 +209,7 @@
                                                 <a href="#">La Serena - Coquimbo</a>
                                             </div>                                          
                                             <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/1.jpg" alt="" /></a>
+                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
                                             </div>
                                         </div>
                                         <div class="post-content">								
@@ -248,7 +232,7 @@
                                                 <a href="#">La Serena - Coquimbo</a>
                                             </div>                                          
                                             <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/2.jpg" alt="" /></a>
+                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/2.jpg" alt="" /></a>
                                             </div>
                                         </div>
                                         <div class="post-content">								
@@ -271,7 +255,7 @@
                                                 <a href="#">La Serena - Coquimbo</a>
                                             </div>                                          
                                             <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/3.jpg" alt="" /></a>
+                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/3.jpg" alt="" /></a>
                                             </div>
                                         </div>
                                         <div class="post-content">								
@@ -291,7 +275,7 @@
                                         <a class="btn btn-primary btn-block" href="#">Cargar Más Noticias...</a>
                                     </div>
                                     <div class="top5">
-                                        <img class="img-responsive center-block" src="images/anuncio_vertical.jpg">
+                                        <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg">
                                     </div>
                                 </div><!--/left-sidebar--> 	
                             </div>
@@ -304,7 +288,7 @@
                                             <div class="post">
                                                 <div class="entry-header">
                                                     <div class="entry-thumbnail">
-                                                        <a href="news-details2.php"><img class="img-responsive" src="images/post/carabineros.jpg" alt="" /></a>
+                                                        <a href="news-details2.php"><img class="img-responsive" src="/main/web/images/post/carabineros.jpg" alt="" /></a>
                                                     </div>
                                                 </div>
                                                 <div class="post-content">								
@@ -327,7 +311,7 @@
                                             <div class="post">
                                                 <div class="entry-header">
                                                     <div class="entry-thumbnail">
-                                                        <a href="news-details.php"><img class="img-responsive" src="images/post/holanda.jpg" alt="" /></a>
+                                                        <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/holanda.jpg" alt="" /></a>
                                                     </div>
                                                 </div>
                                                 <div class="post-content">								
@@ -350,7 +334,7 @@
                                             <div class="post">
                                                 <div class="entry-header">
                                                     <div class="entry-thumbnail">
-                                                        <a href="news-details.php"><img class="img-responsive" src="images/post/remodelacion.jpg" alt="" /></a>
+                                                        <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/remodelacion.jpg" alt="" /></a>
                                                     </div>
                                                 </div>
                                                 <div class="post-content">								
@@ -378,7 +362,7 @@
                                                 <div class="post">
                                                     <div class="entry-header">
                                                         <div class="entry-thumbnail">
-                                                            <a href="news-details.php"><img class="img-responsive" src="images/post/antofagasta/1.jpg" alt="" /></a>
+                                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/1.jpg" alt="" /></a>
                                                         </div>
                                                     </div>
                                                     <div class="post-content">								
@@ -397,7 +381,7 @@
                                                 <div class="post">
                                                     <div class="entry-header">
                                                         <div class="entry-thumbnail">
-                                                            <a href="news-details.php"><img class="img-responsive" src="images/post/antofagasta/2.jpg" alt="" /></a>
+                                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/2.jpg" alt="" /></a>
                                                         </div>
                                                     </div>
                                                     <div class="post-content">								
@@ -416,7 +400,7 @@
                                                 <div class="post">
                                                     <div class="entry-header">
                                                         <div class="entry-thumbnail">
-                                                            <a href="news-details.php"><img class="img-responsive" src="images/post/antofagasta/3.png" alt="" /></a>
+                                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/3.png" alt="" /></a>
                                                         </div>
                                                     </div>
                                                     <div class="post-content">								
@@ -444,7 +428,7 @@
                                                     <div class="post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/atacama/4.bmp" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/4.bmp" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -469,7 +453,7 @@
                                                     <div class="post small-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/atacama/2.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/2.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -486,7 +470,7 @@
                                                     <div class="post small-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/atacama/5.bmp" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/5.bmp" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -513,7 +497,7 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/1.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -532,7 +516,7 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/2.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/2.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -553,7 +537,7 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/3.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/3.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -572,7 +556,7 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/antofagasta/1.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/1.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -600,63 +584,63 @@
                                             <div id="photo-gallery" class="carousel slide carousel-fade" data-ride="carousel">						
                                                 <div class="carousel-inner">
                                                     <div class="item active">
-                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="images/post/programacion/galeria1.jpeg" alt="" /></a>
+                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria1.jpeg" alt="" /></a>
                                                         <!-- <h2>Noticias</h2> -->
                                                     </div>
                                                     <div class="item">
-                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="images/post/programacion/galeria2.jpeg" alt="" /></a>
+                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria2.jpeg" alt="" /></a>
                                                         <!-- <h2>Deportes</h2> -->
                                                     </div>
                                                     <div class="item">
-                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="images/post/programacion/galeria3.jpeg" alt="" /></a>
+                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria3.jpeg" alt="" /></a>
                                                         <!-- <h2>Daniela Madero <a class="btn btn-default" role="button" href="#">Madero FM - Copiapó</a></h2> -->
                                                     </div>
                                                     <div class="item">
-                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="images/post/programacion/galeria4.jpeg" alt="" /></a>
+                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria4.jpeg" alt="" /></a>
                                                         <!-- <h2>Patricia Palma <a class="btn btn-default" role="button" href="#">Madero FM - Antofagasta</a></h2> -->
                                                     </div>
                                                     <div class="item">
-                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="images/post/programacion/galeria5.jpeg" alt="" /></a>
+                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria5.jpeg" alt="" /></a>
                                                         <!-- <h2>Joel Castro <a class="btn btn-default" role="button" href="#">Madero FM - Copiapó</a></h2> -->
                                                     </div>
                                                     <div class="item">
-                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="images/post/programacion/galeria6.jpeg" alt="" /></a>
+                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria6.jpeg" alt="" /></a>
                                                         <!-- <h2>Enrique Mursell <a class="btn btn-default" role="button" href="#">Madero FM - La Serena & Coquimbo</a></h2> -->
                                                     </div>
                                                     <div class="item">
-                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="images/post/programacion/galeria7.jpeg" alt="" /></a>
+                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria7.jpeg" alt="" /></a>
                                                         <!-- <h2>Andrea Meseguer <a class="btn btn-default" role="button" href="#">Madero FM - Copiapó</a></h2> -->
                                                     </div>
                                                     <div class="item">
-                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="images/post/programacion/galeria8.jpeg" alt="" /></a>
+                                                        <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria8.jpeg" alt="" /></a>
                                                         <!-- <h2>José Salazar <a class="btn btn-default" role="button" href="#">Madero FM - Antofagasta</a></h2> -->
                                                     </div>
                                                 </div><!--/carousel-inner-->
 
                                                 <ol class="gallery-indicators carousel-indicators">
                                                     <li data-target="#photo-gallery" data-slide-to="0" class="active">
-                                                        <img class="img-responsive" src="images/gallery/galeria1.jpeg" alt="" />
+                                                        <img class="img-responsive" src="/main/web/images/gallery/galeria1.jpeg" alt="" />
                                                     </li>
                                                     <li data-target="#photo-gallery" data-slide-to="1">
-                                                        <img class="img-responsive" src="images/gallery/galeria2.jpeg" alt="" />
+                                                        <img class="img-responsive" src="/main/web/images/gallery/galeria2.jpeg" alt="" />
                                                     </li>   
                                                     <li data-target="#photo-gallery" data-slide-to="2">
-                                                        <img class="img-responsive" src="images/gallery/galeria3.jpeg" alt="" />
+                                                        <img class="img-responsive" src="/main/web/images/gallery/galeria3.jpeg" alt="" />
                                                     </li>
                                                     <li data-target="#photo-gallery" data-slide-to="3">
-                                                        <img class="img-responsive" src="images/gallery/galeria4.jpeg" alt="" />
+                                                        <img class="img-responsive" src="/main/web/images/gallery/galeria4.jpeg" alt="" />
                                                     </li>
                                                     <li data-target="#photo-gallery" data-slide-to="4">
-                                                        <img class="img-responsive" src="images/gallery/galeria5.jpeg" alt="" />
+                                                        <img class="img-responsive" src="/main/web/images/gallery/galeria5.jpeg" alt="" />
                                                     </li>
                                                     <li data-target="#photo-gallery" data-slide-to="5">
-                                                        <img class="img-responsive" src="images/gallery/galeria6.jpeg" alt="" />
+                                                        <img class="img-responsive" src="/main/web/images/gallery/galeria6.jpeg" alt="" />
                                                     </li>
                                                     <li data-target="#photo-gallery" data-slide-to="6">
-                                                        <img class="img-responsive" src="images/gallery/galeria7.jpeg" alt="" />
+                                                        <img class="img-responsive" src="/main/web/images/gallery/galeria7.jpeg" alt="" />
                                                     </li>
                                                     <li data-target="#photo-gallery" data-slide-to="7">
-                                                        <img class="img-responsive" src="images/gallery/galeria8.jpeg" alt="" />
+                                                        <img class="img-responsive" src="/main/web/images/gallery/galeria8.jpeg" alt="" />
                                                     </li>
                                                 </ol><!--/gallery-indicators-->
 
@@ -668,7 +652,7 @@
                                         </div><!--/photo-gallery--> 
                                         <div class="section">
                                             <div class="row">
-                                                <img class="img-responsive center-block" style="max-height:120px" src="images/post/banner.jpg">
+                                                <img class="img-responsive center-block" style="max-height:120px" src="/main/web/images/post/banner.jpg">
                                             </div>
                                         </div>                                    
                                     </div><!--/.middle-content-->
@@ -676,7 +660,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <div id="sitebar">							
-                                    <?php require_once("web/include/internacionales.php"); ?>
+                                    <?php require_once("../include/internacionales.php"); ?>
                                     <div class="load-more text-center">
                                         <a class="btn btn-primary btn-block" href="#">Cargar Más Noticias...</a>
                                     </div>                                    
@@ -697,7 +681,7 @@
 
                                     <!--                            <div class="widget">
                                                                     <div class="add">
-                                                                        <a href="#"><img class="img-responsive" src="images/post/add/add5.jpg" alt="" /></a>
+                                                                        <a href="#"><img class="img-responsive" src="/main/web/images/post/add/add5.jpg" alt="" /></a>
                                                                     </div>
                                                                 </div>-->
                                     <div class="widget">
@@ -734,7 +718,7 @@
                                         <!--                                <div class="post medium-post">
                                                                             <div class="entry-header">
                                                                                 <div class="entry-thumbnail embed-responsive embed-responsive-16by9">
-                                                                                    <img class="img-responsive" src="images/post/1.jpg" alt="" />
+                                                                                    <img class="img-responsive" src="/main/web/images/post/1.jpg" alt="" />
                                                                                 </div>
                                                                             </div>
                                                                             <div class="post-content">								
@@ -753,8 +737,8 @@
                                                 <div class="img-opinion left">
                                                     <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
                                                     <div>
-                                                        <img class="left" src="images/cv.png" style="width:20px;height:20px" />
-                                                        <img class="right" src="images/icon-twitter.jpg" style="width:20px;height:20px" />
+                                                        <img class="left" src="/main/web/images/cv.png" style="width:20px;height:20px" />
+                                                        <img class="right" src="/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
                                                     </div>                                
                                                 </div>                             
                                             </div>
@@ -770,8 +754,8 @@
                                                 <div class="img-opinion left">
                                                     <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
                                                     <div>
-                                                        <img class="left" src="images/cv.png" style="width:20px;height:20px" />
-                                                        <img class="right" src="images/icon-twitter.jpg" style="width:20px;height:20px" />
+                                                        <img class="left" src="/main/web/images/cv.png" style="width:20px;height:20px" />
+                                                        <img class="right" src="/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
                                                     </div>                                
                                                 </div>                             
                                             </div>
@@ -787,8 +771,8 @@
                                                 <div class="img-opinion left">
                                                     <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
                                                     <div>
-                                                        <img class="left" src="images/cv.png" style="width:20px;height:20px" />
-                                                        <img class="right" src="images/icon-twitter.jpg" style="width:20px;height:20px" />
+                                                        <img class="left" src="/main/web/images/cv.png" style="width:20px;height:20px" />
+                                                        <img class="right" src="/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
                                                     </div>                                
                                                 </div>                             
                                             </div>
@@ -804,8 +788,8 @@
                                                 <div class="img-opinion left">
                                                     <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
                                                     <div>
-                                                        <img class="left" src="images/cv.png" style="width:20px;height:20px" />
-                                                        <img class="right" src="images/icon-twitter.jpg" style="width:20px;height:20px" />
+                                                        <img class="left" src="/main/web/images/cv.png" style="width:20px;height:20px" />
+                                                        <img class="right" src="/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
                                                     </div>                                
                                                 </div>                             
                                             </div>
@@ -822,10 +806,4 @@
                     </div><!--/.section-->
 
                 </div><!--/.container-fluid-->
-            </div> <!-- / .main -->
-
-            <?php require_once("web/include/footer.php"); ?>
-        </div><!--/#main-wrapper--> 
-
-    </body>
-</html>
+</div>

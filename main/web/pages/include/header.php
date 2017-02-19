@@ -33,12 +33,12 @@
                 </button>
 
                 <a class="navbar-brand" href="index.php">
-                    <img class="main-logo img-responsive" src="images/logo.jpeg" alt="">
+                    <img class="main-logo img-responsive" src="/main/web/images/logo.jpeg" alt="">
                 </a>
             </div> 
             <nav id="mainmenu" class="navbar-left collapse navbar-collapse"> 
                 <a class="secondary-logo" href="index.html">
-                    <img class="img-responsive" src="images/logo.jpeg" alt="">
+                    <img class="img-responsive" src="/main/web/images/logo.jpeg" alt="">
                 </a>
                 <ul class="nav navbar-nav">                       
                     <li><a href="index.php">Portada</a></li>
@@ -77,10 +77,10 @@
         </div>
         <div class="panel-body text-center">
             <ul class="menu vertical radiolist">
-                <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_antofagasta/mp3/icecast.audio', 'Antofagasta', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="images/radio.jpg" style="width:20px;height:20px" />Antofagasta</a></li>
-                <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_copiapo/mp3/icecast.audio', 'Atacama', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="images/radio.jpg" style="width:20px;height:20px" />Atacama</a></li>
-                <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_serena/mp3/icecast.audio', 'Coquimbo', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="images/radio.jpg" style="width:20px;height:20px" />Coquimbo</a></li>
-                <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_serena/mp3/icecast.audio', 'Nacional', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="images/radio.jpg" style="width:20px;height:20px" />Nacional</a></li>
+                <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_antofagasta/mp3/icecast.audio', 'Antofagasta', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/main/web/images/radio.jpg" style="width:20px;height:20px" />Antofagasta</a></li>
+                <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_copiapo/mp3/icecast.audio', 'Atacama', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/main/web/images/radio.jpg" style="width:20px;height:20px" />Atacama</a></li>
+                <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_serena/mp3/icecast.audio', 'Coquimbo', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/main/web/images/radio.jpg" style="width:20px;height:20px" />Coquimbo</a></li>
+                <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_serena/mp3/icecast.audio', 'Nacional', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/main/web/images/radio.jpg" style="width:20px;height:20px" />Nacional</a></li>
             </ul>              
         </div>
     </div>

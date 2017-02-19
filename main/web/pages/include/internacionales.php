@@ -5,7 +5,7 @@
                                             <div class="post small-post">
                                                 <div class="entry-header">
                                                     <div class="entry-thumbnail">
-                                                        <a href="news-details.html"><img class="img-responsive" src="images/post/sherlock.jpg" alt="" /></a>
+                                                        <a href="news-details.html"><img class="img-responsive" src="/main/web/images/post/sherlock.jpg" alt="" /></a>
                                                     </div>
                                                 </div>
                                                 <div class="post-content">								
@@ -20,7 +20,7 @@
                                             <div class="post small-post">
                                                 <div class="entry-header">
                                                     <div class="entry-thumbnail">
-                                                        <a href="news-details.html"><img class="img-responsive" src="images/post/trump.jpg" alt="" /></a>
+                                                        <a href="news-details.html"><img class="img-responsive" src="/main/web/images/post/trump.jpg" alt="" /></a>
                                                     </div>
                                                 </div>
                                                 <div class="post-content">								
@@ -35,7 +35,7 @@
                                             <div class="post small-post">
                                                 <div class="entry-header">
                                                     <div class="entry-thumbnail">
-                                                        <a href="news-details.html"><img class="img-responsive" src="images/post/tecnologia.jpg" alt="" /></a>
+                                                        <a href="news-details.html"><img class="img-responsive" src="/main/web/images/post/tecnologia.jpg" alt="" /></a>
                                                     </div>
                                                 </div>
                                                 <div class="post-content">								
@@ -50,7 +50,7 @@
                                             <div class="post small-post">
                                                 <div class="entry-header">
                                                     <div class="entry-thumbnail">
-                                                        <a href="news-details.html"><img class="img-responsive" src="images/post/deportes.jpg" alt="" /></a>
+                                                        <a href="news-details.html"><img class="img-responsive" src="/main/web/images/post/deportes.jpg" alt="" /></a>
                                                     </div>
                                                 </div>
                                                 <div class="post-content">								
@@ -66,7 +66,7 @@
                                             <div class="post small-post">
                                                 <div class="entry-header">
                                                     <div class="entry-thumbnail">
-                                                        <a href="news-details.html"><img class="img-responsive" src="images/post/politica.jpg" alt="" /></a>
+                                                        <a href="news-details.html"><img class="img-responsive" src="/main/web/images/post/politica.jpg" alt="" /></a>
                                                     </div>
                                                 </div>
                                                 <div class="post-content">								
@@ -81,7 +81,7 @@
                                             <div class="post small-post">
                                                 <div class="entry-header">
                                                     <div class="entry-thumbnail">
-                                                        <a href="news-details.html"><img class="img-responsive" src="images/post/mundo.jpg" alt="" /></a>
+                                                        <a href="news-details.html"><img class="img-responsive" src="/main/web/images/post/mundo.jpg" alt="" /></a>
                                                     </div>
                                                 </div>
                                                 <div class="post-content">								
