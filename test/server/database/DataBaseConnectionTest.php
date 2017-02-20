@@ -1,6 +1,7 @@
 <?php
 
-require($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/database/DataBaseConnection.php');
+require dirname(__FILE__) . '/../../../main/server/database/DataBaseConnection.php';
+
 try {
     $db = DataBaseConnection::getInstance();
 

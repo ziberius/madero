@@ -11,12 +11,11 @@ class IniFile
 
     private $ini;
     private $fileName = "config.ini";
-    private $filePath = "/madero/main/server/ini/";//TODO this path may be changed
     private static $instance;
 
     private function __construct()
     {
-        $path = $_SERVER["DOCUMENT_ROOT"] . $this->filePath . $this->fileName;
+        $path = dirname(__FILE__) . '/' . $this->fileName;
 
         if (!file_exists($path)) {
             throw new Exception("File not found in path: " . $path);

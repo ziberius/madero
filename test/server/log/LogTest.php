@@ -1,7 +1,7 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/lib/log4php/Logger.php');
-Logger::configure($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/log/log4phpConfig.xml');
+require dirname(__FILE__) . '/../../../main/server/lib/log4php/Logger.php';
+Logger::configure(dirname(__FILE__) . '/../../../main/server/log/log4phpConfig.xml');
 
 class Something
 {

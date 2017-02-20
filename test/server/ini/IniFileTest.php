@@ -1,6 +1,6 @@
 <?php
 
-require($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/ini/IniFile.php');
+require dirname(__FILE__) . '/../../../main/server/ini/IniFile.php';
 
 try {
 

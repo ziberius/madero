@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/database/Query.php');
+require dirname(__FILE__) . '/../../../main/server/database/Query.php';
 
 $query = Query::getInstance();
 

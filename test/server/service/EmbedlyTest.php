@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"] . '/madero/main/server/service/Embedly.php');
+require dirname(__FILE__) . '/../../../main/server/service/Embedly.php';
 
 $urls = array(
     "http://www.youtube.com/watch?v=iF3gzfel-a0",

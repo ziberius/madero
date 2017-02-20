@@ -1,7 +1,6 @@
 <?php
 
-
-require_once($_SERVER['DOCUMENT_ROOT'] . '/madero/main/server/service/Posts.php');
+require dirname(__FILE__) . '/../../../main/server/service/Posts.php';
 
 
 $posts = new Posts();
