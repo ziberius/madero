@@ -1,7 +1,7 @@
 <?php
-require_once '../response/Post.php';
-require_once '../response/Author.php';
-require_once '../response/PostMeta.php';
+require_once dirname(__FILE__) . '/../response/Post.php';
+require_once dirname(__FILE__) . '/../response/Author.php';
+require_once dirname(__FILE__) . '/../response/PostMeta.php';
 
 class Converter
 {

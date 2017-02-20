@@ -1,10 +1,10 @@
 <?php
 
-require_once 'DataBaseConnection.php';
-require_once '../util/Validate.php';
+require_once dirname(__FILE__) . '/DataBaseConnection.php';
+require_once dirname(__FILE__) . '/../util/Validate.php';
 
-require_once '../lib/log4php/Logger.php';
-Logger::configure('../log/log4phpConfig.xml');
+require_once dirname(__FILE__) . '/../lib/log4php/Logger.php';
+Logger::configure(dirname(__FILE__) . '/../log/log4phpConfig.xml');
 
 
 class Query

@@ -1,14 +1,14 @@
 <?php
-require_once '../database/Query.php';
-require_once 'Embedly.php';
+require_once dirname(__FILE__) . '/../database/Query.php';
+require_once dirname(__FILE__) . '/Embedly.php';
 
-require_once '../util/Validate.php';
+require_once dirname(__FILE__) . '/../util/Validate.php';
 
-require_once 'Converter.php';
-require_once 'Retriever.php';
+require_once dirname(__FILE__) . '/Converter.php';
+require_once dirname(__FILE__) . '/Retriever.php';
 
-require_once '../lib/log4php/Logger.php';
-Logger::configure('../log/log4phpConfig.xml');
+require_once dirname(__FILE__) . '/../lib/log4php/Logger.php';
+Logger::configure(dirname(__FILE__) . '/../log/log4phpConfig.xml');
 
 
 class Posts

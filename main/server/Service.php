@@ -1,8 +1,8 @@
 <?php
 
-require_once './response/Response.php';
-require_once './response/ErrorResponse.php';
-require_once './service/Posts.php';
+require_once dirname(__FILE__) . '/response/Response.php';
+require_once dirname(__FILE__) . '/response/ErrorResponse.php';
+require_once dirname(__FILE__) . '/service/Posts.php';
 
 $service = null;
 try {
