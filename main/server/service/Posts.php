@@ -55,9 +55,9 @@ class Posts
 
                 $this->retriever->postMetaOpinion($post);
 
-                $this->retriever->author($post);
-
                 $this->retriever->embedly($post);
+
+                $this->retriever->postFromIdParent($post);
 
             }
 
@@ -100,9 +100,9 @@ class Posts
         if (!empty($posts)) {
             foreach ($posts as $post) {
 
-                $this->retriever->author($post);
-
                 $this->retriever->embedly($post);
+
+                $this->retriever->postFromIdParent($post);
 
             }
 
@@ -138,7 +138,7 @@ class Posts
 
                 $this->retriever->postMetaOpinion($post);
 
-                $this->retriever->author($post);
+                $this->retriever->postFromIdParent($post);
 
             }
 
@@ -165,16 +165,9 @@ class Posts
             foreach ($posts as $post) {
                 $this->retriever->postMetaOpinion($post);
 
-                $this->retriever->author($post);
-
                 $this->retriever->embedly($post);
 
-                if ($idPost > 0) {
-                    $this->log->info(sprintf('getting resources idPost[%s]', $idPost));
-                    $resources = $this->retriever->postFromIdParent($idPost);
-                    $resourcesArray = Converter::postsToArray($resources);
-                    $post->setResources($resourcesArray);
-                }
+                $this->retriever->postFromIdParent($post);
             }
 
             $result = Converter::postsToArray($posts);

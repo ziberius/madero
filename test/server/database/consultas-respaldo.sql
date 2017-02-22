@@ -322,6 +322,79 @@ FROM wp_term_taxonomy tax
 WHERE
 AND tax.taxonomy = 'category'
 -- AND ter.name = 'EXTERNO'
+;
+
+SELECT p.ID AS id
+FROM wp_posts p INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id)
+  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id
+  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id
+WHERE
+  DATE(p.post_date) >= STR_TO_DATE(:startDate, '%d/%m/%Y') AND DATE(p.post_date) <= STR_TO_DATE(:endDate, '%d/%m/%Y')
+  AND p.post_status = 'publish' AND p.post_type = 'post' AND tax.taxonomy = 'category' AND ter.name = :category
+ORDER BY p.post_date DESC
+LIMIT :limit OFFSET :offset;
+
+
+SELECT
+  p.ID                AS id,
+  p.post_title        AS title,
+  p.post_author       AS id_author,
+  p.post_content      AS content,
+  p.post_date         AS date,
+  p.post_date_gmt     AS date_gmt,
+  p.post_status       AS status,
+  p.post_type         AS type,
+  p.post_name         AS name,
+  p.post_parent       AS id_parent,
+  p.guid              AS guid,
+  p.post_mime_type    AS mime_type,
+  p.post_modified     AS modified,
+  p.post_modified_gmt AS modified_gmt,
+  ter.name            AS category,
+  user.ID             AS id_author,
+  user.user_login     AS login,
+  user.user_nicename  AS nicename,
+  user.user_email     AS email,
+  user.display_name
+FROM wp_posts p
+  LEFT JOIN wp_term_relationships rel ON (p.ID = rel.object_id)
+  LEFT JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id
+  LEFT JOIN wp_terms ter ON ter.term_id = tax.term_id
+  INNER JOIN wp_users user ON p.post_author = user.ID
+WHERE p.post_parent IN (
+  SELECT p.ID AS id
+  FROM wp_posts p INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id)
+    INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id
+    INNER JOIN wp_terms ter ON ter.term_id = tax.term_id
+  WHERE
+    DATE(p.post_date) >= STR_TO_DATE(:startDate, '%d/%m/%Y') AND DATE(p.post_date) <= STR_TO_DATE(:endDate, '%d/%m/%Y')
+    AND p.post_status = 'publish' AND p.post_type = 'post' AND tax.taxonomy = 'category' AND ter.name = :category
+  ORDER BY p.post_date DESC
+
+)
+      AND p.post_type = 'attachment'
+ORDER BY p.post_date DESC
+LIMIT :limit OFFSET :offset;
+
+16709
+16706
+16641
+16636
+16636
+16633
+16621
+16614
+16609
+
+
+SELECT
+  ID            AS id,
+  user_login    AS login,
+  user_nicename AS nicename,
+  user_email    AS email,
+  display_name
+FROM wp_users
+WHERE ID = :idAuthor AND user_status = 0
 
 
 

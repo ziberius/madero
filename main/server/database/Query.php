@@ -59,7 +59,6 @@ class Query
         $sql = "SELECT ";
         $sql .= "  p.ID as id, ";
         $sql .= "  p.post_title as title, ";
-        $sql .= "  p.post_author as id_author, ";
         $sql .= "  p.post_content as content, ";
         $sql .= "  p.post_date as date, ";
         $sql .= "  p.post_date_gmt as date_gmt, ";
@@ -71,11 +70,17 @@ class Query
         $sql .= "  p.post_mime_type as mime_type, ";
         $sql .= "  p.post_modified as modified, ";
         $sql .= "  p.post_modified_gmt as modified_gmt, ";
-        $sql .= "  ter.name as category ";
+        $sql .= "  ter.name as category, ";
+        $sql .= "  user.ID as id_author, ";
+        $sql .= "  user.user_login as login, ";
+        $sql .= "  user.user_nicename as nicename, ";
+        $sql .= "  user.user_email as email, ";
+        $sql .= "  user.display_name ";
         $sql .= "FROM wp_posts p ";
         $sql .= "  INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id) ";
         $sql .= "  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ";
         $sql .= "  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id ";
+        $sql .= "  INNER JOIN wp_users user ON p.post_author = user.ID ";
         $sql .= "WHERE DATE(p.post_date) >= STR_TO_DATE(:startDate, '%d/%m/%Y') ";
         $sql .= "      AND DATE(p.post_date) <= STR_TO_DATE(:endDate, '%d/%m/%Y') ";
         $sql .= "      AND p.post_status = 'publish' ";
@@ -99,42 +104,6 @@ class Query
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 
-
-            $stmt->execute();
-
-        } catch (Exception $exception) {
-            $this->log->error($exception);
-            throw $exception;
-
-        }
-
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $this->log->debug(sprintf('Number of records found:[%d]', count($results)));
-        return $results;
-    }
-
-    public function selectAuthor($idAuthor)
-    {
-        $this->log->debug(sprintf('parameters: idAuthor[%s]', $idAuthor));
-
-        if (!is_numeric($idAuthor)) {
-            throw new Exception(sprintf('idAuthor must be numeric [%s]', $idAuthor));
-        }
-
-        $sql = "SELECT ";
-        $sql .= "  ID as id, ";
-        $sql .= "  user_login as login, ";
-        $sql .= "  user_nicename as nicename, ";
-        $sql .= "  user_email as email, ";
-        $sql .= "  display_name ";
-        $sql .= "FROM wp_users ";
-        $sql .= "WHERE ID = :idAuthor AND user_status = 0  ";
-
-        $this->log->debug($sql);
-
-        try {
-            $stmt = $this->connection->prepare($sql);
-            $stmt->bindParam(':idAuthor', $idAuthor, PDO::PARAM_INT);
 
             $stmt->execute();
 
@@ -211,8 +180,7 @@ class Query
 
         $sql = "SELECT ";
         $sql .= "  p.ID as id, ";
-        $sql .= "  p.post_title as title, ";
-        $sql .= "  p.post_author as id_author, ";
+        $sql .= "  p.post_title as title, ";;
         $sql .= "  p.post_content as content, ";
         $sql .= "  p.post_date as date, ";
         $sql .= "  p.post_date_gmt as date_gmt, ";
@@ -224,11 +192,17 @@ class Query
         $sql .= "  p.post_mime_type as mime_type, ";
         $sql .= "  p.post_modified as modified, ";
         $sql .= "  p.post_modified_gmt as modified_gmt, ";
-        $sql .= "  ter.name as category ";
+        $sql .= "  ter.name as category, ";
+        $sql .= "  user.ID as id_author, ";
+        $sql .= "  user.user_login as login, ";
+        $sql .= "  user.user_nicename as nicename, ";
+        $sql .= "  user.user_email as email, ";
+        $sql .= "  user.display_name ";
         $sql .= "FROM wp_posts p ";
         $sql .= "  INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id) ";
         $sql .= "  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ";
         $sql .= "  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id ";
+        $sql .= "  INNER JOIN wp_users user ON p.post_author = user.ID ";
         $sql .= "WHERE DATE(p.post_date) >= STR_TO_DATE(:startDate, '%d/%m/%Y') ";
         $sql .= "    AND DATE(p.post_date) <= STR_TO_DATE(:endDate, '%d/%m/%Y') ";
         $sql .= "    AND p.post_status = 'publish' ";
@@ -277,7 +251,6 @@ class Query
         $sql = "SELECT ";
         $sql .= "  p.ID as id, ";
         $sql .= "  p.post_title as title, ";
-        $sql .= "  p.post_author as id_author, ";
         $sql .= "  p.post_content as content, ";
         $sql .= "  p.post_date as date, ";
         $sql .= "  p.post_date_gmt as date_gmt, ";
@@ -289,11 +262,17 @@ class Query
         $sql .= "  p.post_mime_type as mime_type, ";
         $sql .= "  p.post_modified as modified, ";
         $sql .= "  p.post_modified_gmt as modified_gmt, ";
-        $sql .= "  ter.name as category ";
+        $sql .= "  ter.name as category, ";
+        $sql .= "  user.ID as id_author, ";
+        $sql .= "  user.user_login as login, ";
+        $sql .= "  user.user_nicename as nicename, ";
+        $sql .= "  user.user_email as email, ";
+        $sql .= "  user.display_name ";
         $sql .= "FROM wp_posts p ";
         $sql .= "  INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id) ";
         $sql .= "  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ";
         $sql .= "  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id ";
+        $sql .= "  INNER JOIN wp_users user ON p.post_author = user.ID ";
         $sql .= "WHERE p.ID =:id ";
         $sql .= "  AND tax.taxonomy = 'category' ";
 
@@ -329,7 +308,6 @@ class Query
         $sql = "SELECT ";
         $sql .= "  p.ID as id, ";
         $sql .= "  p.post_title as title, ";
-        $sql .= "  p.post_author as id_author, ";
         $sql .= "  p.post_content as content, ";
         $sql .= "  p.post_date as date, ";
         $sql .= "  p.post_date_gmt as date_gmt, ";
@@ -341,11 +319,17 @@ class Query
         $sql .= "  p.post_mime_type as mime_type, ";
         $sql .= "  p.post_modified as modified, ";
         $sql .= "  p.post_modified_gmt as modified_gmt, ";
-        $sql .= "  ter.name as category ";
+        $sql .= "  ter.name as category, ";
+        $sql .= "  user.ID as id_author, ";
+        $sql .= "  user.user_login as login, ";
+        $sql .= "  user.user_nicename as nicename, ";
+        $sql .= "  user.user_email as email, ";
+        $sql .= "  user.display_name ";
         $sql .= "FROM wp_posts p ";
         $sql .= "  LEFT JOIN wp_term_relationships rel ON (p.ID = rel.object_id) ";
         $sql .= "  LEFT JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ";
         $sql .= "  LEFT JOIN wp_terms ter ON ter.term_id = tax.term_id ";
+        $sql .= "  LEFT JOIN wp_users user ON p.post_author = user.ID ";
         $sql .= "WHERE p.post_parent =:idParent ";
         $sql .= "AND p.post_type ='attachment' ";
         $sql .= "ORDER BY p.post_date DESC ";
@@ -389,7 +373,6 @@ class Query
         $sql = "SELECT ";
         $sql .= "  p.ID as id, ";
         $sql .= "  p.post_title as title, ";
-        $sql .= "  p.post_author as id_author, ";
         $sql .= "  p.post_content as content, ";
         $sql .= "  p.post_date as date, ";
         $sql .= "  p.post_date_gmt as date_gmt, ";
@@ -401,11 +384,17 @@ class Query
         $sql .= "  p.post_mime_type as mime_type, ";
         $sql .= "  p.post_modified as modified, ";
         $sql .= "  p.post_modified_gmt as modified_gmt, ";
-        $sql .= "  ter.name as category ";
+        $sql .= "  ter.name as category, ";
+        $sql .= "  user.ID as id_author, ";
+        $sql .= "  user.user_login as login, ";
+        $sql .= "  user.user_nicename as nicename, ";
+        $sql .= "  user.user_email as email, ";
+        $sql .= "  user.display_name ";
         $sql .= "FROM wp_posts p ";
         $sql .= "  INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id) ";
         $sql .= "  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ";
         $sql .= "  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id ";
+        $sql .= "  INNER JOIN wp_users user ON p.post_author = user.ID ";
         $sql .= "WHERE p.post_status = 'publish' ";
         $sql .= "    AND p.post_type = 'post' ";
         $sql .= "    AND (p.post_title LIKE :keyword OR p.post_content LIKE :keyword) ";

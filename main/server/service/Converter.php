@@ -21,25 +21,6 @@ class Converter
 
     /**
      * @param $item
-     * @return Author
-     */
-    public static function toAuthor($item)
-    {
-        $element = $item[0];
-
-        $author = new Author();
-        $author->setId($element['id']);
-        $author->setLogin($element['login']);
-        $author->setNicename($element['nicename']);
-        $author->setEmail($element['email']);
-        $author->setDisplayName($element['display_name']);
-
-        return $author;
-
-    }
-
-    /**
-     * @param $item
      * @return Post
      */
     public static function toPost($item)
@@ -60,7 +41,13 @@ class Converter
         $post->setModifiedGmt($item['modified_gmt']);
         $post->setCategory($item['category']);
 
-        $post->setAuthor($item['id_author']);
+        $author = new Author();
+        $author->setId($item['id_author']);
+        $author->setLogin($item['login']);
+        $author->setNicename($item['nicename']);
+        $author->setEmail($item['email']);
+        $author->setDisplayName($item['display_name']);
+        $post->setAuthor($author);
         return $post;
     }
 

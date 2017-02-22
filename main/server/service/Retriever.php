@@ -71,18 +71,27 @@ class Retriever
 
     }
 
-    public function postFromIdParent($idParent)
+    public function postFromIdParent(&$post)
     {
-        $query = Query::getInstance();
-        $results = $query->selectPostFromIdParent($idParent);
-        $posts = array();
-        foreach ($results as $item) {
-            $post = Converter::toPost($item);
-            array_push($posts, $post);
+        $idParent = $post->getId();
+
+        if ($idParent > 0) {
+            $this->log->info(sprintf('getting resources idPost[%s]', $idParent));
+
+            $query = Query::getInstance();
+            $results = $query->selectPostFromIdParent($idParent);
+
+            if (!empty($results)) {
+
+                $resources = array();
+                foreach ($results as $item) {
+                    $resource = Converter::toPost($item);
+                    array_push($resources, $resource);
+                }
+                $resourcesArray = Converter::postsToArray($resources);
+                $post->setResources($resourcesArray);
+            }
         }
-
-        return $posts;
-
     }
 
     public function postsFromTitleAndContent($limit, $offset, $keyword)
@@ -99,7 +108,6 @@ class Retriever
         return $posts;
 
     }
-
 
     public function postMetaOpinion(&$post)
     {
@@ -119,33 +127,22 @@ class Retriever
         }
     }
 
-    public function author(&$post)
-    {
-        $query = Query::getInstance();
-
-        $idAuthor = $post->getAuthor();
-        $result = $query->selectAuthor($idAuthor);
-        if (!empty($result)) {
-            $author = Converter::toAuthor($result);
-            $post->setAuthor($author);
-        }
-    }
-
     public function embedly(&$post)
     {
-        $url = $post->getContent();
-        $url = trim($url);
-        //TODO validar la categoria=EXTERNO tambien!!!
+        if ($post->getCategory() == 'EXTERNO') {
 
+            $url = $post->getContent();
+            $url = trim($url);
 
-        if (filter_var($url, FILTER_VALIDATE_URL)) {
-            $this->log->debug(sprintf('content is a validated url [%s]', $url));
+            if (filter_var($url, FILTER_VALIDATE_URL)) {
+                $this->log->debug(sprintf('content is a validated url [%s]', $url));
 
-            $embedly = new Embedly();
-            $oembeds = $embedly->getOembeds(array($url));
-            $this->log->debug($oembeds);
-            $post->setEmbedly($oembeds);
+                $embedly = new Embedly();
+                $oembeds = $embedly->getOembeds(array($url));
+                $this->log->debug($oembeds);
+                $post->setEmbedly($oembeds);
 
+            }
         }
     }
 
