@@ -50,12 +50,12 @@ try {
 
 function getPostsFromCategory($parameters)
 {
-    if (!isset($parameters['start-date'])) {
-        throw new Exception('index parameters[start-date] is not set');
+    if (!isset($parameters['start_date'])) {
+        throw new Exception('index parameters[start_date] is not set');
     }
 
-    if (!isset($parameters['end-date'])) {
-        throw new Exception('index parameters[end-date] is not set');
+    if (!isset($parameters['end_date'])) {
+        throw new Exception('index parameters[end_date] is not set');
     }
 
     if (!isset($parameters['limit'])) {
@@ -70,8 +70,8 @@ function getPostsFromCategory($parameters)
         throw new Exception('index parameters[category] is not set');
     }
 
-    $startDate = $parameters['start-date'];
-    $endDate = $parameters['end-date'];
+    $startDate = $parameters['start_date'];
+    $endDate = $parameters['end_date'];
     $limit = $parameters['limit'];
     $offset = $parameters['offset'];
     $category = $parameters['category'];
@@ -83,12 +83,12 @@ function getPostsFromCategory($parameters)
 
 function getPostsFromAuthor($parameters)
 {
-    if (!isset($parameters['start-date'])) {
-        throw new Exception('index parameters[start-date] is not set');
+    if (!isset($parameters['start_date'])) {
+        throw new Exception('index parameters[start_date] is not set');
     }
 
-    if (!isset($parameters['end-date'])) {
-        throw new Exception('index parameters[end-date] is not set');
+    if (!isset($parameters['end_date'])) {
+        throw new Exception('index parameters[end_date] is not set');
     }
 
     if (!isset($parameters['limit'])) {
@@ -99,15 +99,15 @@ function getPostsFromAuthor($parameters)
         throw new Exception('index parameters[offset] is not set');
     }
 
-    if (!isset($parameters['id-author'])) {
-        throw new Exception('index parameters[id-author] is not set');
+    if (!isset($parameters['id_author'])) {
+        throw new Exception('index parameters[id_author] is not set');
     }
 
-    $startDate = $parameters['start-date'];
-    $endDate = $parameters['end-date'];
+    $startDate = $parameters['start_date'];
+    $endDate = $parameters['end_date'];
     $limit = $parameters['limit'];
     $offset = $parameters['offset'];
-    $idAuthor = $parameters['id-author'];
+    $idAuthor = $parameters['id_author'];
 
     $posts = new Posts();
     return $posts->getFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor);
@@ -116,11 +116,11 @@ function getPostsFromAuthor($parameters)
 
 function getPostsFromId($parameters)
 {
-    if (!isset($parameters['id-post'])) {
-        throw new Exception('index parameters[id-post] is not set');
+    if (!isset($parameters['id_post'])) {
+        throw new Exception('index parameters[id_post] is not set');
     }
 
-    $idPost = $parameters['id-post'];
+    $idPost = $parameters['id_post'];
 
     $posts = new Posts();
     return $posts->getFromId($idPost);

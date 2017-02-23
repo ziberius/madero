@@ -4,6 +4,7 @@ class PostMeta
 {
 
     private $id;
+    private $id_post;
     private $key;
     private $value;
 
@@ -28,6 +29,17 @@ class PostMeta
     {
         $this->id = $id;
     }
+
+    public function getIdPost()
+    {
+        return $this->id_post;
+    }
+
+    public function setIdPost($id_post)
+    {
+        $this->id_post = $id_post;
+    }
+
 
     public function getKey()
     {

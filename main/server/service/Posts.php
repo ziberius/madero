@@ -1,10 +1,8 @@
 <?php
-require_once dirname(__FILE__) . '/../database/Query.php';
 require_once dirname(__FILE__) . '/Embedly.php';
 
 require_once dirname(__FILE__) . '/../util/Validate.php';
 
-require_once dirname(__FILE__) . '/Converter.php';
 require_once dirname(__FILE__) . '/Retriever.php';
 
 require_once dirname(__FILE__) . '/../lib/log4php/Logger.php';
@@ -48,23 +46,7 @@ class Posts
         }
 
         $posts = $this->retriever->postsFromCategory($startDate, $endDate, $limit, $offset, $category);
-
-        $result = null;
-        if (!empty($posts)) {
-            foreach ($posts as $post) {
-
-                $this->retriever->postMetaOpinion($post);
-
-                $this->retriever->embedly($post);
-
-                $this->retriever->postFromIdParent($post);
-
-            }
-
-            $result = Converter::postsToArray($posts);
-        }
-
-        return $result;
+        return Converter::postsToArray($posts);
 
     }
 
@@ -96,20 +78,22 @@ class Posts
 
         $posts = $this->retriever->postsFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor);
 
-        $result = null;
-        if (!empty($posts)) {
-            foreach ($posts as $post) {
+        return Converter::postsToArray($posts);
 
-                $this->retriever->embedly($post);
 
-                $this->retriever->postFromIdParent($post);
+    }
 
-            }
+    public function getFromId($idPost)
+    {
+        $this->log->info(sprintf('parameters: idPost[%s]', $idPost));
 
-            $result = Converter::postsToArray($posts);
+        if (!is_numeric($idPost)) {
+            throw new Exception(sprintf('idPost must be numeric [%s]', $idPost));
         }
 
-        return $result;
+        $posts = $this->retriever->postFromId($idPost);
+
+        return Converter::postsToArray($posts);
 
     }
 
@@ -130,50 +114,8 @@ class Posts
             throw new Exception(sprintf('keyword must be string [%s]', $keyword));
         }
 
-        $posts = $this->retriever->postsFromTitleAndContent($limit, $offset, $keyword);
-
-        $result = null;
-        if (!empty($posts)) {
-            foreach ($posts as $post) {
-
-                $this->retriever->postMetaOpinion($post);
-
-                $this->retriever->postFromIdParent($post);
-
-            }
-
-            $result = Converter::postsToArray($posts);
-        }
-
-        return $result;
-
-    }
-
-
-    public function getFromId($idPost)
-    {
-        $this->log->info(sprintf('parameters: idPost[%s]', $idPost));
-
-        if (!is_numeric($idPost)) {
-            throw new Exception(sprintf('idPost must be numeric [%s]', $idPost));
-        }
-
-        $posts = $this->retriever->postFromId($idPost);
-
-        $result = null;
-        if (!empty($posts)) {
-            foreach ($posts as $post) {
-                $this->retriever->postMetaOpinion($post);
-
-                $this->retriever->embedly($post);
-
-                $this->retriever->postFromIdParent($post);
-            }
-
-            $result = Converter::postsToArray($posts);
-        }
-
-        return $result;
+        $posts = $this->retriever->postFromSearch($limit, $offset, $keyword);
+        return Converter::postsToArray($posts);
 
     }
 

@@ -59,6 +59,7 @@ class Converter
     {
         $postMeta = new PostMeta();
         $postMeta->setId($item['id']);
+        $postMeta->setIdPost($item['id_post']);
         $postMeta->setKey($item['meta_key']);
         $postMeta->setValue($item['value']);
 

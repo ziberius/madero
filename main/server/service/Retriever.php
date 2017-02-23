@@ -1,8 +1,11 @@
 <?php
 
-require_once dirname(__FILE__) . '/../database/Query.php';
+require_once dirname(__FILE__) . '/../database/PostsFromCategory.php';
+require_once dirname(__FILE__) . '/../database/PostsFromAuthor.php';
+require_once dirname(__FILE__) . '/../database/PostsFromId.php';
+require_once dirname(__FILE__) . '/../database/SearchPosts.php';
 require_once dirname(__FILE__) . '/Embedly.php';
-require_once dirname(__FILE__) . '/Converter.php';
+require_once dirname(__FILE__) . '/../util/Converter.php';
 
 require_once dirname(__FILE__) . '/../lib/log4php/Logger.php';
 Logger::configure(dirname(__FILE__) . '/../log/log4phpConfig.xml');
@@ -29,105 +32,94 @@ class Retriever
 
     public function postsFromCategory($startDate, $endDate, $limit, $offset, $category)
     {
-        $query = Query::getInstance();
-        $results = $query->selectPostFromCategory($startDate, $endDate, $limit, $offset, $category);
+        $instance = PostsFromCategory::getInstance();
+        $posts = $instance->selectPosts($startDate, $endDate, $limit, $offset, $category);
+        $resources = $instance->selectResources($startDate, $endDate, $limit, $offset, $category);
+        $postMetas = $instance->selectPostMetas($startDate, $endDate, $limit, $offset, $category);
 
-        $posts = array();
-        foreach ($results as $item) {
-            $post = Converter::toPost($item);
-            array_push($posts, $post);
-        }
-
-        return $posts;
+        return $this->processMaps($posts, $resources, $postMetas);
 
     }
 
     public function postsFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor)
     {
-        $query = Query::getInstance();
-        $results = $query->selectPostFromAuthor($startDate, $endDate, $limit, $offset, $idAuthor);
+        $instance = PostsFromAuthor::getInstance();
+        $posts = $instance->selectPosts($startDate, $endDate, $limit, $offset, $idAuthor);
+        $resources = $instance->selectResources($startDate, $endDate, $limit, $offset, $idAuthor);
+        $postMetas = $instance->selectPostMetas($startDate, $endDate, $limit, $offset, $idAuthor);
 
-        $posts = array();
-        foreach ($results as $item) {
-            $post = Converter::toPost($item);
-            array_push($posts, $post);
-        }
-
-        return $posts;
+        return $this->processMaps($posts, $resources, $postMetas);
 
     }
 
     public function postFromId($idPost)
     {
-        $query = Query::getInstance();
-        $results = $query->selectPostFromId($idPost);
-        $posts = array();
-        foreach ($results as $item) {
+        $instance = PostsFromId::getInstance();
+        $posts = $instance->selectPost($idPost);
+        $resources = $instance->selectResources($idPost);
+        $postMetas = $instance->selectPostMetas($idPost);
+
+        return $this->processMaps($posts, $resources, $postMetas);
+    }
+
+    public function postFromSearch($limit, $offset, $keyword)
+    {
+        $instance = SearchPosts::getInstance();
+        $posts = $instance->selectPosts($limit, $offset, $keyword);
+        $resources = $instance->selectResources($limit, $offset, $keyword);
+        $postMetas = $instance->selectPostMetas($limit, $offset, $keyword);
+
+        return $this->processMaps($posts, $resources, $postMetas);
+    }
+
+    private function processMaps($posts, $resources, $postMetas)
+    {
+        $postMap = array();
+        foreach ($posts as $item) {
             $post = Converter::toPost($item);
-            array_push($posts, $post);
+            $postMap[$post->getId()] = $post;
         }
 
-        return $posts;
-
-    }
-
-    public function postFromIdParent(&$post)
-    {
-        $idParent = $post->getId();
-
-        if ($idParent > 0) {
-            $this->log->info(sprintf('getting resources idPost[%s]', $idParent));
-
-            $query = Query::getInstance();
-            $results = $query->selectPostFromIdParent($idParent);
-
-            if (!empty($results)) {
-
-                $resources = array();
-                foreach ($results as $item) {
-                    $resource = Converter::toPost($item);
-                    array_push($resources, $resource);
-                }
-                $resourcesArray = Converter::postsToArray($resources);
-                $post->setResources($resourcesArray);
-            }
-        }
-    }
-
-    public function postsFromTitleAndContent($limit, $offset, $keyword)
-    {
-        $query = Query::getInstance();
-        $results = $query->selectPostFromTitleAndContent($limit, $offset, $keyword);
-
-        $posts = array();
-        foreach ($results as $item) {
+        $resourcesMap = array();
+        foreach ($resources as $item) {
             $post = Converter::toPost($item);
-            array_push($posts, $post);
-        }
 
-        return $posts;
-
-    }
-
-    public function postMetaOpinion(&$post)
-    {
-        $query = Query::getInstance();
-
-        $idPost = $post->getId();
-
-        $results = $query->selectPostMetaOpinion($idPost);
-        if (!empty($results)) {
-            $postMetas = array();
-            foreach ($results as $item) {
-                $postMeta = Converter::toPostMeta($item);
-                array_push($postMetas, $postMeta->getPreparedJsonData());
+            if (empty($resourcesMap[$post->getIdParent()])) {
+                $resourcesMap[$post->getIdParent()] = array($post->getPreparedJsonData());
+            } else {
+                array_push($resourcesMap[$post->getIdParent()], $post->getPreparedJsonData());
             }
 
-            $post->setPostMeta($postMetas);
         }
+
+        $postMetaMap = array();
+        foreach ($postMetas as $item) {
+            $postMeta = Converter::toPostMeta($item);
+
+            if (empty($postMetaMap[$postMeta->getIdPost()])) {
+                $postMetaMap[$postMeta->getIdPost()] = array($postMeta->getPreparedJsonData());
+            } else {
+                array_push($postMetaMap[$postMeta->getIdPost()], $postMeta->getPreparedJsonData());
+            }
+        }
+
+        foreach ($postMap as $idPost => $post) {
+
+            if (!empty($resourcesMap[$idPost])) {
+                $post->setResources($resourcesMap[$idPost]);
+            }
+
+            if (!empty($postMetaMap[$idPost])) {
+                $post->setPostMeta($postMetaMap[$idPost]);
+            }
+
+            $this->getEmbedly($post);
+
+        }
+        return $postMap;
     }
 
-    public function embedly(&$post)
+    private function getEmbedly(&$post)
     {
         if ($post->getCategory() == 'EXTERNO') {
 
@@ -145,6 +137,5 @@ class Retriever
             }
         }
     }
-
 
 }

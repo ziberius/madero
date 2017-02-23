@@ -376,25 +376,27 @@ WHERE p.post_parent IN (
 ORDER BY p.post_date DESC
 LIMIT :limit OFFSET :offset;
 
-16709
-16706
-16641
-16636
-16636
-16633
-16621
-16614
-16609
+
+CALL sp_select_post_meta_from_category("02/03/2016", "02/03/2017", 10, 0, "OPINION");
+CALL sp_select_post_from_category("02/03/2016", "02/03/2017", 10, 0, "NOTICIAS");
+CALL sp_select_resources_from_category("02/03/2016", "02/03/2017", 10, 0, "NOTICIAS");
+
+CALL sp_select_post_from_author("02/03/2016", "02/03/2017", 10, 0, 4);
+CALL sp_select_resources_from_author("02/03/2016", "02/03/2017", 10, 0, 4);
+CALL sp_select_post_meta_from_author("02/03/2016", "02/03/2017", 10, 0, 4);
+
+CALL sp_select_post_from_id(16649);
+CALL sp_select_resources_from_id(16644);
+CALL sp_select_post_meta_from_id(16644);
+
+CALL sp_select_post_from_search(10, 0, 'liceo');
+CALL sp_select_resources_from_search(10, 0, 'liceo');
+CALL sp_select_post_meta_from_search(10, 0, 'liceo');
 
 
-SELECT
-  ID            AS id,
-  user_login    AS login,
-  user_nicename AS nicename,
-  user_email    AS email,
-  display_name
-FROM wp_users
-WHERE ID = :idAuthor AND user_status = 0
-
-
-
+SELECT *
+FROM wp_posts
+WHERE id = 16644;
+SELECT *
+FROM wp_posts
+WHERE id = 16649;
