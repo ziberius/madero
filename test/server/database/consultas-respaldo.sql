@@ -387,7 +387,7 @@ CALL sp_select_post_meta_from_author("02/03/2016", "02/03/2017", 10, 0, 4);
 
 CALL sp_select_post_from_id(16649);
 CALL sp_select_resources_from_id(16644);
-CALL sp_select_post_meta_from_id(16644);
+CALL sp_select_post_meta_from_id(16673);
 
 CALL sp_select_post_from_search(10, 0, 'liceo');
 CALL sp_select_resources_from_search(10, 0, 'liceo');

@@ -80,37 +80,22 @@ class Retriever
             $postMap[$post->getId()] = $post;
         }
 
-        $resourcesMap = array();
-        foreach ($resources as $item) {
-            $post = Converter::toPost($item);
-
-            if (empty($resourcesMap[$post->getIdParent()])) {
-                $resourcesMap[$post->getIdParent()] = array($post->getPreparedJsonData());
-            } else {
-                array_push($resourcesMap[$post->getIdParent()], $post->getPreparedJsonData());
-            }
-
-        }
-
         $postMetaMap = array();
-        foreach ($postMetas as $item) {
-            $postMeta = Converter::toPostMeta($item);
+        $idPostThumbnailMap = array(); //Map contains key:[idPost] and value:[idPost of _thumbnail_id of metadata]
+        $this->createPostMetaAndThumbnailMaps($postMetas, $postMetaMap, $idPostThumbnailMap);
 
-            if (empty($postMetaMap[$postMeta->getIdPost()])) {
-                $postMetaMap[$postMeta->getIdPost()] = array($postMeta->getPreparedJsonData());
-            } else {
-                array_push($postMetaMap[$postMeta->getIdPost()], $postMeta->getPreparedJsonData());
-            }
-        }
+        $resourcesMap = $this->createResourcesMap($resources);
+
+        $this->addThumbnailPost($idPostThumbnailMap, $resourcesMap);
 
         foreach ($postMap as $idPost => $post) {
 
-            if (!empty($resourcesMap[$idPost])) {
-                $post->setResources($resourcesMap[$idPost]);
-            }
-
             if (!empty($postMetaMap[$idPost])) {
                 $post->setPostMeta($postMetaMap[$idPost]);
+            }
+
+            if (!empty($resourcesMap[$idPost])) {
+                $post->setResources(Converter::postsToArray($resourcesMap[$idPost]));
             }
 
             $this->getEmbedly($post);
@@ -138,4 +123,80 @@ class Retriever
         }
     }
 
+    private function addThumbnailPost($idPostThumbnailMap, &$resourcesMap)
+    {
+        foreach ($idPostThumbnailMap as $idPost => $idPostSearched) {
+
+            if (empty($resourcesMap) || empty($resourcesMap[$idPost])) {
+                $this->log->debug(sprintf('Getting Post[%s] of metadata, parentPost[%s]', $idPostSearched, $idPost));
+                $postObtained = $this->getPostSearched($idPostSearched);
+                $resourcesMap[$idPost] = array($postObtained);
+
+            } else {
+                $postFound = $this->isIdPostSearchedOnMap($idPostSearched, $resourcesMap[$idPost]);
+                if (!$postFound) {
+                    $this->log->debug(sprintf('Getting Post[%s] of metadata, parentPost[%s]', $idPostSearched, $idPost));
+                    $postObtained = $this->getPostSearched($idPostSearched);
+                    array_push($resourcesMap[$idPost], $postObtained);
+                }
+            }
+
+        }
+    }
+
+    private function getPostSearched($idPostSearched)
+    {
+        $instance = PostsFromId::getInstance();
+        $posts = $instance->selectPost($idPostSearched);
+        if (!empty($posts)) {
+            $this->log->info(sprintf('Post searched of metadata was obtained [%s]', $idPostSearched));
+            return Converter::toPost($posts[0]);
+        }
+        throw new Exception((sprintf('Post of metadata can`t be obtained [%s]', $idPostSearched)));
+    }
+
+    private function createResourcesMap($resources)
+    {
+        $resourcesMap = array();
+        foreach ($resources as $item) {
+            $post = Converter::toPost($item);
+
+            if (empty($resourcesMap[$post->getIdParent()])) {
+                $resourcesMap[$post->getIdParent()] = array($post);
+            } else {
+                array_push($resourcesMap[$post->getIdParent()], $post);
+            }
+
+        }
+
+        return $resourcesMap;
+    }
+
+    private function createPostMetaAndThumbnailMaps($postMetas, &$postMetaMap, &$idPostThumbnailMap)
+    {
+        foreach ($postMetas as $item) {
+            $postMeta = Converter::toPostMeta($item);
+
+            if (empty($postMetaMap[$postMeta->getIdPost()])) {
+                $postMetaMap[$postMeta->getIdPost()] = array($postMeta->getPreparedJsonData());
+            } else {
+                array_push($postMetaMap[$postMeta->getIdPost()], $postMeta->getPreparedJsonData());
+            }
+
+            if ($postMeta->getKey() == '_thumbnail_id') {
+                $idPostThumbnailMap[$postMeta->getIdPost()] = $postMeta->getValue();
+            }
+        }
+    }
+
+    private function isIdPostSearchedOnMap($idPostSearched, $postResourcesArray)
+    {
+        foreach ($postResourcesArray as $post) {
+
+            if ($idPostSearched == $post->getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
