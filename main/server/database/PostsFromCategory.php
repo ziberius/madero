@@ -59,6 +59,25 @@ class PostsFromCategory
         return $this->executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName);
     }
 
+
+    public function selectPostTags($startDate, $endDate, $limit, $offset, $category)
+    {
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], category[%s]'
+            , $startDate, $endDate, $limit, $offset, $category));
+
+        $procedureName = "sp_select_post_tag_from_category";
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName);
+    }
+
+    public function selectCategories($startDate, $endDate, $limit, $offset, $category)
+    {
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], category[%s]'
+            , $startDate, $endDate, $limit, $offset, $category));
+
+        $procedureName = "sp_select_categories_from_category";
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName);
+    }
+
     private function executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName)
     {
         $this->validateParameters($startDate, $endDate, $limit, $offset, $category);

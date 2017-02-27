@@ -6,6 +6,7 @@ require_once dirname(__FILE__) . '/../database/PostsFromId.php';
 require_once dirname(__FILE__) . '/../database/SearchPosts.php';
 require_once dirname(__FILE__) . '/Embedly.php';
 require_once dirname(__FILE__) . '/../util/Converter.php';
+require_once dirname(__FILE__) . '/../response/Category.php';
 
 require_once dirname(__FILE__) . '/../lib/log4php/Logger.php';
 Logger::configure(dirname(__FILE__) . '/../log/log4phpConfig.xml');
@@ -36,8 +37,10 @@ class Retriever
         $posts = $instance->selectPosts($startDate, $endDate, $limit, $offset, $category);
         $resources = $instance->selectResources($startDate, $endDate, $limit, $offset, $category);
         $postMetas = $instance->selectPostMetas($startDate, $endDate, $limit, $offset, $category);
+        $postTags = $instance->selectPostTags($startDate, $endDate, $limit, $offset, $category);
+        $categories = $instance->selectCategories($startDate, $endDate, $limit, $offset, $category);
 
-        return $this->processMaps($posts, $resources, $postMetas);
+        return $this->processMaps($posts, $resources, $postMetas, $postTags, $categories);
 
     }
 
@@ -47,8 +50,10 @@ class Retriever
         $posts = $instance->selectPosts($startDate, $endDate, $limit, $offset, $idAuthor);
         $resources = $instance->selectResources($startDate, $endDate, $limit, $offset, $idAuthor);
         $postMetas = $instance->selectPostMetas($startDate, $endDate, $limit, $offset, $idAuthor);
+        $postTags = $instance->selectPostTags($startDate, $endDate, $limit, $offset, $idAuthor);
+        $categories = $instance->selectCategories($startDate, $endDate, $limit, $offset, $idAuthor);
 
-        return $this->processMaps($posts, $resources, $postMetas);
+        return $this->processMaps($posts, $resources, $postMetas, $postTags, $categories);
 
     }
 
@@ -58,8 +63,10 @@ class Retriever
         $posts = $instance->selectPost($idPost);
         $resources = $instance->selectResources($idPost);
         $postMetas = $instance->selectPostMetas($idPost);
+        $postTags = $instance->selectPostTags($idPost);
+        $categories = $instance->selectCategories($idPost);
 
-        return $this->processMaps($posts, $resources, $postMetas);
+        return $this->processMaps($posts, $resources, $postMetas, $postTags, $categories);
     }
 
     public function postFromSearch($limit, $offset, $keyword)
@@ -68,11 +75,13 @@ class Retriever
         $posts = $instance->selectPosts($limit, $offset, $keyword);
         $resources = $instance->selectResources($limit, $offset, $keyword);
         $postMetas = $instance->selectPostMetas($limit, $offset, $keyword);
+        $postTags = $instance->selectPostTags($limit, $offset, $keyword);
+        $categories = $instance->selectCategories($limit, $offset, $keyword);
 
-        return $this->processMaps($posts, $resources, $postMetas);
+        return $this->processMaps($posts, $resources, $postMetas, $postTags, $categories);
     }
 
-    private function processMaps($posts, $resources, $postMetas)
+    private function processMaps($posts, $resources, $postMetas, $postTags, $categories)
     {
         $postMap = array();
         foreach ($posts as $item) {
@@ -88,6 +97,10 @@ class Retriever
 
         $this->addThumbnailPost($idPostThumbnailMap, $resourcesMap);
 
+        $postTagsMap = $this->createTagsMap($postTags);
+
+        $categoriesMap = $this->createCategoriesMap($categories);
+
         foreach ($postMap as $idPost => $post) {
 
             if (!empty($postMetaMap[$idPost])) {
@@ -98,6 +111,13 @@ class Retriever
                 $post->setResources(Converter::postsToArray($resourcesMap[$idPost]));
             }
 
+            if (!empty($postTagsMap[$idPost])) {
+                $post->setTags($postTagsMap[$idPost]);
+            }
+            if (!empty($categoriesMap[$idPost])) {
+                $post->setCategories($categoriesMap[$idPost]);
+            }
+
             $this->getEmbedly($post);
 
         }
@@ -106,21 +126,26 @@ class Retriever
 
     private function getEmbedly(&$post)
     {
-        if ($post->getCategory() == 'EXTERNO') {
+        if (!empty($post->getCategories())) {
+            foreach ($post->getCategories() as $category) {
+                if ($category['name'] == 'EXTERNO') {
 
-            $url = $post->getContent();
-            $url = trim($url);
+                    $url = $post->getContent();
+                    $url = trim($url);
 
-            if (filter_var($url, FILTER_VALIDATE_URL)) {
-                $this->log->debug(sprintf('content is a validated url [%s]', $url));
+                    if (filter_var($url, FILTER_VALIDATE_URL)) {
+                        $this->log->debug(sprintf('content is a validated url [%s]', $url));
 
-                $embedly = new Embedly();
-                $oembeds = $embedly->getOembeds(array($url));
-                $this->log->debug($oembeds);
-                $post->setEmbedly($oembeds);
+                        $embedly = new Embedly();
+                        $oembeds = $embedly->getOembeds(array($url));
+                        $this->log->debug($oembeds);
+                        $post->setEmbedly($oembeds);
 
+                    }
+                }
             }
         }
+
     }
 
     private function addThumbnailPost($idPostThumbnailMap, &$resourcesMap)
@@ -153,6 +178,40 @@ class Retriever
             return Converter::toPost($posts[0]);
         }
         throw new Exception((sprintf('Post of metadata can`t be obtained [%s]', $idPostSearched)));
+    }
+
+    private function createTagsMap($tags)
+    {
+        $tagsMap = array();
+        foreach ($tags as $item) {
+            $postTag = Converter::toPostTag($item);
+
+            if (empty($tagsMap[$postTag->getIdPost()])) {
+                $tagsMap[$postTag->getIdPost()] = array($postTag->getPreparedJsonData());
+            } else {
+                array_push($tagsMap[$postTag->getIdPost()], $postTag->getPreparedJsonData());
+            }
+
+        }
+
+        return $tagsMap;
+    }
+
+    private function createCategoriesMap($categories)
+    {
+        $map = array();
+        foreach ($categories as $item) {
+            $category = Converter::toCategory($item);
+
+            if (empty($map[$category->getIdPost()])) {
+                $map[$category->getIdPost()] = array($category->getPreparedJsonData());
+            } else {
+                array_push($map[$category->getIdPost()], $category->getPreparedJsonData());
+            }
+
+        }
+
+        return $map;
     }
 
     private function createResourcesMap($resources)

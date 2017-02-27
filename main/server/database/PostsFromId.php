@@ -56,6 +56,22 @@ class PostsFromId
         return $this->executeProcedure($id, $procedureName);
     }
 
+    public function selectPostTags($id)
+    {
+        $this->log->debug(sprintf('parameters: id[%s]', $id));
+
+        $procedureName = "sp_select_post_tag_from_id";
+        return $this->executeProcedure($id, $procedureName);
+    }
+
+    public function selectCategories($id)
+    {
+        $this->log->debug(sprintf('parameters: id[%s]', $id));
+
+        $procedureName = "sp_select_categories_from_id";
+        return $this->executeProcedure($id, $procedureName);
+    }
+
     private function executeProcedure($id, $procedureName)
     {
         $this->validateParameters($id);

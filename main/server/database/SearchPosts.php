@@ -55,6 +55,22 @@ class SearchPosts
         return $this->executeProcedure($limit, $offset, $keyword, $procedureName);
     }
 
+    public function selectPostTags($limit, $offset, $keyword)
+    {
+        $this->log->debug(sprintf('parameters: limit[%s], offset[%s], keyword[%s]', $limit, $offset, $keyword));
+
+        $procedureName = "sp_select_post_tag_from_search";
+        return $this->executeProcedure($limit, $offset, $keyword, $procedureName);
+    }
+
+    public function selectCategories($limit, $offset, $keyword)
+    {
+        $this->log->debug(sprintf('parameters: limit[%s], offset[%s], keyword[%s]', $limit, $offset, $keyword));
+
+        $procedureName = "sp_select_categories_from_search";
+        return $this->executeProcedure($limit, $offset, $keyword, $procedureName);
+    }
+
     private function executeProcedure($limit, $offset, $keyword, $procedureName)
     {
         $this->validateParameters($limit, $offset, $keyword);

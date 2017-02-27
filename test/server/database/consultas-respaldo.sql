@@ -378,20 +378,30 @@ LIMIT :limit OFFSET :offset;
 
 
 CALL sp_select_post_meta_from_category("02/03/2016", "02/03/2017", 10, 0, "OPINION");
-CALL sp_select_post_from_category("02/03/2016", "02/03/2017", 10, 0, "NOTICIAS");
+CALL sp_select_post_from_category("13/12/2016", "13/12/2016", 10, 0, "NOTICIAS");
 CALL sp_select_resources_from_category("02/03/2016", "02/03/2017", 10, 0, "NOTICIAS");
+CALL sp_select_post_tag_from_category("13/12/2016", "13/12/2016", 5, 0, "NOTICIAS");
+CALL sp_select_categories_from_category("13/12/2016", "13/12/2016", 5, 0, "NOTICIAS");
 
-CALL sp_select_post_from_author("02/03/2016", "02/03/2017", 10, 0, 4);
-CALL sp_select_resources_from_author("02/03/2016", "02/03/2017", 10, 0, 4);
+CALL sp_select_post_from_author("13/12/2016", "13/12/2016", 10, 0, 6);
+CALL sp_select_resources_from_author("13/12/2016", "13/12/2016", 10, 0, 6);
 CALL sp_select_post_meta_from_author("02/03/2016", "02/03/2017", 10, 0, 4);
+CALL sp_select_post_tag_from_author("13/12/2016", "13/12/2016", 10, 0, 6);
+CALL sp_select_categories_from_author("13/12/2016", "13/12/2016", 10, 0, 6);
 
 CALL sp_select_post_from_id(16649);
 CALL sp_select_resources_from_id(16644);
 CALL sp_select_post_meta_from_id(16673);
+CALL sp_select_post_tag_from_id(14850);
+CALL sp_select_categories_from_id(14850);
 
 CALL sp_select_post_from_search(10, 0, 'liceo');
 CALL sp_select_resources_from_search(10, 0, 'liceo');
 CALL sp_select_post_meta_from_search(10, 0, 'liceo');
+CALL sp_select_post_tag_from_search(10, 0,
+                                    'La Gratuidad 2017 es una muy buena noticia para miles de estudiantes de todo Chile y Atacama');
+CALL sp_select_categories_from_search(10, 0,
+                                      'La Gratuidad 2017 es una muy buena noticia para miles de estudiantes de todo Chile y Atacama');
 
 
 SELECT *
@@ -400,3 +410,73 @@ WHERE id = 16644;
 SELECT *
 FROM wp_posts
 WHERE id = 16649;
+
+-- post de opinion
+INSERT INTO made4832_radio.wp_posts (post_author, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count)
+VALUES
+  (4, '2017-02-17 10:42:59', '2017-02-17 10:43:01', 'to opino que ....blab lalblab abllaa', 'Opnion sobre algo', ' ',
+      'publish', 'open', 'open', ' ', '/la-ruta-de-la-opinion', ' ', ' ', '2017-02-17 10:44:09', '2017-02-17 10:44:12',
+                                                                ' ', 0, 'madero.com', 0, 'post', '', 0);
+-- posts de embadly
+INSERT INTO made4832_radio.wp_posts (post_author, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count)
+VALUES (4, '2017-02-12 15:03:55', '2017-02-12 18:03:58', 'https://ubuntulife.files.wordpress.com/2010/03/montaje.jpg',
+           'EXTERNAL imagen', ' ', 'publish', 'open', 'open', '', '/la-ruta-del-post-16755', ' ', ' ',
+                                                                                             '2017-02-10 18:03:58',
+                                                                                             '2017-02-10 18:03:58', ' ',
+                                                                                             0, 'maderofm.com/?p=16755',
+                                                                                             0, 'post', 'audio/mpeg',
+        0);
+INSERT INTO made4832_radio.wp_posts (post_author, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count)
+VALUES
+  (4, '2017-02-11 15:03:55', '2017-02-11 18:03:58', 'https://www.youtube.com/watch?v=0VJm0mi7aUc', 'EXTERNAL youtube',
+      ' ', 'publish', 'open', 'open', '', '/la-ruta-del-post-16754', ' ', ' ', '2017-02-10 18:03:58',
+                                                                     '2017-02-10 18:03:58', ' ', 0,
+                                                                     'maderofm.com/?p=16754', 0, 'post', 'image/jpeg',
+   0);
+INSERT INTO made4832_radio.wp_posts (post_author, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count)
+VALUES (4, '2017-02-10 15:10:42', '2017-02-10 15:10:44',
+           'tp://www.latercera.com/noticia/inflacion-registro-aumento-05-enero/', 'EXTERNAL la tercera', ' ', 'publish',
+           'open', 'open', '', '/la-ruta-del-post-16753', ' ', ' ', '2017-02-10 15:11:22', '2017-02-10 15:11:24', ' ',
+                                                          0, 'maderofm.com/?p=16753', 0, 'post', 'audio/mpeg', 0);
+
+-- config META, COLOCAR el ID del pOST de opinion
+INSERT INTO made4832_radio.wp_postmeta (post_id, meta_key, meta_value) VALUES (16756, 'OPINION-CARGO', 'un cargo');
+INSERT INTO made4832_radio.wp_postmeta (post_id, meta_key, meta_value) VALUES (16756, 'OPINION-TWITTER', 'un twitter');
+INSERT INTO made4832_radio.wp_postmeta (post_id, meta_key, meta_value) VALUES (16756, 'OPINION-AUTOR', 'un opinologo');
+
+-- config categorias
+INSERT INTO made4832_radio.wp_terms (name, slug) VALUES ('EXTERNO', 'externo');
+INSERT INTO made4832_radio.wp_terms (name, slug) VALUES ('OPINION', 'opinion');
+
+-- colocar los ids de las categorias insertadoas
+-- embedly
+INSERT INTO made4832_radio.wp_term_taxonomy (term_id, taxonomy, description, parent, count)
+VALUES (99, 'category', '', 0, 0);
+-- opinion
+INSERT INTO made4832_radio.wp_term_taxonomy (term_id, taxonomy, description, parent, count)
+VALUES (100, 'category', ' ', 0, 0);
+
+-- Colocar los ids de los post en ObjectId y el id de wp_term_taxonomy
+-- post de embedly
+INSERT INTO made4832_radio.wp_term_relationships (object_id, term_taxonomy_id, term_order) VALUES (16753, 99, 0);
+INSERT INTO made4832_radio.wp_term_relationships (object_id, term_taxonomy_id, term_order) VALUES (16754, 99, 0);
+INSERT INTO made4832_radio.wp_term_relationships (object_id, term_taxonomy_id, term_order) VALUES (16755, 99, 0);
+-- post de opinion
+INSERT INTO made4832_radio.wp_term_relationships (object_id, term_taxonomy_id, term_order) VALUES (16756, 100, 0);
+
+
+SELECT DISTINCT wp_term_relationships.object_id
+FROM wp_term_taxonomy
+  INNER JOIN wp_terms ON wp_term_taxonomy.term_id = wp_terms.term_id
+  INNER JOIN wp_term_relationships
+WHERE taxonomy = 'post_tag';
+
+SELECT *
+FROM wp_term_relationships;
+
+
+SELECT *
+FROM wp_posts
+
+WHERE ID = 3220
+

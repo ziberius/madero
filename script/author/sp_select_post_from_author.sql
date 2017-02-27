@@ -25,7 +25,6 @@ DETERMINISTIC
       p.post_mime_type    AS mime_type,
       p.post_modified     AS modified,
       p.post_modified_gmt AS modified_gmt,
-      ter.name            AS category,
       user.ID             AS id_author,
       user.user_login     AS login,
       user.user_nicename  AS nicename,
@@ -43,6 +42,25 @@ DETERMINISTIC
           AND p.post_author = p_id_author
           AND tax.taxonomy = 'category'
           AND ter.name <> 'OPINION'
+    GROUP BY
+      p.ID,
+      p.post_title,
+      p.post_content,
+      p.post_date,
+      p.post_date_gmt,
+      p.post_status,
+      p.post_type,
+      p.post_name,
+      p.post_parent,
+      p.guid,
+      p.post_mime_type,
+      p.post_modified,
+      p.post_modified_gmt,
+      user.ID,
+      user.user_login,
+      user.user_nicename,
+      user.user_email,
+      user.display_name
     ORDER BY p.post_date DESC
     LIMIT p_limit OFFSET p_offset;
 

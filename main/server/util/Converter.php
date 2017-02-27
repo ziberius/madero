@@ -2,6 +2,8 @@
 require_once dirname(__FILE__) . '/../response/Post.php';
 require_once dirname(__FILE__) . '/../response/Author.php';
 require_once dirname(__FILE__) . '/../response/PostMeta.php';
+require_once dirname(__FILE__) . '/../response/PostTag.php';
+require_once dirname(__FILE__) . '/../response/Category.php';
 
 class Converter
 {
@@ -19,10 +21,6 @@ class Converter
         return $results;
     }
 
-    /**
-     * @param $item
-     * @return Post
-     */
     public static function toPost($item)
     {
         $post = new Post();
@@ -39,7 +37,6 @@ class Converter
         $post->setMimeType($item['mime_type']);
         $post->setModified($item['modified']);
         $post->setModifiedGmt($item['modified_gmt']);
-        $post->setCategory($item['category']);
 
         $author = new Author();
         $author->setId($item['id_author']);
@@ -51,10 +48,6 @@ class Converter
         return $post;
     }
 
-    /**
-     * @param $item
-     * @return PostMeta
-     */
     public static function toPostMeta($item)
     {
         $postMeta = new PostMeta();
@@ -66,4 +59,29 @@ class Converter
         return $postMeta;
 
     }
+
+    public static function toPostTag($item)
+    {
+        $postTag = new PostTag();
+        $postTag->setId($item['id_tag']);
+        $postTag->setIdPost($item['id_post']);
+        $postTag->setName($item['name']);
+        $postTag->setSlug($item['slug']);
+
+        return $postTag;
+
+    }
+
+    public static function toCategory($item)
+    {
+        $category = new Category();
+        $category->setId($item['id_category']);
+        $category->setIdPost($item['id_post']);
+        $category->setName($item['name']);
+
+        return $category;
+
+    }
+
+
 }

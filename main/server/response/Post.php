@@ -19,11 +19,12 @@ class Post
 
     private $embedly;
 
-    private $category;
+    private $categories;
 
     private $author;
     private $resources;
     private $post_meta;
+    private $tags;
 
     public function getPreparedJsonData()
     {
@@ -166,14 +167,14 @@ class Post
         $this->modified_gmt = $modified_gmt;
     }
 
-    public function getCategory()
+    public function getCategories()
     {
-        return $this->category;
+        return $this->categories;
     }
 
-    public function setCategory($category)
+    public function setCategories($categories)
     {
-        $this->category = $category;
+        $this->categories = $categories;
     }
 
     public function getAuthor()
@@ -216,5 +217,14 @@ class Post
         $this->embedly = $embedly;
     }
 
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
 
 }

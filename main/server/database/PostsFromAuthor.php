@@ -59,6 +59,24 @@ class PostsFromAuthor
         return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idAuthor, $procedureName);
     }
 
+    public function selectPostTags($startDate, $endDate, $limit, $offset, $idAuthor)
+    {
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idAuthor[%s]'
+            , $startDate, $endDate, $limit, $offset, $idAuthor));
+
+        $procedureName = "sp_select_post_tag_from_author";
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idAuthor, $procedureName);
+    }
+
+    public function selectCategories($startDate, $endDate, $limit, $offset, $idAuthor)
+    {
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idAuthor[%s]'
+            , $startDate, $endDate, $limit, $offset, $idAuthor));
+
+        $procedureName = "sp_select_categories_from_author";
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idAuthor, $procedureName);
+    }
+
     private function executeProcedure($startDate, $endDate, $limit, $offset, $idAuthor, $procedureName)
     {
         $this->validateParameters($startDate, $endDate, $limit, $offset, $idAuthor);

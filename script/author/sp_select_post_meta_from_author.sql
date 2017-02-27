@@ -18,7 +18,7 @@ DETERMINISTIC
       meta_value AS value
     FROM wp_postmeta
       INNER JOIN (
-                   SELECT p.ID AS id
+                   SELECT DISTINCT p.ID AS id
                    FROM wp_posts p
                      INNER JOIN wp_term_relationships rel ON (p.ID = rel.object_id)
                      INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id
