@@ -119,6 +119,28 @@ class Posts
 
     }
 
+    public function getFromIdTag($limit, $offset, $idTag)
+    {
+
+        $this->log->info(sprintf('parameters: limit[%s], offset[%s], idTag[%s]', $limit, $offset, $idTag));
+
+        if (!Validate::isNaturalNumber($limit)) {
+            throw new Exception(sprintf('limit must be natural number [%s]', $limit));
+        }
+
+        if (!Validate::isNaturalNumber($offset)) {
+            throw new Exception(sprintf('offset must be natural number [%s]', $offset));
+        }
+
+        if (!is_numeric($idTag)) {
+            throw new Exception(sprintf('idTag must be numeric [%s]', $idTag));
+        }
+
+        $posts = $this->retriever->postFromTag($limit, $offset, $idTag);
+        return Converter::postsToArray($posts);
+
+    }
+
 }
 
 

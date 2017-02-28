@@ -398,10 +398,23 @@ CALL sp_select_categories_from_id(14850);
 CALL sp_select_post_from_search(10, 0, 'liceo');
 CALL sp_select_resources_from_search(10, 0, 'liceo');
 CALL sp_select_post_meta_from_search(10, 0, 'liceo');
-CALL sp_select_post_tag_from_search(10, 0,
-                                    'La Gratuidad 2017 es una muy buena noticia para miles de estudiantes de todo Chile y Atacama');
-CALL sp_select_categories_from_search(10, 0,
-                                      'La Gratuidad 2017 es una muy buena noticia para miles de estudiantes de todo Chile y Atacama');
+CALL sp_select_post_tag_from_search(10, 0, 'La Gratuidad 2017 es una muy buena noticia para mile');
+CALL sp_select_categories_from_search(10, 0, 'La Gratuidad 2017 es una muy buena noticia para miles');
+
+CALL sp_select_post_from_tag(10, 0, 28);
+CALL sp_select_resources_from_tag(10, 0, 28);
+CALL sp_select_post_meta_from_tag(10, 0, 28);
+CALL sp_select_post_tag_from_tag(10, 0, 28);
+CALL sp_select_categories_from_tag(10, 0, 28);
+
+
+SELECT
+  term_id,
+  count(term_id) contador
+FROM wp_term_taxonomy
+WHERE taxonomy = 'post_tag'
+GROUP BY term_id
+HAVING contador = 1;
 
 
 SELECT *

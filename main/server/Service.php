@@ -34,6 +34,9 @@ try {
         case 'searchPosts':
             $result = searchPosts($parameters);
             break;
+        case 'getPostFromIdTag':
+            $result = getPostFromIdTag($parameters);
+            break;
         default:
             throw new Exception(sprintf('service [%s] not exist', $service));
     }
@@ -146,4 +149,26 @@ function searchPosts($parameters)
 
     $posts = new Posts();
     return $posts->search($limit, $offset, $keyword);
+}
+
+function getPostFromIdTag($parameters)
+{
+    if (!isset($parameters['limit'])) {
+        throw new Exception('index parameters[limit] is not set');
+    }
+
+    if (!isset($parameters['offset'])) {
+        throw new Exception('index parameters[offset] is not set');
+    }
+
+    if (!isset($parameters['id_tag'])) {
+        throw new Exception('index parameters[id_tag] is not set');
+    }
+
+    $limit = $parameters['limit'];
+    $offset = $parameters['offset'];
+    $idTag = $parameters['id_tag'];
+
+    $posts = new Posts();
+    return $posts->getFromIdTag($limit, $offset, $idTag);
 }
