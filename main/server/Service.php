@@ -13,7 +13,6 @@ try {
     if (!isset($request['service'])) {
         throw new Exception('index service is not set');
     }
-
     if (!isset($request['parameters'])) {
         throw new Exception('index parameters is not set');
     }
@@ -68,19 +67,19 @@ function getPostsFromCategory($parameters)
     if (!isset($parameters['offset'])) {
         throw new Exception('index parameters[offset] is not set');
     }
-
-    if (!isset($parameters['category'])) {
-        throw new Exception('index parameters[category] is not set');
+    if (!isset($parameters['categories'])) {
+        throw new Exception('index parameters[categories] is not set');
     }
+
 
     $startDate = $parameters['start_date'];
     $endDate = $parameters['end_date'];
     $limit = $parameters['limit'];
     $offset = $parameters['offset'];
-    $category = $parameters['category'];
+    $idCategories = $parameters['categories'];
 
     $posts = new Posts();
-    return $posts->getFromCategory($startDate, $endDate, $limit, $offset, $category);
+    return $posts->getFromCategory($startDate, $endDate, $limit, $offset, $idCategories);
 
 }
 

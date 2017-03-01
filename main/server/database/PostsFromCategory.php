@@ -31,51 +31,51 @@ class PostsFromCategory
         return self::$instance;
     }
 
-    public function selectPosts($startDate, $endDate, $limit, $offset, $category)
+    public function selectPosts($startDate, $endDate, $limit, $offset, $idCategories)
     {
-        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], category[%s]'
-            , $startDate, $endDate, $limit, $offset, $category));
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
+            , $startDate, $endDate, $limit, $offset, $idCategories));
 
         $procedureName = "sp_select_post_from_category";
-        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName);
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $procedureName);
     }
 
-    public function selectResources($startDate, $endDate, $limit, $offset, $category)
+    public function selectResources($startDate, $endDate, $limit, $offset, $idCategories)
     {
-        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], category[%s]'
-            , $startDate, $endDate, $limit, $offset, $category));
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
+            , $startDate, $endDate, $limit, $offset, $idCategories));
 
         $procedureName = "sp_select_resources_from_category";
-        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName);
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $procedureName);
     }
 
 
-    public function selectPostMetas($startDate, $endDate, $limit, $offset, $category)
+    public function selectPostMetas($startDate, $endDate, $limit, $offset, $idCategories)
     {
-        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], category[%s]'
-            , $startDate, $endDate, $limit, $offset, $category));
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
+            , $startDate, $endDate, $limit, $offset, $idCategories));
 
         $procedureName = "sp_select_post_meta_from_category";
-        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName);
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $procedureName);
     }
 
 
-    public function selectPostTags($startDate, $endDate, $limit, $offset, $category)
+    public function selectPostTags($startDate, $endDate, $limit, $offset, $idCategories)
     {
-        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], category[%s]'
-            , $startDate, $endDate, $limit, $offset, $category));
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
+            , $startDate, $endDate, $limit, $offset, $idCategories));
 
         $procedureName = "sp_select_post_tag_from_category";
-        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName);
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $procedureName);
     }
 
-    public function selectCategories($startDate, $endDate, $limit, $offset, $category)
+    public function selectCategories($startDate, $endDate, $limit, $offset, $idCategories)
     {
-        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], category[%s]'
-            , $startDate, $endDate, $limit, $offset, $category));
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
+            , $startDate, $endDate, $limit, $offset, $idCategories));
 
         $procedureName = "sp_select_categories_from_category";
-        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName);
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $procedureName);
     }
 
     private function executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName)

@@ -376,12 +376,65 @@ WHERE p.post_parent IN (
 ORDER BY p.post_date DESC
 LIMIT :limit OFFSET :offset;
 
+11, NOTICIAS, noticias
+22, ANTOFAGASTA ONLINE, antofagasta-online
+23, ATACAMA ONLINE, atacama-online
+24, LA SERENA - COQUIMBO ONLINE, la-serena-coquimbo-online
 
-CALL sp_select_post_meta_from_category("02/03/2016", "02/03/2017", 10, 0, "OPINION");
-CALL sp_select_post_from_category("13/12/2016", "13/12/2016", 10, 0, "NOTICIAS");
-CALL sp_select_resources_from_category("02/03/2016", "02/03/2017", 10, 0, "NOTICIAS");
-CALL sp_select_post_tag_from_category("13/12/2016", "13/12/2016", 5, 0, "NOTICIAS");
-CALL sp_select_categories_from_category("13/12/2016", "13/12/2016", 5, 0, "NOTICIAS");
+;
+CALL sp_select_post_from_category('13/12/2016', '13/12/2016', 10, 0, '24,23');
+
+SELECT *
+FROM wp_term_taxonomy
+WHERE term_taxonomy_id IN (11, 12)
+
+-- NOTICIAS
+14906
+14862
+14858
+14854
+14850
+14814
+
+-- ATACAMA ONLINE
+14906
+14862
+14858
+14854
+14850
+14814
+
+-- LA SERENA - COQUIMBO ONLINE
+14906
+14845
+14842
+14833
+14818
+14811;
+
+SELECT
+  meta_id    AS id,
+  post_id    AS id_post,
+  meta_key,
+  meta_value AS value
+FROM wp_postmeta
+  INNER JOIN (SELECT p.ID AS id
+              FROM wp_posts p INNER JOIN wp_term_relationships rel ON p.ID = rel.object_id
+                INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id
+                INNER JOIN wp_users u ON p.post_author = u.ID
+              WHERE DATE(p.post_date) >= STR_TO_DATE('13/12/2016', '%d/%m/%Y') AND
+                    DATE(p.post_date) <= STR_TO_DATE('13/12/2016', '%d/%m/%Y') AND p.post_status = 'publish' AND
+                    p.post_type = 'post' AND tax.taxonomy = 'category' AND tax.term_taxonomy_id IN (24, 23)
+              GROUP BY p.ID
+              HAVING count(tax.term_taxonomy_id) = LENGTH('24,23') - LENGTH(REPLACE('24,23', ',', '')) + 1
+              ORDER BY p.post_date DESC
+              LIMIT 10 OFFSET 0) AS temporary_table ON temporary_table.id = post_id
+WHERE meta_key IN (' OPINION - AUTOR ', ' OPINION - TWITTER ', ' OPINION - CARGO ', '_thumbnail_id');
+
+CALL sp_select_post_meta_from_category('13/12/2016', '13/12/2016', 10, 0, '24,23');
+CALL sp_select_resources_from_category('13/12/2016', '13/12/2016', 10, 0, '24,23');
+CALL sp_select_post_tag_from_category('13/12/2016', '13/12/2016', 10, 0, '11');
+CALL sp_select_categories_from_category('13/12/2016', '13/12/2016', 10, 0, '11,23');
 
 CALL sp_select_post_from_author("13/12/2016", "13/12/2016", 10, 0, 6);
 CALL sp_select_resources_from_author("13/12/2016", "13/12/2016", 10, 0, 6);
@@ -493,3 +546,192 @@ FROM wp_posts
 
 WHERE ID = 3220
 
+
+SET @ SQL = 'SELECT';
+SET @sql = CONCAT(@sql, '  p.ID                AS id,');
+SET @sql = CONCAT(@sql, '  p.post_title        AS title,')
+SET @ SQL = CONCAT(@ SQL, '  p.post_content      AS content,');
+SET @sql = CONCAT(@sql, '  p.post_date         AS date,');
+SET @sql = CONCAT(@sql, '  p.post_date_gmt     AS date_gmt,');
+SET @sql = CONCAT(@sql, '  p.post_status       AS status,');
+SET @sql = CONCAT(@sql, '  p.post_type         AS type,');
+SET @sql = CONCAT(@sql, '  p.post_name         AS name,');
+SET @sql = CONCAT(@sql, '  p.post_parent       AS id_parent,');
+SET @sql = CONCAT(@sql, '  p.guid              AS guid,');
+SET @sql = CONCAT(@sql, '  p.post_mime_type    AS mime_type,');
+SET @sql = CONCAT(@sql, '  p.post_modified     AS modified,');
+SET @sql = CONCAT(@sql, '  p.post_modified_gmt AS modified_gmt,');
+SET @sql = CONCAT(@sql, '  u.ID                AS id_author,');
+SET @sql = CONCAT(@sql, '  u.user_login        AS login,');
+SET @sql = CONCAT(@sql, '  u.user_nicename     AS nicename,');
+SET @sql = CONCAT(@sql, '  u.user_email        AS email,');
+SET @sql = CONCAT(@sql, '  u.display_name');
+SET @sql = CONCAT(@sql, 'FROM wp_posts p');
+SET @sql = CONCAT(@sql, '  INNER JOIN wp_term_relationships rel ON p.ID = rel.object_id');
+SET @sql = CONCAT(@sql, '  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id');
+SET @sql = CONCAT(@sql, '  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id');
+SET @sql = CONCAT(@sql, '  INNER JOIN wp_users u ON p.post_author = u.ID');
+SET @sql = CONCAT(@sql, 'WHERE DATE(p.post_date) >= STR_TO_DATE(', p_start_date, ', \'%d/%m/%Y\')');
+SET @sql = CONCAT(@sql, '      AND DATE(p.post_date) <= STR_TO_DATE(', p_end_date, ', \'%d/%m/%Y\')');
+SET @sql = CONCAT(@sql, '      AND p.post_status = \'publish\'');
+SET @sql = CONCAT(@sql, '      AND p.post_type = \'post\'');
+SET @sql = CONCAT(@sql, '      AND tax.taxonomy = \'category\'');
+SET @sql = CONCAT(@sql, '      AND ter.name IN (', p_categories, ')');
+SET @sql = CONCAT(@sql, 'GROUP BY');
+SET @sql = CONCAT(@sql, '  p.ID,');
+SET @sql = CONCAT(@sql, '  p.post_title,');
+SET @sql = CONCAT(@sql, '  p.post_content,');
+SET @sql = CONCAT(@sql, '  p.post_date,');
+SET @sql = CONCAT(@sql, '  p.post_date_gmt,');
+SET @sql = CONCAT(@sql, '  p.post_status,');
+SET @sql = CONCAT(@sql, '  p.post_type,');
+SET @sql = CONCAT(@sql, '  p.post_name,');
+SET @sql = CONCAT(@sql, '  p.post_parent,');
+SET @sql = CONCAT(@sql, '  p.guid,');
+SET @sql = CONCAT(@sql, '  p.post_mime_type,');
+SET @sql = CONCAT(@sql, '  p.post_modified,');
+SET @sql = CONCAT(@sql, '  p.post_modified_gmt,');
+SET @sql = CONCAT(@sql, '  u.ID,');
+SET @sql = CONCAT(@sql, '  u.user_login,');
+SET @sql = CONCAT(@sql, '  u.user_nicename,');
+SET @sql = CONCAT(@sql, '  u.user_email,');
+SET @sql = CONCAT(@sql, '  u.display_name');
+SET @sql = CONCAT(@sql, 'HAVING count(tax.term_taxonomy_id) = LENGTH(', p_categories, ') - LENGTH(REPLACE(,'
+                  p_categories, ', ', ', '')) + 1');
+SET @sql = CONCAT(@sql, 'ORDER BY p.post_date DESC');
+SET @sql = CONCAT(@sql, 'LIMIT ', p_limit, ' OFFSET ', p_offset);
+
+
+SELECT
+  temporary_table.id AS id_post,
+  terms.term_id      AS id_category,
+  terms.name         AS name
+FROM wp_term_relationships term_rel
+  INNER JOIN (SELECT DISTINCT p.ID AS id
+              FROM wp_posts p
+                INNER JOIN wp_term_relationships rel ON p.ID = rel.object_id
+                INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id
+                INNER JOIN wp_terms ter ON ter.term_id = tax.term_id
+              WHERE DATE(p.post_date) >= STR_TO_DATE(:p_start_date, '%d/%m/%Y')
+                    AND DATE(p.post_date) <= STR_TO_DATE(:p_end_date, '%d/%m/%Y')
+                    AND p.post_status = 'publish'
+                    AND p.post_type = 'post'
+                    AND tax.taxonomy = 'category'
+                    AND ter.name = :p_category
+              ORDER BY p.post_date DESC
+              LIMIT :p_limit OFFSET :p_offset) AS temporary_table ON temporary_table.id = term_rel.object_id
+  INNER JOIN wp_term_taxonomy term_tax ON term_tax.term_taxonomy_id = term_rel.term_taxonomy_id
+  INNER JOIN wp_terms terms ON terms.term_id = term_tax.term_id
+WHERE term_tax.taxonomy = 'category';
+
+-- 15905
+16709
+16706
+16641
+16636
+16633
+16621
+16614
+16609
+16528
+16379
+
+
+SELECT LENGTH('ATACAMA ONLINE') - LENGTH(REPLACE('ATACAMA ONLINE', ',', '')) + 1;
+
+
+SELECT REPLACE('asd,', ',', '');
+
+
+SELECT now()
+FROM wp_posts
+WHERE find_in_set('1', '1,2,3,4');
+
+SELECT find_in_set('ATACAMA ONLINE', 'ATACAMA ONLINE,ANTOFAGASTA ONLINE');
+
+
+DROP PROCEDURE IF EXISTS `GetFruits`;
+DELIMITER $$
+
+CREATE PROCEDURE GetFruits(IN fruitArray VARCHAR(255))
+  BEGIN
+
+    SET @sql = CONCAT('SELECT * FROM wp_posts WHERE id IN (', fruitArray, ')');
+
+    SET @sql = CONCAT(@sql, ' ORDER BY ID desc');
+
+
+    PREPARE stmt FROM @sql;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+
+  END
+$$
+
+DELIMITER ;
+
+
+CALL GetFruits('14906,14907,14908');
+
+
+BEGIN
+
+SET @stmt = 'SELECT';
+SET @stmt = CONCAT(@stmt, '  p.ID                AS id, ');
+SET @stmt = CONCAT(@stmt, '  p.post_title        AS title, ');
+SET @stmt = CONCAT(@stmt, '  p.post_content      AS content, ');
+SET @stmt = CONCAT(@stmt, '  p.post_date         AS date, ');
+SET @stmt = CONCAT(@stmt, '  p.post_date_gmt     AS date_gmt, ');
+SET @stmt = CONCAT(@stmt, '  p.post_status       AS status, ');
+SET @stmt = CONCAT(@stmt, '  p.post_type         AS type, ');
+SET @stmt = CONCAT(@stmt, '  p.post_name         AS name, ');
+SET @stmt = CONCAT(@stmt, '  p.post_parent       AS id_parent, ');
+SET @stmt = CONCAT(@stmt, '  p.guid              AS guid, ');
+SET @stmt = CONCAT(@stmt, '  p.post_mime_type    AS mime_type, ');
+SET @stmt = CONCAT(@stmt, '  p.post_modified     AS modified, ');
+SET @stmt = CONCAT(@stmt, '  p.post_modified_gmt AS modified_gmt, ');
+SET @stmt = CONCAT(@stmt, '  u.ID                AS id_author, ');
+SET @stmt = CONCAT(@stmt, '  u.user_login        AS login, ');
+SET @stmt = CONCAT(@stmt, '  u.user_nicename     AS nicename, ');
+SET @stmt = CONCAT(@stmt, '  u.user_email        AS email, ');
+SET @stmt = CONCAT(@stmt, '  u.display_name ');
+SET @stmt = CONCAT(@stmt, 'FROM wp_posts p ');
+SET @stmt = CONCAT(@stmt, '  INNER JOIN wp_term_relationships rel ON p.ID = rel.object_id ');
+SET @stmt = CONCAT(@stmt, '  INNER JOIN wp_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id ');
+SET @stmt = CONCAT(@stmt, '  INNER JOIN wp_terms ter ON ter.term_id = tax.term_id ');
+SET @stmt = CONCAT(@stmt, '  INNER JOIN wp_users u ON p.post_author = u.ID ');
+SET @stmt = CONCAT(@stmt, 'WHERE DATE(p.post_date) >= STR_TO_DATE(', p_start_date, ', \'%d/%m/%Y\') ');
+SET @stmt = CONCAT(@stmt, '      AND DATE(p.post_date) <= STR_TO_DATE(', p_end_date, ', \'%d/%m/%Y\') ');
+SET @stmt = CONCAT(@stmt, '      AND p.post_status = \'publish\' ');
+SET @stmt = CONCAT(@stmt, '      AND p.post_type = \'post\'  ');
+SET @stmt = CONCAT(@stmt, '      AND tax.taxonomy = \'category\' ');
+SET @stmt = CONCAT(@stmt, '      AND ter.name IN (', p_categories, ')  ');
+SET @stmt = CONCAT(@stmt, 'GROUP BY ');
+SET @stmt = CONCAT(@stmt, '  p.ID, ');
+SET @stmt = CONCAT(@stmt, '  p.post_title, ');
+SET @stmt = CONCAT(@stmt, '  p.post_content, ');
+SET @stmt = CONCAT(@stmt, '  p.post_date, ');
+SET @stmt = CONCAT(@stmt, '  p.post_date_gmt, ');
+SET @stmt = CONCAT(@stmt, '  p.post_status, ');
+SET @stmt = CONCAT(@stmt, '  p.post_type, ');
+SET @stmt = CONCAT(@stmt, '  p.post_name, ');
+SET @stmt = CONCAT(@stmt, '  p.post_parent, ');
+SET @stmt = CONCAT(@stmt, '  p.guid, ');
+SET @stmt = CONCAT(@stmt, '  p.post_mime_type, ');
+SET @stmt = CONCAT(@stmt, '  p.post_modified, ');
+SET @stmt = CONCAT(@stmt, '  p.post_modified_gmt, ');
+SET @stmt = CONCAT(@stmt, '  u.ID, ');
+SET @stmt = CONCAT(@stmt, '  u.user_login, ');
+SET @stmt = CONCAT(@stmt, '  u.user_nicename, ');
+SET @stmt = CONCAT(@stmt, '  u.user_email, ');
+SET @stmt = CONCAT(@stmt, '  u.display_name ');
+SET @stmt = CONCAT(@stmt, 'HAVING count(tax.term_taxonomy_id) = LENGTH(', p_categories, ') - LENGTH(REPLACE(',
+                   p_categories, ', ', ', '')) + 1 ');
+SET @stmt = CONCAT(@stmt, 'ORDER BY p.post_date DESC ');
+SET @stmt = CONCAT(@stmt, 'LIMIT ', p_limit, ' OFFSET ', p_offset);
+
+PREPARE stmt FROM @stmt;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+END$$
