@@ -2344,3 +2344,12 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
 #footer{
         border-top:3px solid rgb(10, 162, 0)
 }
+
+.notificacion{
+    z-index:9999;
+    max-width: 300px;
+    position:fixed;
+    top:2%;
+    right:2%;
+    text-align:left;
+}
