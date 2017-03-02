@@ -14,10 +14,10 @@ maderoApp.config(function ($routeProvider) {
                 templateUrl: '/main/web/pages/modules/main.php',
                 controller: 'mainController'
             }).when('/view/:id', {
-                templateUrl: '/main/web/pages/modules/news-details.php',
-                controller: 'viewController'
-            });
+        templateUrl: '/main/web/pages/modules/news-details.php',
+        controller: 'viewController'
     });
+});
 
 
 maderoApp.controller('mainController', function ($scope, $rootScope, $http, $timeout, $location) {
@@ -31,7 +31,7 @@ maderoApp.controller('mainController', function ($scope, $rootScope, $http, $tim
                             "end_date": "01/03/2017",
                             "limit": "3",
                             "offset": "0",
-                            "category": "ANTOFAGASTA ONLINE"
+                            "categories": "22"
                         }
             }
     ).then(function (res) {
@@ -58,7 +58,7 @@ maderoApp.controller('mainController', function ($scope, $rootScope, $http, $tim
                             "end_date": "01/03/2017",
                             "limit": "3",
                             "offset": "0",
-                            "category": "ATACAMA ONLINE"
+                            "categories": "23"
                         }
             }
     ).then(function (res) {
@@ -85,7 +85,7 @@ maderoApp.controller('mainController', function ($scope, $rootScope, $http, $tim
                             "end_date": "01/03/2017",
                             "limit": "3",
                             "offset": "0",
-                            "category": "LA SERENA - COQUIMBO ONLINE"
+                            "categories": "24"
                         }
             }
     ).then(function (res) {
