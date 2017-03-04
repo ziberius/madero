@@ -14,8 +14,9 @@ angular
             templateUrl: '/main/web/pages/modules/news-details.php',
             controller: 'viewController'
         });
-    }).service('getPosts', function ($rootScope, $http) {
-        this.getPostsFromCategory = function(start_date,end_date,limit,offset,categories,success){
+    })
+    .service('getPosts', function ($rootScope, $http) {
+        this.getPostsFromCategory = function (start_date, end_date, limit, offset, categories, success) {
             $http.post('/main/server/Service.php',
                 {
                     "service": "getPostsFromCategory",
@@ -27,15 +28,18 @@ angular
                         "categories": categories
                     }
                 }
-            ).then(function(res){ success(res); }).catch(function (e) {
+            ).then(function (res) {
+                success(res);
+            }).catch(function (e) {
                 showMessage("Error al obtener las noticias. El servidor respondió: " + e.statusText);
                 $rootScope.loading = false;
-            });          
+            });
         };
 
-    }).service('noticias',function($sce){
+    })
+    .service('noticias', function ($sce) {
         var miServicio = this;
-        miServicio.generaNoticia = function(data){
+        miServicio.generaNoticia = function (data) {
             var noticia = {};
 
             noticia.title = data.title;
@@ -50,94 +54,95 @@ angular
             var thumbnailImagePost = getThumbnailImagePost(data);
             noticia.thumbnailImageUrl = thumbnailImagePost === null ? null : thumbnailImagePost.guid;
             return noticia;
-        }; 
-        
-        miServicio.generaNoticias = function(data){
+        };
+
+        miServicio.generaNoticias = function (data) {
             var response = [];
             angular.forEach(data, function (post) {
                 response.push(miServicio.generaNoticia(post));
             });
             return response;
         };
-    }).controller('mainController', function ($scope, $location,getPosts,noticias) {
-        
-        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"1","0","22,101", 
-        function (res) {
-            if (res.data !== null && res.data.status === 'OK') {
+    })
+    .controller('mainController', function ($scope, $location, getPosts, noticias) {
 
-                $scope.destacadaAntofagasta = noticias.generaNoticias(res.data.data);
+        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", "22,101",
+            function (res) {
+                if (res.data !== null && res.data.status === 'OK') {
 
-            } else {
-                $scope.destacadaAntofagasta = null;
-                showMessage("No se encontraron resultados");
+                    $scope.destacadaAntofagasta = noticias.generaNoticias(res.data.data);
+
+                } else {
+                    $scope.destacadaAntofagasta = null;
+                    showMessage("No se encontraron resultados");
+                }
             }
-        }         
-        ); 
-
-        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"1","0","23,101", 
-        function (res) {
-            if (res.data !== null && res.data.status === 'OK') {
-
-                $scope.destacadaAtacama = noticias.generaNoticias(res.data.data);
-
-            } else {
-                $scope.destacadaAtacama = null;
-                showMessage("No se encontraron resultados");
-            }
-        }         
-        ); 
-        
-        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"1","0","24,101", 
-        function (res) {
-            if (res.data !== null && res.data.status === 'OK') {
-
-                $scope.destacadaSerena = noticias.generaNoticias(res.data.data);
-
-            } else {
-                $scope.destacadaSerena = null;
-                showMessage("No se encontraron resultados");
-            }
-        }         
-        );        
-        
-        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"3","0","22", 
-        function (res) {
-            if (res.data !== null && res.data.status === 'OK') {
-
-                $scope.nacionalesAntofa = noticias.generaNoticias(res.data.data);
-
-            } else {
-                $scope.nacionalesAntofa = null;
-                showMessage("No se encontraron resultados");
-            }
-        }         
         );
-     
-        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"3","0","23", 
-        function (res) {
-            if (res.data !== null && res.data.status === 'OK') {
 
-                $scope.nacionalesAtacama = noticias.generaNoticias(res.data.data);
+        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", "23,101",
+            function (res) {
+                if (res.data !== null && res.data.status === 'OK') {
 
-            } else {
-                $scope.nacionalesAtacama = null;
-                showMessage("No se encontraron resultados");
+                    $scope.destacadaAtacama = noticias.generaNoticias(res.data.data);
+
+                } else {
+                    $scope.destacadaAtacama = null;
+                    showMessage("No se encontraron resultados");
+                }
             }
-        }         
-        );        
+        );
 
-        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"3","0","24", 
-        function (res) {
-            if (res.data !== null && res.data.status === 'OK') {
+        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", "24,101",
+            function (res) {
+                if (res.data !== null && res.data.status === 'OK') {
 
-                $scope.nacionalesSerena = noticias.generaNoticias(res.data.data);
+                    $scope.destacadaSerena = noticias.generaNoticias(res.data.data);
 
-            } else {
-                $scope.nacionalesSerena = null;
-                showMessage("No se encontraron resultados");
+                } else {
+                    $scope.destacadaSerena = null;
+                    showMessage("No se encontraron resultados");
+                }
             }
-        }         
-        ); 
+        );
+
+        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", "0", "22",
+            function (res) {
+                if (res.data !== null && res.data.status === 'OK') {
+
+                    $scope.nacionalesAntofa = noticias.generaNoticias(res.data.data);
+
+                } else {
+                    $scope.nacionalesAntofa = null;
+                    showMessage("No se encontraron resultados");
+                }
+            }
+        );
+
+        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", "0", "23",
+            function (res) {
+                if (res.data !== null && res.data.status === 'OK') {
+
+                    $scope.nacionalesAtacama = noticias.generaNoticias(res.data.data);
+
+                } else {
+                    $scope.nacionalesAtacama = null;
+                    showMessage("No se encontraron resultados");
+                }
+            }
+        );
+
+        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", "0", "24",
+            function (res) {
+                if (res.data !== null && res.data.status === 'OK') {
+
+                    $scope.nacionalesSerena = noticias.generaNoticias(res.data.data);
+
+                } else {
+                    $scope.nacionalesSerena = null;
+                    showMessage("No se encontraron resultados");
+                }
+            }
+        );
 
         $scope.detalle = function (noticia) {
             $location.path("/view/" + noticia);
@@ -148,7 +153,6 @@ angular
             cargarSliders();
         });
     })
-
     .controller('viewController', function ($scope, $rootScope, $http, $routeParams, noticias) {
         //LOAD principal post
         $http.post('/main/server/Service.php',
@@ -209,32 +213,12 @@ angular
     })
 ;
 
-
 function showMessage(message) {
     $("#btnNotificacion").click();
     $("<div class='alert alert-danger alert-dismissible fade in notificacion'\n\
      role='alert'><button id='btnNotificacion' type='button' class='close'\n\
      data-dismiss='alert' aria-label='Cerrar'><span aria-hidden='true'>&times;\n\
     </span></button><strong>Notificación</strong><p>" + message + "</p></div>").appendTo("#main-wrapper").fadeIn();
-}
-
-function generarNoticias(data) {
-    var tmp;
-    var ret = [];
-    $.each(data, function (i, item) {
-        ret[i] = item;
-        if (item.resources.length > 1) {
-            tmp = item.post_meta[0].value;
-            $.each(item.resources, function (j, subitem) {
-                if (tmp === subitem.id) {
-                    ret[i].guid = subitem.guid;
-                }
-            });
-        } else {
-            ret[i].guid = item.resources[0].guid;
-        }
-    });
-    return ret;
 }
 
 function cargarSliders() {
