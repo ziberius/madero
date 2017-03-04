@@ -1,3 +1,4 @@
+<div ng-if="loading === true" class="loader"><div id="loadingAnim"></div></div>
 <header id="navigation">
     <div class="navbar-inverse barraSuperior">
         <div class="col-md-6 col-lg-6">

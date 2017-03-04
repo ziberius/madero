@@ -1,6 +1,14 @@
 <div class="main">
     <div class="container-fluid">			
         <div class="section" id="main-slider">
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAntofagasta[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
+                <div class="post-content">
+                    <div class="catagory"><a href="#">Antofagasta</a></div>
+                    <h2 class="entry-title">
+                        <a ng-click="detalle(destacadaAntofagasta[0].id)">{{destacadaAntofagasta[0].title}}</a>
+                    </h2>
+                </div>                                       
+            </div>             
             <div class="post feature-post" style="background-image:url(/main/web/images/post/carcel.jpg); background-size:cover;">
                 <div class="post-content">
                     <div class="catagory"><a href="#">Internacional</a></div>
@@ -9,52 +17,23 @@
                     </h2>
                 </div>
             </div><!--/post-->
-            <div class="post feature-post video-post" style="background-image:url(/main/web/images/post/teleserie.jpg); background-size:cover;">
-                <div class="post-content">
-                    <div class="catagory"><a href="#">Antofagasta</a></div>
-                    <h2 class="entry-title">
-                        <a href="news-details2.php">Las claves de Amanda para ser la teleserie diurna más vista</a>
-                    </h2>
-                </div>
-            </div><!--/post-->
-            <div class="post feature-post" style="background-image:url(/main/web/images/post/atacama.jpg); background-size:cover;">
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAtacama[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
                     <div class="catagory"><a href="#">Atacama</a></div>
                     <h2 class="entry-title">
-                        <a href="news-details2.php">Gobierno instauró mesa de trabajo para reinserción de alumnos de Liceo Técnico Profesional Edwin Latorre Rivero</a>
+                        <a ng-click="detalle(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
                     </h2>
                 </div>
             </div><!--/post-->
-            <div class="post feature-post" style="background-image:url(/main/web/images/post/uruguayo.jpg); background-size:cover;">
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaSerena[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
                     <div class="catagory"><a href="#">La Serena - Coquimbo</a></div>
                     <h2 class="entry-title">
-                        <a href="news-details.php">Uruguayo detenido por participación en asalto frustrado a detective</a>
+                        <a ng-click="detalle(destacadaSerena[0].id)">{{destacadaSerena[0].title}}</a>
                     </h2>
                 </div>
             </div><!--/post-->
-            <div class="post feature-post" style="background-image:url(/main/web/images/post/futbolista.jpg); background-size:cover;">
-
-                <div class="post-content">
-                    <div class="catagory"><a href="#">Deportes</a></div>
-                    <h2 class="entry-title">
-                        <a href="news-details.php">La fascinación de los artistas por la Patagonia</a>
-                    </h2>
-                </div>
-            </div><!--/post-->		
-            <div class="post feature-post" style="background-image:url(/main/web/images/post/valparaiso.jpg); background-size:cover;">
-                <div class="post-content">
-                    <div class="catagory"><a href="#">Nacional</a></div>
-                    <h2 class="entry-title">
-                        <a href="news-details.php">Valparaíso: Minvu destina $ 13 mil millones a zonas siniestradas</a>
-                    </h2>
-                </div>
-            </div><!--/post-->
-        </div><!-- #main-slider -->
-        <!--                <div class="section add inner-add">
-                            <a href="#"><img class="img-responsive" src="/main/web/images/post/add/add2.jpg" alt="" /></a>
-                        </div>/.section	-->
-
+        </div>
         <div class="section">
             <div class="row">
                 <img class="img-responsive center-block" style="max-height:120px" src="/main/web/images/post/banner.jpg" />
@@ -72,13 +51,13 @@
                                     <a href="#">Antofagasta</a>
                                 </div>                                        
                                 <div class="entry-thumbnail">
-                                    <a ng-click="detalle(noticia.id)" ><img class="img-responsive" ng-src="{{noticia.guid}}" alt="" /></a>
+                                    <a ng-click="detalle(noticia.id)" ><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
                                 </div>
                             </div>  
                             <div class="post-content">								
                                 <div class="entry-meta">
                                     <ul class="list-inline">
-                                        <li class="publish-date"><a><i class="fa fa-clock-o"></i> {{noticia.date_gmt}}</a></li>
+                                        <li class="publish-date"><a><i class="fa fa-clock-o"></i> {{noticia.formattedDate}}</a></li>
                                     </ul>
                                 </div>
                                 <h2 class="entry-title">
@@ -92,13 +71,13 @@
                                     <a href="#">Atacama</a>
                                 </div>                                        
                                 <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" ng-src="{{noticia.guid}}" alt="" /></a>
+                                    <a href="news-details.php"><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
                                 </div>
                             </div>  
                             <div class="post-content">								
                                 <div class="entry-meta">
                                     <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> {{noticia.date_gmt}}</a></li>
+                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> {{noticia.formattedDate}}</a></li>
                                         <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
                                         <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
                                     </ul>
@@ -114,13 +93,13 @@
                                     <a href="#">La Serena - Coquimbo</a>
                                 </div>                                        
                                 <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" ng-src="{{noticia.guid}}" alt="" /></a>
+                                    <a href="news-details.php"><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
                                 </div>
                             </div>  
                             <div class="post-content">								
                                 <div class="entry-meta">
                                     <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> {{noticia.date_gmt}}</a></li>
+                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> {{noticia.formattedDate}}</a></li>
                                         <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
                                         <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
                                     </ul>

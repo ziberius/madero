@@ -14,86 +14,130 @@ angular
             templateUrl: '/main/web/pages/modules/news-details.php',
             controller: 'viewController'
         });
-    })
-
-    .controller('mainController', function ($scope, $rootScope, $http, $timeout, $location) {
-        $http.post('/main/server/Service.php',
-            {
-                "service": "getPostsFromCategory",
-                "parameters": {
-                    "start_date": "01/01/2016",
-                    "end_date": "01/03/2017",
-                    "limit": "3",
-                    "offset": "0",
-                    "categories": "22"
+    }).service('getPosts', function ($rootScope, $http) {
+        this.getPostsFromCategory = function(start_date,end_date,limit,offset,categories,success){
+            $http.post('/main/server/Service.php',
+                {
+                    "service": "getPostsFromCategory",
+                    "parameters": {
+                        "start_date": start_date,
+                        "end_date": end_date,
+                        "limit": limit,
+                        "offset": offset,
+                        "categories": categories
+                    }
                 }
-            }
-        ).then(function (res) {
+            ).then(function(res){ success(res); }).catch(function (e) {
+                showMessage("Error al obtener las noticias. El servidor respondió: " + e.statusText);
+                $rootScope.loading = false;
+            });          
+        };
 
+    }).service('noticias',function($sce){
+        var miServicio = this;
+        miServicio.generaNoticia = function(data){
+            var noticia = {};
+
+            noticia.title = data.title;
+
+            var contentHtml = toContentHtml(data.content);
+            noticia.content = $sce.trustAsHtml(contentHtml);
+            noticia.author = data.author;
+            noticia.formattedDate = getFormattedDate(data.date);
+            noticia.tags = data.tags;
+            noticia.id = data.id;
+
+            var thumbnailImagePost = getThumbnailImagePost(data);
+            noticia.thumbnailImageUrl = thumbnailImagePost === null ? null : thumbnailImagePost.guid;
+            return noticia;
+        }; 
+        
+        miServicio.generaNoticias = function(data){
+            var response = [];
+            angular.forEach(data, function (post) {
+                response.push(miServicio.generaNoticia(post));
+            });
+            return response;
+        };
+    }).controller('mainController', function ($scope, $location,getPosts,noticias) {
+        
+        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"1","0","22,101", 
+        function (res) {
             if (res.data !== null && res.data.status === 'OK') {
 
-                $scope.nacionalesAntofa = generarNoticias(res.data.data);
+                $scope.destacadaAntofagasta = noticias.generaNoticias(res.data.data);
+
+            } else {
+                $scope.destacadaAntofagasta = null;
+                showMessage("No se encontraron resultados");
+            }
+        }         
+        ); 
+
+        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"1","0","23,101", 
+        function (res) {
+            if (res.data !== null && res.data.status === 'OK') {
+
+                $scope.destacadaAtacama = noticias.generaNoticias(res.data.data);
+
+            } else {
+                $scope.destacadaAtacama = null;
+                showMessage("No se encontraron resultados");
+            }
+        }         
+        ); 
+        
+        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"1","0","24,101", 
+        function (res) {
+            if (res.data !== null && res.data.status === 'OK') {
+
+                $scope.destacadaSerena = noticias.generaNoticias(res.data.data);
+
+            } else {
+                $scope.destacadaSerena = null;
+                showMessage("No se encontraron resultados");
+            }
+        }         
+        );        
+        
+        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"3","0","22", 
+        function (res) {
+            if (res.data !== null && res.data.status === 'OK') {
+
+                $scope.nacionalesAntofa = noticias.generaNoticias(res.data.data);
 
             } else {
                 $scope.nacionalesAntofa = null;
                 showMessage("No se encontraron resultados");
             }
-        }).catch(function (e) {
-            showMessage("Error al obtener las noticias. El servidor respondió: " + e.statusText);
-            $rootScope.loading = false;
-        });
-
-        $http.post('/main/server/Service.php',
-            {
-                "service": "getPostsFromCategory",
-                "parameters": {
-                    "start_date": "01/01/2016",
-                    "end_date": "01/03/2017",
-                    "limit": "3",
-                    "offset": "0",
-                    "categories": "23"
-                }
-            }
-        ).then(function (res) {
-
+        }         
+        );
+     
+        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"3","0","23", 
+        function (res) {
             if (res.data !== null && res.data.status === 'OK') {
 
-                $scope.nacionalesAtacama = generarNoticias(res.data.data);
+                $scope.nacionalesAtacama = noticias.generaNoticias(res.data.data);
 
             } else {
                 $scope.nacionalesAtacama = null;
                 showMessage("No se encontraron resultados");
             }
-        }).catch(function (e) {
-            showMessage("Error al obtener las noticias. El servidor respondió: " + e.statusText);
-            $rootScope.loading = false;
-        });
+        }         
+        );        
 
-        $http.post('/main/server/Service.php',
-            {
-                "service": "getPostsFromCategory",
-                "parameters": {
-                    "start_date": "01/01/2016",
-                    "end_date": "01/03/2017",
-                    "limit": "3",
-                    "offset": "0",
-                    "categories": "24"
-                }
-            }
-        ).then(function (res) {
-
+        getPosts.getPostsFromCategory(getDateFromNow(-365),getDateFromNow(0),"3","0","24", 
+        function (res) {
             if (res.data !== null && res.data.status === 'OK') {
 
-                $scope.nacionalesSerena = generarNoticias(res.data.data);
+                $scope.nacionalesSerena = noticias.generaNoticias(res.data.data);
 
             } else {
                 $scope.nacionalesSerena = null;
                 showMessage("No se encontraron resultados");
             }
-        }).catch(function (e) {
-            showMessage("Error al obtener las noticias. El servidor respondió: " + e.statusText);
-            $rootScope.loading = false;
-        });
+        }         
+        ); 
 
         $scope.detalle = function (noticia) {
             $location.path("/view/" + noticia);
@@ -105,7 +149,7 @@ angular
         });
     })
 
-    .controller('viewController', function ($scope, $rootScope, $http, $routeParams, $sce) {
+    .controller('viewController', function ($scope, $rootScope, $http, $routeParams, noticias) {
         //LOAD principal post
         $http.post('/main/server/Service.php',
             {
@@ -119,21 +163,7 @@ angular
             var data = response.data;
 
             if (data !== null && data.status === 'OK') {
-
-                var news = data.data[0];
-
-                $scope.news = {};
-                $scope.news.title = news.title;
-
-                var contentHtml = toContentHtml(news.content);
-                $scope.news.content = $sce.trustAsHtml(contentHtml);
-                $scope.news.author = news.author;
-                $scope.news.formattedDate = getFormattedDate(news.date);
-                $scope.news.tags = news.tags;
-
-                var thumbnailImagePost = getThumbnailImagePost(news);
-                $scope.news.thumbnailImageUrl = thumbnailImagePost == null ? null : thumbnailImagePost.guid;
-
+                $scope.news = noticias.generaNoticia(data.data[0]);
             } else {
                 //TODO agregar pagina de error o mensaje bonito de error
                 $scope.news = null;
@@ -179,12 +209,13 @@ angular
     })
 ;
 
+
 function showMessage(message) {
     $("#btnNotificacion").click();
     $("<div class='alert alert-danger alert-dismissible fade in notificacion'\n\
      role='alert'><button id='btnNotificacion' type='button' class='close'\n\
      data-dismiss='alert' aria-label='Cerrar'><span aria-hidden='true'>&times;\n\
-    </span></button><strong>Notificación</strong><p>" + message + "</p></div>").appendTo("#main").fadeIn();
+    </span></button><strong>Notificación</strong><p>" + message + "</p></div>").appendTo("#main-wrapper").fadeIn();
 }
 
 function generarNoticias(data) {
@@ -278,11 +309,11 @@ function getThumbnailImagePost(post) {
     var response = null;
 
     angular.forEach(post.post_meta, function (metadata) {
-        if (metadata.key == '_thumbnail_id') {
+        if (metadata.key === '_thumbnail_id') {
             var idPostThumbnail = metadata.value;
 
             angular.forEach(post.resources, function (resource) {
-                if (resource.id == idPostThumbnail) {
+                if (resource.id === idPostThumbnail) {
                     response = resource;
                 }
             });
@@ -363,5 +394,8 @@ function parseAudio(content) {
     var audioEnd = new RegExp('\\]\\[\\/audio\\]', 'g');
     return content.replace(audioEnd, ' preload="auto" controls><audio> ');
 }
+
+
+
 
 
