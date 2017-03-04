@@ -40,19 +40,16 @@ angular
     .service('noticias', function ($sce) {
         var miServicio = this;
         miServicio.generaNoticia = function (data) {
-            var noticia = {};
 
-            noticia.title = data.title;
+            var noticia = data;
+            noticia.formattedDate = getFormattedDate(data.date);
 
             var contentHtml = toContentHtml(data.content);
             noticia.content = $sce.trustAsHtml(contentHtml);
-            noticia.author = data.author;
-            noticia.formattedDate = getFormattedDate(data.date);
-            noticia.tags = data.tags;
-            noticia.id = data.id;
 
             var thumbnailImagePost = getThumbnailImagePost(data);
             noticia.thumbnailImageUrl = thumbnailImagePost === null ? null : thumbnailImagePost.guid;
+
             return noticia;
         };
 
