@@ -31,15 +31,15 @@ angular
             ).then(function (res) {
                 success(res);
             }).catch(function (e) {
-                showMessage("Error al obtener las noticias. El servidor respondió: " + e.statusText);
+                showMessage("Error al obtener las news. El servidor respondió: " + e.statusText);
                 $rootScope.loading = false;
             });
         };
 
     })
-    .service('noticias', function ($sce) {
-        var miServicio = this;
-        miServicio.generaNoticia = function (data) {
+    .service('news', function ($sce) {
+        var myService = this;
+        myService.getSingleNews = function (data) {
 
             var noticia = data;
             noticia.formattedDate = getFormattedDate(data.date);
@@ -53,21 +53,21 @@ angular
             return noticia;
         };
 
-        miServicio.generaNoticias = function (data) {
+        myService.getMultipleNews = function (data) {
             var response = [];
             angular.forEach(data, function (post) {
-                response.push(miServicio.generaNoticia(post));
+                response.push(myService.getSingleNews(post));
             });
             return response;
         };
     })
-    .controller('mainController', function ($scope, $location, getPosts, noticias) {
+    .controller('mainController', function ($scope, $location, getPosts, news) {
 
         getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", "22,101",
             function (res) {
                 if (res.data !== null && res.data.status === 'OK') {
 
-                    $scope.destacadaAntofagasta = noticias.generaNoticias(res.data.data);
+                    $scope.destacadaAntofagasta = news.getMultipleNews(res.data.data);
 
                 } else {
                     $scope.destacadaAntofagasta = null;
@@ -80,7 +80,7 @@ angular
             function (res) {
                 if (res.data !== null && res.data.status === 'OK') {
 
-                    $scope.destacadaAtacama = noticias.generaNoticias(res.data.data);
+                    $scope.destacadaAtacama = news.getMultipleNews(res.data.data);
 
                 } else {
                     $scope.destacadaAtacama = null;
@@ -93,7 +93,7 @@ angular
             function (res) {
                 if (res.data !== null && res.data.status === 'OK') {
 
-                    $scope.destacadaSerena = noticias.generaNoticias(res.data.data);
+                    $scope.destacadaSerena = news.getMultipleNews(res.data.data);
 
                 } else {
                     $scope.destacadaSerena = null;
@@ -106,7 +106,7 @@ angular
             function (res) {
                 if (res.data !== null && res.data.status === 'OK') {
 
-                    $scope.nacionalesAntofa = noticias.generaNoticias(res.data.data);
+                    $scope.nacionalesAntofa = news.getMultipleNews(res.data.data);
 
                 } else {
                     $scope.nacionalesAntofa = null;
@@ -119,7 +119,7 @@ angular
             function (res) {
                 if (res.data !== null && res.data.status === 'OK') {
 
-                    $scope.nacionalesAtacama = noticias.generaNoticias(res.data.data);
+                    $scope.nacionalesAtacama = news.getMultipleNews(res.data.data);
 
                 } else {
                     $scope.nacionalesAtacama = null;
@@ -132,7 +132,7 @@ angular
             function (res) {
                 if (res.data !== null && res.data.status === 'OK') {
 
-                    $scope.nacionalesSerena = noticias.generaNoticias(res.data.data);
+                    $scope.nacionalesSerena = news.getMultipleNews(res.data.data);
 
                 } else {
                     $scope.nacionalesSerena = null;
@@ -164,7 +164,7 @@ angular
             var data = response.data;
 
             if (data !== null && data.status === 'OK') {
-                $scope.news = noticias.generaNoticia(data.data[0]);
+                $scope.news = news.getSingleNews(data.data[0]);
             } else {
                 //TODO agregar pagina de error o mensaje bonito de error
                 $scope.news = null;
@@ -172,7 +172,7 @@ angular
             }
         }).catch(function (e) {
             //TODO agregar pagina de error o mensaje bonito de error
-            showMessage("Error al obtener las noticias. El servidor respondió: " + e.statusText);
+            showMessage("Error al obtener las news. El servidor respondió: " + e.statusText);
             $rootScope.loading = false;
         });
 
@@ -202,7 +202,7 @@ angular
 
         }).catch(function (e) {
             //TODO agregar pagina de error o mensaje bonito de error
-            showMessage("Error al obtener las noticias. El servidor respondió: " + e.statusText);
+            showMessage("Error al obtener las news. El servidor respondió: " + e.statusText);
             $rootScope.loading = false;
         });
 
