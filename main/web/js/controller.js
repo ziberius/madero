@@ -14,7 +14,27 @@ angular
             templateUrl: '/main/web/pages/modules/news-details.php',
             controller: 'viewController'
         });
-    })
+    })/*.directive('myRepeatDirective', function() {
+        return function(scope, element, attrs) {
+          if (scope.$last){
+            scope.$emit('LastElem');
+          }
+        };
+      })
+    .directive('myMainDirective', function() {
+      return function(scope, element, attrs) {
+        scope.$on('LastElem', function(event){
+            $("#related-news-carousel2").owlCarousel({
+                items: 3,
+                pagination: false,
+                navigation: false,
+                autoPlay: true,
+                stopOnHover: true,
+                slideSpeed: 500
+            });
+        });
+      };
+    })*/
     .service('getPosts', function ($rootScope, $http) {
         this.getPostsFromCategory = function (start_date, end_date, limit, offset, categories, success) {
             $http.post('/main/server/Service.php',
@@ -167,14 +187,23 @@ angular
             cargarSliders();
         });
     })
-    .controller('viewController', function ($scope, $rootScope, $http, $routeParams, getPosts, news) {
+    .controller('viewController', function ($scope, $timeout, $routeParams, getPosts, news) {
 
         var idPost = $routeParams.id;
         getPosts.getPostFromId(idPost, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.mainPost = news.getSingleNews(data.data[0]);
-
+                $timeout(function(){
+                        $("#related-news-carousel2").owlCarousel({
+                        items: 3,
+                        pagination: false,
+                        navigation: false,
+                        autoPlay: true,
+                        stopOnHover: true,
+                        slideSpeed: 500
+                    });
+                },1000);
             } else {
                 $scope.mainPost = null;
                 showMessage("No se encontraron resultados");
@@ -191,7 +220,7 @@ angular
                 showMessage("No se encontraron resultados");
             }
         });
-
+        
     })
 ;
 

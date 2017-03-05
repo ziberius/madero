@@ -9,15 +9,23 @@
                     </h2>
                 </div>                                       
             </div>             
-            <div class="post feature-post" style="background-image:url(/main/web/images/post/carcel.jpg); background-size:cover;">
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAtacama[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="#">Internacional</a></div>
+                    <div class="catagory"><a href="#">Atacama</a></div>
                     <h2 class="entry-title">
-                        <a href="news-details.php">Un preso al día muere en las abarrotadas cárceles de Brasil</a>
+                        <a ng-click="detalle(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
                     </h2>
                 </div>
             </div><!--/post-->
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAtacama[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
+                <div class="post-content">
+                    <div class="catagory"><a href="#">Atacama</a></div>
+                    <h2 class="entry-title">
+                        <a ng-click="detalle(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
+                    </h2>
+                </div>
+            </div><!--/post-->
+                        <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAtacama[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
                     <div class="catagory"><a href="#">Atacama</a></div>
                     <h2 class="entry-title">

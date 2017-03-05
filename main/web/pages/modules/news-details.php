@@ -59,8 +59,8 @@
 
                                                     <ul class="list-inline share-link">
                                                         <li><a href="#"><img
-                                                                        src="/main/web/images/others/social1.png"
-                                                                        alt=""/></a></li>
+                                                                    src="/main/web/images/others/social1.png"
+                                                                    alt=""/></a></li>
                                                         <li><a href="#"><img src="/main/web/images/others/social2.png"
                                                                              alt=""/></a></li>
                                                         <li><a href="#"><img src="/main/web/images/others/social3.png"
@@ -81,36 +81,63 @@
                         <h1 class="section-title">Otras Noticias</h1>
                         <div class="related-news">
 
-                            <div id="related-news-carousel">
+                            <div id="related-news-carousel2">
 
-                                <!--                                <div class="post medium-post" ng-repeat="post in otherPosts">
-                                                                    <div class="entry-header">
-                                                                        <div class="video-catagory">
-                                                                            <a ng-click="detalle(post.id)">Categoria</a>
-                                                                        </div>
-                                                                        <div class="entry-thumbnail">
-                                                                            <a ng-click="detalle(post.id)"><img
-                                                                                        class="img-responsive"
-                                                                                        src="{{post.thumbnailImageUrl}}"
-                                                                                        alt=""/></a>
-                                                                        </div>
-                                                                    </div>
+                                <div class="post medium-post" ng-repeat="post in otherPosts">
+                                    <div class="entry-header">
+                                        <div class="video-catagory">
+                                            <a ng-click="detalle(post.id)">Categoria</a>
+                                        </div>
+                                        <div class="entry-thumbnail">
+                                            <a ng-click="detalle(post.id)"><img
+                                                    class="img-responsive"
+                                                    src="{{post.thumbnailImageUrl}}"
+                                                    alt=""/></a>
+                                        </div>
+                                    </div>
 
-                                                                    <div class="post-content">
-                                                                        <div class="entry-meta">
-                                                                            <ul class="list-inline">
-                                                                                <li class="publish-date"><i
-                                                                                            class="fa fa-clock-o">{{post.formattedDate}}</i></li>
-                                                                                <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                                                <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <h2 class="entry-title">
-                                                                            <a ng-click="detalle(post.id)">{{post.title}}</a>
-                                                                        </h2>
-                                                                    </div>
+                                    <div class="post-content">
+                                        <div class="entry-meta">
+                                            <ul class="list-inline">
+                                                <li class="publish-date"><i
+                                                        class="fa fa-clock-o">{{post.formattedDate}}</i></li>
+                                                <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
+                                                <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
+                                            </ul>
+                                        </div>
+                                        <h2 class="entry-title">
+                                            <a ng-click="detalle(post.id)">{{post.title}}</a>
+                                        </h2>
+                                    </div>
 
-                                                                </div>-->
+                                </div>
+                                <!--
+                                <div class="post medium-post">
+                                    <div class="entry-header">
+                                        <div class="video-catagory">
+                                            <a href="#">Antofagasta</a>
+                                        </div>
+                                        <div class="entry-thumbnail">
+                                            <a href="news-details.html"><img class="img-responsive"
+                                                                             src="/main/web/images/post/antofagasta/2.jpg"
+                                                                             alt=""/></a>
+                                        </div>
+                                    </div>
+                                    <div class="post-content">
+                                        <div class="entry-meta">
+                                            <ul class="list-inline">
+                                                <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de
+                                                        Enero, 2016 </a></li>
+                                                <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
+                                                <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
+                                            </ul>
+                                        </div>
+                                        <h2 class="entry-title">
+                                            <a href="news-details.html">Injuv lanza “Mueve Tu Verano con Desarrollo
+                                                Social” con más de 200 actividades gratuitas en todo el país</a>
+                                        </h2>
+                                    </div>
+                                </div>
 
                                 <div class="post medium-post">
                                     <div class="entry-header">
@@ -137,34 +164,7 @@
                                                 Social” con más de 200 actividades gratuitas en todo el país</a>
                                         </h2>
                                     </div>
-                                </div><!--/post-->
-
-                                <div class="post medium-post">
-                                    <div class="entry-header">
-                                        <div class="video-catagory">
-                                            <a href="#">Antofagasta</a>
-                                        </div>
-                                        <div class="entry-thumbnail">
-                                            <a href="news-details.html"><img class="img-responsive"
-                                                                             src="/main/web/images/post/antofagasta/2.jpg"
-                                                                             alt=""/></a>
-                                        </div>
-                                    </div>
-                                    <div class="post-content">
-                                        <div class="entry-meta">
-                                            <ul class="list-inline">
-                                                <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de
-                                                        Enero, 2016 </a></li>
-                                                <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                            </ul>
-                                        </div>
-                                        <h2 class="entry-title">
-                                            <a href="news-details.html">Injuv lanza “Mueve Tu Verano con Desarrollo
-                                                Social” con más de 200 actividades gratuitas en todo el país</a>
-                                        </h2>
-                                    </div>
-                                </div><!--/post-->
+                                </div>
 
 
                                 <div class="post medium-post">
@@ -192,7 +192,7 @@
                                                 Social” con más de 200 actividades gratuitas en todo el país</a>
                                         </h2>
                                     </div>
-                                </div><!--/post-->
+                                </div>-->
 
 
                             </div>
