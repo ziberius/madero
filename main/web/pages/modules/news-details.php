@@ -12,7 +12,7 @@
                                         <div class="post">
                                             <div class="entry-header">
                                                 <div class="entry-thumbnail">
-                                                    <img class="img-responsive" src="{{news.thumbnailImageUrl}}"
+                                                    <img class="img-responsive" src="{{mainPost.thumbnailImageUrl}}"
                                                          alt=""/>
                                                 </div>
                                             </div>
@@ -20,11 +20,11 @@
                                                 <div class="entry-meta">
                                                     <ul class="list-inline">
                                                         <li class="posted-by"><i class="fa fa-user"></i> <a href="#">
-                                                                {{news.author.display_name}}
+                                                                {{mainPost.author.display_name}}
                                                             </a></li>
                                                         <li class="publish-date">
                                                             <i class="fa fa-clock-o">
-                                                                {{news.formattedDate}}
+                                                                {{mainPost.formattedDate}}
                                                             </i>
                                                         </li>
                                                         <!--<li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a>
@@ -36,17 +36,17 @@
                                                     </ul>
                                                 </div>
                                                 <h2 class="entry-title">
-                                                    {{news.title}}
+                                                    {{mainPost.title}}
                                                 </h2>
 
                                                 <div class="entry-content">
-                                                    <div data-ng-bind-html="news.content"></div>
+                                                    <div data-ng-bind-html="mainPost.content"></div>
 
-                                                    <div ng-show="news.tags.length">
+                                                    <div ng-show="mainPost.tags.length">
                                                         <div class="news-tags">
                                                             <span>Tags:</span>
                                                             <ul class="list-inline">
-                                                                <li ng-repeat="tag in news.tags"
+                                                                <li ng-repeat="tag in mainPost.tags"
                                                                     ng-init="isLast = $last">
                                                                     <a href="{{tag.id}}  {{tag.id_post}}">{{tag.name}}</a>
                                                                     {{isLast ? '':','}}

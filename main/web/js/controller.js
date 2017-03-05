@@ -36,6 +36,23 @@ angular
             });
         };
 
+        this.getPostFromId = function (idPost, success) {
+            $http.post('/main/server/Service.php',
+                {
+                    "service": "getPostsFromId",
+                    "parameters": {
+                        "id_post": idPost
+                    }
+                }
+            ).then(function (response) {
+                success(response);
+
+            }).catch(function (e) {
+                showMessage("Error al obtener las noticias. El servidor respondió: " + e.statusText);
+                $rootScope.loading = false;
+            });
+        };
+
     })
     .service('news', function ($sce) {
         var myService = this;
@@ -150,62 +167,30 @@ angular
             cargarSliders();
         });
     })
-    .controller('viewController', function ($scope, $rootScope, $http, $routeParams, noticias) {
-        //LOAD principal post
-        $http.post('/main/server/Service.php',
-            {
-                "service": "getPostsFromId",
-                "parameters": {
-                    "id_post": $routeParams.id
-                }
-            }
-        ).then(function (response) {
+    .controller('viewController', function ($scope, $rootScope, $http, $routeParams, getPosts, news) {
 
+        var idPost = $routeParams.id;
+        getPosts.getPostFromId(idPost, function (response) {
             var data = response.data;
-
             if (data !== null && data.status === 'OK') {
-                $scope.news = news.getSingleNews(data.data[0]);
+                $scope.mainPost = news.getSingleNews(data.data[0]);
+
             } else {
-                //TODO agregar pagina de error o mensaje bonito de error
-                $scope.news = null;
+                $scope.mainPost = null;
                 showMessage("No se encontraron resultados");
             }
-        }).catch(function (e) {
-            //TODO agregar pagina de error o mensaje bonito de error
-            showMessage("Error al obtener las news. El servidor respondió: " + e.statusText);
-            $rootScope.loading = false;
         });
 
-        //LOAD related post
-        $http.post('/main/server/Service.php',
-            {
-                "service": "getPostsFromCategory",
-                "parameters": {
-                    "start_date": getDateFromNow(-365),
-                    "end_date": getDateFromNow(0),
-                    "limit": "3",
-                    "offset": "0",
-                    "categories": "22"
-                }
-            }
-        ).then(function (response) {
-
+        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", "0", "22", function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
-                $scope.otherPosts = getPosts(data.data);
+                $scope.otherPosts = news.getMultipleNews(data.data);
 
             } else {
-                //TODO agregar pagina de error o mensaje bonito de error
                 $scope.otherPosts = null;
                 showMessage("No se encontraron resultados");
             }
-
-        }).catch(function (e) {
-            //TODO agregar pagina de error o mensaje bonito de error
-            showMessage("Error al obtener las news. El servidor respondió: " + e.statusText);
-            $rootScope.loading = false;
         });
-
 
     })
 ;
@@ -271,19 +256,6 @@ function cargarSliders() {
         stopOnHover: true,
         slideSpeed: 500
     });
-}
-
-function getPosts(data) {
-    var response = [];
-    if (data.length > 0) {
-        angular.forEach(data, function (post) {
-            var thumbnailImagePost = getThumbnailImagePost(post);
-            post.thumbnailImageUrl = thumbnailImagePost == null ? null : thumbnailImagePost.guid;
-            post.formattedDate = getFormattedDate(post.date);
-            response.push(post);
-        });
-    }
-    return response;
 }
 
 function getThumbnailImagePost(post) {
