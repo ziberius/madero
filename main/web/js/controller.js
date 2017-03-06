@@ -14,27 +14,35 @@ angular
             templateUrl: '/main/web/pages/modules/news-details.php',
             controller: 'viewController'
         });
-    })/*.directive('myRepeatDirective', function() {
-        return function(scope, element, attrs) {
-          if (scope.$last){
-            scope.$emit('LastElem');
-          }
+    })
+    /*.directive('myRepeatDirective', function() {
+     return function(scope, element, attrs) {
+     if (scope.$last){
+     scope.$emit('LastElem');
+     }
+     };
+     })
+     .directive('myMainDirective', function() {
+     return function(scope, element, attrs) {
+     scope.$on('LastElem', function(event){
+     $("#related-news-carousel2").owlCarousel({
+     items: 3,
+     pagination: false,
+     navigation: false,
+     autoPlay: true,
+     stopOnHover: true,
+     slideSpeed: 500
+     });
+     });
+     };
+     })*/
+    .service('navigate', function ($location, $rootScope) {
+
+        $rootScope.detail = function (idPost) {
+            $location.path("/view/" + idPost);
         };
-      })
-    .directive('myMainDirective', function() {
-      return function(scope, element, attrs) {
-        scope.$on('LastElem', function(event){
-            $("#related-news-carousel2").owlCarousel({
-                items: 3,
-                pagination: false,
-                navigation: false,
-                autoPlay: true,
-                stopOnHover: true,
-                slideSpeed: 500
-            });
-        });
-      };
-    })*/
+
+    })
     .service('getPosts', function ($rootScope, $http) {
         this.getPostsFromCategory = function (start_date, end_date, limit, offset, categories, success) {
             $http.post('/main/server/Service.php',
@@ -68,7 +76,7 @@ angular
                 success(response);
 
             }).catch(function (e) {
-                showMessage("Error al obtener las noticias. El servidor respondió: " + e.statusText);
+                showMessage("Error al obtener la noticia. El servidor respondió: " + e.statusText);
                 $rootScope.loading = false;
             });
         };
@@ -98,7 +106,7 @@ angular
             return response;
         };
     })
-    .controller('mainController', function ($scope, $location, getPosts, news) {
+    .controller('mainController', function ($scope, $location, getPosts, news, navigate) {
 
         getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", "22,101",
             function (res) {
@@ -178,49 +186,75 @@ angular
             }
         );
 
-        $scope.detalle = function (noticia) {
-            $location.path("/view/" + noticia);
+        //international news
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "5", "0", "99", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.internationalPosts = news.getMultipleNews(data.data);
 
-        };
+            } else {
+                $scope.internationalPosts = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
 
         $scope.$on('$viewContentLoaded', function () {
-            cargarSliders();
+            loadSliders();
         });
     })
-    .controller('viewController', function ($scope, $timeout, $routeParams, getPosts, news) {
+    .controller('viewController', function ($scope, $timeout, $routeParams, getPosts, news, navigate) {
 
         var idPost = $routeParams.id;
         getPosts.getPostFromId(idPost, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.mainPost = news.getSingleNews(data.data[0]);
-                $timeout(function(){
-                        $("#related-news-carousel2").owlCarousel({
-                        items: 3,
-                        pagination: false,
-                        navigation: false,
-                        autoPlay: true,
-                        stopOnHover: true,
-                        slideSpeed: 500
-                    });
-                },1000);
+
+                var idCategory = $scope.mainPost.categories[0].id;
+                getOtherPost(idCategory);
+
             } else {
                 $scope.mainPost = null;
                 showMessage("No se encontraron resultados");
             }
         });
 
-        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", "0", "22", function (response) {
+        function getOtherPost(idCategory) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "5", "0", idCategory, function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.otherPosts = news.getMultipleNews(data.data);
+                } else {
+                    $scope.otherPosts = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });
+        }
+
+        $scope.loadOtherNewsCarousel = function () {
+            $("#other-news-carousel").owlCarousel({
+                items: 3,
+                pagination: false,
+                navigation: false,
+                autoPlay: true,
+                stopOnHover: true,
+                slideSpeed: 500
+            });
+        };
+
+
+        //international news
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "5", "0", "99", function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
-                $scope.otherPosts = news.getMultipleNews(data.data);
+                $scope.internationalPosts = news.getMultipleNews(data.data);
 
             } else {
-                $scope.otherPosts = null;
+                $scope.internationalPosts = null;
                 showMessage("No se encontraron resultados");
             }
         });
-        
+
     })
 ;
 
@@ -232,7 +266,7 @@ function showMessage(message) {
     </span></button><strong>Notificación</strong><p>" + message + "</p></div>").appendTo("#main-wrapper").fadeIn();
 }
 
-function cargarSliders() {
+function loadSliders() {
     /*==============================================================*/
     // Owl Carousel
     /*==============================================================*/
@@ -240,14 +274,14 @@ function cargarSliders() {
         pagination: true,
         autoPlay: true,
         singleItem: true,
-        stopOnHover: true,
+        stopOnHover: true
     });
 
     $("#latest-news").owlCarousel({
         items: 4,
         pagination: true,
         autoPlay: true,
-        stopOnHover: true,
+        stopOnHover: true
     });
 
     $(".twitter-feeds").owlCarousel({
@@ -255,7 +289,7 @@ function cargarSliders() {
         singleItem: true,
         pagination: false,
         autoPlay: true,
-        stopOnHover: true,
+        stopOnHover: true
     });
 
     $("#main-slider").owlCarousel({
@@ -275,7 +309,6 @@ function cargarSliders() {
         stopOnHover: true,
         slideSpeed: 500
     });
-
     $("#top-news").owlCarousel({
         items: 1,
         singleItem: true,
@@ -362,7 +395,7 @@ function toContentHtml(content) {
 
 function parseParagraph(content) {
     content = '<p>' + content;
-    var newLine = new RegExp('\r\n\r\n', 'g');
+    var newLine = new RegExp('\r\n\r\n|\n\n', 'g');
     return content.replace(newLine, '<p>');
 }
 
@@ -376,7 +409,6 @@ function parseAudio(content) {
     var audioEnd = new RegExp('\\]\\[\\/audio\\]', 'g');
     return content.replace(audioEnd, ' preload="auto" controls><audio> ');
 }
-
 
 
 

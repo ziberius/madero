@@ -78,7 +78,7 @@
                                 </div>
                             </div><!--/#site-content-->
 
-                            <div class="section related-news-section">
+                            <div class="section other-news-section">
                                 <h1 class="section-title">Noticias Relacionadas</h1>
                                 <div class="related-news">
                                     <div id="related-news-carousel">

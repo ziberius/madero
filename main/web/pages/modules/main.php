@@ -1,11 +1,13 @@
 <div class="main">
     <div class="container-fluid">			
+
+
         <div class="section" id="main-slider">
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAntofagasta[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
                     <div class="catagory"><a href="#">Antofagasta</a></div>
                     <h2 class="entry-title">
-                        <a ng-click="detalle(destacadaAntofagasta[0].id)">{{destacadaAntofagasta[0].title}}</a>
+                        <a ng-click="detail(destacadaAntofagasta[0].id)">{{destacadaAntofagasta[0].title}}</a>
                     </h2>
                 </div>                                       
             </div>             
@@ -13,7 +15,7 @@
                 <div class="post-content">
                     <div class="catagory"><a href="#">Atacama</a></div>
                     <h2 class="entry-title">
-                        <a ng-click="detalle(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
+                        <a ng-click="detail(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
                     </h2>
                 </div>
             </div><!--/post-->
@@ -21,7 +23,7 @@
                 <div class="post-content">
                     <div class="catagory"><a href="#">Atacama</a></div>
                     <h2 class="entry-title">
-                        <a ng-click="detalle(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
+                        <a ng-click="detail(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
                     </h2>
                 </div>
             </div><!--/post-->
@@ -29,7 +31,7 @@
                 <div class="post-content">
                     <div class="catagory"><a href="#">Atacama</a></div>
                     <h2 class="entry-title">
-                        <a ng-click="detalle(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
+                        <a ng-click="detail(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
                     </h2>
                 </div>
             </div><!--/post-->
@@ -37,7 +39,7 @@
                 <div class="post-content">
                     <div class="catagory"><a href="#">La Serena - Coquimbo</a></div>
                     <h2 class="entry-title">
-                        <a ng-click="detalle(destacadaSerena[0].id)">{{destacadaSerena[0].title}}</a>
+                        <a ng-click="detail(destacadaSerena[0].id)">{{destacadaSerena[0].title}}</a>
                     </h2>
                 </div>
             </div><!--/post-->
@@ -59,7 +61,7 @@
                                     <a href="#">Antofagasta</a>
                                 </div>                                        
                                 <div class="entry-thumbnail">
-                                    <a ng-click="detalle(noticia.id)" ><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
+                                    <a ng-click="detail(noticia.id)" ><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
                                 </div>
                             </div>  
                             <div class="post-content">								
@@ -69,7 +71,7 @@
                                     </ul>
                                 </div>
                                 <h2 class="entry-title">
-                                    <a ng-click="detalle(noticia.id)" >{{noticia.title}}</a>
+                                    <a ng-click="detail(noticia.id)" >{{noticia.title}}</a>
                                 </h2>
                             </div>                                        
                         </div>    

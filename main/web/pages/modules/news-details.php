@@ -42,6 +42,7 @@
                                                 <div class="entry-content">
                                                     <div data-ng-bind-html="mainPost.content"></div>
 
+                                                    <!--tags-->
                                                     <div ng-show="mainPost.tags.length">
                                                         <div class="news-tags">
                                                             <span>Tags:</span>
@@ -59,8 +60,8 @@
 
                                                     <ul class="list-inline share-link">
                                                         <li><a href="#"><img
-                                                                    src="/main/web/images/others/social1.png"
-                                                                    alt=""/></a></li>
+                                                                        src="/main/web/images/others/social1.png"
+                                                                        alt=""/></a></li>
                                                         <li><a href="#"><img src="/main/web/images/others/social2.png"
                                                                              alt=""/></a></li>
                                                         <li><a href="#"><img src="/main/web/images/others/social3.png"
@@ -77,22 +78,22 @@
                         </div>
                     </div><!--/#site-content-->
 
-                    <div class="section related-news-section">
+                    <div class="section other-news-section">
                         <h1 class="section-title">Otras Noticias</h1>
                         <div class="related-news">
 
-                            <div id="related-news-carousel2">
+                            <div id="other-news-carousel">
 
-                                <div class="post medium-post" ng-repeat="post in otherPosts">
+                                <div class="post medium-post" ng-repeat="post in otherPosts" ng-init="isLast = $last">
                                     <div class="entry-header">
                                         <div class="video-catagory">
-                                            <a ng-click="detalle(post.id)">Categoria</a>
+                                            <a ng-click="detail(post.id)">{{post.categories[0].name}}</a>
                                         </div>
                                         <div class="entry-thumbnail">
-                                            <a ng-click="detalle(post.id)"><img
-                                                    class="img-responsive"
-                                                    src="{{post.thumbnailImageUrl}}"
-                                                    alt=""/></a>
+                                            <a ng-click="detail(post.id)"><img
+                                                        class="img-responsive"
+                                                        src="{{post.thumbnailImageUrl}}"
+                                                        alt=""/></a>
                                         </div>
                                     </div>
 
@@ -100,187 +101,117 @@
                                         <div class="entry-meta">
                                             <ul class="list-inline">
                                                 <li class="publish-date"><i
-                                                        class="fa fa-clock-o">{{post.formattedDate}}</i></li>
-                                                <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
+                                                            class="fa fa-clock-o">{{post.formattedDate}}</i></li>
+                                                <!--<li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
+                                                <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>-->
                                             </ul>
                                         </div>
                                         <h2 class="entry-title">
-                                            <a ng-click="detalle(post.id)">{{post.title}}</a>
+                                            <a ng-click="detail(post.id)">{{post.title}}</a>
                                         </h2>
+                                    </div>
+
+                                    <div ng-if="isLast">
+                                        {{loadOtherNewsCarousel()}}
                                     </div>
 
                                 </div>
-                                <!--
-                                <div class="post medium-post">
-                                    <div class="entry-header">
-                                        <div class="video-catagory">
-                                            <a href="#">Antofagasta</a>
-                                        </div>
-                                        <div class="entry-thumbnail">
-                                            <a href="news-details.html"><img class="img-responsive"
-                                                                             src="/main/web/images/post/antofagasta/2.jpg"
-                                                                             alt=""/></a>
-                                        </div>
-                                    </div>
-                                    <div class="post-content">
-                                        <div class="entry-meta">
-                                            <ul class="list-inline">
-                                                <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de
-                                                        Enero, 2016 </a></li>
-                                                <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                            </ul>
-                                        </div>
-                                        <h2 class="entry-title">
-                                            <a href="news-details.html">Injuv lanza “Mueve Tu Verano con Desarrollo
-                                                Social” con más de 200 actividades gratuitas en todo el país</a>
-                                        </h2>
-                                    </div>
-                                </div>
-
-                                <div class="post medium-post">
-                                    <div class="entry-header">
-                                        <div class="video-catagory">
-                                            <a href="#">Antofagasta</a>
-                                        </div>
-                                        <div class="entry-thumbnail">
-                                            <a href="news-details.html"><img class="img-responsive"
-                                                                             src="/main/web/images/post/antofagasta/2.jpg"
-                                                                             alt=""/></a>
-                                        </div>
-                                    </div>
-                                    <div class="post-content">
-                                        <div class="entry-meta">
-                                            <ul class="list-inline">
-                                                <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de
-                                                        Enero, 2016 </a></li>
-                                                <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                            </ul>
-                                        </div>
-                                        <h2 class="entry-title">
-                                            <a href="news-details.html">Injuv lanza “Mueve Tu Verano con Desarrollo
-                                                Social” con más de 200 actividades gratuitas en todo el país</a>
-                                        </h2>
-                                    </div>
-                                </div>
-
-
-                                <div class="post medium-post">
-                                    <div class="entry-header">
-                                        <div class="video-catagory">
-                                            <a href="#">Antofagasta</a>
-                                        </div>
-                                        <div class="entry-thumbnail">
-                                            <a href="news-details.html"><img class="img-responsive"
-                                                                             src="/main/web/images/post/antofagasta/2.jpg"
-                                                                             alt=""/></a>
-                                        </div>
-                                    </div>
-                                    <div class="post-content">
-                                        <div class="entry-meta">
-                                            <ul class="list-inline">
-                                                <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de
-                                                        Enero, 2016 </a></li>
-                                                <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                            </ul>
-                                        </div>
-                                        <h2 class="entry-title">
-                                            <a href="news-details.html">Injuv lanza “Mueve Tu Verano con Desarrollo
-                                                Social” con más de 200 actividades gratuitas en todo el país</a>
-                                        </h2>
-                                    </div>
-                                </div>-->
-
 
                             </div>
                         </div>
                     </div><!--/.section -->
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="comments-wrapper">
-                                <h1 class="section-title title">Comentarios</h1>
-                                <ul class="media-list">
-                                    <li class="media">
-                                        <div class="media-left">
-                                            <a href="#"><img class="media-object"
-                                                             src="/main/web/images/others/author.png" alt=""></a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h2><a href="#">Juan Perez</a></h2>
-                                            <h3 class="date"><a href="#">15 de Diciembre 2016</a></h3>
-                                            <p>Estoy totalmente de acuerdo con la medida. Será un cambio para mejor y es
-                                                el camino a seguir. </p>
-                                            <a class="replay" href="#">Contestar</a>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-left">
-                                            <a href="#"><img class="media-object"
-                                                             src="/main/web/images/others/author.png" alt=""></a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h2><a href="#">Gonzalo Vilches</a></h2>
-                                            <h3 class="date"><a href="#">15 de Diciembre 2016</a></h3>
-                                            <p>Yo difiero con esta medida, creo que el camino correcto es el contrario.
-                                                Debemos presionar a nuestras autoridades para que rectifiquen el camino
-                                                a seguir. </p>
-                                            <a class="replay" href="#">Contestar</a>
-                                        </div>
-                                    </li>
+
+                    <!--Commentaries-->
+                    <!--      <div class="row">
+                              <div class="col-sm-12">
+                                  <div class="comments-wrapper">
+                                      <h1 class="section-title title">Comentarios</h1>
+                                      <ul class="media-list">
+                                          <li class="media">
+                                              <div class="media-left">
+                                                  <a href="#"><img class="media-object"
+                                                                   src="/main/web/images/others/author.png" alt=""></a>
+                                              </div>
+                                              <div class="media-body">
+                                                  <h2><a href="#">Juan Perez</a></h2>
+                                                  <h3 class="date"><a href="#">15 de Diciembre 2016</a></h3>
+                                                  <p>Estoy totalmente de acuerdo con la medida. Será un cambio para mejor y es
+                                                      el camino a seguir. </p>
+                                                  <a class="replay" href="#">Contestar</a>
+                                              </div>
+                                          </li>
+                                          <li class="media">
+                                              <div class="media-left">
+                                                  <a href="#"><img class="media-object"
+                                                                   src="/main/web/images/others/author.png" alt=""></a>
+                                              </div>
+                                              <div class="media-body">
+                                                  <h2><a href="#">Gonzalo Vilches</a></h2>
+                                                  <h3 class="date"><a href="#">15 de Diciembre 2016</a></h3>
+                                                  <p>Yo difiero con esta medida, creo que el camino correcto es el contrario.
+                                                      Debemos presionar a nuestras autoridades para que rectifiquen el camino
+                                                      a seguir. </p>
+                                                  <a class="replay" href="#">Contestar</a>
+                                              </div>
+                                          </li>
 
 
-                                </ul>
+                                      </ul>
 
-                                <div class="comments-box">
-                                    <h1 class="section-title title">Dejar Comentario</h1>
-                                    <form id="comment-form" name="comment-form" method="post">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label>Nombre</label>
-                                                    <input type="text" name="name" class="form-control"
-                                                           required="required">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="email" name="email" class="form-control"
-                                                           required="required">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label>Asunto</label>
-                                                    <input type="text" name="subject" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Mensaje</label>
-                                                    <textarea name="comment" id="comment" required="required"
-                                                              class="form-control" rows="5"></textarea>
-                                                </div>
-                                                <div class="text-center">
-                                                    <button type="submit" class="btn btn-primary">Send</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                      <div class="comments-box">
+                                          <h1 class="section-title title">Dejar Comentario</h1>
+                                          <form id="comment-form" name="comment-form" method="post">
+                                              <div class="row">
+                                                  <div class="col-sm-4">
+                                                      <div class="form-group">
+                                                          <label>Nombre</label>
+                                                          <input type="text" name="name" class="form-control"
+                                                                 required="required">
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <div class="form-group">
+                                                          <label>Email</label>
+                                                          <input type="email" name="email" class="form-control"
+                                                                 required="required">
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <div class="form-group">
+                                                          <label>Asunto</label>
+                                                          <input type="text" name="subject" class="form-control">
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-sm-12">
+                                                      <div class="form-group">
+                                                          <label>Mensaje</label>
+                                                          <textarea name="comment" id="comment" required="required"
+                                                                    class="form-control" rows="5"></textarea>
+                                                      </div>
+                                                      <div class="text-center">
+                                                          <button type="submit" class="btn btn-primary">Send</button>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>-->
+
+
                 </div><!--/.col-sm-9 -->
+
 
                 <div class="col-sm-3">
                     <div id="sitebar">
                         <div class="widget">
+
+                            <!--International News-->
                             <?php require_once dirname(__FILE__) . '/../include/internacionales.php'; ?>
+
+                            <!--Social Networks-->
                             <div class="widget">
                                 <h2 class="section-title">Redes Sociales</h2>
                                 <div class="row">
