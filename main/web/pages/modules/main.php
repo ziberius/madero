@@ -1,7 +1,5 @@
 <div class="main">
     <div class="container-fluid">			
-
-
         <div class="section" id="main-slider">
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAntofagasta[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
@@ -119,212 +117,8 @@
                                 </h2>
                             </div>                                        
                         </div> 
-                        <!-- <div class="post medium-post">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">Antofagasta</a>
-                                </div>                                        
-                                <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/1.jpg" alt="" /></a>
-                                </div>
-                            </div>
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de Enero, 2016 </a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                    </ul>
-                                </div>
-
-                                <h2 class="entry-title">
-                                    <a href="news-details.php">Gobierno impulsa importantes Proyectos de Borde Costero en la Región de Antofagasta</a>
-                                </h2>
-                            </div>
-                        </div>
-                        <div class="post medium-post">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">Antofagasta</a>
-                                </div>                                          
-                                <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/2.jpg" alt="" /></a>
-                                </div>
-                            </div>
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de Enero, 2016 </a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                    </ul>
-                                </div>
-                                <h2 class="entry-title">
-                                    <a href="news-details.php">Injuv lanza “Mueve Tu Verano con Desarrollo Social” con más de 200 actividades gratuitas en todo el país</a>
-                                </h2>
-                            </div>
-                        </div>
-                        <div class="post medium-post">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">Antofagasta</a>
-                                </div>                                          
-                                <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/3.png" alt="" /></a>
-                                </div>
-                            </div>
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de Enero, 2016 </a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                    </ul>
-                                </div>
-                                <h2 class="entry-title">
-                                    <a href="news-details.php">Presentan proyecto que modifica normas del Factoring en beneficio de las pymes</a>
-                                </h2>
-                            </div>
-                        </div>
-                        <div class="post medium-post">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">Atacama</a>
-                                </div>                                          
-                                <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/4.bmp" alt="" /></a>
-                                </div>
-
-                            </div>
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de Enero, 2016 </a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                    </ul>
-                                </div>
-                                <h2 class="entry-title">
-                                    <a href="news-details.php">SERNATUR Atacama llama a servicios turísticos registrados a actualizar sus patentes</a>
-                                </h2>
-                            </div>
-                        </div>
-
-                        <div class="post medium-post">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">Atacama</a>
-                                </div>                                          
-                                <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/2.jpg" alt="" /></a>
-                                </div>
-                            </div>
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de Enero, 2016 </a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                    </ul>
-                                </div>
-                                <h2 class="entry-title">
-                                    <a href="news-details.php">Chañaral cuenta con un Centro Comunitario de Rehabilitación</a>
-                                </h2>
-                            </div>
-                        </div> 
-
-                        <div class="post medium-post">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">Atacama</a>
-                                </div>                                          
-                                <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/5.bmp" alt="" /></a>
-                                </div>
-                            </div>
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de Enero, 2016 </a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                    </ul>
-                                </div>
-                                <h2 class="entry-title">
-                                    <a href="news-details.php">38 familias de Freirina están más cerca de concretar la casa propia</a>
-                                </h2>
-                            </div>
-                        </div>
-                        <div class="post medium-post">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">La Serena - Coquimbo</a>
-                                </div>                                          
-                                <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
-                                </div>
-                            </div>
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de Enero, 2016 </a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                    </ul>
-                                </div>
-                                <h2 class="entry-title">
-                                    <a href="news-details.php">En La Serena fue detenido “papito corazón” que debía más de $76 millones en pensión de alimentos</a>
-                                </h2>
-                            </div>
-                        </div> 
-
-                        <div class="post medium-post">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">La Serena - Coquimbo</a>
-                                </div>                                          
-                                <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/2.jpg" alt="" /></a>
-                                </div>
-                            </div>
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de Enero, 2016 </a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                    </ul>
-                                </div>
-                                <h2 class="entry-title">
-                                    <a href="news-details.php">Más de 8 mil estudiantes de la región de Coquimbo están preseleccionados para acceder a la gratuidad en la educación superior</a>
-                                </h2>
-                            </div>
-                        </div>
-
-                        <div class="post medium-post">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">La Serena - Coquimbo</a>
-                                </div>                                          
-                                <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/3.jpg" alt="" /></a>
-                                </div>
-                            </div>
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 5 de Enero, 2016 </a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                    </ul>
-                                </div>
-                                <h2 class="entry-title">
-                                    <a href="news-details.php">En Salamanca detienen a dos mujeres que secaban marihuana y cocaína base en motor de refrigerador</a>
-                                </h2>
-                            </div>
-                        </div>--> 
                         <div class="load-more text-center">
-                            <a class="btn btn-primary btn-block" href="#">Cargar Más Noticias...</a>
+                            <a class="btn btn-primary btn-block" ng-click="masNacionales()">Cargar Más Noticias...</a>
                         </div>
                         <div class="top5">
                             <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg">
@@ -729,13 +523,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- widget -->
-
-                        <!--                            <div class="widget">
-                                                        <div class="add">
-                                                            <a href="#"><img class="img-responsive" src="/main/web/images/post/add/add5.jpg" alt="" /></a>
-                                                        </div>
-                                                    </div>-->
                         <div class="widget">
                             <h2 class="section-title">Video Tendencias</h2>
                             <div class="post video-post medium-post">
@@ -766,21 +553,17 @@
                                     </div>
                                 </div>
                             </div><!--/post-->
-
-                            <!--                                <div class="post medium-post">
-                                                                <div class="entry-header">
-                                                                    <div class="entry-thumbnail embed-responsive embed-responsive-16by9">
-                                                                        <img class="img-responsive" src="/main/web/images/post/1.jpg" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="post-content">								
-                                                                    <div class="video-catagory"><a href="#">Lifestyle</a></div>
-                                                                    <h2 class="entry-title">
-                                                                        <a href="news-details.php">A bus has exploded in central London — but this time it's</a>
-                                                                    </h2>
-                                                                </div>
-                                                            </div>/post-->
                         </div>
+                        
+                        <div class="top5">
+                            <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg">
+                        </div>
+
+                        <div class="top5">
+                            <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg">
+                        </div>                        
+                        
+                        <!--
                         <div class="widget">
                             <h2 class="section-title">Opinión</h2>
                             <div class="post opinion-wrapper">
@@ -851,7 +634,7 @@
                                     <p>¿Cuanto calzan los independientes  y los ex líderes estudiantiles?</p>
                                 </div>
                             </div>                                
-                        </div>
+                        </div> -->
                     </div><!--/#sitebar-->
                 </div>
             </div>				

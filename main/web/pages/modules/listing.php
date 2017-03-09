@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <!--title-->
-        <title>Madero FM</title>
-
-        <!--CSS-->
-        <?php require_once("web/include/head.php"); ?>
-    </head><!--/head-->
-    <body>
-        <div id="main-wrapper">
-            <?php require_once("web/include/header.php"); ?>
             <div class="main">
                 <div id="news-listing" class="container-fluid">								
                     <div class="section">
@@ -26,7 +9,7 @@
                                         <div class="section">
                                             <div class="row" style="margin-bottom:1em">
                                                 <div class="col-sm-12 col-md-8">
-                                                    <div class="post feature-post" style="background-image:url(images/post/carcel.jpg); background-size:100% 100%;height:595px;">
+                                                    <div class="post feature-post" style="background-image:url(/main/web/images/post/carcel.jpg); background-size:100% 100%;height:595px;">
                                                         <div class="post-content">
                                                             <div class="catagoryLeft"><a href="#">Internacional</a></div>
                                                             <h2 class="entry-title entryLeft">
@@ -41,7 +24,7 @@
                                                             <div class="entry-header">
 
                                                                 <div class="entry-thumbnail">
-                                                                    <a href="news-details.php"><img class="img-responsive" src="images/post/antofagasta/2.jpg" alt="" /></a>
+                                                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/2.jpg" alt="" /></a>
                                                                 </div>
                                                             </div>
                                                             <div class="post-content">								
@@ -63,7 +46,7 @@
                                                             <div class="entry-header">
 
                                                                 <div class="entry-thumbnail">
-                                                                    <a href="news-details.php"><img class="img-responsive" src="images/post/antofagasta/1.jpg" alt="" /></a>
+                                                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/1.jpg" alt="" /></a>
                                                                 </div>
                                                             </div>
                                                             <div class="post-content">								
@@ -88,7 +71,7 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/lifestyle/2.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/lifestyle/2.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -109,7 +92,7 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/3.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/3.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -130,7 +113,7 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/lifestyle/4.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/lifestyle/4.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -151,7 +134,7 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/lifestyle/5.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/lifestyle/5.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -172,7 +155,7 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/6.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/6.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -193,7 +176,7 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="news-details.php"><img class="img-responsive" src="images/post/lifestyle/7.jpg" alt="" /></a>
+                                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/lifestyle/7.jpg" alt="" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">								
@@ -220,7 +203,7 @@
                                     <a class="btn btn-primary btn-block" href="#">Cargar Más...</a>
                                 </div>
                                 <div class="row top5">
-                                    <img class="img-responsive center-block" style="max-height:120px" src="images/post/banner.jpg" />
+                                    <img class="img-responsive center-block" style="max-height:120px" src="/main/web/images/post/banner.jpg" />
                                 </div>                            
                             </div>
 
@@ -230,7 +213,7 @@
                                         <?php require_once("web/include/internacionales.php"); ?>
                                     </div><!--/#widget-->
                                     <div class="widget">
-                                        <img class="img-responsive center-block" src="images/anuncio_vertical.jpg" />
+                                        <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg" />
                                     </div><!-- widget -->
 
                                 </div><!--/#sitebar-->
@@ -238,7 +221,7 @@
                         </div>	
                     </div><!--/.section-->
                     <div class="section" id="main-slider">
-                        <div class="post feature-post" style="background-image:url(images/post/carcel.jpg); background-size:cover;">
+                        <div class="post feature-post" style="background-image:url(/main/web/images/post/carcel.jpg); background-size:cover;">
                             <div class="post-content">
                                 <div class="catagory"><a href="#">Internacional</a></div>
                                 <h2 class="entry-title">
@@ -246,7 +229,7 @@
                                 </h2>
                             </div>
                         </div><!--/post-->
-                        <div class="post feature-post video-post" style="background-image:url(images/post/teleserie.jpg); background-size:cover;">
+                        <div class="post feature-post video-post" style="background-image:url(/main/web/images/post/teleserie.jpg); background-size:cover;">
                             <div class="post-content">
                                 <div class="catagory"><a href="#">Antofagasta</a></div>
                                 <h2 class="entry-title">
@@ -254,7 +237,7 @@
                                 </h2>
                             </div>
                         </div><!--/post-->
-                        <div class="post feature-post" style="background-image:url(images/post/atacama.jpg); background-size:cover;">
+                        <div class="post feature-post" style="background-image:url(/main/web/images/post/atacama.jpg); background-size:cover;">
                             <div class="post-content">
                                 <div class="catagory"><a href="#">Atacama</a></div>
                                 <h2 class="entry-title">
@@ -262,7 +245,7 @@
                                 </h2>
                             </div>
                         </div><!--/post-->
-                        <div class="post feature-post" style="background-image:url(images/post/uruguayo.jpg); background-size:cover;">
+                        <div class="post feature-post" style="background-image:url(/main/web/images/post/uruguayo.jpg); background-size:cover;">
                             <div class="post-content">
                                 <div class="catagory"><a href="#">La Serena - Coquimbo</a></div>
                                 <h2 class="entry-title">
@@ -270,7 +253,7 @@
                                 </h2>
                             </div>
                         </div><!--/post-->
-                        <div class="post feature-post" style="background-image:url(images/post/futbolista.jpg); background-size:cover;">
+                        <div class="post feature-post" style="background-image:url(/main/web/images/post/futbolista.jpg); background-size:cover;">
 
                             <div class="post-content">
                                 <div class="catagory"><a href="#">Deportes</a></div>
@@ -279,7 +262,7 @@
                                 </h2>
                             </div>
                         </div><!--/post-->		
-                        <div class="post feature-post" style="background-image:url(images/post/valparaiso.jpg); background-size:cover;">
+                        <div class="post feature-post" style="background-image:url(/main/web/images/post/valparaiso.jpg); background-size:cover;">
                             <div class="post-content">
                                 <div class="catagory"><a href="#">Nacional</a></div>
                                 <h2 class="entry-title">
@@ -291,7 +274,7 @@
                     <div class="section">
                         <div class="row">
                             <div class="col-sm-12 col-md-5">
-                                <img class="img-responsive center-block" src="images/anuncio_cuadrado.jpg" />
+                                <img class="img-responsive center-block" src="/main/web/images/anuncio_cuadrado.jpg" />
                             </div>
                             <div class="col-sm-12 col-md-2">
                                 <div class="post medium-post">
@@ -303,7 +286,7 @@
                                     </div>
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/1.jpg" alt="" /></a>
+                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
                                         </div>
                                     </div>                            
                                 </div><!--/post--> 
@@ -318,7 +301,7 @@
                                     </div>
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/1.jpg" alt="" /></a>
+                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
                                         </div>
                                     </div>                            
                                 </div><!--/post-->                                                 
@@ -348,7 +331,7 @@
                                     </div>
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/1.jpg" alt="" /></a>
+                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
                                         </div>
                                     </div>                            
                                 </div><!--/post-->   
@@ -363,7 +346,7 @@
                                     </div>
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/1.jpg" alt="" /></a>
+                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
                                         </div>
                                     </div>                            
                                 </div><!--/post-->   
@@ -378,7 +361,7 @@
                                     </div>
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/1.jpg" alt="" /></a>
+                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
                                         </div>
                                     </div>                            
                                 </div><!--/post-->   
@@ -393,7 +376,7 @@
                                     </div>
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/1.jpg" alt="" /></a>
+                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
                                         </div>
                                     </div>                            
                                 </div><!--/post-->   
@@ -408,7 +391,7 @@
                                     </div>
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/1.jpg" alt="" /></a>
+                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
                                         </div>
                                     </div>                            
                                 </div><!--/post-->   
@@ -423,7 +406,7 @@
                                     </div>
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a href="news-details.php"><img class="img-responsive" src="images/post/coquimbo/1.jpg" alt="" /></a>
+                                            <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
                                         </div>
                                     </div>                            
                                 </div><!--/post-->   
@@ -433,9 +416,3 @@
                     </div>
                 </div><!--/.container-fluid-->
             </div> <!-- / .main -->
-            <?php require_once("web/include/footer.php"); ?>		
-        </div><!--/#main-wrapper--> 
-
-
-    </body>
-</html>

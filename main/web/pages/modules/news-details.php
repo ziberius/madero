@@ -12,7 +12,7 @@
                                         <div class="post">
                                             <div class="entry-header">
                                                 <div class="entry-thumbnail">
-                                                    <img class="img-responsive" src="{{mainPost.thumbnailImageUrl}}"
+                                                    <img class="img-responsive img-rounded img-news-detail center-block" src="{{mainPost.thumbnailImageUrl}}"
                                                          alt=""/>
                                                 </div>
                                             </div>

@@ -10,32 +10,21 @@ angular
             .when('/madero', {
                 templateUrl: '/main/web/pages/modules/main.php',
                 controller: 'mainController'
-            }).when('/view/:id', {
-            templateUrl: '/main/web/pages/modules/news-details.php',
-            controller: 'viewController'
-        });
+            })
+            .when('/listing', {
+                templateUrl: '/main/web/pages/modules/listing.php',
+                controller: 'listingController'
+            })
+            .when('/view/:id', {
+                templateUrl: '/main/web/pages/modules/news-details.php',
+                controller: 'viewController'
+            }).when('/mineria',{
+                templateUrl: '/main/web/pages/modules/maderomineria.php',
+                controller: 'mineriaController'                
+            })
+            
+            ;
     })
-    /*.directive('myRepeatDirective', function() {
-     return function(scope, element, attrs) {
-     if (scope.$last){
-     scope.$emit('LastElem');
-     }
-     };
-     })
-     .directive('myMainDirective', function() {
-     return function(scope, element, attrs) {
-     scope.$on('LastElem', function(event){
-     $("#related-news-carousel2").owlCarousel({
-     items: 3,
-     pagination: false,
-     navigation: false,
-     autoPlay: true,
-     stopOnHover: true,
-     slideSpeed: 500
-     });
-     });
-     };
-     })*/
     .service('navigate', function ($location, $rootScope) {
 
         $rootScope.detail = function (idPost) {
@@ -106,8 +95,12 @@ angular
             return response;
         };
     })
-    .controller('mainController', function ($scope, $location, getPosts, news, navigate) {
-
+    .controller('mainController', function ($rootScope,$scope, $location, getPosts, news, navigate) {
+        $scope.offsetNacAntofagasta = 1;
+        $scope.offsetNacAtacama = 1;
+        $scope.offsetNacSerena = 1;
+        
+       
         getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", "22,101",
             function (res) {
                 if (res.data !== null && res.data.status === 'OK') {
@@ -147,45 +140,71 @@ angular
             }
         );
 
-        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", "0", "22",
-            function (res) {
-                if (res.data !== null && res.data.status === 'OK') {
+        $scope.loadNacionales = function(){
+            var cargadoAntofagasta = false;
+            var cargadoAtacama = false;
+            var cargadoSerena = false;
+            $rootScope.loading = true;
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", $scope.offsetNacAntofagasta, "22",
+                function (res) {
+                    if (res.data !== null && res.data.status === 'OK') {
 
-                    $scope.nacionalesAntofa = news.getMultipleNews(res.data.data);
-
-                } else {
-                    $scope.nacionalesAntofa = null;
-                    showMessage("No se encontraron resultados");
+                        $scope.nacionalesAntofa = news.getMultipleNews(res.data.data);
+                    } else {
+                        $scope.nacionalesAntofa = null;
+                        showMessage("No se encontraron resultados");
+                    }
+                    cargadoAntofagasta = true;
+                    if(cargadoAtacama && cargadoSerena){
+                        $rootScope.loading = false;
+                    }
                 }
-            }
-        );
+            );
 
-        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", "0", "23",
-            function (res) {
-                if (res.data !== null && res.data.status === 'OK') {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", $scope.offsetNacAtacama, "23",
+                function (res) {
+                    if (res.data !== null && res.data.status === 'OK') {
 
-                    $scope.nacionalesAtacama = news.getMultipleNews(res.data.data);
+                        $scope.nacionalesAtacama = news.getMultipleNews(res.data.data);
+                    } else {
+                        $scope.nacionalesAtacama = null;
+                        showMessage("No se encontraron resultados");
+                    }
+                    cargadoAtacama = true;
+                    if(cargadoAntofagasta && cargadoSerena){
+                        $rootScope.loading = false;
+                    }
 
-                } else {
-                    $scope.nacionalesAtacama = null;
-                    showMessage("No se encontraron resultados");
                 }
-            }
-        );
+            );
 
-        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", "0", "24",
-            function (res) {
-                if (res.data !== null && res.data.status === 'OK') {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", $scope.offsetNacSerena, "24",
+                function (res) {
+                    if (res.data !== null && res.data.status === 'OK') {
 
-                    $scope.nacionalesSerena = news.getMultipleNews(res.data.data);
+                        $scope.nacionalesSerena = news.getMultipleNews(res.data.data);
 
-                } else {
-                    $scope.nacionalesSerena = null;
-                    showMessage("No se encontraron resultados");
+                    } else {
+                        $scope.nacionalesSerena = null;
+                        showMessage("No se encontraron resultados");
+                    }
+                    cargadoSerena = true;
+                    if(cargadoAntofagasta && cargadoAtacama){
+                        $rootScope.loading = false;
+                    }                    
                 }
-            }
-        );
-
+            );
+        };
+        
+        $scope.masNacionales = function(){
+            $scope.offsetNacAntofagasta = $scope.offsetNacAntofagasta+3;
+            $scope.offsetNacAtacama = $scope.offsetNacAtacama+3;
+            $scope.offsetNacSerena = $scope.offsetNacSerena+3; 
+            $scope.loadNacionales();
+        };
+        
+        $scope.loadNacionales();
+        
         //international news
         getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "5", "0", "99", function (response) {
             var data = response.data;
@@ -197,12 +216,14 @@ angular
                 showMessage("No se encontraron resultados");
             }
         });
+        
+        
 
         $scope.$on('$viewContentLoaded', function () {
             loadSliders();
         });
     })
-    .controller('viewController', function ($scope, $timeout, $routeParams, getPosts, news, navigate) {
+    .controller('viewController', function ($scope, $routeParams, getPosts, news, navigate) {
 
         var idPost = $routeParams.id;
         getPosts.getPostFromId(idPost, function (response) {
@@ -255,8 +276,16 @@ angular
             }
         });
 
+    }).controller('listingController', function ($scope, $routeParams, getPosts, news, navigate) {
+    
+    }).controller('mineriaController', function ($scope, $routeParams) {
+        
     })
 ;
+
+function resizeIframe(obj){
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+}
 
 function showMessage(message) {
     $("#btnNotificacion").click();
@@ -410,6 +439,9 @@ function parseAudio(content) {
     return content.replace(audioEnd, ' preload="auto" controls><audio> ');
 }
 
+    $("#cerrarRadios").click(function(){
+       $("#maderoRadios").fadeOut();
+    });
 
 
 
