@@ -18,12 +18,12 @@ angular
             .when('/view/:id', {
                 templateUrl: '/main/web/pages/modules/news-details.php',
                 controller: 'viewController'
-            }).when('/mineria',{
-                templateUrl: '/main/web/pages/modules/maderomineria.php',
-                controller: 'mineriaController'                
-            })
-            
-            ;
+            }).when('/mineria', {
+            templateUrl: '/main/web/pages/modules/maderomineria.php',
+            controller: 'mineriaController'
+        })
+
+        ;
     })
     .service('navigate', function ($location, $rootScope) {
 
@@ -84,6 +84,8 @@ angular
             var thumbnailImagePost = getThumbnailImagePost(data);
             noticia.thumbnailImageUrl = thumbnailImagePost === null ? null : thumbnailImagePost.guid;
 
+            noticia.shortTitle = data.title.substring(0, 70) + '...';
+
             return noticia;
         };
 
@@ -95,12 +97,12 @@ angular
             return response;
         };
     })
-    .controller('mainController', function ($rootScope,$scope, $location, getPosts, news, navigate) {
+    .controller('mainController', function ($rootScope, $scope, $location, getPosts, news, navigate) {
         $scope.offsetNacAntofagasta = 1;
         $scope.offsetNacAtacama = 1;
         $scope.offsetNacSerena = 1;
-        
-       
+
+//TODO cambiar fechas
         getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", "22,101",
             function (res) {
                 if (res.data !== null && res.data.status === 'OK') {
@@ -113,7 +115,7 @@ angular
                 }
             }
         );
-
+//TODO cambiar fechas
         getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", "23,101",
             function (res) {
                 if (res.data !== null && res.data.status === 'OK') {
@@ -126,7 +128,7 @@ angular
                 }
             }
         );
-
+//TODO cambiar fechas
         getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", "24,101",
             function (res) {
                 if (res.data !== null && res.data.status === 'OK') {
@@ -140,7 +142,7 @@ angular
             }
         );
 
-        $scope.loadNacionales = function(){
+        $scope.loadNacionales = function () {
             var cargadoAntofagasta = false;
             var cargadoAtacama = false;
             var cargadoSerena = false;
@@ -155,7 +157,7 @@ angular
                         showMessage("No se encontraron resultados");
                     }
                     cargadoAntofagasta = true;
-                    if(cargadoAtacama && cargadoSerena){
+                    if (cargadoAtacama && cargadoSerena) {
                         $rootScope.loading = false;
                     }
                 }
@@ -171,7 +173,7 @@ angular
                         showMessage("No se encontraron resultados");
                     }
                     cargadoAtacama = true;
-                    if(cargadoAntofagasta && cargadoSerena){
+                    if (cargadoAntofagasta && cargadoSerena) {
                         $rootScope.loading = false;
                     }
 
@@ -189,22 +191,22 @@ angular
                         showMessage("No se encontraron resultados");
                     }
                     cargadoSerena = true;
-                    if(cargadoAntofagasta && cargadoAtacama){
+                    if (cargadoAntofagasta && cargadoAtacama) {
                         $rootScope.loading = false;
-                    }                    
+                    }
                 }
             );
         };
-        
-        $scope.masNacionales = function(){
-            $scope.offsetNacAntofagasta = $scope.offsetNacAntofagasta+3;
-            $scope.offsetNacAtacama = $scope.offsetNacAtacama+3;
-            $scope.offsetNacSerena = $scope.offsetNacSerena+3; 
+
+        $scope.masNacionales = function () {
+            $scope.offsetNacAntofagasta = $scope.offsetNacAntofagasta + 3;
+            $scope.offsetNacAtacama = $scope.offsetNacAtacama + 3;
+            $scope.offsetNacSerena = $scope.offsetNacSerena + 3;
             $scope.loadNacionales();
         };
-        
+
         $scope.loadNacionales();
-        
+
         //international news
         getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "5", "0", "99", function (response) {
             var data = response.data;
@@ -216,8 +218,7 @@ angular
                 showMessage("No se encontraron resultados");
             }
         });
-        
-        
+
 
         $scope.$on('$viewContentLoaded', function () {
             loadSliders();
@@ -241,6 +242,7 @@ angular
         });
 
         function getOtherPost(idCategory) {
+            //TODO cambiar fechas, limit, offset
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "5", "0", idCategory, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
@@ -276,14 +278,41 @@ angular
             }
         });
 
-    }).controller('listingController', function ($scope, $routeParams, getPosts, news, navigate) {
-    
-    }).controller('mineriaController', function ($scope, $routeParams) {
-        
+    })
+    .controller('listingController', function ($scope, $routeParams, getPosts, news, navigate) {
+
+        //TODO cambiar fechas y categoria
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "10", "0", "23", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.nationalPosts = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.nationalPosts = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+
+        //TODO cambiar fechas, limit y offset
+        //international news
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.internationalPosts = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.internationalPosts = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+
+    })
+    .controller('mineriaController', function ($scope, $routeParams) {
+
     })
 ;
 
-function resizeIframe(obj){
+function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
 }
 
@@ -364,6 +393,22 @@ function getThumbnailImagePost(post) {
         }
     });
 
+    if (response == null) {
+        var keepGoing = true;
+
+        angular.forEach(post.resources, function (resource) {
+            if (keepGoing) {
+
+                var mimeType = resource.mime_type;
+
+                if (mimeType === 'image/jpeg' || mimeType === 'image/bmp' || mimeType === 'image/png' || mimeType === 'image/gif') {
+                    keepGoing = false;
+                    response = resource;
+                }
+            }
+        });
+    }
+
     return response;
 
 }
@@ -439,9 +484,9 @@ function parseAudio(content) {
     return content.replace(audioEnd, ' preload="auto" controls><audio> ');
 }
 
-    $("#cerrarRadios").click(function(){
-       $("#maderoRadios").fadeOut();
-    });
+$("#cerrarRadios").click(function () {
+    $("#maderoRadios").fadeOut();
+});
 
 
 
