@@ -1000,6 +1000,34 @@ img.mfp-img {
     border-radius: 0;
 }
 
+
+#antofagasta-posts-highlighted-carousel {
+    height: 450px;
+    overflow: hidden;
+}
+
+#antofagasta-posts-highlighted-carousel .owl-item,
+#antofagasta-posts-highlighted-carousel .feature-post {
+    height: 450px;
+    border-radius: 0;
+    margin-top: 0;
+}
+
+#antofagasta-posts-highlighted-carousel .feature-post .catagory {
+    position: initial;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#antofagasta-posts-highlighted-carousel .feature-post .entry-title {
+    font-size: 20px;
+    line-height: 25px;
+}
+
+#antofagasta-posts-highlighted-carousel .feature-post .post-content {
+    border-radius: 0;
+}
+
 .add.featured-add {
     margin-top: 30px;
 }
@@ -2413,6 +2441,13 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
     background-color: lightgrey;
 }
 
+.medium-post .entry-header .entry-thumbnail .img-antofagasta-news-middle {
+    max-height: 200px;
+    height: auto;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 .imgicon {
     height: 20px;
     margin-top: -4px;

@@ -18,11 +18,15 @@ angular
             .when('/view/:id', {
                 templateUrl: '/main/web/pages/modules/news-details.php',
                 controller: 'viewController'
-            }).when('/mineria', {
-            templateUrl: '/main/web/pages/modules/maderomineria.php',
-            controller: 'mineriaController'
-        })
-
+            })
+            .when('/mineria', {
+                templateUrl: '/main/web/pages/modules/maderomineria.php',
+                controller: 'mineriaController'
+            })
+            .when('/listing_1', {
+                templateUrl: '/main/web/pages/modules/listing_1.php',
+                controller: 'listing1Controller'
+            })
         ;
     })
     .service('navigate', function ($location, $rootScope) {
@@ -287,9 +291,23 @@ angular
         loadNationalPost($scope.quantityNationalPost, $scope.offsetNationalPost);
 
         $scope.moreNationalPost = function () {
-            $scope.offsetNationalPost = 17;
+            $scope.offsetNationalPost += 17;
             loadNationalPost($scope.quantityNationalPost, $scope.offsetNationalPost);
         };
+
+        //TODO cambiar fechas y categoria, agregar la categoria 102
+        function loadNationalPost(limit, offset) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "11", function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.nationalPosts = news.getMultipleNews(data.data);
+
+                } else {
+                    $scope.nationalPosts = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });
+        }
 
         // National Posts Highlighted
         getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "11", function (response) {
@@ -328,22 +346,73 @@ angular
         });
 
 
+    })
+    .controller('mineriaController', function ($scope, $routeParams) {
+
+    })
+    .controller('listing1Controller', function ($scope, $routeParams, getPosts, news, navigate) {
+
+        // Antofagasta Post
+        $scope.quantityAntofagastaPost = 17;
+        $scope.offsetAntofagastaPost = 0;
+        loadAntofagastaPost($scope.quantityAntofagastaPost, $scope.offsetAntofagastaPost);
+
+        $scope.moreAntofagastaPost = function () {
+            $scope.offsetAntofagastaPost += 17;
+            loadAntofagastaPost($scope.quantityAntofagastaPost, $scope.offsetAntofagastaPost);
+        };
+
         //TODO cambiar fechas y categoria
-        function loadNationalPost(limit, offset) {
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "11", function (response) {
+        function loadAntofagastaPost(limit, offset) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "22", function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
-                    $scope.nationalPosts = news.getMultipleNews(data.data);
+                    $scope.antofagastaPosts = news.getMultipleNews(data.data);
 
                 } else {
-                    $scope.nationalPosts = null;
+                    $scope.antofagastaPosts = null;
                     showMessage("No se encontraron resultados");
                 }
             });
         }
 
-    })
-    .controller('mineriaController', function ($scope, $routeParams) {
+        // Antofagasta Posts Highlighted
+        //TODO agregar la categoria 102
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "22", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.antofagastaPostsHighlighted = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.antofagastaPostsHighlighted = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+
+        $scope.loadAntofagastaPostsHighlightedCarousel = function () {
+            $("#antofagasta-posts-highlighted-carousel").owlCarousel({
+                items: 4,
+                pagination: false,
+                navigation: false,
+                autoPlay: true,
+                stopOnHover: true
+
+            });
+        };
+
+        //TODO cambiar fechas, limit y offset
+        //international post
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.internationalPosts = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.internationalPosts = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+
 
     })
 ;
@@ -535,7 +604,7 @@ function parseAudioPlayList(content, resources) {
         var playlistText = match.toString();
         var result = playlistText.split('"');
         var id = result[1];
-        var guid = getGUIDFromResource(id.toString(), resources);
+        var guid = getGUIDFromResource(id, resources);
 
         var audioTag = '<audio src="' + guid + '" preload="auto" controls><audio>';
 
