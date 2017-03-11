@@ -78,7 +78,7 @@ angular
             var noticia = data;
             noticia.formattedDate = getFormattedDate(data.date);
 
-            var contentHtml = toContentHtml(data.content);
+            var contentHtml = toContentHtml(data);
             noticia.content = $sce.trustAsHtml(contentHtml);
 
             var thumbnailImagePost = getThumbnailImagePost(data);
@@ -281,20 +281,41 @@ angular
     })
     .controller('listingController', function ($scope, $routeParams, getPosts, news, navigate) {
 
-        //TODO cambiar fechas y categoria
-        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "10", "0", "23", function (response) {
+        // National Post
+        $scope.quantityNationalPost = 17;
+        $scope.offsetNationalPost = 0;
+        loadNationalPost($scope.quantityNationalPost, $scope.offsetNationalPost);
+
+        $scope.moreNationalPost = function () {
+            $scope.offsetNationalPost = 17;
+            loadNationalPost($scope.quantityNationalPost, $scope.offsetNationalPost);
+        };
+
+        // National Posts Highlighted
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "11", function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
-                $scope.nationalPosts = news.getMultipleNews(data.data);
+                $scope.nationalPostsHighlighted = news.getMultipleNews(data.data);
 
             } else {
-                $scope.nationalPosts = null;
+                $scope.nationalPostsHighlighted = null;
                 showMessage("No se encontraron resultados");
             }
         });
 
+        $scope.loadNationalPostsHighlightedCarousel = function () {
+            $("#national-posts-highlighted-carousel").owlCarousel({
+                items: 4,
+                pagination: false,
+                navigation: false,
+                autoPlay: true,
+                stopOnHover: true
+
+            });
+        };
+
         //TODO cambiar fechas, limit y offset
-        //international news
+        //international post
         getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
@@ -305,6 +326,21 @@ angular
                 showMessage("No se encontraron resultados");
             }
         });
+
+
+        //TODO cambiar fechas y categoria
+        function loadNationalPost(limit, offset) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "11", function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.nationalPosts = news.getMultipleNews(data.data);
+
+                } else {
+                    $scope.nationalPosts = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });
+        }
 
     })
     .controller('mineriaController', function ($scope, $routeParams) {
@@ -376,6 +412,7 @@ function loadSliders() {
         stopOnHover: true,
         slideSpeed: 500
     });
+
 }
 
 function getThumbnailImagePost(post) {
@@ -457,11 +494,14 @@ function getDateFromNow(days) {
     return dd + '/' + mm + '/' + yyyy;
 }
 
-function toContentHtml(content) {
+function toContentHtml(post) {
 
+    var content = post.content;
     content = parseParagraph(content);
 
-    content = parseAudio(content);
+    content = parseAudioMp3(content);
+
+    content = parseAudioPlayList(content, post.resources);
 
     return content;
 
@@ -473,7 +513,7 @@ function parseParagraph(content) {
     return content.replace(newLine, '<p>');
 }
 
-function parseAudio(content) {
+function parseAudioMp3(content) {
     var audioStart = new RegExp('\\[\\audio', 'g');
     content = content.replace(audioStart, '<audio');
 
@@ -482,6 +522,42 @@ function parseAudio(content) {
 
     var audioEnd = new RegExp('\\]\\[\\/audio\\]', 'g');
     return content.replace(audioEnd, ' preload="auto" controls><audio> ');
+
+}
+
+function parseAudioPlayList(content, resources) {
+    // example [playlist ids=\"15061\"]
+
+    var playlistRegEx = new RegExp('\\[playlist ids=\\"[0-9]*\\"\\]', 'g');
+
+    while ((match = playlistRegEx.exec(content)) != null) {
+
+        var playlistText = match.toString();
+        var result = playlistText.split('"');
+        var id = result[1];
+        var guid = getGUIDFromResource(id.toString(), resources);
+
+        var audioTag = '<audio src="' + guid + '" preload="auto" controls><audio>';
+
+        content = content.replace(playlistText, audioTag);
+
+    }
+
+    return content;
+}
+
+function getGUIDFromResource(id, resources) {
+    var response = null;
+    var keepGoing = true;
+    angular.forEach(resources, function (resource) {
+        if (keepGoing) {
+            if (id === resource.id) {
+                keepGoing = false;
+                response = resource.guid;
+            }
+        }
+    });
+    return response;
 }
 
 $("#cerrarRadios").click(function () {

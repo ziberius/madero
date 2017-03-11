@@ -84,7 +84,7 @@
 
                             <div id="other-news-carousel">
 
-                                <div class="post medium-post" ng-repeat="post in otherPosts" ng-init="isLast = $last">
+                                <div class="post medium-post" ng-repeat="post in otherPosts">
                                     <div class="entry-header">
                                         <div class="video-catagory">
                                             <a ng-click="detail(post.id)">{{post.categories[0].name}}</a>
@@ -110,11 +110,7 @@
                                             <a ng-click="detail(post.id)">{{post.title}}</a>
                                         </h2>
                                     </div>
-
-                                    <div ng-if="isLast">
-                                        {{loadOtherNewsCarousel()}}
-                                    </div>
-
+                                    <span>{{$last ? loadOtherNewsCarousel() : ''}}</span>
                                 </div>
 
                             </div>
