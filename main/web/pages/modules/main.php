@@ -53,31 +53,9 @@
                 <div class="col-sm-3">
                     <h1 class="section-title title"><a href="listing.php">Nacional</a></h1>	
                     <div class="left-sidebar">
-                        <div ng-click="" style="cursor: pointer" class="post medium-post" ng-repeat="noticia in nacionalesAntofa">
+  
+                        <div ng-click="" style="cursor: pointer" class="post medium-post" ng-repeat="noticia in nacionales">
                             <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">Antofagasta</a>
-                                </div>                                        
-                                <div class="entry-thumbnail">
-                                    <a ng-click="detail(noticia.id)" ><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
-                                </div>
-                            </div>  
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a><i class="fa fa-clock-o"></i> {{noticia.formattedDate}}</a></li>
-                                    </ul>
-                                </div>
-                                <h2 class="entry-title">
-                                    <a ng-click="detail(noticia.id)" >{{noticia.title}}</a>
-                                </h2>
-                            </div>                                        
-                        </div>    
-                        <div ng-click="" style="cursor: pointer" class="post medium-post" ng-repeat="noticia in nacionalesAtacama">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">Atacama</a>
-                                </div>                                        
                                 <div class="entry-thumbnail">
                                     <a href="news-details.php"><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
                                 </div>
@@ -95,28 +73,7 @@
                                 </h2>
                             </div>                                        
                         </div> 
-                        <div ng-click="" style="cursor: pointer" class="post medium-post" ng-repeat="noticia in nacionalesSerena">
-                            <div class="entry-header">
-                                <div class="video-catagory">
-                                    <a href="#">La Serena - Coquimbo</a>
-                                </div>                                        
-                                <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
-                                </div>
-                            </div>  
-                            <div class="post-content">								
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> {{noticia.formattedDate}}</a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                    </ul>
-                                </div>
-                                <h2 class="entry-title">
-                                    <a href="news-details.php">{{noticia.title}}</a>
-                                </h2>
-                            </div>                                        
-                        </div> 
+
                         <div class="load-more text-center">
                             <a class="btn btn-primary btn-block" ng-click="masNacionales()">Cargar Más Noticias...</a>
                         </div>
@@ -205,63 +162,23 @@
                             <div class="section health-section">
                                 <h1 class="section-title"><a href="listing.php">Antofagasta</a></h1>
                                 <div class="health-feature">
-                                    <div class="post">
+                                    <div ng-click="" style="cursor: pointer" class="post" ng-repeat="noticia in nacionalesAntofa">
                                         <div class="entry-header">
                                             <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/1.jpg" alt="" /></a>
+                                                <a ng-click="detail(noticia.id)" ><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
                                             </div>
-                                        </div>
+                                        </div>  
                                         <div class="post-content">								
                                             <div class="entry-meta">
                                                 <ul class="list-inline">
-                                                    <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 25 de Enero, 2016 </a></li>
-                                                    <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                    <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
+                                                    <li class="publish-date"><a><i class="fa fa-clock-o"></i> {{noticia.formattedDate}}</a></li>
                                                 </ul>
                                             </div>
                                             <h2 class="entry-title">
-                                                <a href="news-details.php">Gobierno impulsa importantes Proyectos de Borde Costero en la Región de Antofagasta</a>
+                                                <a ng-click="detail(noticia.id)" >{{noticia.title}}</a>
                                             </h2>
-                                        </div>
-                                    </div><!--/post--> 
-                                    <div class="post">
-                                        <div class="entry-header">
-                                            <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/2.jpg" alt="" /></a>
-                                            </div>
-                                        </div>
-                                        <div class="post-content">								
-                                            <div class="entry-meta">
-                                                <ul class="list-inline">
-                                                    <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 25 de Enero, 2016 </a></li>
-                                                    <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                    <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                                </ul>
-                                            </div>
-                                            <h2 class="entry-title">
-                                                <a href="news-details.php">Injuv lanza “Mueve Tu Verano con Desarrollo Social” con más de 200 actividades gratuitas en todo el país</a>
-                                            </h2>
-                                        </div>
-                                    </div><!--/post--> 
-                                    <div class="post">
-                                        <div class="entry-header">
-                                            <div class="entry-thumbnail">
-                                                <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/3.png" alt="" /></a>
-                                            </div>
-                                        </div>
-                                        <div class="post-content">								
-                                            <div class="entry-meta">
-                                                <ul class="list-inline">
-                                                    <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 25 de Enero, 2016 </a></li>
-                                                    <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                    <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                                </ul>
-                                            </div>
-                                            <h2 class="entry-title">
-                                                <a href="news-details.php">Presentan proyecto que modifica normas del Factoring en beneficio de las pymes</a>
-                                            </h2>
-                                        </div>
-                                    </div><!--/post-->
+                                        </div>                                        
+                                    </div>                                      
                                 </div>
                             </div><!--/.health-section -->
                             <div class="load-more text-center">
@@ -274,23 +191,20 @@
                                         <div class="post">
                                             <div class="entry-header">
                                                 <div class="entry-thumbnail">
-                                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/4.bmp" alt="" /></a>
+                                                    <a ng-click="detail(nacionalesAtacama[0].id)"><img class="img-responsive" src="{{nacionalesAtacama[0].thumbnailImageUrl}}" alt="" /></a>
                                                 </div>
                                             </div>
                                             <div class="post-content">								
                                                 <div class="entry-meta">
                                                     <ul class="list-inline">
-                                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 25 de Enero, 2016 </a></li>
-                                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                                        <li class="comments"><i class="fa fa-comment-o"></i><a href="#">267</a></li>
+                                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> {{nacionalesAtacama[0].formattedDate}}</a></li>
                                                     </ul>
                                                 </div>
                                                 <h2 class="entry-title">
-                                                    <a href="news-details.php">SERNATUR Atacama llama a servicios turísticos registrados a actualizar sus patentes</a>
+                                                    <a ng-click="detail(nacionalesAtacama[0].id)" >{{nacionalesAtacama[0].title}}</a>
                                                 </h2>
                                                 <div class="entry-content">
-                                                    <p>SERNATUR Atacama llama a servicios turísticos registrados a actualizar sus patentes....</p>
+                                                    <!-- <p data-ng-bind-html="nacionalesAtacama[0].content.substring(0,50)"></p> -->
                                                 </div>
                                             </div>
                                         </div><!--/post--> 
