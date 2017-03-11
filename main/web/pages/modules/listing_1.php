@@ -16,7 +16,8 @@
                                             <div class="post feature-post"
                                                  style="background-image:url({{antofagastaPosts[0].thumbnailImageUrl}}); background-size:100% ;height:595px;">
                                                 <div class="post-content">
-                                                    <div class="catagoryLeft"><a ng-click="detail(antofagastaPosts[0].id)">{{antofagastaPosts[0].categories[0].name}}</a>
+                                                    <div class="catagoryLeft"><a
+                                                                ng-click="detail(antofagastaPosts[0].id)">{{antofagastaPosts[0].categories[0].name}}</a>
                                                     </div>
                                                     <h2 class="entry-title entryLeft">
                                                         <a ng-click="detail(antofagastaPosts[0].id)">{{antofagastaPosts[0].title}}</a>
@@ -103,208 +104,42 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-sm-6 col-md-4">
-
-                                            <div ng-show="antofagastaPosts[3]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(antofagastaPosts[3].id)"><img
-                                                                        class="img-responsive img-antofagasta-news-middle center-block"
-                                                                        src="{{antofagastaPosts[3].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
+                                        <div ng-repeat="n in [3,4,5,6,7,8]">
+                                            <div ng-show="antofagastaPosts[n]">
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="post medium-post">
+                                                        <div class="entry-header">
+                                                            <div class="entry-thumbnail">
+                                                                <a ng-click="detail(antofagastaPosts[n].id)"><img
+                                                                            class="img-responsive img-antofagasta-news-middle center-block"
+                                                                            src="{{antofagastaPosts[n].thumbnailImageUrl}}"
+                                                                            alt=""/></a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-content">
+                                                            <div class="entry-meta">
+                                                                <ul class="list-inline">
+                                                                    <li class="publish-date"><a
+                                                                                ng-click="detail(antofagastaPosts[n].id)"><i
+                                                                                    class="fa fa-clock-o"></i>{{antofagastaPosts[n].formattedDate}}</a>
+                                                                    </li>
+                                                                    <!--<li class="views"><a href="#"><i
+                                                                                    class="fa fa-eye"></i>21k</a>
+                                                                    </li>
+                                                                    <li class="loves"><a href="#"><i
+                                                                                    class="fa fa-heart-o"></i>372</a></li>-->
+                                                                </ul>
+                                                            </div>
+                                                            <h2 class="entry-title">
+                                                                <a ng-click="detail(antofagastaPosts[n].id)">{{antofagastaPosts[n].shortTitle}}</a>
+                                                            </h2>
                                                         </div>
                                                     </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(antofagastaPosts[3].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{antofagastaPosts[3].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(antofagastaPosts[3].id)">{{antofagastaPosts[3].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 col-md-4">
-
-                                            <div ng-show="antofagastaPosts[4]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(antofagastaPosts[4].id)"><img
-                                                                        class="img-responsive img-antofagasta-news-middle center-block"
-                                                                        src="{{antofagastaPosts[4].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(antofagastaPosts[4].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{antofagastaPosts[4].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(antofagastaPosts[4].id)">{{antofagastaPosts[4].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-
-                                            <div ng-show="antofagastaPosts[5]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(antofagastaPosts[5].id)"><img
-                                                                        class="img-responsive img-antofagasta-news-middle center-block"
-                                                                        src="{{antofagastaPosts[5].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(antofagastaPosts[5].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{antofagastaPosts[5].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(antofagastaPosts[5].id)">{{antofagastaPosts[5].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-
-                                            <div ng-show="antofagastaPosts[6]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(antofagastaPosts[6].id)"><img
-                                                                        class="img-responsive img-antofagasta-news-middle center-block"
-                                                                        src="{{antofagastaPosts[6].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(antofagastaPosts[6].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{antofagastaPosts[6].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(antofagastaPosts[6].id)">{{antofagastaPosts[6].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-                                            <div ng-show="antofagastaPosts[7]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(antofagastaPosts[7].id)"><img
-                                                                        class="img-responsive img-antofagasta-news-middle center-block"
-                                                                        src="{{antofagastaPosts[7].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(antofagastaPosts[7].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{antofagastaPosts[7].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(antofagastaPosts[7].id)">{{antofagastaPosts[7].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-                                            <div ng-show="antofagastaPosts[8]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(antofagastaPosts[8].id)"><img
-                                                                        class="img-responsive img-antofagasta-news-middle center-block"
-                                                                        src="{{antofagastaPosts[8].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(antofagastaPosts[8].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{antofagastaPosts[8].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(antofagastaPosts[8].id)">{{antofagastaPosts[8].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
-                                            </div>
-                                        </div>
-
-
                                     </div>
+
                                 </div><!--/.lifestyle -->
                             </div><!--/.middle-content-->
 
@@ -434,8 +269,8 @@
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
                                     <a ng-click="detail(antofagastaPosts[9].id)"><img class="img-responsive"
-                                                                                   src="{{antofagastaPosts[9].thumbnailImageUrl}}"
-                                                                                   alt=""/></a>
+                                                                                      src="{{antofagastaPosts[9].thumbnailImageUrl}}"
+                                                                                      alt=""/></a>
                                 </div>
                             </div>
                         </div>
@@ -454,8 +289,8 @@
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
                                     <a ng-click="detail(antofagastaPosts[10].id)"><img class="img-responsive"
-                                                                                    src="{{antofagastaPosts[10].thumbnailImageUrl}}"
-                                                                                    alt=""/></a>
+                                                                                       src="{{antofagastaPosts[10].thumbnailImageUrl}}"
+                                                                                       alt=""/></a>
                                 </div>
                             </div>
                         </div>
@@ -494,8 +329,8 @@
                                 <div class="entry-header">
                                     <div class="entry-thumbnail">
                                         <a ng-click="detail(antofagastaPosts[n].id)"><img class="img-responsive"
-                                                                                       src="{{antofagastaPosts[n].thumbnailImageUrl}}"
-                                                                                       alt=""/></a>
+                                                                                          src="{{antofagastaPosts[n].thumbnailImageUrl}}"
+                                                                                          alt=""/></a>
                                     </div>
                                 </div>
                             </div>

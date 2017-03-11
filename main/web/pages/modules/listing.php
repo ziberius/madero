@@ -102,209 +102,44 @@
                                         </div>
                                     </div>
 
+
                                     <div class="row">
-                                        <div class="col-sm-6 col-md-4">
-
-                                            <div ng-show="nationalPosts[3]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(nationalPosts[3].id)"><img
-                                                                        class="img-responsive img-national-news-middle center-block"
-                                                                        src="{{nationalPosts[3].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
+                                        <div ng-repeat="n in [3,4,5,6,7,8]">
+                                            <div ng-show="nationalPosts[n]">
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="post medium-post">
+                                                        <div class="entry-header">
+                                                            <div class="entry-thumbnail">
+                                                                <a ng-click="detail(nationalPosts[n].id)"><img
+                                                                            class="img-responsive img-national-news-middle center-block"
+                                                                            src="{{nationalPosts[n].thumbnailImageUrl}}"
+                                                                            alt=""/></a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-content">
+                                                            <div class="entry-meta">
+                                                                <ul class="list-inline">
+                                                                    <li class="publish-date"><a
+                                                                                ng-click="detail(nationalPosts[n].id)"><i
+                                                                                    class="fa fa-clock-o"></i>{{nationalPosts[n].formattedDate}}</a>
+                                                                    </li>
+                                                                    <!--<li class="views"><a href="#"><i
+                                                                                    class="fa fa-eye"></i>21k</a>
+                                                                    </li>
+                                                                    <li class="loves"><a href="#"><i
+                                                                                    class="fa fa-heart-o"></i>372</a></li>-->
+                                                                </ul>
+                                                            </div>
+                                                            <h2 class="entry-title">
+                                                                <a ng-click="detail(nationalPosts[n].id)">{{nationalPosts[n].shortTitle}}</a>
+                                                            </h2>
                                                         </div>
                                                     </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(nationalPosts[3].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{nationalPosts[3].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(nationalPosts[3].id)">{{nationalPosts[3].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 col-md-4">
-
-                                            <div ng-show="nationalPosts[4]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(nationalPosts[4].id)"><img
-                                                                        class="img-responsive img-national-news-middle center-block"
-                                                                        src="{{nationalPosts[4].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(nationalPosts[4].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{nationalPosts[4].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(nationalPosts[4].id)">{{nationalPosts[4].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-
-                                            <div ng-show="nationalPosts[5]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(nationalPosts[5].id)"><img
-                                                                        class="img-responsive img-national-news-middle center-block"
-                                                                        src="{{nationalPosts[5].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(nationalPosts[5].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{nationalPosts[5].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(nationalPosts[5].id)">{{nationalPosts[5].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-
-                                            <div ng-show="nationalPosts[6]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(nationalPosts[6].id)"><img
-                                                                        class="img-responsive img-national-news-middle center-block"
-                                                                        src="{{nationalPosts[6].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(nationalPosts[6].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{nationalPosts[6].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(nationalPosts[6].id)">{{nationalPosts[6].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-                                            <div ng-show="nationalPosts[7]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(nationalPosts[7].id)"><img
-                                                                        class="img-responsive img-national-news-middle center-block"
-                                                                        src="{{nationalPosts[7].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(nationalPosts[7].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{nationalPosts[7].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(nationalPosts[7].id)">{{nationalPosts[7].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-                                            <div ng-show="nationalPosts[8]">
-                                                <div class="post medium-post">
-                                                    <div class="entry-header">
-                                                        <div class="entry-thumbnail">
-                                                            <a ng-click="detail(nationalPosts[8].id)"><img
-                                                                        class="img-responsive img-national-news-middle center-block"
-                                                                        src="{{nationalPosts[8].thumbnailImageUrl}}"
-                                                                        alt=""/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-content">
-                                                        <div class="entry-meta">
-                                                            <ul class="list-inline">
-                                                                <li class="publish-date"><a
-                                                                            ng-click="detail(nationalPosts[8].id)"><i
-                                                                                class="fa fa-clock-o"></i>{{nationalPosts[8].formattedDate}}</a>
-                                                                </li>
-                                                                <!--<li class="views"><a href="#"><i
-                                                                                class="fa fa-eye"></i>21k</a>
-                                                                </li>
-                                                                <li class="loves"><a href="#"><i
-                                                                                class="fa fa-heart-o"></i>372</a></li>-->
-                                                            </ul>
-                                                        </div>
-                                                        <h2 class="entry-title">
-                                                            <a ng-click="detail(nationalPosts[8].id)">{{nationalPosts[8].shortTitle}}</a>
-                                                        </h2>
-                                                    </div>
-                                                </div><!--/post-->
-                                            </div>
-                                        </div>
-
-
                                     </div>
+
                                 </div><!--/.lifestyle -->
                             </div><!--/.middle-content-->
 
