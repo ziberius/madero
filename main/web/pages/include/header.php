@@ -45,9 +45,9 @@
                     <li><a href="#madero">Portada</a></li>
                     <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Noticias Regiones <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="listing.php">Antofagasta</a></li>
-                            <li><a href="listing.php">Atacama</a></li>
-                            <li><a href="listing_2.php">La Serena - Coquimbo</a></li>
+                            <li><a href="#listing_1">Antofagasta</a></li>
+                            <li><a href="#listing_2">Atacama</a></li>
+                            <li><a href="#listing_3">La Serena - Coquimbo</a></li>
                         </ul>
                     </li>
                     <li><a href="#listing">Nacional</a></li>
