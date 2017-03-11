@@ -155,9 +155,9 @@ angular
                     }
                 }
             );            
-        }
+        };
 
-        $scope.loadRegionales = function () {
+        $scope.loadAntofagasta = function () {
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", $scope.offsetNacAntofagasta, "22",
                 function (res) {
                     if (res.data !== null && res.data.status === 'OK') {
@@ -169,7 +169,10 @@ angular
                     }
                 }
             );
-
+        }
+        
+        
+        $scope.loadAtacama = function(){
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", $scope.offsetNacAtacama, "23",
                 function (res) {
                     if (res.data !== null && res.data.status === 'OK') {
@@ -181,6 +184,9 @@ angular
                     }
                 }
             );
+        }
+        
+        $scope.loadSerena = function(){
 
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", $scope.offsetNacSerena, "24",
                 function (res) {
@@ -196,14 +202,29 @@ angular
             );
         };
 
-        $scope.masNacionales = function () {
-            $scope.offsetNacAntofagasta = $scope.offsetNacAntofagasta + 3;
+        $scope.masAtacama = function () {
             $scope.offsetNacAtacama = $scope.offsetNacAtacama + 3;
+            $scope.loadAtacama();
+        };
+        
+        $scope.masAntofagasta = function(){
+            $scope.offsetNacAntofagasta = $scope.offsetNacAntofagasta + 3;
+            $scope.loadAntofagasta();
+        };
+        
+        $scope.masSerena = function(){
             $scope.offsetNacSerena = $scope.offsetNacSerena + 3;
-            $scope.loadRegionales();
+            $scope.loadSerena();
+        };
+        
+        $scope.masNacionales = function(){
+            $scope.offsetNacionales = $scope.offsetNacionales + 9;
+            $scope.loadNacionales();
         };
 
-        $scope.loadRegionales();
+        $scope.loadAtacama();
+        $scope.loadAntofagasta();
+        $scope.loadSerena();
         $scope.loadNacionales();
         //international news
         getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "5", "0", "99", function (response) {

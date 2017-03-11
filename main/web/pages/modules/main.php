@@ -182,7 +182,7 @@
                                 </div>
                             </div><!--/.health-section -->
                             <div class="load-more text-center">
-                                <a class="btn btn-primary btn-block" href="#">Cargar Más Noticias...</a>
+                                <a class="btn btn-primary btn-block" ng-click="masAntofagasta()">Cargar Más Noticias...</a>
                             </div>
                             <div class="section technology-news">
                                 <h1 class="section-title"><a href="listing.php">Atacama</a></h1>
@@ -248,7 +248,7 @@
                                 </div>
                             </div><!--/technology-news--> 
                             <div class="load-more text-center">
-                                <a class="btn btn-primary btn-block" href="#">Cargar Más Noticias...</a>
+                                <a class="btn btn-primary btn-block" ng-click="masAtacama()">Cargar Más Noticias...</a>
                             </div>
                             <div class="section lifestyle-section">
                                 <h1 class="section-title"><a href="listing.php">La Serena - Coquimbo</a></h1>
@@ -336,7 +336,7 @@
                                 </div>
                             </div><!--/.lifestyle -->
                             <div class="load-more text-center">
-                                <a class="btn btn-primary btn-block" href="#">Cargar Más Noticias...</a>
+                                <a class="btn btn-primary btn-block" ng-click="masSerena()">Cargar Más Noticias...</a>
                             </div>
 
                             <div class="section photo-gallery" style="">
