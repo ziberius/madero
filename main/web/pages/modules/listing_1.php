@@ -174,79 +174,26 @@
             </div>
         </div><!--/.section-->
 
-        <div class="section" id="antofagasta-posts-highlighted-carousel">
+        <div ng-show="antofagastaPostsHighlighted.length > 0" class="section"
+                                        id="antofagasta-posts-highlighted-carousel">
 
-            <!--<div ng-show="antofagastaPostsHighlighted.length">
-                <div ng-repeat="antofagastaPostHigh in antofagastaPostsHighlighted">
-                    <div class="post feature-post"
-                         style="background-image:url({{antofagastaPostHigh.thumbnailImageUrl}}); background-size:cover">
-                        <div class="post-content">
-                            <div class="catagory"><a ng-click="detail(antofagastaPostHigh.id)">{{antofagastaPostHigh.categories[0].name}}</a>
-                            </div>
-                            <h2 class="entry-title">
-                                <a ng-click="detail(antofagastaPostHigh.id)">{{antofagastaPostHigh.title}}</a>
-                            </h2>
+            <div ng-repeat="antofagastaPostHigh in antofagastaPostsHighlighted">
+
+                <div class="post feature-post"
+                     style="background-image:url({{antofagastaPostHigh.thumbnailImageUrl}}); background-size:cover">
+                    <div class="post-content">
+                        <div class="catagory"><a ng-click="detail(antofagastaPostHigh.id)">{{antofagastaPostHigh.categories[0].name}}</a>
                         </div>
+                        <h2 class="entry-title">
+                            <a ng-click="detail(antofagastaPostHigh.id)">{{antofagastaPostHigh.title}}</a>
+                        </h2>
                     </div>
-                    <span>{{$last ? loadAntofagastaPostsHighlightedCarousel() : ''}}</span>
-
                 </div>
-            </div>-->
-
-            <div class="post feature-post"
-                 style="background-image:url(/main/web/images/post/futbolista.jpg); background-size:cover;">
-
-                <div class="post-content">
-                    <div class="catagory"><a href="#">Deportes</a></div>
-                    <h2 class="entry-title">
-                        <a href="news-details.php">La fascinación de los artistas por la Patagonia</a>
-                    </h2>
-                </div>
-            </div>
-            <div class="post feature-post"
-                 style="background-image:url(/main/web/images/post/futbolista.jpg); background-size:cover;">
-
-                <div class="post-content">
-                    <div class="catagory"><a href="#">Deportes</a></div>
-                    <h2 class="entry-title">
-                        <a href="news-details.php">La fascinación de los artistas por la Patagonia</a>
-                    </h2>
-                </div>
-            </div>
-            <div class="post feature-post"
-                 style="background-image:url(/main/web/images/post/futbolista.jpg); background-size:cover;">
-
-                <div class="post-content">
-                    <div class="catagory"><a href="#">Deportes</a></div>
-                    <h2 class="entry-title">
-                        <a href="news-details.php">La fascinación de los artistas por la Patagonia</a>
-                    </h2>
-                </div>
-            </div>
-            <div class="post feature-post"
-                 style="background-image:url(/main/web/images/post/futbolista.jpg); background-size:cover;">
-
-                <div class="post-content">
-                    <div class="catagory"><a href="#">Deportes</a></div>
-                    <h2 class="entry-title">
-                        <a href="news-details.php">La fascinación de los artistas por la Patagonia</a>
-                    </h2>
-                </div>
-            </div>
-            <div class="post feature-post"
-                 style="background-image:url(/main/web/images/post/futbolista.jpg); background-size:cover;">
-
-                <div class="post-content">
-                    <div class="catagory"><a href="#">Deportes</a></div>
-                    <h2 class="entry-title">
-                        <a href="news-details.php">La fascinación de los artistas por la Patagonia</a>
-                    </h2>
-                </div>
+                <span>{{$last ? loadAntofagastaPostsHighlightedCarousel() : ''}}</span>
             </div>
 
-            {{loadAntofagastaPostsHighlightedCarousel()}}
+        </div>
 
-        </div><!-- #main-slider -->
 
         <!--More local news-->
         <div class="section">
