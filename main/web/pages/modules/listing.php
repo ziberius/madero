@@ -174,24 +174,24 @@
             </div>
         </div><!--/.section-->
 
-        
+
         <div ng-show="nationalPostsHighlighted.length > 0" class="section" id="national-posts-highlighted-carousel">
-            
-                <div ng-repeat="nationalPostHigh in nationalPostsHighlighted">
-                    
-                    <div class="post feature-post"
-                         style="background-image:url({{nationalPostHigh.thumbnailImageUrl}}); background-size:cover">
-                        <div class="post-content">
-                            <div class="catagory"><a ng-click="detail(nationalPostHigh.id)">{{nationalPostHigh.categories[0].name}}</a>
-                            </div>
-                            <h2 class="entry-title">
-                                <a ng-click="detail(nationalPostHigh.id)">{{nationalPostHigh.title}}</a>
-                            </h2>
+
+            <div ng-repeat="nationalPostHigh in nationalPostsHighlighted">
+
+                <div class="post feature-post"
+                     style="background-image:url({{nationalPostHigh.thumbnailImageUrl}}); background-size:cover">
+                    <div class="post-content">
+                        <div class="catagory"><a ng-click="detail(nationalPostHigh.id)">{{nationalPostHigh.categories[0].name}}</a>
                         </div>
+                        <h2 class="entry-title">
+                            <a ng-click="detail(nationalPostHigh.id)">{{nationalPostHigh.title}}</a>
+                        </h2>
                     </div>
-                    <span>{{$last ? loadNationalPostsHighlightedCarousel() : ''}}</span>
                 </div>
- 
+                <span>{{$last ? loadNationalPostsHighlightedCarousel() : ''}}</span>
+            </div>
+
         </div><!-- #main-slider -->
 
         <!--More local news-->
