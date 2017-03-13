@@ -1081,6 +1081,33 @@ img.mfp-img {
     border-radius: 0;
 }
 
+#sport-posts-highlighted-carousel {
+    height: 450px;
+    overflow: hidden;
+}
+
+#sport-posts-highlighted-carousel .owl-item,
+#sport-posts-highlighted-carousel .feature-post {
+    height: 450px;
+    border-radius: 0;
+    margin-top: 0;
+}
+
+#sport-posts-highlighted-carousel .feature-post .catagory {
+    position: initial;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#sport-posts-highlighted-carousel .feature-post .entry-title {
+    font-size: 20px;
+    line-height: 25px;
+}
+
+#sport-posts-highlighted-carousel .feature-post .post-content {
+    border-radius: 0;
+}
+
 .add.featured-add {
     margin-top: 30px;
 }
@@ -2511,6 +2538,14 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
 }
 
 .medium-post .entry-header .entry-thumbnail .img-coquimbo-news-middle {
+    max-height: 200px;
+    height: auto;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.medium-post .entry-header .entry-thumbnail .img-sport-news-middle {
     max-height: 200px;
     height: auto;
     width: auto;

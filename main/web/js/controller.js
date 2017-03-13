@@ -35,6 +35,10 @@ angular
                 templateUrl: '/main/web/pages/modules/listing_3.php',
                 controller: 'listing3Controller'
             })
+            .when('/listing_4', {
+                templateUrl: '/main/web/pages/modules/listing_4.php',
+                controller: 'listing4Controller'
+            })
         ;
     })
     .service('navigate', function ($location, $rootScope) {
@@ -548,6 +552,71 @@ angular
 
         $scope.loadCoquimboPostsHighlightedCarousel = function () {
             $("#coquimbo-posts-highlighted-carousel").owlCarousel({
+                items: 4,
+                pagination: false,
+                navigation: false,
+                autoPlay: true,
+                stopOnHover: true
+
+            });
+        };
+
+        //TODO cambiar fechas, limit y offset
+        //International post
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.internationalPosts = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.internationalPosts = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+
+
+    })
+    .controller('listing4Controller', function ($scope, $routeParams, getPosts, news, navigate) {
+
+        // Sports Post
+        $scope.quantitySportPost = 17;
+        $scope.offsetSportPost = 0;
+        loadSportPost($scope.quantitySportPost, $scope.offsetSportPost);
+
+        $scope.moreSportPost = function () {
+            $scope.offsetSportPost += 17;
+            loadSportPost($scope.quantitySportPost, $scope.offsetSportPost);
+        };
+
+        //TODO cambiar fechas y categoria
+        function loadSportPost(limit, offset) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "24", function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.sportPosts = news.getMultipleNews(data.data);
+
+                } else {
+                    $scope.sportPosts = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });
+        }
+
+        // Sport Posts Highlighted
+        //TODO agregar la categoria 102
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "24", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.sportPostsHighlighted = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.sportPostsHighlighted = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+
+        $scope.loadSportPostsHighlightedCarousel = function () {
+            $("#sport-posts-highlighted-carousel").owlCarousel({
                 items: 4,
                 pagination: false,
                 navigation: false,
