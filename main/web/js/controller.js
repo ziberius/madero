@@ -1,5 +1,28 @@
 angular
     .module('maderoApp', ['ngRoute', 'ngAnimate', 'ngTouch'])
+    .constant('Constants', {
+        Category: {
+            Uncategorised: '1',
+            NACIONAL: '11',
+            PODCAST: '12',
+            AGENDA: '13',
+            PROGRAMAS: '14',
+            TURISMO: '15',
+            VIDEOS: '16',
+            PUBLICIDAD: '17',
+            FAVORITOS: '18',
+            BLOG: '19',
+            CULTURA: '20',
+            ENTREVISTAS: '21',
+            ANTOFAGASTA: '22',
+            ATACAMA: '23',
+            LA_SERENA_COQUIMBO: '24',
+            EXTERNO: '99',
+            OPINION: '100',
+            PORTADA: '101',
+            DESTACADO: '102'
+        }
+    })
     .config(function ($routeProvider) {
         $routeProvider
         // route for the home page
@@ -314,7 +337,7 @@ angular
         });
 
     })
-    .controller('listingController', function ($scope, $routeParams, getPosts, news, navigate) {
+    .controller('listingController', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
 
         // National Post
         $scope.quantityNationalPost = 17;
@@ -328,7 +351,7 @@ angular
 
         //TODO cambiar fechas y categoria, agregar la categoria 102
         function loadNationalPost(limit, offset) {
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "11", function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, Constants.Category.NACIONAL, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.nationalPosts = news.getMultipleNews(data.data);
@@ -341,7 +364,7 @@ angular
         }
 
         // National Posts Highlighted
-        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "11", function (response) {
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", Constants.Category.NACIONAL, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.nationalPostsHighlighted = news.getMultipleNews(data.data);
@@ -365,7 +388,7 @@ angular
 
         //TODO cambiar fechas, limit y offset
         //international post
-        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.EXTERNO, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.internationalPosts = news.getMultipleNews(data.data);
@@ -381,7 +404,7 @@ angular
     .controller('mineriaController', function ($scope, $routeParams) {
 
     })
-    .controller('listing1Controller', function ($scope, $routeParams, getPosts, news, navigate) {
+    .controller('listing1Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
 
         // Antofagasta Post
         $scope.quantityAntofagastaPost = 17;
@@ -395,7 +418,7 @@ angular
 
         //TODO cambiar fechas y categoria
         function loadAntofagastaPost(limit, offset) {
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "22", function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, Constants.Category.ANTOFAGASTA, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.antofagastaPosts = news.getMultipleNews(data.data);
@@ -409,7 +432,7 @@ angular
 
         // Antofagasta Posts Highlighted
         //TODO agregar la categoria 102
-        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "22", function (response) {
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", Constants.Category.ANTOFAGASTA, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.antofagastaPostsHighlighted = news.getMultipleNews(data.data);
@@ -433,7 +456,7 @@ angular
 
         //TODO cambiar fechas, limit y offset
         //international post
-        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.EXTERNO, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.internationalPosts = news.getMultipleNews(data.data);
@@ -446,7 +469,7 @@ angular
 
 
     })
-    .controller('listing2Controller', function ($scope, $routeParams, getPosts, news, navigate) {
+    .controller('listing2Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
 
         // Atacama Post
         $scope.quantityAtacamaPost = 17;
@@ -460,7 +483,7 @@ angular
 
         //TODO cambiar fechas y categoria
         function loadAtacamaPost(limit, offset) {
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "23", function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, Constants.Category.ATACAMA, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.atacamaPosts = news.getMultipleNews(data.data);
@@ -474,7 +497,7 @@ angular
 
         // Atacama Posts Highlighted
         //TODO agregar la categoria 102
-        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "23", function (response) {
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", Constants.Category.ATACAMA, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.atacamaPostsHighlighted = news.getMultipleNews(data.data);
@@ -498,7 +521,7 @@ angular
 
         //TODO cambiar fechas, limit y offset
         //International post
-        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.EXTERNO, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.internationalPosts = news.getMultipleNews(data.data);
@@ -511,7 +534,7 @@ angular
 
 
     })
-    .controller('listing3Controller', function ($scope, $routeParams, getPosts, news, navigate) {
+    .controller('listing3Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
 
         // Coquimbo - La serena Post
         $scope.quantityCoquimboPost = 17;
@@ -525,7 +548,7 @@ angular
 
         //TODO cambiar fechas y categoria
         function loadCoquimboPost(limit, offset) {
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "24", function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, Constants.Category.LA_SERENA_COQUIMBO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.coquimboPosts = news.getMultipleNews(data.data);
@@ -539,7 +562,7 @@ angular
 
         // Coquimbo - La Serena Posts Highlighted
         //TODO agregar la categoria 102
-        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "24", function (response) {
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", Constants.Category.LA_SERENA_COQUIMBO, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.coquimboPostsHighlighted = news.getMultipleNews(data.data);
@@ -563,7 +586,7 @@ angular
 
         //TODO cambiar fechas, limit y offset
         //International post
-        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.EXTERNO, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.internationalPosts = news.getMultipleNews(data.data);
@@ -576,7 +599,7 @@ angular
 
 
     })
-    .controller('listing4Controller', function ($scope, $routeParams, getPosts, news, navigate) {
+    .controller('listing4Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
 
         // Sports Post
         $scope.quantitySportPost = 17;
@@ -590,7 +613,7 @@ angular
 
         //TODO cambiar fechas y categoria
         function loadSportPost(limit, offset) {
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "24", function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, Constants.Category.LA_SERENA_COQUIMBO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.sportPosts = news.getMultipleNews(data.data);
@@ -604,7 +627,7 @@ angular
 
         // Sport Posts Highlighted
         //TODO agregar la categoria 102
-        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "24", function (response) {
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", Constants.Category.LA_SERENA_COQUIMBO, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.sportPostsHighlighted = news.getMultipleNews(data.data);
@@ -628,7 +651,7 @@ angular
 
         //TODO cambiar fechas, limit y offset
         //International post
-        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.EXTERNO, function (response) {
             var data = response.data;
             if (data !== null && data.status === 'OK') {
                 $scope.internationalPosts = news.getMultipleNews(data.data);
