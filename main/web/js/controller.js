@@ -27,6 +27,14 @@ angular
                 templateUrl: '/main/web/pages/modules/listing_1.php',
                 controller: 'listing1Controller'
             })
+            .when('/listing_2', {
+                templateUrl: '/main/web/pages/modules/listing_2.php',
+                controller: 'listing2Controller'
+            })
+            .when('/listing_3', {
+                templateUrl: '/main/web/pages/modules/listing_3.php',
+                controller: 'listing3Controller'
+            })
         ;
     })
     .service('navigate', function ($location, $rootScope) {
@@ -147,7 +155,7 @@ angular
             }
         );
 
-        $scope.loadNacionales = function(){
+        $scope.loadNacionales = function () {
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "9", $scope.offsetNacionales, "11",
                 function (res) {
                     if (res.data !== null && res.data.status === 'OK') {
@@ -158,7 +166,7 @@ angular
                         showMessage("No se encontraron resultados");
                     }
                 }
-            );            
+            );
         };
 
         $scope.loadAntofagasta = function () {
@@ -173,10 +181,10 @@ angular
                     }
                 }
             );
-        }
-        
-        
-        $scope.loadAtacama = function(){
+        };
+
+
+        $scope.loadAtacama = function () {
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", $scope.offsetNacAtacama, "23",
                 function (res) {
                     if (res.data !== null && res.data.status === 'OK') {
@@ -188,9 +196,9 @@ angular
                     }
                 }
             );
-        }
-        
-        $scope.loadSerena = function(){
+        };
+
+        $scope.loadSerena = function () {
 
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", $scope.offsetNacSerena, "24",
                 function (res) {
@@ -210,18 +218,18 @@ angular
             $scope.offsetNacAtacama = $scope.offsetNacAtacama + 3;
             $scope.loadAtacama();
         };
-        
-        $scope.masAntofagasta = function(){
+
+        $scope.masAntofagasta = function () {
             $scope.offsetNacAntofagasta = $scope.offsetNacAntofagasta + 3;
             $scope.loadAntofagasta();
         };
-        
-        $scope.masSerena = function(){
+
+        $scope.masSerena = function () {
             $scope.offsetNacSerena = $scope.offsetNacSerena + 3;
             $scope.loadSerena();
         };
-        
-        $scope.masNacionales = function(){
+
+        $scope.masNacionales = function () {
             $scope.offsetNacionales = $scope.offsetNacionales + 9;
             $scope.loadNacionales();
         };
@@ -434,6 +442,137 @@ angular
 
 
     })
+    .controller('listing2Controller', function ($scope, $routeParams, getPosts, news, navigate) {
+
+        // Atacama Post
+        $scope.quantityAtacamaPost = 17;
+        $scope.offsetAtacamaPost = 0;
+        loadAtacamaPost($scope.quantityAtacamaPost, $scope.offsetAtacamaPost);
+
+        $scope.moreAtacamaPost = function () {
+            $scope.offsetAtacamaPost += 17;
+            loadAtacamaPost($scope.quantityAtacamaPost, $scope.offsetAtacamaPost);
+        };
+
+        //TODO cambiar fechas y categoria
+        function loadAtacamaPost(limit, offset) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "23", function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.atacamaPosts = news.getMultipleNews(data.data);
+
+                } else {
+                    $scope.atacamaPosts = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });
+        }
+
+        // Atacama Posts Highlighted
+        //TODO agregar la categoria 102
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "23", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.atacamaPostsHighlighted = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.atacamaPostsHighlighted = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+
+        $scope.loadAtacamaPostsHighlightedCarousel = function () {
+            $("#atacama-posts-highlighted-carousel").owlCarousel({
+                items: 4,
+                pagination: false,
+                navigation: false,
+                autoPlay: true,
+                stopOnHover: true
+
+            });
+        };
+
+        //TODO cambiar fechas, limit y offset
+        //International post
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.internationalPosts = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.internationalPosts = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+
+
+    })
+    .controller('listing3Controller', function ($scope, $routeParams, getPosts, news, navigate) {
+
+        // Coquimbo - La serena Post
+        $scope.quantityCoquimboPost = 17;
+        $scope.offsetCoquimboPost = 0;
+        loadCoquimboPost($scope.quantityCoquimboPost, $scope.offsetCoquimboPost);
+
+        $scope.moreCoquimboPost = function () {
+            $scope.offsetCoquimboPost += 17;
+            loadCoquimboPost($scope.quantityCoquimboPost, $scope.offsetCoquimboPost);
+        };
+
+        //TODO cambiar fechas y categoria
+        function loadCoquimboPost(limit, offset) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), limit, offset, "24", function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.coquimboPosts = news.getMultipleNews(data.data);
+
+                } else {
+                    $scope.coquimboPosts = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });
+        }
+
+        // Coquimbo - La Serena Posts Highlighted
+        //TODO agregar la categoria 102
+        getPosts.getPostsFromCategory(getDateFromNow(-90), getDateFromNow(0), "5", "0", "24", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.coquimboPostsHighlighted = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.coquimboPostsHighlighted = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+
+        $scope.loadCoquimboPostsHighlightedCarousel = function () {
+            $("#coquimbo-posts-highlighted-carousel").owlCarousel({
+                items: 4,
+                pagination: false,
+                navigation: false,
+                autoPlay: true,
+                stopOnHover: true
+
+            });
+        };
+
+        //TODO cambiar fechas, limit y offset
+        //International post
+        getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", "99", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.internationalPosts = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.internationalPosts = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+
+
+    })
+
 ;
 
 function resizeIframe(obj) {

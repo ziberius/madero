@@ -4,9 +4,9 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div id="site-content" class="site-content">
-                        <h1 class="section-title title"><a href="#listing_2">Noticias de Atacama</a></h1>
+                        <h1 class="section-title title"><a href="#listing_3">Noticias de La Serena - Coquimbo</a></h1>
 
-                        <div ng-show="atacamaPosts.length">
+                        <div ng-show="coquimboPosts.length">
 
                             <div class="middle-content">
                                 <div class="section">
@@ -14,13 +14,13 @@
                                         <div class="col-sm-12 col-md-8">
 
                                             <div class="post feature-post"
-                                                 style="background-image:url({{atacamaPosts[0].thumbnailImageUrl}}); background-size:100% ;height:595px;">
+                                                 style="background-image:url({{coquimboPosts[0].thumbnailImageUrl}}); background-size:100% ;height:595px;">
                                                 <div class="post-content">
                                                     <div class="catagoryLeft"><a
-                                                                ng-click="detail(atacamaPosts[0].id)">{{atacamaPosts[0].categories[0].name}}</a>
+                                                                ng-click="detail(coquimboPosts[0].id)">{{coquimboPosts[0].categories[0].name}}</a>
                                                     </div>
                                                     <h2 class="entry-title entryLeft">
-                                                        <a ng-click="detail(atacamaPosts[0].id)">{{atacamaPosts[0].title}}</a>
+                                                        <a ng-click="detail(coquimboPosts[0].id)">{{coquimboPosts[0].title}}</a>
                                                     </h2>
                                                 </div>
                                             </div><!--/post-->
@@ -29,19 +29,19 @@
 
                                         <div class="col-sm-12 col-md-4">
 
-                                            <div ng-show="atacamaPosts[1]">
+                                            <div ng-show="coquimboPosts[1]">
                                                 <div class="row">
                                                     <div class="post medium-post"
                                                          style="padding-left: 15px; padding-right: 15px; padding-top: 5px;">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
 
-                                                                <a ng-click="detail(atacamaPosts[1].id)"><img
-                                                                            class="img-responsive img-atacama-news-middle center-block"
-                                                                            src="{{atacamaPosts[1].thumbnailImageUrl}}"
+                                                                <a ng-click="detail(coquimboPosts[1].id)"><img
+                                                                            class="img-responsive img-coquimbo-news-middle center-block"
+                                                                            src="{{coquimboPosts[1].thumbnailImageUrl}}"
                                                                             alt=""/></a>
-                                                                <!--           <div ng-click="detail(atacamaPosts[1].id)">
-                                                                               <div style="background-image:url({{atacamaPosts[1].thumbnailImageUrl}}); background-size:100% ;height:200px;"
+                                                                <!--           <div ng-click="detail(coquimboPosts[1].id)">
+                                                                               <div style="background-image:url({{coquimboPosts[1].thumbnailImageUrl}}); background-size:100% ;height:200px;"
                                                                                     class=""
                                                                                ></div>-->
 
@@ -51,8 +51,8 @@
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                ng-click="detail(atacamaPosts[1].id)"><i
-                                                                                    class="fa fa-clock-o"></i>{{atacamaPosts[1].formattedDate}}
+                                                                                ng-click="detail(coquimboPosts[1].id)"><i
+                                                                                    class="fa fa-clock-o"></i>{{coquimboPosts[1].formattedDate}}
                                                                         </a></li>
                                                                     <!--<li class="views"><a href="#"><i
                                                                                     class="fa fa-eye"></i>21k</a></li>
@@ -61,21 +61,21 @@
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a ng-click="detail(atacamaPosts[1].id)">{{atacamaPosts[1].shortTitle}}</a>
+                                                                <a ng-click="detail(coquimboPosts[1].id)">{{coquimboPosts[1].shortTitle}}</a>
                                                             </h2>
                                                         </div>
                                                     </div><!--/post-->
                                                 </div>
                                             </div>
 
-                                            <div ng-show="atacamaPosts[2]">
+                                            <div ng-show="coquimboPosts[2]">
                                                 <div class="row">
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a ng-click="detail(atacamaPosts[2].id)"><img
-                                                                            class="img-responsive img-atacama-news-middle center-block"
-                                                                            src="{{atacamaPosts[2].thumbnailImageUrl}}"
+                                                                <a ng-click="detail(coquimboPosts[2].id)"><img
+                                                                            class="img-responsive img-coquimbo-news-middle center-block"
+                                                                            src="{{coquimboPosts[2].thumbnailImageUrl}}"
                                                                             alt=""/></a>
                                                             </div>
                                                         </div>
@@ -83,8 +83,8 @@
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                ng-click="detail(atacamaPosts[2].id)"><i
-                                                                                    class="fa fa-clock-o"></i>{{atacamaPosts[2].formattedDate}}
+                                                                                ng-click="detail(coquimboPosts[2].id)"><i
+                                                                                    class="fa fa-clock-o"></i>{{coquimboPosts[2].formattedDate}}
                                                                         </a></li>
                                                                     <!--<li class="views"><a href="#"><i
                                                                                     class="fa fa-eye"></i>21k</a></li>
@@ -93,7 +93,7 @@
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a ng-click="detail(atacamaPosts[2].id)">{{atacamaPosts[2].shortTitle}}</a>
+                                                                <a ng-click="detail(coquimboPosts[2].id)">{{coquimboPosts[2].shortTitle}}</a>
                                                             </h2>
                                                         </div>
                                                     </div><!--/post-->
@@ -105,14 +105,14 @@
 
                                     <div class="row">
                                         <div ng-repeat="n in [3,4,5,6,7,8]">
-                                            <div ng-show="atacamaPosts[n]">
+                                            <div ng-show="coquimboPosts[n]">
                                                 <div class="col-sm-6 col-md-4">
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a ng-click="detail(atacamaPosts[n].id)"><img
-                                                                            class="img-responsive img-atacama-news-middle center-block"
-                                                                            src="{{atacamaPosts[n].thumbnailImageUrl}}"
+                                                                <a ng-click="detail(coquimboPosts[n].id)"><img
+                                                                            class="img-responsive img-coquimbo-news-middle center-block"
+                                                                            src="{{coquimboPosts[n].thumbnailImageUrl}}"
                                                                             alt=""/></a>
                                                             </div>
                                                         </div>
@@ -120,8 +120,8 @@
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                ng-click="detail(atacamaPosts[n].id)"><i
-                                                                                    class="fa fa-clock-o"></i>{{atacamaPosts[n].formattedDate}}</a>
+                                                                                ng-click="detail(coquimboPosts[n].id)"><i
+                                                                                    class="fa fa-clock-o"></i>{{coquimboPosts[n].formattedDate}}</a>
                                                                     </li>
                                                                     <!--<li class="views"><a href="#"><i
                                                                                     class="fa fa-eye"></i>21k</a>
@@ -131,7 +131,7 @@
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a ng-click="detail(atacamaPosts[n].id)">{{atacamaPosts[n].shortTitle}}</a>
+                                                                <a ng-click="detail(coquimboPosts[n].id)">{{coquimboPosts[n].shortTitle}}</a>
                                                             </h2>
                                                         </div>
                                                     </div>
@@ -174,22 +174,22 @@
             </div>
         </div><!--/.section-->
 
-        <div ng-show="atacamaPostsHighlighted.length > 0" class="section"
-             id="atacama-posts-highlighted-carousel">
+        <div ng-show="coquimboPostsHighlighted.length > 0" class="section"
+             id="coquimbo-posts-highlighted-carousel">
 
-            <div ng-repeat="atacamaPostHigh in atacamaPostsHighlighted">
+            <div ng-repeat="coquimboPostHigh in coquimboPostsHighlighted">
 
                 <div class="post feature-post"
-                     style="background-image:url({{atacamaPostHigh.thumbnailImageUrl}}); background-size:cover">
+                     style="background-image:url({{coquimboPostHigh.thumbnailImageUrl}}); background-size:cover">
                     <div class="post-content">
-                        <div class="catagory"><a ng-click="detail(atacamaPostHigh.id)">{{atacamaPostHigh.categories[0].name}}</a>
+                        <div class="catagory"><a ng-click="detail(coquimboPostHigh.id)">{{coquimboPostHigh.categories[0].name}}</a>
                         </div>
                         <h2 class="entry-title">
-                            <a ng-click="detail(atacamaPostHigh.id)">{{atacamaPostHigh.title}}</a>
+                            <a ng-click="detail(coquimboPostHigh.id)">{{coquimboPostHigh.title}}</a>
                         </h2>
                     </div>
                 </div>
-                <span>{{$last ? loadAtacamaPostsHighlightedCarousel() : ''}}</span>
+                <span>{{$last ? loadCoquimboPostsHighlightedCarousel() : ''}}</span>
             </div>
 
         </div>
@@ -204,19 +204,19 @@
                     <img class="img-responsive center-block" src="/main/web/images/anuncio_cuadrado.jpg"/>
                 </div>
 
-                <div ng-show="atacamaPosts[9]">
+                <div ng-show="coquimboPosts[9]">
                     <div class="col-sm-12 col-md-2">
                         <div class="post medium-post">
 
                             <div class="post-content nopaddingtop">
                                 <h2 class="entry-title">
-                                    <a ng-click="detail(atacamaPosts[9].id)">{{atacamaPosts[9].shortTitle}}</a>
+                                    <a ng-click="detail(coquimboPosts[9].id)">{{coquimboPosts[9].shortTitle}}</a>
                                 </h2>
                             </div>
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a ng-click="detail(atacamaPosts[9].id)"><img class="img-responsive"
-                                                                                      src="{{atacamaPosts[9].thumbnailImageUrl}}"
+                                    <a ng-click="detail(coquimboPosts[9].id)"><img class="img-responsive"
+                                                                                      src="{{coquimboPosts[9].thumbnailImageUrl}}"
                                                                                       alt=""/></a>
                                 </div>
                             </div>
@@ -224,19 +224,19 @@
                     </div>
                 </div>
 
-                <div ng-show="atacamaPosts[10]">
+                <div ng-show="coquimboPosts[10]">
                     <div class="col-sm-12 col-md-2">
                         <div class="post medium-post">
 
                             <div class="post-content nopaddingtop">
                                 <h2 class="entry-title">
-                                    <a ng-click="detail(atacamaPosts[10].id)">{{atacamaPosts[10].shortTitle}}</a>
+                                    <a ng-click="detail(coquimboPosts[10].id)">{{coquimboPosts[10].shortTitle}}</a>
                                 </h2>
                             </div>
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a ng-click="detail(atacamaPosts[10].id)"><img class="img-responsive"
-                                                                                       src="{{atacamaPosts[10].thumbnailImageUrl}}"
+                                    <a ng-click="detail(coquimboPosts[10].id)"><img class="img-responsive"
+                                                                                       src="{{coquimboPosts[10].thumbnailImageUrl}}"
                                                                                        alt=""/></a>
                                 </div>
                             </div>
@@ -264,19 +264,19 @@
             <div class="row">
 
                 <div ng-repeat="n in [11,12,13,14,15,16]">
-                    <div ng-show="atacamaPosts[n]">
+                    <div ng-show="coquimboPosts[n]">
                         <div class="col-md-2">
                             <div class="post medium-post">
 
                                 <div class="post-content nopaddingtop">
                                     <h2 class="entry-title">
-                                        <a ng-click="detail(atacamaPosts[n].id)">{{atacamaPosts[n].shortTitle}}</a>
+                                        <a ng-click="detail(coquimboPosts[n].id)">{{coquimboPosts[n].shortTitle}}</a>
                                     </h2>
                                 </div>
                                 <div class="entry-header">
                                     <div class="entry-thumbnail">
-                                        <a ng-click="detail(atacamaPosts[n].id)"><img class="img-responsive"
-                                                                                          src="{{atacamaPosts[n].thumbnailImageUrl}}"
+                                        <a ng-click="detail(coquimboPosts[n].id)"><img class="img-responsive"
+                                                                                          src="{{coquimboPosts[n].thumbnailImageUrl}}"
                                                                                           alt=""/></a>
                                     </div>
                                 </div>
@@ -289,7 +289,7 @@
         </div>
 
         <div class="load-more text-center">
-            <a class="btn btn-primary btn-block" ng-click="moreAtacamaPost()">Cargar Más...</a>
+            <a class="btn btn-primary btn-block" ng-click="moreCoquimboPost()">Cargar Más...</a>
         </div>
 
     </div><!--/.container-fluid-->
