@@ -27,6 +27,11 @@ angular
                 templateUrl: '/main/web/pages/modules/listing_1.php',
                 controller: 'listing1Controller'
             })
+            .when('/internacional', {
+                templateUrl: '/main/web/pages/modules/listing_inter.php',
+                controller: 'internacionalController'
+            })
+        
         ;
     })
     .service('navigate', function ($location, $rootScope) {
@@ -173,7 +178,7 @@ angular
                     }
                 }
             );
-        }
+        };
         
         
         $scope.loadAtacama = function(){
@@ -188,7 +193,7 @@ angular
                     }
                 }
             );
-        }
+        };
         
         $scope.loadSerena = function(){
 
@@ -369,6 +374,43 @@ angular
     .controller('mineriaController', function ($scope, $routeParams) {
 
     })
+    .controller('deportesController', function ($scope, $routeParams) {
+
+    })    
+    .controller('internacionalController', function ($scope, $routeParams, getPosts, news, navigate) {
+       
+        $scope.loadInternationalPostsHighlightedCarousel = function () {
+            $("#international-posts-highlighted-carousel").owlCarousel({
+                items: 6,
+                pagination: false,
+                navigation: false,
+                autoPlay: true,
+                stopOnHover: true
+
+            });
+        };        
+        getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "6", "0", "99", function (response) {
+            var data = response.data;
+            if (data !== null && data.status === 'OK') {
+                $scope.internacionalesDestacadas = news.getMultipleNews(data.data);
+
+            } else {
+                $scope.internacionalesDestacadas = null;
+                showMessage("No se encontraron resultados");
+            }
+        });
+        
+        $scope.$on('$viewContentLoaded', function () {
+            $(".imageSlide").owlCarousel({
+                items: 4,
+                pagination: false,
+                navigation: false,
+                autoPlay: true,
+                stopOnHover: true
+
+            });
+        });
+    })    
     .controller('listing1Controller', function ($scope, $routeParams, getPosts, news, navigate) {
 
         // Antofagasta Post
@@ -518,7 +560,7 @@ function getThumbnailImagePost(post) {
         }
     });
 
-    if (response == null) {
+    if (response === null) {
         var keepGoing = true;
 
         angular.forEach(post.resources, function (resource) {
@@ -618,7 +660,7 @@ function parseAudioPlayList(content, resources) {
 
     var playlistRegEx = new RegExp('\\[playlist ids=\\"[0-9]*\\"\\]', 'g');
 
-    while ((match = playlistRegEx.exec(content)) != null) {
+    while ((match = playlistRegEx.exec(content)) !== null) {
 
         var playlistText = match.toString();
         var result = playlistText.split('"');

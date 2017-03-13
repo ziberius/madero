@@ -51,8 +51,8 @@
                         </ul>
                     </li>
                     <li><a href="#listing">Nacional</a></li>
-                    <li><a href="listing_inter.php">Internacional</a></li>
-                    <li><a href="listing_1.php">Deportes</a></li>
+                    <li><a href="#internacional">Internacional</a></li>
+                    <li><a href="#deportes">Deportes</a></li>
                     <li><a href="#mineria">Minería</a></li>
                 </ul> 					
             </nav>
