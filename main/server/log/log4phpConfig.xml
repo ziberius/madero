@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<log4php:configuration xmlns:log4php="http://loggin.apache.org/log4php/">
+<log4php:configuration xmlns:log4php="http://logging.apache.org/log4php/">
 
     <appender name="fileAppender" class="LoggerAppenderFile">
         <layout class="LoggerLayoutPattern">
             <param name="conversionPattern" value="%date{Y-m-d H:i:s,u} %class.%method (%line) %-5level %msg%n"/>
         </layout>
-        <param name="file" value="/Applications/XAMPP/xamppfiles/htdocs/madero/main/server/log/system.log"/>
+        <param name="file" value="/home/danilo/NetBeansProjects/maderoFM/main/server/log/system.log"/>
     </appender>
 
     <root>

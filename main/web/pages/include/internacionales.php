@@ -2,8 +2,8 @@
     <h1 class="section-title title"><a href="listing.html">Internacionales</a></h1>
     <ul class="post-list">
         <div ng-repeat="post in internationalPosts">
-            <div ng-show="post.embedly.length">
-                <div data-ng-if="post.embedly[0].type!='error'">
+            <div ng-show="post.embedly.length > 0">
+                <div data-ng-if="post.embedly[0].type!=='error'">
 
                     <li>
                         <div class="post small-post">

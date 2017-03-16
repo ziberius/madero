@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="maderoApp" id="htmlTag" >
+<html ng-app="maderoApp" id="htmlTag"  >
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +9,13 @@
         <?php require_once('main/web/pages/include/head.php'); ?>
         <title>Madero FM</title>
     </head>
-    <body ng-cloak ng-controller="mainController">
+    <body ng-cloak>
         <div id="main-wrapper">
         <?php require_once('main/web/pages/include/header.php'); ?> 
-            <div ng-view></div>
+            <div ng-if="loading === true" class="loader"><div id="loadingAnim"></div></div>
+            <div ng-view>
+                
+            </div>
         <?php require_once('main/web/pages/include/footer.php'); ?> 
         </div>
     </body>

@@ -57,7 +57,7 @@
                         <div ng-click="" style="cursor: pointer" class="post medium-post" ng-repeat="noticia in nacionales">
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a href="news-details.php"><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
+                                    <a ng-click="detail(noticia.id)"><img class="img-responsive" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
                                 </div>
                             </div>  
                             <div class="post-content">								
@@ -69,7 +69,7 @@
                                     </ul>
                                 </div>
                                 <h2 class="entry-title">
-                                    <a href="news-details.php">{{noticia.title}}</a>
+                                    <a ng-click="detail(noticia.id)">{{noticia.title}}</a>
                                 </h2>
                             </div>                                        
                         </div> 

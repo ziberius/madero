@@ -1,4 +1,3 @@
-<div ng-if="loading === true" class="loader"><div id="loadingAnim"></div></div>
 <header id="navigation">
     <div class="navbar-inverse barraSuperior">
         <div class="col-md-6 col-lg-6">
@@ -52,7 +51,7 @@
                     </li>
                     <li><a href="#listing">Nacional</a></li>
                     <li><a href="#internacional">Internacional</a></li>
-                    <li><a href="#deportes">Deportes</a></li>
+                    <li><a href="#listing_4">Deportes</a></li>
                     <li><a href="#mineria">Minería</a></li>
                 </ul> 					
             </nav>
