@@ -2558,6 +2558,18 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
     margin-top: -4px;
 }
 
+.post-imgbelow{
+    border-radius: 5px;
+}
+
+.post-imgbelow .post-content{
+    height:9em;
+}
+
+.post-imgbelow .entry-header .entry-thumbnail img{
+    height: 9em;
+}
+
 .loader {
     position: fixed;
     z-index: 999;
@@ -2616,3 +2628,4 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
         transform: rotate(360deg);
     }
 }
+

@@ -61,8 +61,8 @@
                     <li class="search-icon"><span id="textoBuscador" >Buscador de noticias</span> <i class="fa fa-search"></i></li>
                 </ul>
                 <div class="search">
-                    <form role="form">
-                        <input type="text" class="search-form" autocomplete="off" placeholder="Palabra clave noticia y enter">
+                    <form ng-controller="buscadorController" role="form">
+                        <input ng-model="termino" ng-keyup="$event.keyCode === 13 && buscarNoticias()" type="text" class="search-form" autocomplete="off" placeholder="Palabra clave noticia y enter">
                     </form>
                 </div> <!--/.search--> 
             </div><!--.searchNlogin -->

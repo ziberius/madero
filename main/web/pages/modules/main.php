@@ -439,31 +439,10 @@
                         </div>
                         <div class="widget">
                             <h2 class="section-title">Video Tendencias</h2>
-                            <div class="post video-post medium-post">
+                            <div ng-repeat="post in videoTendencias" class="post video-post medium-post">
                                 <div class="entry-header">
                                     <div class="entry-thumbnail embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/YTD_jG5vOks" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div><!--/post-->
-                            <div class="post video-post medium-post">
-                                <div class="entry-header">
-                                    <div class="entry-thumbnail embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/YTD_jG5vOks"  allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div><!--/post-->
-                            <div class="post video-post medium-post">
-                                <div class="entry-header">
-                                    <div class="entry-thumbnail embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/YTD_jG5vOks"  allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div><!--/post-->
-                            <div class="post video-post medium-post">
-                                <div class="entry-header">
-                                    <div class="entry-thumbnail embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/YTD_jG5vOks"  allowfullscreen></iframe>
+                                        <iframe class="embed-responsive-item" ng-src="{{post.url| trustAsResourceUrl}}" allowfullscreen></iframe>
                                     </div>
                                 </div>
                             </div><!--/post-->
