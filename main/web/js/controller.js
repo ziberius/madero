@@ -428,7 +428,18 @@ angular
                 loadSliders();
             });
         })
-        .controller('viewController', function ($scope, $routeParams, getPosts, news, $location) {
+        .controller('viewController', function ($scope, $routeParams, getPosts, news, $location,Constants) {
+
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
+
+                } else {
+                    $scope.internationalPosts = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });
 
             $scope.url = "http://" + $location.host() + $location.path();
 
