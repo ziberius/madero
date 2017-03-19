@@ -76,6 +76,9 @@
                                 </div><!--/.left-content-->
                             </div>
                         </div>
+                        <div class="row">
+                            <facebook-comments></facebook-comments>
+                        </div>
                     </div><!--/#site-content-->
 
                     <div class="section other-news-section">

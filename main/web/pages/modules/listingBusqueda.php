@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div id="site-content" class="site-content">
-                        <h1 class="section-title title"><a>Resultado de búsqueda "{{termino}}"</a></h1>
+                        <h1 class="section-title title"><a>Resultado de búsqueda "{{descBusqueda}}"</a></h1>
 
                         <div ng-show="resultados.length > 0">
 

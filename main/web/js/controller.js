@@ -28,7 +28,10 @@ angular
                 EXTERNO: '99',
                 OPINION: '100',
                 PORTADA: '101',
-                DESTACADO: '102'
+                DESTACADO: '102',
+                PUBLICIDAD_VERTICAL: '103',
+                PUBLICIDAD_HORIZONTAL: '104',
+                PUBLICIDAD_CUADRADA: '105'
             },
             Limits: {
                 InternationalSmall: 10,
@@ -134,18 +137,18 @@ angular
                     $rootScope.loading = false;
                 });
             };
-            
-            this.searchPosts = function(limit,offset,keyword,success){
+
+            this.searchPostsByText = function (limit, offset, keyword, success) {
                 $rootScope.loading = true;
                 $http.post('/main/server/Service.php',
                 {
-                        "service":"searchPosts",
-                        "parameters": 
-                        {
-                                "limit":limit,
-                                "offset":offset,
-                                "keyword":keyword
-                        }
+                    "service": "searchPosts",
+                    "parameters":
+                    {
+                        "limit": limit,
+                        "offset": offset,
+                        "keyword": keyword
+                    }
                 }
                 ).then(function (response) {
                     success(response);
@@ -153,7 +156,30 @@ angular
                     showMessage("Error al obtener la noticia. El servidor respondió: " + e.statusText);
                 }).finally(function () {
                     $rootScope.loading = false;
-                });                
+                });
+            };
+
+            this.searchPostsByAuthor = function (start_date, end_date, limit, offset, author, success) {
+                $rootScope.loading = true;
+                $http.post('/main/server/Service.php',
+                {
+                    "service": "getNewsFromAuthor",
+                    "parameters":
+                    {
+                        "start-date": start_date,
+                        "end-date": end_date,
+                        "limit": limit,
+                        "offset": offset,
+                        "id-author": author
+                    }
+                }
+                ).then(function (response) {
+                    success(response);
+                }).catch(function (e) {
+                    showMessage("Error al obtener la noticia. El servidor respondió: " + e.statusText);
+                }).finally(function () {
+                    $rootScope.loading = false;
+                });
             };
 
         })
@@ -199,6 +225,50 @@ angular
                 return response;
             };
         })
+        .directive('facebookComments', ['$location', function ($location) {
+                return {
+                    restrict: 'E',
+                    templateUrl: "/main/web/pages/include/facebookComments.html",
+                    scope: {},
+                    link: function (scope, el, attr) {
+                        scope.curPath = $location.absUrl();
+                    }
+                };
+            }])
+        .directive('dynFbCommentBox', ['$timeout', function ($timeout) {
+                function createHTML(href, numposts, colorscheme, width) {
+                    return '<div class="fb-comments" ' +
+                            'data-href="' + href + '" ' +
+                            'data-numposts="' + numposts + '" ' +
+                            'data-colorsheme="' + colorscheme + '" ' +
+                            'data-width="' + width + '">' +
+                            '</div>';
+                }
+
+                return {
+                    restrict: 'A',
+                    scope: {},
+                    link: function postLink(scope, elem, attrs) {
+                        //
+                        // Use timeout in order to be called after all watches are done and FB script is loaded
+                        //
+                        attrs.$observe('pageHref', function (newValue) {
+                            var href = newValue;
+                            var numposts = attrs.numposts || 5;
+                            var colorscheme = attrs.colorscheme || 'light';
+                            var width = attrs.width || '100%';
+                            elem.html(createHTML(href, numposts, colorscheme, width));
+                            $timeout(function () {
+                                if (typeof FB != 'undefined') {
+                                    FB.XFBML.parse(elem[0]);
+                                }
+                            });
+                        });
+
+
+                    }
+                };
+            }])
         .controller('mainController', function ($rootScope, $scope, Constants, getPosts, news, navigate) {
             $scope.offsetNacAntofagasta = 1;
             $scope.offsetNacAtacama = 1;
@@ -303,7 +373,7 @@ angular
                         }
                 );
             };
-            
+
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "4", "0", Constants.Category.VIDEOS,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
@@ -315,7 +385,7 @@ angular
                             showMessage("No se encontraron resultados");
                         }
                     }
-            );            
+            );
 
             $scope.masAtacama = function () {
                 $scope.offsetNacAtacama = $scope.offsetNacAtacama + 3;
@@ -345,7 +415,7 @@ angular
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data,"link",5);
+                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
 
                 } else {
                     $scope.internationalPosts = null;
@@ -358,7 +428,9 @@ angular
                 loadSliders();
             });
         })
-        .controller('viewController', function ($scope, $routeParams, getPosts, news, navigate) {
+        .controller('viewController', function ($scope, $routeParams, getPosts, news, $location) {
+
+            $scope.url = "http://" + $location.host() + $location.path();
 
             var idPost = $routeParams.id;
             getPosts.getPostFromId(idPost, function (response) {
@@ -399,7 +471,6 @@ angular
                 });
             };
 
-
             //international news
             getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "5", "0", "99", function (response) {
                 var data = response.data;
@@ -418,7 +489,7 @@ angular
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data,"link",5);
+                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
 
                 } else {
                     $scope.internationalPosts = null;
@@ -855,20 +926,22 @@ angular
 
         })
         .controller('buscadorController', function ($scope, $location) {
-            $scope.buscarNoticias = function(){
+            $scope.buscarNoticias = function () {
                 $location.path("/buscar/" + $scope.termino);
             };
-            
+
         })
         .controller('busquedaController', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
             $scope.termino = $routeParams.termino;
             $scope.offSetBusqueda = 0;
             $scope.offSetNacionales = 0;
 
+            $scope.descBusqueda = "por texto '" + $scope.termino + "'";
+
             getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data,"link",5);
+                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
 
                 } else {
                     $scope.internationalPosts = null;
@@ -877,7 +950,8 @@ angular
             });
 
             $scope.cargarBusqueda = function () {
-                getPosts.searchPosts("9", $scope.offSetBusqueda, $scope.termino, function (response) {
+
+                getPosts.searchPostsByText("9", $scope.offSetBusqueda, $scope.termino, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.resultados = news.getMultipleNews(data.data);
@@ -887,6 +961,7 @@ angular
                         showMessage("No se encontraron resultados");
                     }
                 });
+
             };
 
             $scope.cargarNacionales = function () {
@@ -901,17 +976,17 @@ angular
                     }
                 });
             };
-            
-            $scope.moreResultados = function(){
+
+            $scope.moreResultados = function () {
                 $scope.offSetBusqueda = $scope.offSetBusqueda + 9;
                 $scope.cargarBusqueda();
             };
-            
-            $scope.moreNationalPost = function(){
+
+            $scope.moreNationalPost = function () {
                 $scope.offSetNacionales = $scope.offSetNacionales + 9;
-                $scope.cargarNacionales();                
+                $scope.cargarNacionales();
             };
-            
+
             $scope.cargarBusqueda();
             $scope.cargarNacionales();
         })
