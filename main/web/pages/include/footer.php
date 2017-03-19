@@ -12,28 +12,33 @@
     </div>
 </div><!--/.footer-top-->
 
-<footer id="footer">
+<footer id="footer" ng-controller="footerController">
     <div class="bottom-widgets">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="widget">
-                        <h4 class="text-uppercase text-strong">Doming 13 de Noviembre de 2016</h4>
-                        <div class="line">
-                            <h4 class="text-uppercase text-strong margin-top-30">Indicadores Económicos:</h4>
-                            <div class="margin">
-                                <div class="s-12 m-12 l-8 margin-m-bottom">
-                                    <ul>
-                                        <li>UF: $26.283,75</li>
-                                        <li>Dólar: $656,36</li>
-                                        <li>Euro: $714,60</li>
-                                        <li>IPC: 0,20%</li>
-                                        <li>UTM: $46.020,00</li>
-                                        <li>Libra de Cobre: 2,45</li>
-                                    </ul>
+                        <h4 class="text-uppercase text-strong">{{currentDate}}</h4>
+
+                        <div ng-show="dailyIndicators">
+                            <div class="line">
+                                <h4 class="text-uppercase text-strong margin-top-30">Indicadores Económicos:</h4>
+                                <div class="margin">
+                                    <div class="s-12 m-12 l-8 margin-m-bottom">
+                                        <ul>
+                                            <li>UF: ${{dailyIndicators.uf.valor | number}}</li>
+                                            <li>Dólar: ${{dailyIndicators.dolar.valor | number}}</li>
+                                            <li>Euro: ${{dailyIndicators.euro.valor | number}}</li>
+                                            <li>IPC: {{dailyIndicators.ipc.valor}}%</li>
+                                            <li>UTM: ${{dailyIndicators.utm.valor | number}}</li>
+                                            <li>Libra de Cobre: ${{dailyIndicators.libra_cobre.valor | number}} USD</li>
+                                        </ul>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -52,7 +57,7 @@
                                 <i class="icon-mail text-primary text-size-12"></i>
                             </div>
                             <div class="s-11 m-11 l-11 margin-bottom-10">
-                                <p><a href="/" class="text-primary-hover"><b>Email:</b> contact@ejemplo.com</a></p>
+                                <p><a href="mailto:contact@ejemplo.com" class="text-primary-hover"><b>Email:</b> contact@ejemplo.com</a></p>
                             </div>
                         </div>
                         <div class="line">
@@ -73,22 +78,23 @@
     </div>
     <div class="footer-bottom">
         <div class="container-fluid text-center">
-            <p>Copyright &copy; 2016,  Madero FM. Desarrollado por <a href="http://www.indiceapps.cl/">Indice Apps</a></p>
+            <p>Copyright &copy; 2016, Madero FM. Desarrollado por <a href="http://www.indiceapps.cl/">Indice Apps</a>
+            </p>
         </div>
-    </div>		
+    </div>
 </footer>
 
 <script type="text/javascript" src="/main/web/lib/jquery.js"></script>
 <script type="text/javascript" src="/main/web/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/main/web/lib/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="/main/web/lib/owl.carousel.min.js"></script> 
+<script type="text/javascript" src="/main/web/lib/owl.carousel.min.js"></script>
 <script type="text/javascript" src="/main/web/js/main.js"></script>
 <script type="text/javascript" src="/main/web/lib/jquery.simpleWeather.min.js"></script>
 <script src="/main/web/lib/angular.min.js"></script>
 <script src="/main/web/lib/angular-route.min.js"></script>
 <script src="/main/web/lib/angular-animate.min.js"></script>
 <script src="/main/web/lib/angular-locale_es-cl.min.js" type="text/javascript"></script>
-<script src="/main/web/lib/lodash.min.js" type="text/javascript" ></script>
-<script src="/main/web/lib/angular-simple-logger.min.js" type="text/javascript" ></script>
-<script src="/main/web/js/controller.js" type="text/javascript" ></script>
+<script src="/main/web/lib/lodash.min.js" type="text/javascript"></script>
+<script src="/main/web/lib/angular-simple-logger.min.js" type="text/javascript"></script>
+<script src="/main/web/js/controller.js" type="text/javascript"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.js"></script>

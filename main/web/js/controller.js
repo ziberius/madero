@@ -914,7 +914,17 @@ angular
             };
         })
 
-        ;
+        .controller('footerController', function ($scope, $http) {
+
+            $scope.currentDate = getFormattedDate(new Date());
+
+            $http.get('http://mindicador.cl/api').success(function (data) {
+                $scope.dailyIndicators = data;
+            }).error(function () {
+                console.log('Error al consumir la API!');
+            });
+        })
+;
 
 function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
