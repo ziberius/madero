@@ -421,9 +421,7 @@
                 <div class="col-sm-3">
                     <div id="sitebar">							
                         <?php require_once("../include/internacionales.php"); ?>
-                        <div class="load-more text-center">
-                            <a class="btn btn-primary btn-block" href="#">Cargar Más Noticias...</a>
-                        </div>                                    
+                                  
                         <div class="widget">
                             <h2 class="section-title">Redes Sociales</h2>
                             <div class="row">

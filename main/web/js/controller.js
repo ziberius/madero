@@ -411,35 +411,12 @@ angular
             $scope.loadAntofagasta();
             $scope.loadSerena();
             $scope.loadNacionales();
-            //international news
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
-                var data = response.data;
-                if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
-
-                } else {
-                    $scope.internationalPosts = null;
-                    showMessage("No se encontraron resultados");
-                }
-            });
-
 
             $scope.$on('$viewContentLoaded', function () {
                 loadSliders();
             });
         })
         .controller('viewController', function ($scope, $routeParams, getPosts, news, $location,Constants) {
-
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
-                var data = response.data;
-                if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
-
-                } else {
-                    $scope.internationalPosts = null;
-                    showMessage("No se encontraron resultados");
-                }
-            });
 
             $scope.url = "http://" + $location.host() + $location.path();
 
@@ -482,31 +459,8 @@ angular
                 });
             };
 
-            //international news
-            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "5", "0", "99", function (response) {
-                var data = response.data;
-                if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNews(data.data);
-
-                } else {
-                    $scope.internationalPosts = null;
-                    showMessage("No se encontraron resultados");
-                }
-            });
-
         })
         .controller('listingController', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
-
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
-                var data = response.data;
-                if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
-
-                } else {
-                    $scope.internationalPosts = null;
-                    showMessage("No se encontraron resultados");
-                }
-            });
 
             // National Post
             $scope.quantityNationalPost = 17;
@@ -554,20 +508,6 @@ angular
 
                 });
             };
-
-            //TODO cambiar fechas, limit y offset
-            //international post
-            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.EXTERNO, function (response) {
-                var data = response.data;
-                if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNews(data.data);
-
-                } else {
-                    $scope.internationalPosts = null;
-                    showMessage("No se encontraron resultados");
-                }
-            });
-
 
         })
         .controller('mineriaController', function ($scope, $routeParams) {
@@ -726,9 +666,8 @@ angular
                 });
             };
 
-            //TODO cambiar fechas, limit y offset
-            //international post
-            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.EXTERNO, function (response) {
+           
+            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.PUBLICIDAD_CUADRADA +"," + Constants.Category.ATACAMA, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.internationalPosts = news.getMultipleNews(data.data);
@@ -737,7 +676,7 @@ angular
                     $scope.internationalPosts = null;
                     showMessage("No se encontraron resultados");
                 }
-            });
+            });            
 
 
         })
@@ -791,20 +730,6 @@ angular
                 });
             };
 
-            //TODO cambiar fechas, limit y offset
-            //International post
-            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.EXTERNO, function (response) {
-                var data = response.data;
-                if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNews(data.data);
-
-                } else {
-                    $scope.internationalPosts = null;
-                    showMessage("No se encontraron resultados");
-                }
-            });
-
-
         })
         .controller('listing3Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
 
@@ -855,20 +780,6 @@ angular
 
                 });
             };
-
-            //TODO cambiar fechas, limit y offset
-            //International post
-            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.EXTERNO, function (response) {
-                var data = response.data;
-                if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNews(data.data);
-
-                } else {
-                    $scope.internationalPosts = null;
-                    showMessage("No se encontraron resultados");
-                }
-            });
-
 
         })
         .controller('listing4Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
@@ -921,19 +832,6 @@ angular
                 });
             };
 
-            //TODO cambiar fechas, limit y offset
-            //International post
-            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.EXTERNO, function (response) {
-                var data = response.data;
-                if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNews(data.data);
-
-                } else {
-                    $scope.internationalPosts = null;
-                    showMessage("No se encontraron resultados");
-                }
-            });
-
 
         })
         .controller('buscadorController', function ($scope, $location) {
@@ -948,17 +846,6 @@ angular
             $scope.offSetNacionales = 0;
 
             $scope.descBusqueda = "por texto '" + $scope.termino + "'";
-
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
-                var data = response.data;
-                if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
-
-                } else {
-                    $scope.internationalPosts = null;
-                    showMessage("No se encontraron resultados");
-                }
-            });
 
             $scope.cargarBusqueda = function () {
 
@@ -1000,6 +887,31 @@ angular
 
             $scope.cargarBusqueda();
             $scope.cargarNacionales();
+        })
+        .controller('bannerInterController', function ($scope, getPosts, Constants,news) {
+            
+            $scope.offsetInter = 0;
+            
+            
+            $scope.cargarInternacionales = function(){
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
+
+                } else {
+                    $scope.internationalPosts = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });                    
+            };
+            
+            $scope.cargarInternacionales();
+            
+            $scope.cargarMasNoticias = function(){
+                $scope.offsetInter = $scope.offsetInter + 5;
+                $scope.cargarInternacionales();
+            };
         })
 
         ;

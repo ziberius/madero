@@ -40,11 +40,6 @@
                                                                             class="img-responsive img-antofagasta-news-middle center-block"
                                                                             src="{{antofagastaPosts[1].thumbnailImageUrl}}"
                                                                             alt=""/></a>
-                                                                <!--           <div ng-click="detail(antofagastaPosts[1].id)">
-                                                                               <div style="background-image:url({{antofagastaPosts[1].thumbnailImageUrl}}); background-size:100% ;height:200px;"
-                                                                                    class=""
-                                                                               ></div>-->
-
                                                             </div>
                                                         </div>
                                                         <div class="post-content">
