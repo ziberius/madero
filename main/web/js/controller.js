@@ -866,6 +866,17 @@ angular
                     showMessage("No se encontraron resultados");
                 }
             });
+            
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL +"," + Constants.Category.DEPORTES, function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.publicidadHorizontal = news.getMultipleNews(data.data);
+
+                } else {
+                    $scope.publicidadHorizontal = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });             
 
             $scope.loadSportPostsHighlightedCarousel = function () {
                 $("#sport-posts-highlighted-carousel").owlCarousel({

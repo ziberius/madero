@@ -133,9 +133,9 @@
 
 
                     <!--Publicidad horizontal-->
-                    <div class="row top5">
+                    <div class="row top5" ng-show="publicidadHorizontal.length > 0">
                         <img class="img-responsive center-block" style="max-height:120px"
-                             src="/main/web/images/post/banner.jpg"/>
+                             ng-src="{{publicidadHorizontal[0].guid}}" />
                     </div>
                 </div>
 
@@ -146,10 +146,17 @@
                             <?php require_once dirname(__FILE__) . '/../include/internacionales.php'; ?>
                         </div><!--/#widget-->
 
-                        <!--Publicidad Vertical-->
-                        <div class="widget">
-                            <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg"/>
-                        </div><!-- widget -->
+                        <div class="col-sm-12 col-md-3 text-center">
+                            <h3>Etiquetas del Día</h3>
+                            <ul class="list-unstyled">
+                                <li>#Torneodeclausura2017</li>
+                                <li>#Presidenciales2016</li>
+                                <li>#donaldtrump</li>
+                                <li>#celebridades</li>
+                                <li>#reformalaboral</li>
+                                <li>#animalessalvajes</li>
+                            </ul>
+                        </div>
 
                     </div><!--/#sitebar-->
                 </div>
@@ -180,11 +187,6 @@
         <!--More local news-->
         <div class="section">
             <div class="row">
-
-                <!--Publicidad anuncio cuadrado-->
-                <div class="col-sm-12 col-md-5">
-                    <img class="img-responsive center-block" src="/main/web/images/anuncio_cuadrado.jpg"/>
-                </div>
 
                 <div ng-show="sportPosts[9]">
                     <div class="col-sm-12 col-md-2">
@@ -228,17 +230,7 @@
 
 
                 <!--TODO ???-->
-                <div class="col-sm-12 col-md-3 text-center">
-                    <h3>Etiquetas del Día</h3>
-                    <ul class="list-unstyled">
-                        <li>#Torneodeclausura2017</li>
-                        <li>#Presidenciales2016</li>
-                        <li>#donaldtrump</li>
-                        <li>#celebridades</li>
-                        <li>#reformalaboral</li>
-                        <li>#animalessalvajes</li>
-                    </ul>
-                </div>
+
             </div>
         </div>
 
