@@ -17,7 +17,7 @@
                                                  style="background-image:url({{sportPosts[0].embedly[0].thumbnail_url}}); background-size:cover ;height:595px;">
                                                 <div class="post-content">
                                                     <div class="catagoryLeft"><a
-                                                                href="{{sportPosts[0].embedly[0].url}}">{{sportPosts[0].categories[0].provider_name}}</a>
+                                                                href="{{sportPosts[0].embedly[0].url}}">{{sportPosts[0].embedly[0].provider_name}}</a>
                                                     </div>
                                                     <h2 class="entry-title entryLeft">
                                                         <a href="{{sportPosts[0].embedly[0].url}}">{{sportPosts[0].embedly[0].title}}</a>
@@ -52,7 +52,7 @@
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a href="{{sportPosts[1].embedly[0].url}}">{{sportPosts[1].shortTitle}}</a>
+                                                                <a href="{{sportPosts[1].embedly[0].url}}">{{sportPosts[1].embedly[0].title}}</a>
                                                             </h2>
                                                         </div>
                                                     </div><!--/post-->
@@ -80,7 +80,7 @@
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a href="{{sportPosts[2].embedly[0].url}}">{{sportPosts[2].shortTitle}}</a>
+                                                                <a href="{{sportPosts[2].embedly[0].url}}">{{sportPosts[2].embedly[0].title}}</a>
                                                             </h2>
                                                         </div>
                                                     </div><!--/post-->
@@ -113,7 +113,7 @@
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a href="{{sportPosts[n].embedly[0].url}}">{{sportPosts[n].shortTitle}}</a>
+                                                                <a href="{{sportPosts[n].embedly[0].url}}">{{sportPosts[n].embedly[0].title}}</a>
                                                             </h2>
                                                         </div>
                                                     </div>
@@ -167,7 +167,7 @@
                         <div class="catagory"><a href="{{sportPostHigh.embedly[0].url}}">{{sportPostHigh.categories[0].name}}</a>
                         </div>
                         <h2 class="entry-title">
-                            <a href="{{sportPostHigh.embedly[0].url}}">{{sportPostHigh.title}}</a>
+                            <a href="{{sportPostHigh.embedly[0].url}}">{{sportPostHigh.embedly[0].title}}</a>
                         </h2>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
 
                             <div class="post-content nopaddingtop">
                                 <h2 class="entry-title">
-                                    <a href="{{sportPosts[9].embedly[0].url}}">{{sportPosts[9].shortTitle}}</a>
+                                    <a href="{{sportPosts[9].embedly[0].url}}">{{sportPosts[9].embedly[0].title}}</a>
                                 </h2>
                             </div>
                             <div class="entry-header">
@@ -212,7 +212,7 @@
 
                             <div class="post-content nopaddingtop">
                                 <h2 class="entry-title">
-                                    <a href="{{sportPosts[10].embedly[0].url}}">{{sportPosts[10].shortTitle}}</a>
+                                    <a href="{{sportPosts[10].embedly[0].url}}">{{sportPosts[10].embedly[0].title}}</a>
                                 </h2>
                             </div>
                             <div class="entry-header">
@@ -252,7 +252,7 @@
 
                                 <div class="post-content nopaddingtop">
                                     <h2 class="entry-title">
-                                        <a href="{{sportPosts[n].embedly[0].url}}"">{{sportPosts[n].shortTitle}}</a>
+                                        <a href="{{sportPosts[n].embedly[0].url}}"">{{sportPosts[n].embedly[0].title}}</a>
                                     </h2>
                                 </div>
                                 <div class="entry-header">
