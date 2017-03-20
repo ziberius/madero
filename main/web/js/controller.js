@@ -667,13 +667,23 @@ angular
             };
 
            
-            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "6", "0", Constants.Category.PUBLICIDAD_CUADRADA +"," + Constants.Category.ATACAMA, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_CUADRADA +"," + Constants.Category.ANTOFAGASTA, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNews(data.data);
+                    $scope.publicidadCuadrada = news.getMultipleNews(data.data);
 
                 } else {
-                    $scope.internationalPosts = null;
+                    $scope.publicidadCuadrada = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });            
+            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL +"," + Constants.Category.ANTOFAGASTA, function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.publicidadHorizontal = news.getMultipleNews(data.data);
+
+                } else {
+                    $scope.publicidadHorizontal = null;
                     showMessage("No se encontraron resultados");
                 }
             });            

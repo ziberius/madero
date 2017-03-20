@@ -146,9 +146,9 @@
 
 
                     <!--Publicidad horizontal-->
-                    <div class="row top5">
+                    <div class="row top5" ng-show="publicidadHorizontal.length > 0">
                         <img class="img-responsive center-block" style="max-height:120px"
-                             src="/main/web/images/post/banner.jpg"/>
+                             ng-src="{{publicidadHorizontal[0].guid}}" />
                     </div>
                 </div>
 
@@ -160,8 +160,11 @@
                         </div><!--/#widget-->
 
                         <!--Publicidad Vertical-->
-                        <div class="widget">
-                            <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg"/>
+                        <div class="widget" ng-show="publicidadCuadrada.length > 0">
+                            <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[0].guid}}"/>
+                        </div><!-- widget -->
+                        <div class="widget" ng-show="publicidadCuadrada.length > 1">
+                            <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[1].guid}}"/>
                         </div><!-- widget -->
 
                     </div><!--/#sitebar-->
@@ -195,8 +198,8 @@
             <div class="row">
 
                 <!--Publicidad anuncio cuadrado-->
-                <div class="col-sm-12 col-md-5">
-                    <img class="img-responsive center-block" src="/main/web/images/anuncio_cuadrado.jpg"/>
+                <div class="col-sm-12 col-md-5" ng-show="publicidadCuadrada.length > 2">
+                    <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[2].guid}}"/>
                 </div>
 
                 <div ng-show="antofagastaPosts[9]">
