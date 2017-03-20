@@ -133,7 +133,7 @@
 
 
                     <!--Publicidad horizontal-->
-                    <div class="row top5" ng-show="publicidadHorizontal.length > 0">
+                    <div class="row top5">
                         <img class="img-responsive center-block" style="max-height:120px"
                              ng-src="{{publicidadHorizontal.thumbnailImageUrl}}" />
                     </div>
