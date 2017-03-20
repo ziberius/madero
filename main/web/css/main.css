@@ -2509,6 +2509,16 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
     background-color: black;
 }
 
+#top-news .post .entry-header .entry-thumbnail img {
+    max-height: 400px;
+    height: auto;
+    width: auto;
+}
+
+#top-news .post .entry-header .entry-thumbnail {
+    background-color: black;
+}
+
 .medium-post .entry-header .entry-thumbnail .img-national-news-middle {
     max-height: 200px;
     height: auto;

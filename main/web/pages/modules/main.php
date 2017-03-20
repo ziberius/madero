@@ -100,7 +100,7 @@
                                 <div class="post">
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a ng-click="detail(norteAntofagasta[0].id)" ><img class="img-responsive" ng-src="{{norteAntofagasta[0].thumbnailImageUrl}}" alt="" /></a>
+                                            <a ng-click="detail(norteAntofagasta[0].id)" ><img class="img-responsive center-block" ng-src="{{norteAntofagasta[0].thumbnailImageUrl}}" alt="" /></a>
                                         </div>
                                     </div>
                                     <div class="post-content">								
@@ -118,7 +118,7 @@
                                 <div class="post">
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a ng-click="detail(norteAtacama[0].id)" ><img class="img-responsive" ng-src="{{norteAtacama[0].thumbnailImageUrl}}" alt="" /></a>
+                                            <a ng-click="detail(norteAtacama[0].id)" ><img class="img-responsive center-block" ng-src="{{norteAtacama[0].thumbnailImageUrl}}" alt="" /></a>
                                         </div>
                                     </div>
                                     <div class="post-content">
@@ -136,7 +136,7 @@
                                 <div class="post">
                                     <div class="entry-header">
                                         <div class="entry-thumbnail">
-                                            <a ng-click="detail(norteSerena[0].id)" ><img class="img-responsive" ng-src="{{norteSerena[0].thumbnailImageUrl}}" alt="" /></a>
+                                            <a ng-click="detail(norteSerena[0].id)" ><img class="img-responsive center-block" ng-src="{{norteSerena[0].thumbnailImageUrl}}" alt="" /></a>
                                         </div>
                                     </div>
                                     <div class="post-content">
