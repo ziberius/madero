@@ -31,7 +31,8 @@ angular
                 DESTACADO: '103',
                 PUBLICIDAD_VERTICAL: '104',
                 PUBLICIDAD_HORIZONTAL: '105',
-                PUBLICIDAD_CUADRADA: '106'
+                PUBLICIDAD_CUADRADA: '106',
+                DEPORTES:'107'
             },
             Limits: {
                 InternationalSmall: 10,
@@ -841,7 +842,7 @@ angular
 
             //TODO cambiar fechas y categoria
             function loadSportPost(limit, offset) {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.LA_SERENA_COQUIMBO, function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.DEPORTES, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.sportPosts = news.getMultipleNews(data.data);
@@ -855,7 +856,7 @@ angular
 
             // Sport Posts Highlighted
             //TODO agregar la categoria 102
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.LA_SERENA_COQUIMBO, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.DEPORTES + "," + Constants.Category.DESTACADO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.sportPostsHighlighted = news.getMultipleNews(data.data);
