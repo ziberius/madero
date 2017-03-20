@@ -408,11 +408,11 @@ angular
                 );
             };
 
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "4", "0", Constants.Category.VIDEOS,
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "4", "0", Constants.Category.VIDEOS + "," + Constants.Category.PORTADA ,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
-                            $scope.videoTendencias = news.getMultipleNews(res.data.data);
+                            $scope.videoTendencias = res.data.data;
 
                         } else {
                             $scope.videoTendencias = null;
