@@ -472,7 +472,6 @@ angular
             });
 
             function getOtherPost(idCategory) {
-                //TODO cambiar fechas, limit, offset
                 getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", idCategory, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
@@ -508,9 +507,8 @@ angular
                 loadNationalPost($scope.quantityNationalPost, $scope.offsetNationalPost);
             };
 
-            //TODO cambiar fechas y categoria, agregar la categoria 102
             function loadNationalPost(limit, offset) {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.NACIONAL, function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.NACIONAL , function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.nationalPosts = news.getMultipleNews(data.data);
@@ -523,7 +521,7 @@ angular
             }
 
             // National Posts Highlighted
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.NACIONAL, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.NACIONAL + "," + Constants.Category.DESTACADO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.nationalPostsHighlighted = news.getMultipleNews(data.data);
@@ -664,7 +662,6 @@ angular
                 loadAntofagastaPost($scope.quantityAntofagastaPost, $scope.offsetAntofagastaPost);
             };
 
-            //TODO cambiar fechas y categoria
             function loadAntofagastaPost(limit, offset) {
                 getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.ANTOFAGASTA, function (response) {
                     var data = response.data;
@@ -679,8 +676,7 @@ angular
             }
 
             // Antofagasta Posts Highlighted
-            //TODO agregar la categoria 102
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.ANTOFAGASTA, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.ANTOFAGASTA + "," + Constants.Category.DESTACADO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.antofagastaPostsHighlighted = news.getMultipleNews(data.data);
@@ -738,7 +734,6 @@ angular
                 loadAtacamaPost($scope.quantityAtacamaPost, $scope.offsetAtacamaPost);
             };
 
-            //TODO cambiar fechas y categoria
             function loadAtacamaPost(limit, offset) {
                 getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.ATACAMA, function (response) {
                     var data = response.data;
@@ -753,8 +748,7 @@ angular
             }
 
             // Atacama Posts Highlighted
-            //TODO agregar la categoria 102
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.ATACAMA, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.ATACAMA + "," + Constants.Category.DESTACADO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.atacamaPostsHighlighted = news.getMultipleNews(data.data);
@@ -789,7 +783,6 @@ angular
                 loadCoquimboPost($scope.quantityCoquimboPost, $scope.offsetCoquimboPost);
             };
 
-            //TODO cambiar fechas y categoria
             function loadCoquimboPost(limit, offset) {
                 getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.LA_SERENA_COQUIMBO, function (response) {
                     var data = response.data;
@@ -804,8 +797,7 @@ angular
             }
 
             // Coquimbo - La Serena Posts Highlighted
-            //TODO agregar la categoria 102
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.LA_SERENA_COQUIMBO, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.DESTACADO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.coquimboPostsHighlighted = news.getMultipleNews(data.data);
@@ -840,7 +832,6 @@ angular
                 loadSportPost($scope.quantitySportPost, $scope.offsetSportPost);
             };
 
-            //TODO cambiar fechas y categoria
             function loadSportPost(limit, offset) {
                 getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.DEPORTES, function (response) {
                     var data = response.data;
@@ -855,7 +846,6 @@ angular
             }
 
             // Sport Posts Highlighted
-            //TODO agregar la categoria 102
             getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.DEPORTES + "," + Constants.Category.DESTACADO, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
