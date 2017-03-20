@@ -74,7 +74,7 @@ class Processor
     {
         if (!empty($post->getCategories())) {
             foreach ($post->getCategories() as $category) {
-                if ($category['name'] == 'EXTERNO') {
+                if ($category['id'] == '99' || $category['id'] == '107') { //Externo o Deportes
 
                     $url = $post->getContent();
                     $url = trim($url);
