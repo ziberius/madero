@@ -29,8 +29,15 @@ angular
                 OPINION: '100',
                 PORTADA: '102',
                 DESTACADO: '103',
-                PUBLICIDAD_HORIZONTAL_DEPORTES:'109',
-                DEPORTES:'107'
+                PUBLICIDAD_HORIZONTAL_PORTADA: '104',
+                PUBLICIDAD_HORIZONTAL_ANTOFAGASTA: '105',
+                PUBLICIDAD_VERTICAL_ANTOFAGASTA: '106',
+                PUBLICIDAD_HORIZONTAL_DEPORTES: '109',
+                PUBLICIDAD_HORIZONTAL_ATACAMA: '110',
+                PUBLICIDAD_VERTICAL_ATACAMA: '111',
+                PUBLICIDAD_HORIZONTAL_LA_SERENA: '112',
+                PUBLICIDAD_VERTICAL_LA_SERENA: '113',
+                DEPORTES: '107'
             },
             Limits: {
                 InternationalSmall: 10,
