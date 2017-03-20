@@ -14,13 +14,13 @@
                                         <div class="col-sm-12 col-md-8">
 
                                             <div class="post feature-post"
-                                                 style="background-image:url({{sportPosts[0].thumbnailImageUrl}}); background-size:cover ;height:595px;">
+                                                 style="background-image:url({{sportPosts[0].embedly[0].thumbnail_url}}); background-size:cover ;height:595px;">
                                                 <div class="post-content">
                                                     <div class="catagoryLeft"><a
-                                                                ng-click="detail(sportPosts[0].id)">{{sportPosts[0].categories[0].name}}</a>
+                                                                href="{{sportPosts[0].embedly[0].url}}">{{sportPosts[0].categories[0].provider_name}}</a>
                                                     </div>
                                                     <h2 class="entry-title entryLeft">
-                                                        <a ng-click="detail(sportPosts[0].id)">{{sportPosts[0].title}}</a>
+                                                        <a href="{{sportPosts[0].embedly[0].url}}">{{sportPosts[0].embedly[0].title}}</a>
                                                     </h2>
                                                 </div>
                                             </div><!--/post-->
@@ -36,32 +36,23 @@
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
 
-                                                                <a ng-click="detail(sportPosts[1].id)"><img
+                                                                <a href="{{sportPosts[1].embedly[0].url}}"><img
                                                                             class="img-responsive img-sport-news-middle center-block"
-                                                                            src="{{sportPosts[1].thumbnailImageUrl}}"
+                                                                            src="{{sportPosts[1].embedly[0].thumbnail_url}}"
                                                                             alt=""/></a>
-                                                                <!--           <div ng-click="detail(sportPosts[1].id)">
-                                                                               <div style="background-image:url({{sportPosts[1].thumbnailImageUrl}}); background-size:100% ;height:200px;"
-                                                                                    class=""
-                                                                               ></div>-->
-
                                                             </div>
                                                         </div>
                                                         <div class="post-content">
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                ng-click="detail(sportPosts[1].id)"><i
+                                                                                href="{{sportPosts[1].embedly[0].url}}"><i
                                                                                     class="fa fa-clock-o"></i>{{sportPosts[1].formattedDate}}
                                                                         </a></li>
-                                                                    <!--<li class="views"><a href="#"><i
-                                                                                    class="fa fa-eye"></i>21k</a></li>
-                                                                    <li class="loves"><a href="#"><i
-                                                                                    class="fa fa-heart-o"></i>372</a></li>-->
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a ng-click="detail(sportPosts[1].id)">{{sportPosts[1].shortTitle}}</a>
+                                                                <a href="{{sportPosts[1].embedly[0].url}}">{{sportPosts[1].shortTitle}}</a>
                                                             </h2>
                                                         </div>
                                                     </div><!--/post-->
@@ -73,9 +64,9 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a ng-click="detail(sportPosts[2].id)"><img
+                                                                <a href="{{sportPosts[2].embedly[0].url}}"><img
                                                                             class="img-responsive img-sport-news-middle center-block"
-                                                                            src="{{sportPosts[2].thumbnailImageUrl}}"
+                                                                            src="{{sportPosts[2].embedly[0].thumbnail_url}}"
                                                                             alt=""/></a>
                                                             </div>
                                                         </div>
@@ -83,17 +74,13 @@
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                ng-click="detail(sportPosts[2].id)"><i
+                                                                                href="{{sportPosts[2].embedly[0].url}}"><i
                                                                                     class="fa fa-clock-o"></i>{{sportPosts[2].formattedDate}}
                                                                         </a></li>
-                                                                    <!--<li class="views"><a href="#"><i
-                                                                                    class="fa fa-eye"></i>21k</a></li>
-                                                                    <li class="loves"><a href="#"><i
-                                                                                    class="fa fa-heart-o"></i>372</a></li>-->
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a ng-click="detail(sportPosts[2].id)">{{sportPosts[2].shortTitle}}</a>
+                                                                <a href="{{sportPosts[2].embedly[0].url}}">{{sportPosts[2].shortTitle}}</a>
                                                             </h2>
                                                         </div>
                                                     </div><!--/post-->
@@ -110,9 +97,9 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a ng-click="detail(sportPosts[n].id)"><img
+                                                                <a href="{{sportPosts[n].embedly[0].url}}"><img
                                                                             class="img-responsive img-sport-news-middle center-block"
-                                                                            src="{{sportPosts[n].thumbnailImageUrl}}"
+                                                                            src="{{sportPosts[n].embedly[0].thumbnail_url}}"
                                                                             alt=""/></a>
                                                             </div>
                                                         </div>
@@ -120,18 +107,13 @@
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                ng-click="detail(sportPosts[n].id)"><i
+                                                                               href="{{sportPosts[n].embedly[0].url}}"><i
                                                                                     class="fa fa-clock-o"></i>{{sportPosts[n].formattedDate}}</a>
                                                                     </li>
-                                                                    <!--<li class="views"><a href="#"><i
-                                                                                    class="fa fa-eye"></i>21k</a>
-                                                                    </li>
-                                                                    <li class="loves"><a href="#"><i
-                                                                                    class="fa fa-heart-o"></i>372</a></li>-->
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a ng-click="detail(sportPosts[n].id)">{{sportPosts[n].shortTitle}}</a>
+                                                                <a href="{{sportPosts[n].embedly[0].url}}">{{sportPosts[n].shortTitle}}</a>
                                                             </h2>
                                                         </div>
                                                     </div>
@@ -180,12 +162,12 @@
             <div ng-repeat="sportPostHigh in sportPostsHighlighted">
 
                 <div class="post feature-post"
-                     style="background-image:url({{sportPostHigh.thumbnailImageUrl}}); background-size:cover">
+                     style="background-image:url({{sportPostHigh.embedly[0].thumbnail_url}}); background-size:cover">
                     <div class="post-content">
-                        <div class="catagory"><a ng-click="detail(sportPostHigh.id)">{{sportPostHigh.categories[0].name}}</a>
+                        <div class="catagory"><a href="{{sportPostHigh.embedly[0].url}}">{{sportPostHigh.categories[0].name}}</a>
                         </div>
                         <h2 class="entry-title">
-                            <a ng-click="detail(sportPostHigh.id)">{{sportPostHigh.title}}</a>
+                            <a href="{{sportPostHigh.embedly[0].url}}">{{sportPostHigh.title}}</a>
                         </h2>
                     </div>
                 </div>
@@ -210,13 +192,13 @@
 
                             <div class="post-content nopaddingtop">
                                 <h2 class="entry-title">
-                                    <a ng-click="detail(sportPosts[9].id)">{{sportPosts[9].shortTitle}}</a>
+                                    <a href="{{sportPosts[9].embedly[0].url}}">{{sportPosts[9].shortTitle}}</a>
                                 </h2>
                             </div>
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a ng-click="detail(sportPosts[9].id)"><img class="img-responsive"
-                                                                                      src="{{sportPosts[9].thumbnailImageUrl}}"
+                                    <a href="{{sportPosts[9].embedly[0].url}}"><img class="img-responsive"
+                                                                                      src="{{sportPosts[9].embedly[0].thumbnail_url}}"
                                                                                       alt=""/></a>
                                 </div>
                             </div>
@@ -230,13 +212,13 @@
 
                             <div class="post-content nopaddingtop">
                                 <h2 class="entry-title">
-                                    <a ng-click="detail(sportPosts[10].id)">{{sportPosts[10].shortTitle}}</a>
+                                    <a href="{{sportPosts[10].embedly[0].url}}">{{sportPosts[10].shortTitle}}</a>
                                 </h2>
                             </div>
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a ng-click="detail(sportPosts[10].id)"><img class="img-responsive"
-                                                                                       src="{{sportPosts[10].thumbnailImageUrl}}"
+                                    <a href="{{sportPosts[10].embedly[0].url}}"><img class="img-responsive"
+                                                                                       src="{{sportPosts[10].embedly[0].thumbnail_url}}"
                                                                                        alt=""/></a>
                                 </div>
                             </div>
@@ -270,13 +252,13 @@
 
                                 <div class="post-content nopaddingtop">
                                     <h2 class="entry-title">
-                                        <a ng-click="detail(sportPosts[n].id)">{{sportPosts[n].shortTitle}}</a>
+                                        <a href="{{sportPosts[n].embedly[0].url}}"">{{sportPosts[n].shortTitle}}</a>
                                     </h2>
                                 </div>
                                 <div class="entry-header">
                                     <div class="entry-thumbnail">
-                                        <a ng-click="detail(sportPosts[n].id)"><img class="img-responsive"
-                                                                                          src="{{sportPosts[n].thumbnailImageUrl}}"
+                                        <a href="{{sportPosts[n].embedly[0].url}}"><img class="img-responsive"
+                                                                                          src="{{sportPosts[n].embedly[0].thumbnail_url}}"
                                                                                           alt=""/></a>
                                     </div>
                                 </div>
