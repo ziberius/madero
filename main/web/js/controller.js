@@ -29,9 +29,7 @@ angular
                 OPINION: '100',
                 PORTADA: '102',
                 DESTACADO: '103',
-                PUBLICIDAD_VERTICAL: '104',
-                PUBLICIDAD_HORIZONTAL: '105',
-                PUBLICIDAD_CUADRADA: '106',
+                PUBLICIDAD_HORIZONTAL_DEPORTES:'109',
                 DEPORTES:'107'
             },
             Limits: {
@@ -857,7 +855,7 @@ angular
                 }
             });
             
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL +"," + Constants.Category.DEPORTES, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_DEPORTES, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadHorizontal = news.getSingleNews(data.data[0]);
