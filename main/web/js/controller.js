@@ -27,11 +27,11 @@ angular
                 LA_SERENA_COQUIMBO: '24',
                 EXTERNO: '99',
                 OPINION: '100',
-                PORTADA: '101',
-                DESTACADO: '102',
-                PUBLICIDAD_VERTICAL: '103',
-                PUBLICIDAD_HORIZONTAL: '104',
-                PUBLICIDAD_CUADRADA: '105'
+                PORTADA: '102',
+                DESTACADO: '103',
+                PUBLICIDAD_VERTICAL: '104',
+                PUBLICIDAD_HORIZONTAL: '105',
+                PUBLICIDAD_CUADRADA: '106'
             },
             Limits: {
                 InternationalSmall: 10,
