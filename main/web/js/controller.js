@@ -275,8 +275,9 @@ angular
             $scope.offsetNacSerena = 1;
             $scope.offsetNacionales = 1;
 
-//TODO cambiar fechas
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", Constants.Category.ANTOFAGASTA + "," + Constants.Category.PORTADA,
+
+            //Carrousel Destacadas
+            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "1", "0", Constants.Category.ANTOFAGASTA + "," + Constants.Category.PORTADA,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
@@ -288,8 +289,7 @@ angular
                         }
                     }
             );
-//TODO cambiar fechas
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", Constants.Category.ATACAMA + "," + Constants.Category.PORTADA,
+            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "1", "0", Constants.Category.ATACAMA + "," + Constants.Category.PORTADA,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
@@ -301,8 +301,7 @@ angular
                         }
                     }
             );
-//TODO cambiar fechas
-            getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "1", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.PORTADA,
+            getPosts.getPostsFromCategory(getDateFromNow(-30), getDateFromNow(0), "1", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.PORTADA,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
@@ -315,6 +314,7 @@ angular
                     }
             );
 
+            //NACIONALES IZQUIERDA
             $scope.loadNacionales = function () {
                 getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "9", $scope.offsetNacionales, Constants.Category.NACIONAL,
                         function (res) {
@@ -329,6 +329,7 @@ angular
                 );
             };
 
+            //REGIONALES SECCION CENTRAL
             $scope.loadAntofagasta = function () {
                 getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", $scope.offsetNacAntofagasta, Constants.Category.ANTOFAGASTA,
                         function (res) {
@@ -360,7 +361,7 @@ angular
 
             $scope.loadSerena = function () {
 
-                getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "3", $scope.offsetNacSerena, Constants.Category.LA_SERENA_COQUIMBO,
+                getPosts.getPostsFromCategory(getDateFromNow(-365), getDateFromNow(0), "4", $scope.offsetNacSerena, Constants.Category.LA_SERENA_COQUIMBO,
                         function (res) {
                             if (res.data !== null && res.data.status === 'OK') {
 
@@ -398,7 +399,7 @@ angular
             };
 
             $scope.masSerena = function () {
-                $scope.offsetNacSerena = $scope.offsetNacSerena + 3;
+                $scope.offsetNacSerena = $scope.offsetNacSerena + 4;
                 $scope.loadSerena();
             };
 
@@ -913,7 +914,6 @@ angular
                 $scope.cargarInternacionales();
             };
         })
-
         .controller('footerController', function ($scope, $http) {
 
             $scope.currentDate = getFormattedDate(new Date());

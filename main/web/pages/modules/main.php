@@ -17,22 +17,6 @@
                     </h2>
                 </div>
             </div><!--/post-->
-            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAtacama[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
-                <div class="post-content">
-                    <div class="catagory"><a href="#">Atacama</a></div>
-                    <h2 class="entry-title">
-                        <a ng-click="detail(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
-                    </h2>
-                </div>
-            </div><!--/post-->
-                        <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAtacama[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
-                <div class="post-content">
-                    <div class="catagory"><a href="#">Atacama</a></div>
-                    <h2 class="entry-title">
-                        <a ng-click="detail(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
-                    </h2>
-                </div>
-            </div><!--/post-->
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaSerena[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
                     <div class="catagory"><a href="#">La Serena - Coquimbo</a></div>
@@ -187,151 +171,164 @@
                             <div class="section technology-news">
                                 <h1 class="section-title"><a href="listing.php">Atacama</a></h1>
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-12">
-                                        <div class="post">
-                                            <div class="entry-header">
-                                                <div class="entry-thumbnail">
-                                                    <a ng-click="detail(nacionalesAtacama[0].id)"><img class="img-responsive" src="{{nacionalesAtacama[0].thumbnailImageUrl}}" alt="" /></a>
+
+                                    <div ng-show="nacionalesAtacama[0]">
+                                        <div class="col-md-8 col-sm-12">
+                                            <div class="post">
+                                                <div class="entry-header">
+                                                    <div class="entry-thumbnail">
+                                                        <a ng-click="detail(nacionalesAtacama[0].id)"><img class="img-responsive" src="{{nacionalesAtacama[0].thumbnailImageUrl}}" alt="" /></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="post-content">								
-                                                <div class="entry-meta">
-                                                    <ul class="list-inline">
-                                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> {{nacionalesAtacama[0].formattedDate}}</a></li>
-                                                    </ul>
+                                                <div class="post-content">
+                                                    <div class="entry-meta">
+                                                        <ul class="list-inline">
+                                                            <li class="publish-date"><a ng-click="detail(nacionalesAtacama[0].id)"><i class="fa fa-clock-o"></i> {{nacionalesAtacama[0].formattedDate}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h2 class="entry-title">
+                                                        <a ng-click="detail(nacionalesAtacama[0].id)" >{{nacionalesAtacama[0].title}}</a>
+                                                    </h2>
+                                                    <div class="entry-content">
+                                                        <!-- <p data-ng-bind-html="nacionalesAtacama[0].content.substring(0,50)"></p> -->
+                                                    </div>
                                                 </div>
-                                                <h2 class="entry-title">
-                                                    <a ng-click="detail(nacionalesAtacama[0].id)" >{{nacionalesAtacama[0].title}}</a>
-                                                </h2>
-                                                <div class="entry-content">
-                                                    <!-- <p data-ng-bind-html="nacionalesAtacama[0].content.substring(0,50)"></p> -->
-                                                </div>
-                                            </div>
-                                        </div><!--/post--> 
+                                            </div><!--/post-->
+                                        </div>
                                     </div>
+
+
                                     <div class="col-md-4 col-sm-12">
-                                        <div class="post small-post">
-                                            <div class="entry-header">
-                                                <div class="entry-thumbnail">
-                                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/2.jpg" alt="" /></a>
+
+                                        <div ng-show="nacionalesAtacama[1]">
+                                            <div class="post small-post">
+                                                <div class="entry-header">
+                                                    <div class="entry-thumbnail">
+                                                        <a ng-click="detail(nacionalesAtacama[1].id)"><img class="img-responsive" src="{{nacionalesAtacama[1].thumbnailImageUrl}}" alt="" /></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="post-content">								
-                                                <div class="entry-meta">
-                                                    <ul class="list-inline">
-                                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 25 de Enero, 2016 </a></li>
-                                                    </ul>
+                                                <div class="post-content">
+                                                    <div class="entry-meta">
+                                                        <ul class="list-inline">
+                                                            <li class="publish-date"><a ng-click="detail(nacionalesAtacama[1].id)"><i class="fa fa-clock-o"></i>{{nacionalesAtacama[1].formattedDate}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h2 class="entry-title">
+                                                        <a ng-click="detail(nacionalesAtacama[1].id)" >{{nacionalesAtacama[1].title}}</a>
+                                                    </h2>
                                                 </div>
-                                                <h2 class="entry-title">
-                                                    <a href="news-details.php">Chañaral cuenta con un Centro Comunitario de Rehabilitación</a>
-                                                </h2>
-                                            </div>
-                                        </div><!--/post--> 
-                                        <div class="post small-post">
-                                            <div class="entry-header">
-                                                <div class="entry-thumbnail">
-                                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/atacama/5.bmp" alt="" /></a>
+                                            </div><!--/post-->
+                                        </div>
+                                        <div ng-show="nacionalesAtacama[2]">
+                                            <div class="post small-post">
+                                                <div class="entry-header">
+                                                    <div class="entry-thumbnail">
+                                                        <a ng-click="detail(nacionalesAtacama[2].id)"><img class="img-responsive" src="{{nacionalesAtacama[2].thumbnailImageUrl}}" alt="" /></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="post-content">								
-                                                <div class="entry-meta">
-                                                    <ul class="list-inline">
-                                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 25 de Enero, 2016 </a></li>
-                                                    </ul>
+                                                <div class="post-content">
+                                                    <div class="entry-meta">
+                                                        <ul class="list-inline">
+                                                            <li class="publish-date"><a ng-click="detail(nacionalesAtacama[2].id)"><i class="fa fa-clock-o"></i>{{nacionalesAtacama[2].formattedDate}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h2 class="entry-title">
+                                                        <a ng-click="detail(nacionalesAtacama[2].id)" >{{nacionalesAtacama[2].title}}</a>
+                                                    </h2>
                                                 </div>
-                                                <h2 class="entry-title">
-                                                    <a href="news-details.php">38 familias de Freirina están más cerca de concretar la casa propia</a>
-                                                </h2>
-                                            </div>
-                                        </div><!--/post--> 
+                                            </div><!--/post-->
+                                        </div>
                                     </div>
                                 </div>
-                            </div><!--/technology-news--> 
+                            </div><!--/technology-news-->
                             <div class="load-more text-center">
                                 <a class="btn btn-primary btn-block" ng-click="masAtacama()">Cargar Más Noticias...</a>
                             </div>
+
                             <div class="section lifestyle-section">
                                 <h1 class="section-title"><a href="listing.php">La Serena - Coquimbo</a></h1>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="post medium-post">
-                                            <div class="entry-header">
-                                                <div class="entry-thumbnail">
-                                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/1.jpg" alt="" /></a>
+                                        <div ng-show="nacionalesSerena[0]">
+                                            <div class="post medium-post">
+                                                <div class="entry-header">
+                                                    <div class="entry-thumbnail">
+                                                        <a ng-click="detail(nacionalesSerena[0].id)"><img class="img-responsive" src="{{nacionalesSerena[0].thumbnailImageUrl}}" alt="" /></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="post-content">								
-                                                <div class="entry-meta">
-                                                    <ul class="list-inline">
-                                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 25 de Enero, 2016 </a></li>
-                                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                                    </ul>
+                                                <div class="post-content">
+                                                    <div class="entry-meta">
+                                                        <ul class="list-inline">
+                                                            <li class="publish-date"><a ng-click="detail(nacionalesSerena[0].id)"><i class="fa fa-clock-o"></i>{{nacionalesSerena[0].formattedDate}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h2 class="entry-title">
+                                                        <a ng-click="detail(nacionalesSerena[0].id)">{{nacionalesSerena[0].title}}</a>
+                                                    </h2>
                                                 </div>
-                                                <h2 class="entry-title">
-                                                    <a href="news-details.php">En La Serena fue detenido “papito corazón” que debía más de $76 millones en pensión de alimentos</a>
-                                                </h2>
-                                            </div>
-                                        </div><!--/post--> 
-                                        <div class="post medium-post">
-                                            <div class="entry-header">
-                                                <div class="entry-thumbnail">
-                                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/2.jpg" alt="" /></a>
+                                            </div><!--/post-->
+                                        </div>
+
+                                        <div ng-show="nacionalesSerena[1]">
+                                            <div class="post medium-post">
+                                                <div class="entry-header">
+                                                    <div class="entry-thumbnail">
+                                                        <a ng-click="detail(nacionalesSerena[1].id)"><img class="img-responsive" src="{{nacionalesSerena[1].thumbnailImageUrl}}" alt="" /></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="post-content">								
-                                                <div class="entry-meta">
-                                                    <ul class="list-inline">
-                                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 25 de Enero, 2016 </a></li>
-                                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                                    </ul>
+                                                <div class="post-content">
+                                                    <div class="entry-meta">
+                                                        <ul class="list-inline">
+                                                            <li class="publish-date"><a ng-click="detail(nacionalesSerena[1].id)"><i class="fa fa-clock-o"></i>{{nacionalesSerena[1].formattedDate}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h2 class="entry-title">
+                                                        <a ng-click="detail(nacionalesSerena[1].id)">{{nacionalesSerena[1].title}}</a>
+                                                    </h2>
                                                 </div>
-                                                <h2 class="entry-title">
-                                                    <a href="news-details.php">Más de 8 mil estudiantes de la región de Coquimbo están preseleccionados para acceder a la gratuidad en la educación superior</a>
-                                                </h2>
-                                            </div>
-                                        </div><!--/post--> 
+                                            </div><!--/post-->
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="post medium-post">
-                                            <div class="entry-header">
-                                                <div class="entry-thumbnail">
-                                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/coquimbo/3.jpg" alt="" /></a>
+                                        <div ng-show="nacionalesSerena[2]">
+                                            <div class="post medium-post">
+                                                <div class="entry-header">
+                                                    <div class="entry-thumbnail">
+                                                        <a ng-click="detail(nacionalesSerena[2].id)"><img class="img-responsive" src="{{nacionalesSerena[2].thumbnailImageUrl}}" alt="" /></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="post-content">								
-                                                <div class="entry-meta">
-                                                    <ul class="list-inline">
-                                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> 25 de Enero, 2016 </a></li>
-                                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                                    </ul>
+                                                <div class="post-content">
+                                                    <div class="entry-meta">
+                                                        <ul class="list-inline">
+                                                            <li class="publish-date"><a ng-click="detail(nacionalesSerena[2].id)"><i class="fa fa-clock-o"></i>{{nacionalesSerena[2].formattedDate}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h2 class="entry-title">
+                                                        <a ng-click="detail(nacionalesSerena[2].id)">{{nacionalesSerena[2].title}}</a>
+                                                    </h2>
                                                 </div>
-                                                <h2 class="entry-title">
-                                                    <a href="news-details.php">En Salamanca detienen a dos mujeres que secaban marihuana y cocaína base en motor de refrigerador</a>
-                                                </h2>
-                                            </div>
-                                        </div><!--/post--> 
-                                        <div class="post medium-post">
-                                            <div class="entry-header">
-                                                <div class="entry-thumbnail">
-                                                    <a href="news-details.php"><img class="img-responsive" src="/main/web/images/post/antofagasta/1.jpg" alt="" /></a>
+                                            </div><!--/post-->
+                                        </div>
+
+                                        <div ng-show="nacionalesSerena[3]">
+                                            <div class="post medium-post">
+                                                <div class="entry-header">
+                                                    <div class="entry-thumbnail">
+                                                        <a ng-click="detail(nacionalesSerena[3].id)"><img class="img-responsive" src="{{nacionalesSerena[3].thumbnailImageUrl}}" alt="" /></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="post-content">								
-                                                <div class="entry-meta">
-                                                    <ul class="list-inline">
-                                                        <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i>25 de Enero, 2016 </a></li>
-                                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
-                                                    </ul>
+                                                <div class="post-content">
+                                                    <div class="entry-meta">
+                                                        <ul class="list-inline">
+                                                            <li class="publish-date"><a ng-click="detail(nacionalesSerena[3].id)"><i class="fa fa-clock-o"></i>{{nacionalesSerena[3].formattedDate}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h2 class="entry-title">
+                                                        <a ng-click="detail(nacionalesSerena[3].id)">{{nacionalesSerena[3].title}}</a>
+                                                    </h2>
                                                 </div>
-                                                <h2 class="entry-title">
-                                                    <a href="news-details.php">Gobierno impulsa importantes Proyectos de Borde Costero en la Región de Antofagasta</a>
-                                                </h2>
-                                            </div>
-                                        </div><!--/post--> 
+                                            </div><!--/post-->
+                                        </div>
                                     </div>
                                 </div>
                             </div><!--/.lifestyle -->
