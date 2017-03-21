@@ -1008,7 +1008,12 @@ angular
         })
         .controller('footerController', function ($scope, $http) {
 
-            $scope.currentDate = getFormattedDate(new Date());
+            var d = new Date();
+            var dateFormat = [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('-')
+                + ' ' +
+                [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
+            
+            $scope.currentDate = getFormattedDate(dateFormat);
 
             $http.get('http://mindicador.cl/api').success(function (data) {
                 $scope.dailyIndicators = data;
