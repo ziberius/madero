@@ -153,7 +153,7 @@
                     <!--Publicidad horizontal-->
                     <div class="row top5">
                         <img class="img-responsive center-block" style="max-height:120px"
-                             src="/main/web/images/post/banner.jpg"/>
+                             ng-src="{{publicidadHorizontal.thumbnailImageUrl}}" />
                     </div>
                 </div>
 
@@ -164,9 +164,12 @@
                             <?php require_once dirname(__FILE__) . '/../include/internacionales.php'; ?>
                         </div><!--/#widget-->
 
-                        <!--Publicidad Vertical-->
-                        <div class="widget">
-                            <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg"/>
+                         <!--Publicidad Vertical-->
+                        <div class="widget" ng-show="publicidadCuadrada.length > 0">
+                            <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
+                        </div><!-- widget -->
+                        <div class="widget" ng-show="publicidadCuadrada.length > 1">
+                            <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[1].thumbnailImageUrl}}"/>
                         </div><!-- widget -->
 
                     </div><!--/#sitebar-->
@@ -199,9 +202,17 @@
         <div class="section">
             <div class="row">
 
-                <!--Publicidad anuncio cuadrado-->
-                <div class="col-sm-12 col-md-5">
-                    <img class="img-responsive center-block" src="/main/web/images/anuncio_cuadrado.jpg"/>
+                <!--TODO ???-->
+                <div class="col-sm-12 col-md-3 text-center">
+                    <h3>Etiquetas del Día</h3>
+                    <ul class="list-unstyled">
+                        <li>#Torneodeclausura2017</li>
+                        <li>#Presidenciales2016</li>
+                        <li>#donaldtrump</li>
+                        <li>#celebridades</li>
+                        <li>#reformalaboral</li>
+                        <li>#animalessalvajes</li>
+                    </ul>
                 </div>
 
                 <div ng-show="coquimboPosts[9]">
@@ -244,19 +255,10 @@
                     </div>
                 </div>
 
-
-                <!--TODO ???-->
-                <div class="col-sm-12 col-md-3 text-center">
-                    <h3>Etiquetas del Día</h3>
-                    <ul class="list-unstyled">
-                        <li>#Torneodeclausura2017</li>
-                        <li>#Presidenciales2016</li>
-                        <li>#donaldtrump</li>
-                        <li>#celebridades</li>
-                        <li>#reformalaboral</li>
-                        <li>#animalessalvajes</li>
-                    </ul>
+                <div class="col-sm-12 col-md-5" ng-show="publicidadCuadrada.length > 2">
+                    <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
                 </div>
+
             </div>
         </div>
 

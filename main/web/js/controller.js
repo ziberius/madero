@@ -774,6 +774,26 @@ angular
 
                 });
             };
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_ANTOFAGASTA, function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.publicidadCuadrada = news.getMultipleNews(data.data);
+
+                } else {
+                    $scope.publicidadCuadrada = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });            
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ANTOFAGASTA, function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.publicidadHorizontal = news.getSingleNews(data.data[0]);
+
+                } else {
+                    $scope.publicidadHorizontal = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });              
 
         })
         .controller('listing3Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
@@ -823,6 +843,27 @@ angular
 
                 });
             };
+            
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_ANTOFAGASTA, function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.publicidadCuadrada = news.getMultipleNews(data.data);
+
+                } else {
+                    $scope.publicidadCuadrada = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });            
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ANTOFAGASTA, function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.publicidadHorizontal = news.getSingleNews(data.data[0]);
+
+                } else {
+                    $scope.publicidadHorizontal = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });             
 
         })
         .controller('listing4Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
