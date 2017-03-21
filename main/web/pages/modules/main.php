@@ -3,7 +3,7 @@
         <div class="section" id="main-slider">
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAntofagasta[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="#">Antofagasta</a></div>
+                    <div class="catagory"><a ng-click="detail(destacadaAntofagasta[0].id)">Antofagasta</a></div>
                     <h2 class="entry-title">
                         <a ng-click="detail(destacadaAntofagasta[0].id)">{{destacadaAntofagasta[0].title}}</a>
                     </h2>
@@ -11,7 +11,7 @@
             </div>             
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAtacama[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="#">Atacama</a></div>
+                    <div class="catagory"><a ng-click="detail(destacadaAtacama[0].id)">Atacama</a></div>
                     <h2 class="entry-title">
                         <a ng-click="detail(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
                     </h2>
@@ -19,7 +19,7 @@
             </div><!--/post-->
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaSerena[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="#">La Serena - Coquimbo</a></div>
+                    <div class="catagory"><a ng-click="detail(destacadaSerena[0].id)">La Serena - Coquimbo</a></div>
                     <h2 class="entry-title">
                         <a ng-click="detail(destacadaSerena[0].id)">{{destacadaSerena[0].title}}</a>
                     </h2>
@@ -27,7 +27,7 @@
             </div><!--/post-->
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAntofagasta[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="#">Antofagasta</a></div>
+                    <div class="catagory"><a ng-click="detail(destacadaAntofagasta[0].id)">Antofagasta</a></div>
                     <h2 class="entry-title">
                         <a ng-click="detail(destacadaAntofagasta[0].id)">{{destacadaAntofagasta[0].title}}</a>
                     </h2>
@@ -35,7 +35,7 @@
             </div>
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAtacama[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="#">Atacama</a></div>
+                    <div class="catagory"><a ng-click="detail(destacadaAtacama[0].id)">Atacama</a></div>
                     <h2 class="entry-title">
                         <a ng-click="detail(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
                     </h2>
@@ -43,7 +43,7 @@
             </div><!--/post-->
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaSerena[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="#">La Serena - Coquimbo</a></div>
+                    <div class="catagory"><a ng-click="detail(destacadaSerena[0].id)">La Serena - Coquimbo</a></div>
                     <h2 class="entry-title">
                         <a ng-click="detail(destacadaSerena[0].id)">{{destacadaSerena[0].title}}</a>
                     </h2>
@@ -59,7 +59,7 @@
         <div class="section">
             <div class="row">
                 <div class="col-sm-3">
-                    <h1 class="section-title title"><a href="listing.php">Nacional</a></h1>	
+                    <h1 class="section-title title"><a href="#listing">Nacional</a></h1>
                     <div class="left-sidebar">
   
                         <div ng-click="" style="cursor: pointer" class="post medium-post" ng-repeat="noticia in nacionales">
@@ -91,7 +91,7 @@
 
                 <div class="col-sm-6">
                     <div id="site-content" class="site-content">
-                        <h1 class="section-title title"><a href="listing.php">Noticias del Norte</a></h1>
+                        <h1 class="section-title title"><a>Noticias del Norte</a></h1>
                         <div class="middle-content">
                             <div id="top-news" class="section top-news">
 
@@ -153,7 +153,7 @@
                             </div><!-- top-news -->
 
                             <div class="section health-section">
-                                <h1 class="section-title"><a href="listing.php">Antofagasta</a></h1>
+                                <h1 class="section-title"><a href="#listing_1">Antofagasta</a></h1>
                                 <div class="health-feature">
                                     <div ng-click="" style="cursor: pointer" class="post" ng-repeat="noticia in nacionalesAntofa">
                                         <div class="entry-header">
@@ -179,7 +179,7 @@
                             </div>
 
                             <div class="section technology-news">
-                                <h1 class="section-title"><a href="listing.php">Atacama</a></h1>
+                                <h1 class="section-title"><a href="#listing_2">Atacama</a></h1>
                                 <div class="row">
 
                                     <div ng-show="nacionalesAtacama[0]">
@@ -256,7 +256,7 @@
                             </div>
 
                             <div class="section lifestyle-section">
-                                <h1 class="section-title"><a href="listing.php">La Serena - Coquimbo</a></h1>
+                                <h1 class="section-title"><a href="#listing_3">La Serena - Coquimbo</a></h1>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div ng-show="nacionalesSerena[0]">
@@ -347,39 +347,39 @@
                             </div>
 
                             <div class="section photo-gallery" style="">
-                                <h1 class="section-title title"><a href="listing.php">Programación</a></h1>	
+                                <h1 class="section-title title"><a>Programación</a></h1>
                                 <div id="photo-gallery" class="carousel slide carousel-fade" data-ride="carousel">						
                                     <div class="carousel-inner">
                                         <div class="item active">
-                                            <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria1.jpeg" alt="" /></a>
+                                            <a><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria1.jpeg" alt="" /></a>
                                             <!-- <h2>Noticias</h2> -->
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria2.jpeg" alt="" /></a>
+                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria2.jpeg" alt="" /></a>
                                             <!-- <h2>Deportes</h2> -->
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria3.jpeg" alt="" /></a>
+                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria3.jpeg" alt="" /></a>
                                             <!-- <h2>Daniela Madero <a class="btn btn-default" role="button" href="#">Madero FM - Copiapó</a></h2> -->
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria4.jpeg" alt="" /></a>
+                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria4.jpeg" alt="" /></a>
                                             <!-- <h2>Patricia Palma <a class="btn btn-default" role="button" href="#">Madero FM - Antofagasta</a></h2> -->
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria5.jpeg" alt="" /></a>
+                                            <a><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria5.jpeg" alt="" /></a>
                                             <!-- <h2>Joel Castro <a class="btn btn-default" role="button" href="#">Madero FM - Copiapó</a></h2> -->
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria6.jpeg" alt="" /></a>
+                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria6.jpeg" alt="" /></a>
                                             <!-- <h2>Enrique Mursell <a class="btn btn-default" role="button" href="#">Madero FM - La Serena & Coquimbo</a></h2> -->
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria7.jpeg" alt="" /></a>
+                                            <a><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria7.jpeg" alt="" /></a>
                                             <!-- <h2>Andrea Meseguer <a class="btn btn-default" role="button" href="#">Madero FM - Copiapó</a></h2> -->
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria8.jpeg" alt="" /></a>
+                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria8.jpeg" alt="" /></a>
                                             <!-- <h2>José Salazar <a class="btn btn-default" role="button" href="#">Madero FM - Antofagasta</a></h2> -->
                                         </div>
                                     </div><!--/carousel-inner-->

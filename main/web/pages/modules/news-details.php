@@ -19,7 +19,7 @@
                                             <div class="post-content">
                                                 <div class="entry-meta">
                                                     <ul class="list-inline">
-                                                        <li class="posted-by"><i class="fa fa-user"></i> <a href="#">
+                                                        <li class="posted-by"><i class="fa fa-user"></i> <a >
                                                                 {{mainPost.author.display_name}}
                                                             </a></li>
                                                         <li class="publish-date">
@@ -49,7 +49,7 @@
                                                             <ul class="list-inline">
                                                                 <li ng-repeat="tag in mainPost.tags"
                                                                     ng-init="isLast = $last">
-                                                                    <a href="{{tag.id}}  {{tag.id_post}}">{{tag.name}}</a>
+                                                                    <a>{{tag.name}}</a>
                                                                     {{isLast ? '':','}}
 
                                                                 </li>

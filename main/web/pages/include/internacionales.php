@@ -1,5 +1,5 @@
 <div class="widget" ng-controller="bannerInterController">
-    <h1 class="section-title title"><a href="listing.html">Internacionales</a></h1>
+    <h1 class="section-title title"><a href="#internacional">Internacionales</a></h1>
     <ul class="post-list">
         <div ng-repeat="post in internationalPosts">
             <div ng-show="post.embedly.length > 0">

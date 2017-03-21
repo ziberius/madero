@@ -2,13 +2,13 @@
     <div class="navbar-inverse barraSuperior">
         <div class="col-md-6 col-lg-6">
             <ul class="list-inline social-icons text-left">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a ><i class="fa fa-facebook"></i></a></li>
+                <li><a ><i class="fa fa-twitter"></i></a></li>
                 <!-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a ><i class="fa fa-instagram"></i></a></li>
                 <!-- <li><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
-                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                <li><a id="mostrarWhatsapp" ><i class="fa fa-whatsapp"></i></a><span style="display:none" id="spanWhatsapp">+56 9123123</span></li>
+                <li><a ><i class="fa fa-youtube"></i></a></li>
+                <li><a id="mostrarWhatsapp" ><i class="fa fa-whatsapp"></i></a><span style="display:none" id="spanWhatsapp">+56 972 281 896</span></li>
             </ul>
         </div>
         <div class="col-md-6 col-lg-6">
@@ -32,12 +32,12 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="index.php">
+                <a class="navbar-brand" href="#madero">
                     <img class="main-logo img-responsive" src="/main/web/images/logo.jpeg" alt="">
                 </a>
             </div> 
             <nav id="mainmenu" class="navbar-left collapse navbar-collapse"> 
-                <a class="secondary-logo" href="index.html">
+                <a class="secondary-logo" href="#madero">
                     <img class="img-responsive" src="/main/web/images/logo.jpeg" alt="">
                 </a>
                 <ul class="nav navbar-nav">                       

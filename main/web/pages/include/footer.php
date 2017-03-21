@@ -1,13 +1,13 @@
 <div class="footer-top">
     <div class="container-fluid">
         <ul class="list-inline social-icons text-center">
-            <li><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
+            <li><a ><i class="fa fa-facebook"></i>Facebook</a></li>
+            <li><a ><i class="fa fa-twitter"></i>Twitter</a></li>
             <!-- <li><a href="#"><i class="fa fa-google-plus"></i>Google Plus</a></li> -->
-            <li><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+            <li><a ><i class="fa fa-instagram"></i>Instagram</a></li>
             <!-- <li><a href="#"><i class="fa fa-pinterest"></i>Pinterest</a></li> -->
-            <li><a href="#"><i class="fa fa-youtube"></i>Youtube</a></li>
-            <li><a href="#"><i class="fa fa-whatsapp"></i>Whatsapp</a></li>
+            <li><a ><i class="fa fa-youtube"></i>Youtube</a></li>
+            <li><a ><i class="fa fa-whatsapp"></i>Whatsapp</a></li>
         </ul>
     </div>
 </div><!--/.footer-top-->
