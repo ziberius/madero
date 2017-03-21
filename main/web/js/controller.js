@@ -1096,7 +1096,9 @@ function getFormattedDate(date) {
         "diciembre"
     ];
 
-    var objectDate = new Date(date);
+    //format 2011-07-15 13:18:52
+    var match = date.match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/);
+    var objectDate = new Date(match[1], match[2] - 1, match[3], match[4], match[5], match[6]);
 
     var day = objectDate.getDate();
     var monthIndex = objectDate.getMonth();
