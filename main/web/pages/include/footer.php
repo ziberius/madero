@@ -49,7 +49,7 @@
                                 <i class="icon-placepin text-primary text-size-12"></i>
                             </div>
                             <div class="s-11 m-11 l-11 margin-bottom-10">
-                                <p><b>Dirección:</b> Avenida Argentina 44, Valparaíso</p>
+                                <p><b>Dirección:</b>  Chañarcillo 528, Copiapó</p>
                             </div>
                         </div>
                         <div class="line">
@@ -57,7 +57,7 @@
                                 <i class="icon-mail text-primary text-size-12"></i>
                             </div>
                             <div class="s-11 m-11 l-11 margin-bottom-10">
-                                <p><a href="mailto:contact@ejemplo.com" class="text-primary-hover"><b>Email:</b> contact@ejemplo.com</a></p>
+                                <p><a href="mailto:contactoradio@madero.cl" class="text-primary-hover"><b>Email:</b>  contactoradio@madero.cl</a></p>
                             </div>
                         </div>
                         <div class="line">
@@ -65,7 +65,7 @@
                                 <i class="icon-smartphone text-primary text-size-12"></i>
                             </div>
                             <div class="s-11 m-11 l-11 margin-bottom-10">
-                                <p><b>Teléfono:</b> 0700 000 987</p>
+                                <p><b>Teléfono:</b>  +56 972 281 896</p>
                             </div>
                         </div>
                     </div>
