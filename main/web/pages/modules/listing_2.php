@@ -17,7 +17,7 @@
                                                  style="background-image:url({{atacamaPosts[0].thumbnailImageUrl}}); background-size:cover ;height:595px;">
                                                 <div class="post-content">
                                                     <div class="catagoryLeft"><a
-                                                                ng-click="detail(atacamaPosts[0].id)">{{atacamaPosts[0].categories[0].name}}</a>
+                                                            ng-click="detail(atacamaPosts[0].id)">{{atacamaPosts[0].categories[0].name}}</a>
                                                     </div>
                                                     <h2 class="entry-title entryLeft">
                                                         <a ng-click="detail(atacamaPosts[0].id)">{{atacamaPosts[0].title}}</a>
@@ -37,9 +37,9 @@
                                                             <div class="entry-thumbnail">
 
                                                                 <a ng-click="detail(atacamaPosts[1].id)"><img
-                                                                            class="img-responsive img-atacama-news-middle center-block"
-                                                                            src="{{atacamaPosts[1].thumbnailImageUrl}}"
-                                                                            alt=""/></a>
+                                                                        class="img-responsive img-atacama-news-middle center-block"
+                                                                        src="{{atacamaPosts[1].thumbnailImageUrl}}"
+                                                                        alt=""/></a>
                                                                 <!--           <div ng-click="detail(atacamaPosts[1].id)">
                                                                                <div style="background-image:url({{atacamaPosts[1].thumbnailImageUrl}}); background-size:100% ;height:200px;"
                                                                                     class=""
@@ -51,8 +51,8 @@
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                ng-click="detail(atacamaPosts[1].id)"><i
-                                                                                    class="fa fa-clock-o"></i>{{atacamaPosts[1].formattedDate}}
+                                                                            ng-click="detail(atacamaPosts[1].id)"><i
+                                                                                class="fa fa-clock-o"></i>{{atacamaPosts[1].formattedDate}}
                                                                         </a></li>
                                                                     <!--<li class="views"><a href="#"><i
                                                                                     class="fa fa-eye"></i>21k</a></li>
@@ -74,17 +74,17 @@
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
                                                                 <a ng-click="detail(atacamaPosts[2].id)"><img
-                                                                            class="img-responsive img-atacama-news-middle center-block"
-                                                                            src="{{atacamaPosts[2].thumbnailImageUrl}}"
-                                                                            alt=""/></a>
+                                                                        class="img-responsive img-atacama-news-middle center-block"
+                                                                        src="{{atacamaPosts[2].thumbnailImageUrl}}"
+                                                                        alt=""/></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                ng-click="detail(atacamaPosts[2].id)"><i
-                                                                                    class="fa fa-clock-o"></i>{{atacamaPosts[2].formattedDate}}
+                                                                            ng-click="detail(atacamaPosts[2].id)"><i
+                                                                                class="fa fa-clock-o"></i>{{atacamaPosts[2].formattedDate}}
                                                                         </a></li>
                                                                     <!--<li class="views"><a href="#"><i
                                                                                     class="fa fa-eye"></i>21k</a></li>
@@ -104,24 +104,24 @@
                                     </div>
 
                                     <div class="row">
-                                        <div ng-repeat="n in [3,4,5,6,7,8]">
+                                        <div ng-repeat="n in [3, 4, 5, 6, 7, 8]">
                                             <div ng-show="atacamaPosts[n]">
                                                 <div class="col-sm-6 col-md-4">
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
                                                                 <a ng-click="detail(atacamaPosts[n].id)"><img
-                                                                            class="img-responsive img-atacama-news-middle center-block"
-                                                                            src="{{atacamaPosts[n].thumbnailImageUrl}}"
-                                                                            alt=""/></a>
+                                                                        class="img-responsive img-atacama-news-middle center-block"
+                                                                        src="{{atacamaPosts[n].thumbnailImageUrl}}"
+                                                                        alt=""/></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                ng-click="detail(atacamaPosts[n].id)"><i
-                                                                                    class="fa fa-clock-o"></i>{{atacamaPosts[n].formattedDate}}</a>
+                                                                            ng-click="detail(atacamaPosts[n].id)"><i
+                                                                                class="fa fa-clock-o"></i>{{atacamaPosts[n].formattedDate}}</a>
                                                                     </li>
                                                                     <!--<li class="views"><a href="#"><i
                                                                                     class="fa fa-eye"></i>21k</a>
@@ -150,11 +150,7 @@
                     </div><!--/#site-content-->
 
 
-                    <!--Publicidad horizontal-->
-                    <div class="row top5">
-                        <img class="img-responsive center-block" style="max-height:120px"
-                             ng-src="{{publicidadHorizontal.thumbnailImageUrl}}" />
-                    </div>
+
                 </div>
 
                 <!--International News-->
@@ -164,7 +160,7 @@
                             <?php require_once dirname(__FILE__) . '/../include/internacionales.php'; ?>
                         </div><!--/#widget-->
 
-                         <!--Publicidad Vertical-->
+                        <!--Publicidad Vertical-->
                         <div class="widget" ng-show="publicidadCuadrada.length > 0">
                             <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
                         </div><!-- widget -->
@@ -226,8 +222,8 @@
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
                                     <a ng-click="detail(atacamaPosts[9].id)"><img class="img-responsive"
-                                                                                      src="{{atacamaPosts[9].thumbnailImageUrl}}"
-                                                                                      alt=""/></a>
+                                                                                  src="{{atacamaPosts[9].thumbnailImageUrl}}"
+                                                                                  alt=""/></a>
                                 </div>
                             </div>
                         </div>
@@ -246,8 +242,8 @@
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
                                     <a ng-click="detail(atacamaPosts[10].id)"><img class="img-responsive"
-                                                                                       src="{{atacamaPosts[10].thumbnailImageUrl}}"
-                                                                                       alt=""/></a>
+                                                                                   src="{{atacamaPosts[10].thumbnailImageUrl}}"
+                                                                                   alt=""/></a>
                                 </div>
                             </div>
                         </div>
@@ -265,7 +261,7 @@
         <div class="section">
             <div class="row">
 
-                <div ng-repeat="n in [11,12,13,14,15,16]">
+                <div ng-repeat="n in [11, 12, 13, 14, 15, 16]">
                     <div ng-show="atacamaPosts[n]">
                         <div class="col-md-2">
                             <div class="post medium-post">
@@ -278,8 +274,8 @@
                                 <div class="entry-header">
                                     <div class="entry-thumbnail">
                                         <a ng-click="detail(atacamaPosts[n].id)"><img class="img-responsive"
-                                                                                          src="{{atacamaPosts[n].thumbnailImageUrl}}"
-                                                                                          alt=""/></a>
+                                                                                      src="{{atacamaPosts[n].thumbnailImageUrl}}"
+                                                                                      alt=""/></a>
                                     </div>
                                 </div>
                             </div>
@@ -293,6 +289,12 @@
         <div class="load-more text-center">
             <a class="btn btn-primary btn-block" ng-click="moreAtacamaPost()">Cargar Más...</a>
         </div>
+
+        <!--Publicidad horizontal-->
+        <div class="row top5">
+            <img class="img-responsive center-block" style="max-height:120px"
+                 ng-src="{{publicidadHorizontal.thumbnailImageUrl}}" />
+        </div>        
 
     </div><!--/.container-fluid-->
 </div> <!-- / .main -->
