@@ -146,7 +146,7 @@
 
 
                     <!--Publicidad horizontal-->
-                    <div class="row top5" ng-show="publicidadHorizontal.length > 0">
+                    <div class="row top5">
                         <img class="img-responsive center-block" style="max-height:120px"
                              ng-src="{{publicidadHorizontal.thumbnailImageUrl}}" />
                     </div>
@@ -199,7 +199,7 @@
 
                 <!--Publicidad anuncio cuadrado-->
                 <div class="col-sm-12 col-md-5" ng-show="publicidadCuadrada.length > 2">
-                    <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[2].guid}}"/>
+                    <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
                 </div>
 
                 <div ng-show="antofagastaPosts[9]">
