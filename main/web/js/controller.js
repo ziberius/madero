@@ -704,7 +704,7 @@ angular
             };
 
            
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_CUADRADA +"," + Constants.Category.ANTOFAGASTA, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_ANTOFAGASTA, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadCuadrada = news.getMultipleNews(data.data);
@@ -714,7 +714,7 @@ angular
                     showMessage("No se encontraron resultados");
                 }
             });            
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL +"," + Constants.Category.ANTOFAGASTA, function (response) {
+            sgetPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ANTOFAGASTA, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadHorizontal = news.getMultipleNews(data.data);
