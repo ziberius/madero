@@ -717,7 +717,7 @@ angular
             getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ANTOFAGASTA, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
-                    $scope.publicidadHorizontal = news.getMultipleNews(data.data);
+                    $scope.publicidadHorizontal = news.getSingleNews(data.data[0]);
 
                 } else {
                     $scope.publicidadHorizontal = null;

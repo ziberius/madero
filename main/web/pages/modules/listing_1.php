@@ -148,7 +148,7 @@
                     <!--Publicidad horizontal-->
                     <div class="row top5" ng-show="publicidadHorizontal.length > 0">
                         <img class="img-responsive center-block" style="max-height:120px"
-                             ng-src="{{publicidadHorizontal[0].guid}}" />
+                             ng-src="{{publicidadHorizontal.thumbnailImageUrl}}" />
                     </div>
                 </div>
 
@@ -161,10 +161,10 @@
 
                         <!--Publicidad Vertical-->
                         <div class="widget" ng-show="publicidadCuadrada.length > 0">
-                            <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[0].guid}}"/>
+                            <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
                         </div><!-- widget -->
                         <div class="widget" ng-show="publicidadCuadrada.length > 1">
-                            <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[1].guid}}"/>
+                            <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[1].thumbnailImageUrl}}"/>
                         </div><!-- widget -->
 
                     </div><!--/#sitebar-->
