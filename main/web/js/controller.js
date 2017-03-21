@@ -774,7 +774,7 @@ angular
 
                 });
             };
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_ANTOFAGASTA, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_ATACAMA function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadCuadrada = news.getMultipleNews(data.data);
@@ -784,7 +784,7 @@ angular
                     showMessage("No se encontraron resultados");
                 }
             });            
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ANTOFAGASTA, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ATACAMA, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadHorizontal = news.getSingleNews(data.data[0]);
@@ -844,7 +844,7 @@ angular
                 });
             };
             
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_ANTOFAGASTA, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_LA_SERENAt, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadCuadrada = news.getMultipleNews(data.data);
@@ -854,7 +854,7 @@ angular
                     showMessage("No se encontraron resultados");
                 }
             });            
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ANTOFAGASTA, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_LA_SERENA, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadHorizontal = news.getSingleNews(data.data[0]);
