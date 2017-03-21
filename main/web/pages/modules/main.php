@@ -72,8 +72,6 @@
                                 <div class="entry-meta">
                                     <ul class="list-inline">
                                         <li class="publish-date"><a href="#"><i class="fa fa-clock-o"></i> {{noticia.formattedDate}}</a></li>
-                                        <li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                        <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>
                                     </ul>
                                 </div>
                                 <h2 class="entry-title">
