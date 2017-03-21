@@ -197,10 +197,19 @@
         <div class="section">
             <div class="row">
 
-                <!--Publicidad anuncio cuadrado-->
-                <div class="col-sm-12 col-md-5" ng-show="publicidadCuadrada.length > 2">
-                    <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
+                <!--TODO ???-->
+                <div class="col-sm-12 col-md-3 text-center">
+                    <h3>Etiquetas del Día</h3>
+                    <ul class="list-unstyled">
+                        <li>#Torneodeclausura2017</li>
+                        <li>#Presidenciales2016</li>
+                        <li>#donaldtrump</li>
+                        <li>#celebridades</li>
+                        <li>#reformalaboral</li>
+                        <li>#animalessalvajes</li>
+                    </ul>
                 </div>
+
 
                 <div ng-show="antofagastaPosts[9]">
                     <div class="col-sm-12 col-md-2">
@@ -242,19 +251,10 @@
                     </div>
                 </div>
 
-
-                <!--TODO ???-->
-                <div class="col-sm-12 col-md-3 text-center">
-                    <h3>Etiquetas del Día</h3>
-                    <ul class="list-unstyled">
-                        <li>#Torneodeclausura2017</li>
-                        <li>#Presidenciales2016</li>
-                        <li>#donaldtrump</li>
-                        <li>#celebridades</li>
-                        <li>#reformalaboral</li>
-                        <li>#animalessalvajes</li>
-                    </ul>
+                <div class="col-sm-12 col-md-5" ng-show="publicidadCuadrada.length > 2">
+                    <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
                 </div>
+
             </div>
         </div>
 
