@@ -31,58 +31,58 @@ class PostsFromCategory
         return self::$instance;
     }
 
-    public function selectPosts($startDate, $endDate, $limit, $offset, $idCategories)
+    public function selectPosts($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions)
     {
-        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
-            , $startDate, $endDate, $limit, $offset, $idCategories));
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s], idExclusions[%s]'
+            , $startDate, $endDate, $limit, $offset, $idCategories, $idExclusions));
 
         $procedureName = "sp_select_post_from_category";
-        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $procedureName);
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions, $procedureName);
     }
 
-    public function selectResources($startDate, $endDate, $limit, $offset, $idCategories)
+    public function selectResources($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions)
     {
-        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
-            , $startDate, $endDate, $limit, $offset, $idCategories));
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s], idExclusions[%s]'
+            , $startDate, $endDate, $limit, $offset, $idCategories, $idExclusions));
 
         $procedureName = "sp_select_resources_from_category";
-        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $procedureName);
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions, $procedureName);
     }
 
 
-    public function selectPostMetas($startDate, $endDate, $limit, $offset, $idCategories)
+    public function selectPostMetas($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions)
     {
-        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
-            , $startDate, $endDate, $limit, $offset, $idCategories));
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s], idExclusions[%s]'
+            , $startDate, $endDate, $limit, $offset, $idCategories, $idExclusions));
 
         $procedureName = "sp_select_post_meta_from_category";
-        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $procedureName);
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions, $procedureName);
     }
 
 
-    public function selectPostTags($startDate, $endDate, $limit, $offset, $idCategories)
+    public function selectPostTags($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions)
     {
-        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
-            , $startDate, $endDate, $limit, $offset, $idCategories));
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s], idExclusions[%s]'
+            , $startDate, $endDate, $limit, $offset, $idCategories, $idExclusions));
 
         $procedureName = "sp_select_post_tag_from_category";
-        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $procedureName);
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions, $procedureName);
     }
 
-    public function selectCategories($startDate, $endDate, $limit, $offset, $idCategories)
+    public function selectCategories($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions)
     {
-        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
-            , $startDate, $endDate, $limit, $offset, $idCategories));
+        $this->log->debug(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s], idExclusions[%s]'
+            , $startDate, $endDate, $limit, $offset, $idCategories, $idExclusions));
 
         $procedureName = "sp_select_categories_from_category";
-        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $procedureName);
+        return $this->executeProcedure($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions, $procedureName);
     }
 
-    private function executeProcedure($startDate, $endDate, $limit, $offset, $category, $procedureName)
+    private function executeProcedure($startDate, $endDate, $limit, $offset, $categories, $exclusions, $procedureName)
     {
-        $this->validateParameters($startDate, $endDate, $limit, $offset, $category);
+        $this->validateParameters($startDate, $endDate, $limit, $offset, $categories, $exclusions);
 
-        $sql = 'CALL ' . $procedureName . '(:startDate,:endDate,:limit,:offset,:category); ';
+        $sql = 'CALL ' . $procedureName . '(:startDate,:endDate,:limit,:offset,:categories,:exclusions); ';
 
         $this->log->debug($sql);
 
@@ -90,7 +90,8 @@ class PostsFromCategory
             $stmt = $this->connection->prepare($sql);
             $stmt->bindParam(':startDate', $startDate);
             $stmt->bindParam(':endDate', $endDate);
-            $stmt->bindParam(':category', $category);
+            $stmt->bindParam(':categories', $categories);
+            $stmt->bindParam(':exclusions', $exclusions);
 
             $limit = (int)$limit;
             $offset = (int)$offset;
@@ -111,7 +112,7 @@ class PostsFromCategory
         return $results;
     }
 
-    private function validateParameters($startDate, $endDate, $limit, $offset, $category)
+    private function validateParameters($startDate, $endDate, $limit, $offset, $categories, $exclusions)
     {
         if (!Validate::date($startDate)) {
             throw new Exception(sprintf('startDate must be formatted as dd/mm/yyyy [%s]', $startDate));
@@ -129,8 +130,12 @@ class PostsFromCategory
             throw new Exception(sprintf('offset must be natural number [%s]', $offset));
         }
 
-        if (!is_string($category)) {
-            throw new Exception(sprintf('category must be string [%s]', $category));
+        if (!is_string($categories)) {
+            throw new Exception(sprintf('categories must be string [%s]', $categories));
+        }
+
+        if (!is_string($exclusions)) {
+            throw new Exception(sprintf('exclusions must be string [%s]', $exclusions));
         }
 
     }

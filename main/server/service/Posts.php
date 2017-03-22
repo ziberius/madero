@@ -20,10 +20,10 @@ class Posts
         $this->retriever = Retriever::getInstance();
     }
 
-    public function getFromCategory($startDate, $endDate, $limit, $offset, $idCategories)
+    public function getFromCategory($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions)
     {
-        $this->log->info(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s]'
-            , $startDate, $endDate, $limit, $offset, $idCategories));
+        $this->log->info(sprintf('parameters: startDate[%s], endDate[%s], limit[%s], offset[%s], idCategories[%s], idExclusions[%s] '
+            , $startDate, $endDate, $limit, $offset, $idCategories, $idExclusions));
 
         if (!Validate::date($startDate)) {
             throw new Exception(sprintf('startDate must be formatted as dd/mm/yyyy [%s]', $startDate));
@@ -45,7 +45,11 @@ class Posts
             throw new Exception(sprintf('category must be string [%s]', $idCategories));
         }
 
-        $posts = $this->retriever->postsFromCategory($startDate, $endDate, $limit, $offset, $idCategories);
+        if (!is_string($idExclusions)) {
+            throw new Exception(sprintf('exclusions must be string [%s]', $idExclusions));
+        }
+
+        $posts = $this->retriever->postsFromCategory($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions);
         return Converter::postsToArray($posts);
 
     }

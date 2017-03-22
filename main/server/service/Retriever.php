@@ -32,14 +32,14 @@ class Retriever
         return self::$instance;
     }
 
-    public function postsFromCategory($startDate, $endDate, $limit, $offset, $idCategories)
+    public function postsFromCategory($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions)
     {
         $instance = PostsFromCategory::getInstance();
-        $posts = $instance->selectPosts($startDate, $endDate, $limit, $offset, $idCategories);
-        $resources = $instance->selectResources($startDate, $endDate, $limit, $offset, $idCategories);
-        $postMetas = $instance->selectPostMetas($startDate, $endDate, $limit, $offset, $idCategories);
-        $postTags = $instance->selectPostTags($startDate, $endDate, $limit, $offset, $idCategories);
-        $categories = $instance->selectCategories($startDate, $endDate, $limit, $offset, $idCategories);
+        $posts = $instance->selectPosts($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions);
+        $resources = $instance->selectResources($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions);
+        $postMetas = $instance->selectPostMetas($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions);
+        $postTags = $instance->selectPostTags($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions);
+        $categories = $instance->selectCategories($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions);
 
         return $this->processor->processMaps($posts, $resources, $postMetas, $postTags, $categories);
 

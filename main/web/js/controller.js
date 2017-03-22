@@ -104,7 +104,7 @@ angular
 
         })
         .service('getPosts', function ($rootScope, $http) {
-            this.getPostsFromCategory = function (start_date, end_date, limit, offset, categories, success) {
+            this.getPostsFromCategory = function (start_date, end_date, limit, offset, categories, exclusions, success) {
                 $rootScope.loading = true;
                 $http.post('/main/server/Service.php',
                 {
@@ -114,7 +114,8 @@ angular
                         "end_date": end_date,
                         "limit": limit,
                         "offset": offset,
-                        "categories": categories
+                        "categories": categories,
+                        "exclusions": exclusions
                     }
                 }
                 ).then(function (res) {
@@ -278,8 +279,10 @@ angular
             }])
         .controller('mainController', function ($rootScope, $scope, Constants, getPosts, news, navigate) {
 
+            var emptyExclusion = '';
+
             //Carrousel Destacadas
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.ANTOFAGASTA + "," + Constants.Category.DESTACADO,
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.ANTOFAGASTA + "," + Constants.Category.DESTACADO, emptyExclusion,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
@@ -291,7 +294,7 @@ angular
                         }
                     }
             );
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.ATACAMA + "," + Constants.Category.DESTACADO,
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.ATACAMA + "," + Constants.Category.DESTACADO, emptyExclusion,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
@@ -303,7 +306,7 @@ angular
                         }
                     }
             );
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.DESTACADO,
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.DESTACADO, emptyExclusion,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
@@ -318,7 +321,8 @@ angular
 
             //NACIONALES IZQUIERDA
             $scope.loadNacionales = function () {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "9", $scope.offsetNacionales, Constants.Category.NACIONAL,
+                var noticiasDelNorteExclusions = Constants.Category.ANTOFAGASTA + "," + Constants.Category.ATACAMA + "," + Constants.Category.LA_SERENA_COQUIMBO;
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "9", $scope.offsetNacionales, Constants.Category.NACIONAL, noticiasDelNorteExclusions,
                         function (res) {
                             if (res.data !== null && res.data.status === 'OK') {
 
@@ -331,8 +335,10 @@ angular
                 );
             };
 
+            var destacadoExclusion = Constants.Category.DESTACADO;
             //NOTICIAS DEL NORTE
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1","0", Constants.Category.ANTOFAGASTA + "," + Constants.Category.PORTADA,
+
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1","0", Constants.Category.ANTOFAGASTA + "," + Constants.Category.PORTADA, destacadoExclusion,
                 function (res) {
                     if (res.data !== null && res.data.status === 'OK') {
                         $scope.norteAntofagasta = news.getMultipleNews(res.data.data);
@@ -342,7 +348,7 @@ angular
                     }
                 }
             );
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.ATACAMA + "," + Constants.Category.PORTADA,
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.ATACAMA + "," + Constants.Category.PORTADA, destacadoExclusion,
                 function (res) {
                     if (res.data !== null && res.data.status === 'OK') {
                         $scope.norteAtacama = news.getMultipleNews(res.data.data);
@@ -352,7 +358,7 @@ angular
                     }
                 }
             );
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.PORTADA,
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.PORTADA, destacadoExclusion,
                 function (res) {
                     if (res.data !== null && res.data.status === 'OK') {
                         $scope.norteSerena = news.getMultipleNews(res.data.data);
@@ -371,7 +377,7 @@ angular
             $scope.offsetNacionales = 1;
 
             $scope.loadAntofagasta = function () {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", $scope.offsetNacAntofagasta, Constants.Category.ANTOFAGASTA + "," + Constants.Category.PORTADA,
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", $scope.offsetNacAntofagasta, Constants.Category.ANTOFAGASTA + "," + Constants.Category.PORTADA, destacadoExclusion,
                         function (res) {
                             if (res.data !== null && res.data.status === 'OK') {
 
@@ -386,7 +392,7 @@ angular
 
 
             $scope.loadAtacama = function () {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", $scope.offsetNacAtacama, Constants.Category.ATACAMA + "," + Constants.Category.PORTADA,
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", $scope.offsetNacAtacama, Constants.Category.ATACAMA + "," + Constants.Category.PORTADA, destacadoExclusion,
                         function (res) {
                             if (res.data !== null && res.data.status === 'OK') {
 
@@ -401,7 +407,7 @@ angular
 
             $scope.loadSerena = function () {
 
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "4", $scope.offsetNacSerena, Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.PORTADA,
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "4", $scope.offsetNacSerena, Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.PORTADA, destacadoExclusion,
                         function (res) {
                             if (res.data !== null && res.data.status === 'OK') {
 
@@ -415,7 +421,7 @@ angular
                 );
             };
 
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "4", "0", Constants.Category.VIDEOS + "," + Constants.Category.PORTADA ,
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "4", "0", Constants.Category.VIDEOS + "," + Constants.Category.PORTADA , emptyExclusion,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
@@ -458,6 +464,7 @@ angular
             });
         })
         .controller('viewController', function ($scope, $routeParams, getPosts, news, $location,Constants) {
+            var emptyExclusion = '';
 
             $scope.url = "http://" + $location.host() + $location.path();
 
@@ -477,7 +484,7 @@ angular
             });
 
             function getOtherPost(idCategory) {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", idCategory, function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", idCategory, emptyExclusion, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.otherPosts = news.getMultipleNews(data.data);
@@ -501,6 +508,7 @@ angular
 
         })
         .controller('listingController', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
+            var emptyExclusion = '';
 
             // National Post
             $scope.quantityNationalPost = 17;
@@ -513,7 +521,7 @@ angular
             };
 
             function loadNationalPost(limit, offset) {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.NACIONAL , function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.NACIONAL , Constants.Category.DESTACADO,  function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.nationalPosts = news.getMultipleNews(data.data);
@@ -526,7 +534,7 @@ angular
             }
 
             // National Posts Highlighted
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.NACIONAL + "," + Constants.Category.DESTACADO, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.NACIONAL + "," + Constants.Category.DESTACADO, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.nationalPostsHighlighted = news.getMultipleNews(data.data);
@@ -588,7 +596,8 @@ angular
                 });
             };
 
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
+            var emptyExclusion = '';
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, emptyExclusion,  function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.internacionalesDestacadas = news.getMultipleNewsInternacional(data.data, "link", 6);
@@ -599,7 +608,7 @@ angular
                 }
             });
 
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "6", Constants.Category.EXTERNO, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "6", Constants.Category.EXTERNO, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.internacionalesDestacadas2 = news.getMultipleNewsInternacional(data.data, "link", 8);
@@ -610,7 +619,7 @@ angular
                 }
             });
 
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.internacionalesVideos = news.getMultipleNewsInternacional(data.data, "video", 8);
@@ -621,7 +630,7 @@ angular
                 }
             });
 
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), 6, "0", Constants.Category.NACIONAL, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), 6, "0", Constants.Category.NACIONAL, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.nacionales = news.getMultipleNews(data.data);
@@ -633,7 +642,7 @@ angular
             });
 
             $scope.loadInternacionales = function () {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalBig, $scope.offSetInternacionales, Constants.Category.EXTERNO, function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalBig, $scope.offSetInternacionales, Constants.Category.EXTERNO, emptyExclusion, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.internacionales = news.getMultipleNewsInternacional(data.data, "link", 15);
@@ -656,6 +665,7 @@ angular
 
         })
         .controller('listing1Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
+            var emptyExclusion = '';
 
             // Antofagasta Post
             $scope.quantityAntofagastaPost = 17;
@@ -668,7 +678,7 @@ angular
             };
 
             function loadAntofagastaPost(limit, offset) {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.ANTOFAGASTA, function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.ANTOFAGASTA, Constants.Category.DESTACADO, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.antofagastaPosts = news.getMultipleNews(data.data);
@@ -681,7 +691,7 @@ angular
             }
 
             // Antofagasta Posts Highlighted
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.ANTOFAGASTA + "," + Constants.Category.DESTACADO, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.ANTOFAGASTA + "," + Constants.Category.DESTACADO,emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.antofagastaPostsHighlighted = news.getMultipleNews(data.data);
@@ -703,8 +713,8 @@ angular
                 });
             };
 
-           
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_ANTOFAGASTA, function (response) {
+
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_ANTOFAGASTA, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadCuadrada = news.getMultipleNews(data.data);
@@ -713,8 +723,8 @@ angular
                     $scope.publicidadCuadrada = null;
                     showMessage("No se encontraron resultados");
                 }
-            });            
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ANTOFAGASTA, function (response) {
+            });
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ANTOFAGASTA, emptyExclusion,function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadHorizontal = news.getSingleNews(data.data[0]);
@@ -723,11 +733,12 @@ angular
                     $scope.publicidadHorizontal = null;
                     showMessage("No se encontraron resultados");
                 }
-            });            
+            });
 
 
         })
         .controller('listing2Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
+            var emptyExclusion = '';
 
             // Atacama Post
             $scope.quantityAtacamaPost = 17;
@@ -740,7 +751,8 @@ angular
             };
 
             function loadAtacamaPost(limit, offset) {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.ATACAMA, function (response) {
+
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.ATACAMA, Constants.Category.DESTACADO, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.atacamaPosts = news.getMultipleNews(data.data);
@@ -753,7 +765,7 @@ angular
             }
 
             // Atacama Posts Highlighted
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.ATACAMA + "," + Constants.Category.DESTACADO, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.ATACAMA + "," + Constants.Category.DESTACADO, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.atacamaPostsHighlighted = news.getMultipleNews(data.data);
@@ -774,7 +786,7 @@ angular
 
                 });
             };
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_ATACAMA, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_ATACAMA,emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadCuadrada = news.getMultipleNews(data.data);
@@ -783,8 +795,8 @@ angular
                     $scope.publicidadCuadrada = null;
                     showMessage("No se encontraron resultados");
                 }
-            });            
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ATACAMA, function (response) {
+            });
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_ATACAMA,emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadHorizontal = news.getSingleNews(data.data[0]);
@@ -793,10 +805,11 @@ angular
                     $scope.publicidadHorizontal = null;
                     showMessage("No se encontraron resultados");
                 }
-            });              
+            });
 
         })
         .controller('listing3Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
+            var emptyExclusion = '';
 
             // Coquimbo - La serena Post
             $scope.quantityCoquimboPost = 17;
@@ -809,7 +822,7 @@ angular
             };
 
             function loadCoquimboPost(limit, offset) {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.LA_SERENA_COQUIMBO, function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.LA_SERENA_COQUIMBO,Constants.Category.DESTACADO, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.coquimboPosts = news.getMultipleNews(data.data);
@@ -822,7 +835,7 @@ angular
             }
 
             // Coquimbo - La Serena Posts Highlighted
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.DESTACADO, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.DESTACADO, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.coquimboPostsHighlighted = news.getMultipleNews(data.data);
@@ -843,8 +856,8 @@ angular
 
                 });
             };
-            
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_LA_SERENA, function (response) {
+
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "3", "0", Constants.Category.PUBLICIDAD_VERTICAL_LA_SERENA, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadCuadrada = news.getMultipleNews(data.data);
@@ -853,8 +866,8 @@ angular
                     $scope.publicidadCuadrada = null;
                     showMessage("No se encontraron resultados");
                 }
-            });            
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_LA_SERENA, function (response) {
+            });
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_LA_SERENA, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadHorizontal = news.getSingleNews(data.data[0]);
@@ -863,10 +876,11 @@ angular
                     $scope.publicidadHorizontal = null;
                     showMessage("No se encontraron resultados");
                 }
-            });             
+            });
 
         })
         .controller('listing4Controller', function ($scope, $routeParams, getPosts, news, navigate, Constants) {
+            var emptyExclusion = '';
 
             // Sports Post
             $scope.quantitySportPost = 17;
@@ -879,7 +893,7 @@ angular
             };
 
             function loadSportPost(limit, offset) {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.DEPORTES, function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), limit, offset, Constants.Category.DEPORTES, Constants.Category.DESTACADO, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.sportPosts = news.getMultipleNews(data.data);
@@ -892,7 +906,7 @@ angular
             }
 
             // Sport Posts Highlighted
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.DEPORTES + "," + Constants.Category.DESTACADO, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "5", "0", Constants.Category.DEPORTES + "," + Constants.Category.DESTACADO, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.sportPostsHighlighted = news.getMultipleNews(data.data);
@@ -902,8 +916,8 @@ angular
                     showMessage("No se encontraron resultados");
                 }
             });
-            
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_DEPORTES, function (response) {
+
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_DEPORTES, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.publicidadHorizontal = news.getSingleNews(data.data[0]);
@@ -912,7 +926,7 @@ angular
                     $scope.publicidadHorizontal = null;
                     showMessage("No se encontraron resultados");
                 }
-            });             
+            });
 
             $scope.loadSportPostsHighlightedCarousel = function () {
                 $("#sport-posts-highlighted-carousel").owlCarousel({
@@ -955,8 +969,9 @@ angular
 
             };
 
+            var emptyExclusion = '';
             $scope.cargarNacionales = function () {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "6", "0", Constants.Category.NACIONAL, function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "6", "0", Constants.Category.NACIONAL, emptyExclusion,function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.nacionales = news.getMultipleNews(data.data);
@@ -982,12 +997,12 @@ angular
             $scope.cargarNacionales();
         })
         .controller('bannerInterController', function ($scope, getPosts, Constants,news) {
-            
             $scope.offsetInter = 0;
-            
-            
+
+            var emptyExclusion = '';
+
             $scope.cargarInternacionales = function(){
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
@@ -996,11 +1011,11 @@ angular
                     $scope.internationalPosts = null;
                     showMessage("No se encontraron resultados");
                 }
-            });                    
+            });
             };
-            
+
             $scope.cargarInternacionales();
-            
+
             $scope.cargarMasNoticias = function(){
                 $scope.offsetInter = $scope.offsetInter + 5;
                 $scope.cargarInternacionales();
@@ -1012,7 +1027,7 @@ angular
             var dateFormat = [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('-')
                 + ' ' +
                 [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
-            
+
             $scope.currentDate = getFormattedDate(dateFormat);
 
             $http.get('http://mindicador.cl/api').success(function (data) {

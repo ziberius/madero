@@ -4,7 +4,7 @@ DROP PROCEDURE IF EXISTS `sp_select_categories_from_category`;
 DELIMITER $$
 USE `made4832_radio`$$
 CREATE PROCEDURE `sp_select_categories_from_category`(
-  IN p_start_date VARCHAR(10), p_end_date VARCHAR(10), p_limit INT, p_offset INT, p_categories VARCHAR(40))
+  IN p_start_date VARCHAR(10), p_end_date VARCHAR(10), p_limit INT, p_offset INT, p_categories VARCHAR(40), p_exclusions VARCHAR(40))
 
 
 READS SQL DATA
@@ -29,6 +29,13 @@ DETERMINISTIC
     SET @stmt = CONCAT(@stmt, '      AND p.post_type = \'post\'  ');
     SET @stmt = CONCAT(@stmt, '      AND tax.taxonomy = \'category\' ');
     SET @stmt = CONCAT(@stmt, '      AND tax.term_taxonomy_id IN (', p_categories, ')  ');
+    IF (p_exclusions <> '') THEN
+      SET @stmt = CONCAT(@stmt, '      AND p.ID NOT IN ( ');
+      SET @stmt = CONCAT(@stmt, '         SELECT object_id AS id_post_excluded ');
+      SET @stmt = CONCAT(@stmt, '         FROM wp_term_relationships exclude ');
+      SET @stmt = CONCAT(@stmt, '         WHERE exclude.term_taxonomy_id IN (', p_exclusions, ') ');
+      SET @stmt = CONCAT(@stmt, '      ) ');
+    END IF;
     SET @stmt = CONCAT(@stmt, 'GROUP BY  p.ID ');
     SET @stmt = CONCAT(@stmt, 'HAVING count(tax.term_taxonomy_id) = LENGTH(\'', p_categories, '\') - LENGTH(REPLACE(\'',
                        p_categories, '\', \',\' , \'\')) + 1 ');

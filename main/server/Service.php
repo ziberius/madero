@@ -67,8 +67,13 @@ function getPostsFromCategory($parameters)
     if (!isset($parameters['offset'])) {
         throw new Exception('index parameters[offset] is not set');
     }
+
     if (!isset($parameters['categories'])) {
         throw new Exception('index parameters[categories] is not set');
+    }
+
+    if (!isset($parameters['exclusions'])) {
+        throw new Exception('index parameters[exclusions] is not set');
     }
 
 
@@ -77,9 +82,10 @@ function getPostsFromCategory($parameters)
     $limit = $parameters['limit'];
     $offset = $parameters['offset'];
     $idCategories = $parameters['categories'];
+    $idExclusions = $parameters['exclusions'];
 
     $posts = new Posts();
-    return $posts->getFromCategory($startDate, $endDate, $limit, $offset, $idCategories);
+    return $posts->getFromCategory($startDate, $endDate, $limit, $offset, $idCategories, $idExclusions);
 
 }
 

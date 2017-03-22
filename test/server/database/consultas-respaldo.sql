@@ -436,6 +436,10 @@ CALL sp_select_resources_from_category('13/12/2016', '13/12/2016', 10, 0, '24,23
 CALL sp_select_post_tag_from_category('13/12/2016', '13/12/2016', 10, 0, '11');
 CALL sp_select_categories_from_category('13/12/2016', '13/12/2016', 10, 0, '11,23');
 
+CALL sp_select_post_from_category('13/12/2016', '13/12/2016', 10, 0, '24,23,11');
+
+
+
 CALL sp_select_post_from_author("13/12/2016", "13/12/2016", 10, 0, 6);
 CALL sp_select_resources_from_author("13/12/2016", "13/12/2016", 10, 0, 6);
 CALL sp_select_post_meta_from_author("02/03/2016", "02/03/2017", 10, 0, 4);
