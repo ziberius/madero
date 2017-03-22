@@ -318,6 +318,30 @@ angular
                         }
                     }
             );
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.DEPORTES + "," + Constants.Category.DESTACADO, emptyExclusion,
+                function (res) {
+                    if (res.data !== null && res.data.status === 'OK') {
+
+                        $scope.destacadaDeporte = news.getMultipleNews(res.data.data);
+
+                    } else {
+                        $scope.destacadaDeporte = null;
+                        showMessage("No se encontraron resultados");
+                    }
+                }
+            );
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.EXTERNO + "," + Constants.Category.DESTACADO, emptyExclusion,
+                function (res) {
+                    if (res.data !== null && res.data.status === 'OK') {
+
+                        $scope.destacadaInternacional = news.getMultipleNews(res.data.data);
+
+                    } else {
+                        $scope.destacadaInternacional = null;
+                        showMessage("No se encontraron resultados");
+                    }
+                }
+            );
 
             //NACIONALES IZQUIERDA
             $scope.loadNacionales = function () {

@@ -25,30 +25,22 @@
                     </h2>
                 </div>
             </div><!--/post-->
-            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAntofagasta[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaDeporte[0].embedly[0].thumbnail_url + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a ng-click="detail(destacadaAntofagasta[0].id)">Antofagasta</a></div>
+                    <div class="catagory"><a href="{{destacadaDeporte.embedly[0].url}}" target="_blank">Deportes</a></div>
                     <h2 class="entry-title">
-                        <a ng-click="detail(destacadaAntofagasta[0].id)">{{destacadaAntofagasta[0].title}}</a>
+                        <a href="{{destacadaDeporte.embedly[0].url}}" target="_blank">{{destacadaDeporte[0].embedly[0].title}}</a>
                     </h2>
                 </div>
             </div>
-            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAtacama[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaInternacional[0].embedly[0].thumbnail_url + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a ng-click="detail(destacadaAtacama[0].id)">Atacama</a></div>
+                    <div class="catagory"><a href="{{destacadaInternacional.embedly[0].url}}" target="_blank">Internacional</a></div>
                     <h2 class="entry-title">
-                        <a ng-click="detail(destacadaAtacama[0].id)">{{destacadaAtacama[0].title}}</a>
+                        <a href="{{destacadaInternacional.embedly[0].url}}" target="_blank">{{destacadaInternacional[0].embedly[0].title}}</a>
                     </h2>
                 </div>
-            </div><!--/post-->
-            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaSerena[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
-                <div class="post-content">
-                    <div class="catagory"><a ng-click="detail(destacadaSerena[0].id)">La Serena - Coquimbo</a></div>
-                    <h2 class="entry-title">
-                        <a ng-click="detail(destacadaSerena[0].id)">{{destacadaSerena[0].title}}</a>
-                    </h2>
-                </div>
-            </div><!--/post-->
+            </div>
         </div>
         <div class="section">
             <div class="row">
