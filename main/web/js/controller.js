@@ -282,7 +282,7 @@ angular
             var emptyExclusion = '';
 
             //Carrousel Destacadas
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.ANTOFAGASTA + "," + Constants.Category.DESTACADO, emptyExclusion,
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.ANTOFAGASTA  + "," + Constants.Category.DESTACADO + "," + Constants.Category.PORTADA, emptyExclusion,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
@@ -294,7 +294,7 @@ angular
                         }
                     }
             );
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.ATACAMA + "," + Constants.Category.DESTACADO, emptyExclusion,
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.ATACAMA + "," + Constants.Category.DESTACADO + "," + Constants.Category.PORTADA, emptyExclusion,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
@@ -306,7 +306,7 @@ angular
                         }
                     }
             );
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.DESTACADO, emptyExclusion,
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.LA_SERENA_COQUIMBO + "," + Constants.Category.DESTACADO + "," + Constants.Category.PORTADA, emptyExclusion,
                     function (res) {
                         if (res.data !== null && res.data.status === 'OK') {
 
