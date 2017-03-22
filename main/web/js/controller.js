@@ -463,7 +463,7 @@ angular
                 loadSliders();
             });
         })
-        .controller('viewController', function ($scope, $routeParams, getPosts, news, $location,Constants) {
+        .controller('viewController', function ($scope, $routeParams, getPosts, news, $location,navigate,Constants) {
             var emptyExclusion = '';
 
             $scope.url = "http://" + $location.host() + $location.path();
