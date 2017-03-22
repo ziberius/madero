@@ -318,6 +318,19 @@ angular
                         }
                     }
             );
+            var regionalExclusion = Constants.Category.ANTOFAGASTA + "," + Constants.Category.ATACAMA + "," + Constants.Category.LA_SERENA_COQUIMBO;
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.NACIONAL + "," + Constants.Category.DESTACADO, regionalExclusion,
+                function (res) {
+                    if (res.data !== null && res.data.status === 'OK') {
+
+                        $scope.destacadaNacional = news.getMultipleNews(res.data.data);
+
+                    } else {
+                        $scope.destacadaNacional = null;
+                        showMessage("No se encontraron resultados");
+                    }
+                }
+            );
             getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.DEPORTES + "," + Constants.Category.DESTACADO, emptyExclusion,
                 function (res) {
                     if (res.data !== null && res.data.status === 'OK') {

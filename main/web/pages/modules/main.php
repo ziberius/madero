@@ -25,6 +25,14 @@
                     </h2>
                 </div>
             </div><!--/post-->
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaNacional[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
+                <div class="post-content">
+                    <div class="catagory"><a ng-click="detail(destacadaNacional[0].id)">Nacional</a></div>
+                    <h2 class="entry-title">
+                        <a ng-click="detail(destacadaNacional[0].id)">{{destacadaNacional[0].title}}</a>
+                    </h2>
+                </div>
+            </div><!--/post-->
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaDeporte[0].embedly[0].thumbnail_url + ')'}" style="background-size:cover;">
                 <div class="post-content">
                     <div class="catagory"><a href="{{destacadaDeporte.embedly[0].url}}" target="_blank">Deportes</a></div>
