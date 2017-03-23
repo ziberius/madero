@@ -123,7 +123,8 @@ angular
                 ).then(function (res) {
                     success(res);
                 }).catch(function (e) {
-                    showMessage("Error al obtener las news. El servidor respondió: " + e.statusText);
+                    console.log("Error al ejecutar servicio." + e);
+                    //showMessage("Error al obtener las news. El servidor respondió: " + e.statusText);
                 }).finally(function () {
                     $rootScope.loading = false;
                 });
@@ -142,7 +143,8 @@ angular
                     success(response);
 
                 }).catch(function (e) {
-                    showMessage("Error al obtener la noticia. El servidor respondió: " + e.statusText);
+                    console.log("Error al ejecutar servicio." + e);
+                    //showMessage("Error al obtener las news. El servidor respondió: " + e.statusText);
                 }).finally(function () {
                     $rootScope.loading = false;
                 });
