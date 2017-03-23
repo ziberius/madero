@@ -17,7 +17,7 @@
                                                  style="background-image:url({{sportPosts[0].embedly[0].thumbnail_url}}); background-size:cover ;height:595px;">
                                                 <div class="post-content">
                                                     <div class="catagoryLeft"><a
-                                                                href="{{sportPosts[0].embedly[0].url}}">{{sportPosts[0].embedly[0].provider_name}}</a>
+                                                            href="{{sportPosts[0].embedly[0].url}}">{{sportPosts[0].embedly[0].provider_name}}</a>
                                                     </div>
                                                     <h2 class="entry-title entryLeft">
                                                         <a href="{{sportPosts[0].embedly[0].url}}">{{sportPosts[0].embedly[0].title}}</a>
@@ -37,17 +37,17 @@
                                                             <div class="entry-thumbnail">
 
                                                                 <a href="{{sportPosts[1].embedly[0].url}}"><img
-                                                                            class="img-responsive img-sport-news-middle center-block"
-                                                                            src="{{sportPosts[1].embedly[0].thumbnail_url}}"
-                                                                            alt=""/></a>
+                                                                        class="img-responsive img-sport-news-middle center-block"
+                                                                        ng-src="{{sportPosts[1].embedly[0].thumbnail_url}}"
+                                                                        alt=""/></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                href="{{sportPosts[1].embedly[0].url}}"><i
-                                                                                    class="fa fa-clock-o"></i>{{sportPosts[1].formattedDate}}
+                                                                            href="{{sportPosts[1].embedly[0].url}}"><i
+                                                                                class="fa fa-clock-o"></i>{{sportPosts[1].formattedDate}}
                                                                         </a></li>
                                                                 </ul>
                                                             </div>
@@ -65,17 +65,17 @@
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
                                                                 <a href="{{sportPosts[2].embedly[0].url}}"><img
-                                                                            class="img-responsive img-sport-news-middle center-block"
-                                                                            src="{{sportPosts[2].embedly[0].thumbnail_url}}"
-                                                                            alt=""/></a>
+                                                                        class="img-responsive img-sport-news-middle center-block"
+                                                                        ng-src="{{sportPosts[2].embedly[0].thumbnail_url}}"
+                                                                        alt=""/></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                                href="{{sportPosts[2].embedly[0].url}}"><i
-                                                                                    class="fa fa-clock-o"></i>{{sportPosts[2].formattedDate}}
+                                                                            href="{{sportPosts[2].embedly[0].url}}"><i
+                                                                                class="fa fa-clock-o"></i>{{sportPosts[2].formattedDate}}
                                                                         </a></li>
                                                                 </ul>
                                                             </div>
@@ -91,24 +91,24 @@
                                     </div>
 
                                     <div class="row">
-                                        <div ng-repeat="n in [3,4,5,6,7,8]">
+                                        <div ng-repeat="n in [3, 4, 5, 6, 7, 8]">
                                             <div ng-show="sportPosts[n]">
                                                 <div class="col-sm-6 col-md-4">
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
                                                                 <a href="{{sportPosts[n].embedly[0].url}}"><img
-                                                                            class="img-responsive img-sport-news-middle center-block"
-                                                                            src="{{sportPosts[n].embedly[0].thumbnail_url}}"
-                                                                            alt=""/></a>
+                                                                        class="img-responsive img-sport-news-middle center-block"
+                                                                        ng-src="{{sportPosts[n].embedly[0].thumbnail_url}}"
+                                                                        alt=""/></a>
                                                             </div>
                                                         </div>
                                                         <div class="post-content">
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                               href="{{sportPosts[n].embedly[0].url}}"><i
-                                                                                    class="fa fa-clock-o"></i>{{sportPosts[n].formattedDate}}</a>
+                                                                            href="{{sportPosts[n].embedly[0].url}}"><i
+                                                                                class="fa fa-clock-o"></i>{{sportPosts[n].formattedDate}}</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -132,11 +132,7 @@
                     </div><!--/#site-content-->
 
 
-                    <!--Publicidad horizontal-->
-                    <div class="row top5">
-                        <img class="img-responsive center-block" style="max-height:120px"
-                             ng-src="{{publicidadHorizontal.thumbnailImageUrl}}" />
-                    </div>
+
                 </div>
 
                 <!--International News-->
@@ -145,18 +141,6 @@
                         <div class="widget">
                             <?php require_once dirname(__FILE__) . '/../include/internacionales.php'; ?>
                         </div><!--/#widget-->
-
-                        <div class="col-sm-12 col-md-3 text-center">
-                            <h3>Etiquetas del Día</h3>
-                            <ul class="list-unstyled">
-                                <li>#Torneodeclausura2017</li>
-                                <li>#Presidenciales2016</li>
-                                <li>#donaldtrump</li>
-                                <li>#celebridades</li>
-                                <li>#reformalaboral</li>
-                                <li>#animalessalvajes</li>
-                            </ul>
-                        </div>
 
                     </div><!--/#sitebar-->
                 </div>
@@ -200,8 +184,8 @@
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
                                     <a href="{{sportPosts[9].embedly[0].url}}"><img class="img-responsive"
-                                                                                      src="{{sportPosts[9].embedly[0].thumbnail_url}}"
-                                                                                      alt=""/></a>
+                                                                                    ng-src="{{sportPosts[9].embedly[0].thumbnail_url}}"
+                                                                                    alt=""/></a>
                                 </div>
                             </div>
                         </div>
@@ -220,8 +204,8 @@
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
                                     <a href="{{sportPosts[10].embedly[0].url}}"><img class="img-responsive"
-                                                                                       src="{{sportPosts[10].embedly[0].thumbnail_url}}"
-                                                                                       alt=""/></a>
+                                                                                     ng-src="{{sportPosts[10].embedly[0].thumbnail_url}}"
+                                                                                     alt=""/></a>
                                 </div>
                             </div>
                         </div>
@@ -237,7 +221,7 @@
         <div class="section">
             <div class="row">
 
-                <div ng-repeat="n in [11,12,13,14,15,16]">
+                <div ng-repeat="n in [11, 12, 13, 14, 15, 16]">
                     <div ng-show="sportPosts[n]">
                         <div class="col-md-2">
                             <div class="post medium-post">
@@ -250,8 +234,8 @@
                                 <div class="entry-header">
                                     <div class="entry-thumbnail">
                                         <a href="{{sportPosts[n].embedly[0].url}}"><img class="img-responsive"
-                                                                                          src="{{sportPosts[n].embedly[0].thumbnail_url}}"
-                                                                                          alt=""/></a>
+                                                                                        ng-src="{{sportPosts[n].embedly[0].thumbnail_url}}"
+                                                                                        alt=""/></a>
                                     </div>
                                 </div>
                             </div>
@@ -265,6 +249,12 @@
         <div class="load-more text-center">
             <a class="btn btn-primary btn-block" ng-click="moreSportPost()">Cargar Más...</a>
         </div>
+
+        <!--Publicidad horizontal-->
+        <div class="row top5">
+            <img class="img-responsive center-block" style="max-height:120px"
+                 ng-src="{{publicidadHorizontal.thumbnailImageUrl}}" />
+        </div>        
 
     </div><!--/.container-fluid-->
 </div> <!-- / .main -->

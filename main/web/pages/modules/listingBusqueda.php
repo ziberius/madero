@@ -17,7 +17,7 @@
                                                     <div class="entry-thumbnail">
                                                         <a ng-click="detail(post.id)"><img
                                                                 class="img-responsive img-national-news-middle center-block"
-                                                                src="{{post.thumbnailImageUrl}}"
+                                                                ng-src="{{post.thumbnailImageUrl}}"
                                                                 alt=""/></a>
                                                     </div>
                                                 </div>
@@ -51,11 +51,11 @@
                     </div><!--/#site-content-->
 
 
-                    <!--Publicidad horizontal-->
+                    <!--Publicidad horizontal
                     <div class="row top5">
                         <img class="img-responsive center-block" style="max-height:120px"
-                             src="/main/web/images/post/banner.jpg"/>
-                    </div>
+                             src="/madero/main/web/images/post/banner.jpg"/>
+                    </div>-->
                 </div>
 
                 <!--International News-->
@@ -65,10 +65,10 @@
                             <?php require_once dirname(__FILE__) . '/../include/internacionales.php'; ?>
                         </div><!--/#widget-->
 
-                        <!--Publicidad Vertical-->
+                        <!--Publicidad Vertical
                         <div class="widget">
-                            <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg"/>
-                        </div><!-- widget -->
+                            <img class="img-responsive center-block" src="/madero/main/web/images/anuncio_vertical.jpg"/>
+                        </div>-->
 
                     </div><!--/#sitebar-->
                 </div>

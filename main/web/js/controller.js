@@ -1,3 +1,5 @@
+var ruta = '';
+
 angular
         .module('maderoApp', ['ngRoute', 'ngAnimate', 'ngTouch'])
         .filter('trustAsResourceUrl', ['$sce', function ($sce) {
@@ -54,43 +56,43 @@ angular
                     })
                     // route for the home page
                     .when('/madero', {
-                        templateUrl: '/main/web/pages/modules/main.php',
+                        templateUrl: '/madero/main/web/pages/modules/main.php',
                         controller: 'mainController'
                     })
                     .when('/listing', {
-                        templateUrl: '/main/web/pages/modules/listing.php',
+                        templateUrl: '/madero/main/web/pages/modules/listing.php',
                         controller: 'listingController'
                     })
                     .when('/view/:id', {
-                        templateUrl: '/main/web/pages/modules/news-details.php',
+                        templateUrl: '/madero/main/web/pages/modules/news-details.php',
                         controller: 'viewController'
                     })
                     .when('/buscar/:termino', {
-                        templateUrl: '/main/web/pages/modules/listingBusqueda.php',
+                        templateUrl: '/madero/main/web/pages/modules/listingBusqueda.php',
                         controller: 'busquedaController'
                     })
                     .when('/mineria', {
-                        templateUrl: '/main/web/pages/modules/maderomineria.php',
+                        templateUrl: '/madero/main/web/pages/modules/maderomineria.php',
                         controller: 'mineriaController'
                     })
                     .when('/listing_1', {
-                        templateUrl: '/main/web/pages/modules/listing_1.php',
+                        templateUrl: '/madero/main/web/pages/modules/listing_1.php',
                         controller: 'listing1Controller'
                     })
                     .when('/listing_2', {
-                        templateUrl: '/main/web/pages/modules/listing_2.php',
+                        templateUrl: '/madero/main/web/pages/modules/listing_2.php',
                         controller: 'listing2Controller'
                     })
                     .when('/listing_3', {
-                        templateUrl: '/main/web/pages/modules/listing_3.php',
+                        templateUrl: '/madero/main/web/pages/modules/listing_3.php',
                         controller: 'listing3Controller'
                     })
                     .when('/listing_4', {
-                        templateUrl: '/main/web/pages/modules/listing_4.php',
+                        templateUrl: '/madero/main/web/pages/modules/listing_4.php',
                         controller: 'listing4Controller'
                     })
                     .when('/internacional', {
-                        templateUrl: '/main/web/pages/modules/listing_inter.php',
+                        templateUrl: '/madero/main/web/pages/modules/listing_inter.php',
                         controller: 'internacionalController'
                     })
 
@@ -106,7 +108,7 @@ angular
         .service('getPosts', function ($rootScope, $http) {
             this.getPostsFromCategory = function (start_date, end_date, limit, offset, categories, exclusions, success) {
                 $rootScope.loading = true;
-                $http.post('/main/server/Service.php',
+                $http.post('/madero/main/server/Service.php',
                 {
                     "service": "getPostsFromCategory",
                     "parameters": {
@@ -129,7 +131,7 @@ angular
 
             this.getPostFromId = function (idPost, success) {
                 $rootScope.loading = true;
-                $http.post('/main/server/Service.php',
+                $http.post('/madero/main/server/Service.php',
                 {
                     "service": "getPostsFromId",
                     "parameters": {
@@ -148,7 +150,7 @@ angular
 
             this.searchPostsByText = function (limit, offset, keyword, success) {
                 $rootScope.loading = true;
-                $http.post('/main/server/Service.php',
+                $http.post('/madero/main/server/Service.php',
                 {
                     "service": "searchPosts",
                     "parameters":
@@ -169,7 +171,7 @@ angular
 
             this.searchPostsByAuthor = function (start_date, end_date, limit, offset, author, success) {
                 $rootScope.loading = true;
-                $http.post('/main/server/Service.php',
+                $http.post('/madero/main/server/Service.php',
                 {
                     "service": "getNewsFromAuthor",
                     "parameters":
@@ -236,7 +238,7 @@ angular
         .directive('facebookComments', ['$location', function ($location) {
                 return {
                     restrict: 'E',
-                    templateUrl: "/main/web/pages/include/facebookComments.html",
+                    templateUrl: "/madero/main/web/pages/include/facebookComments.html",
                     scope: {},
                     link: function (scope, el, attr) {
                         scope.curPath = $location.absUrl();
@@ -359,7 +361,7 @@ angular
             //NACIONALES IZQUIERDA
             $scope.loadNacionales = function () {
                 var noticiasDelNorteExclusions = Constants.Category.ANTOFAGASTA + "," + Constants.Category.ATACAMA + "," + Constants.Category.LA_SERENA_COQUIMBO;
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "9", $scope.offsetNacionales, Constants.Category.NACIONAL, noticiasDelNorteExclusions,
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "12", $scope.offsetNacionales, Constants.Category.NACIONAL+ "," + Constants.Category.PORTADA, noticiasDelNorteExclusions,
                         function (res) {
                             if (res.data !== null && res.data.status === 'OK') {
 
@@ -470,6 +472,18 @@ angular
                         }
                     }
             );
+    
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_PORTADA, '',function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.publicidadHorizontal = data.data[0];
+
+                } else {
+                    $scope.publicidadHorizontal = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });
+    
 
             $scope.masAtacama = function () {
                 $scope.offsetNacAtacama = $scope.offsetNacAtacama + 3;
@@ -487,7 +501,7 @@ angular
             };
 
             $scope.masNacionales = function () {
-                $scope.offsetNacionales = $scope.offsetNacionales + 9;
+                $scope.offsetNacionales = $scope.offsetNacionales + 12;
                 $scope.loadNacionales();
             };
 
@@ -634,7 +648,7 @@ angular
             };
 
             var emptyExclusion = '';
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, emptyExclusion,  function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO + "," + Constants.Category.DESTACADO, emptyExclusion,  function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.internacionalesDestacadas = news.getMultipleNewsInternacional(data.data, "link", 6);
@@ -645,7 +659,7 @@ angular
                 }
             });
 
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "6", Constants.Category.EXTERNO, emptyExclusion, function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "6", Constants.Category.EXTERNO+ "," + Constants.Category.DESTACADO, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
                     $scope.internacionalesDestacadas2 = news.getMultipleNewsInternacional(data.data, "link", 8);
@@ -679,7 +693,7 @@ angular
             });
 
             $scope.loadInternacionales = function () {
-                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalBig, $scope.offSetInternacionales, Constants.Category.EXTERNO, emptyExclusion, function (response) {
+                getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalBig, $scope.offSetInternacionales, Constants.Category.EXTERNO, Constants.Category.DESTACADO, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
                         $scope.internacionales = news.getMultipleNewsInternacional(data.data, "link", 15);

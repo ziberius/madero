@@ -1323,6 +1323,7 @@ img.mfp-img {
     text-align: left;
     padding: 5px 0;
     margin-bottom: 0;
+    margin-top:20px;
 }
 
 .gallery-indicators li,
@@ -2576,8 +2577,20 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
     height:9em;
 }
 
+.anuncioSmall{
+    max-height:200px;
+}
+
+.anuncioMedium{
+    max-height:300px;
+}
+
 .post-imgbelow .entry-header .entry-thumbnail img{
     height: 9em;
+}
+
+.internacionalDestacadas{
+    max-height:150px;
 }
 
 .loader {

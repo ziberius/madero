@@ -1,11 +1,11 @@
         <!--CSS-->
-        <link href="/main/web/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/main/web/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/main/web/css/magnific-popup.css" rel="stylesheet">
-        <link href="/main/web/css/owl.carousel.css" rel="stylesheet">
-        <link href="/main/web/css/main.css" rel="stylesheet">
-        <link href="/main/web/css/responsive.css" rel="stylesheet">
-        <link href="/main/web/css/weather.css" rel="stylesheet">
+        <link href="/madero/main/web/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/madero/main/web/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/madero/main/web/css/magnific-popup.css" rel="stylesheet">
+        <link href="/madero/main/web/css/owl.carousel.css" rel="stylesheet">
+        <link href="/madero/main/web/css/main.css" rel="stylesheet">
+        <link href="/madero/main/web/css/responsive.css" rel="stylesheet">
+        <link href="/madero/main/web/css/weather.css" rel="stylesheet">
 
         <!--Google Fonts-->
         <link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,300,600,700' rel='stylesheet' type='text/css'>

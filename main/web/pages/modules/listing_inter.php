@@ -19,11 +19,7 @@
 
             </div>
         </div>
-        <div class="section">
-            <div class="row">
-                <img class="img-responsive center-block" style="max-height:120px" src="/main/web/images/post/banner.jpg" />
-            </div>
-        </div>      
+  
         <div ng-show="internacionalesDestacadas2.length > 0" class="section">
             <h2>Destacadas Internacionales</h2>
             <div class="row">
@@ -32,7 +28,7 @@
                         <div class="post medium-post">
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a href="{{post.embedly[0].url}}"><img class="img-responsive" ng-src="{{post.embedly[0].thumbnail_url}}" alt="" /></a>
+                                    <a href="{{post.embedly[0].url}}"><img class="img-responsive internacionalDestacadas" ng-src="{{post.embedly[0].thumbnail_url}}" alt="" /></a>
                                 </div>
                             </div>
                             <div class="post-content">								
@@ -96,7 +92,7 @@
                                                     </ul>
                                                 </div>
                                                 <h2 class="entry-title">
-                                                    <a href="{{post.embedly[0].url}}">{{post.embedly[0].title}}</a>
+                                                    <a href="{{post.embedly[0].url}}">{{post.embedly[0].title| limitTo: 70}}...</a>
                                                 </h2>
                                             </div>
                                         </div><!--/post--> 
@@ -131,9 +127,6 @@
                                 </li>
                             </ul>
                         </div><!--/#widget-->
-                        <div class="widget">
-                            <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg" />
-                        </div><!-- widget -->
 
                     </div><!--/#sitebar-->
                 </div>

@@ -1,13 +1,13 @@
 <div class="footer-top">
     <div class="container-fluid">
         <ul class="list-inline social-icons text-center">
-            <li><a ><i class="fa fa-facebook"></i>Facebook</a></li>
-            <li><a ><i class="fa fa-twitter"></i>Twitter</a></li>
+            <li><a href="https://www.facebook.com/radiomaderofm" target="_blank" ><i class="fa fa-facebook"></i>Facebook</a></li>
+            <li><a href="https://twitter.com/radiomaderofm" target="_blank"><i class="fa fa-twitter"></i>Twitter</a></li>
             <!-- <li><a href="#"><i class="fa fa-google-plus"></i>Google Plus</a></li> -->
-            <li><a ><i class="fa fa-instagram"></i>Instagram</a></li>
+            <li><a href="https://www.instagram.com/radiomaderofm" target="_blank"><i class="fa fa-instagram"></i>Instagram</a></li>
             <!-- <li><a href="#"><i class="fa fa-pinterest"></i>Pinterest</a></li> -->
             <li><a ><i class="fa fa-youtube"></i>Youtube</a></li>
-            <li><a ><i class="fa fa-whatsapp"></i>Whatsapp</a></li>
+            <li><a class="mostrarWhatsapp"><i class="fa fa-whatsapp"></i>Whatsapp</a></li>
         </ul>
     </div>
 </div><!--/.footer-top-->
@@ -84,17 +84,17 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="/main/web/lib/jquery.js"></script>
-<script type="text/javascript" src="/main/web/lib/bootstrap.min.js"></script>
-<script type="text/javascript" src="/main/web/lib/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="/main/web/lib/owl.carousel.min.js"></script>
-<script type="text/javascript" src="/main/web/js/main.js"></script>
-<script type="text/javascript" src="/main/web/lib/jquery.simpleWeather.min.js"></script>
-<script src="/main/web/lib/angular.min.js"></script>
-<script src="/main/web/lib/angular-route.min.js"></script>
-<script src="/main/web/lib/angular-animate.min.js"></script>
-<script src="/main/web/lib/angular-locale_es-cl.min.js" type="text/javascript"></script>
-<script src="/main/web/lib/lodash.min.js" type="text/javascript"></script>
-<script src="/main/web/lib/angular-simple-logger.min.js" type="text/javascript"></script>
-<script src="/main/web/js/controller.js" type="text/javascript"></script>
+<script type="text/javascript" src="/madero/main/web/lib/jquery.js"></script>
+<script type="text/javascript" src="/madero/main/web/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="/madero/main/web/lib/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="/madero/main/web/lib/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/madero/main/web/js/main.js"></script>
+<script type="text/javascript" src="/madero/main/web/lib/jquery.simpleWeather.min.js"></script>
+<script src="/madero/main/web/lib/angular.min.js"></script>
+<script src="/madero/main/web/lib/angular-route.min.js"></script>
+<script src="/madero/main/web/lib/angular-animate.min.js"></script>
+<script src="/madero/main/web/lib/angular-locale_es-cl.min.js" type="text/javascript"></script>
+<script src="/madero/main/web/lib/lodash.min.js" type="text/javascript"></script>
+<script src="/madero/main/web/lib/angular-simple-logger.min.js" type="text/javascript"></script>
+<script src="/madero/main/web/js/controller.js" type="text/javascript"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.js"></script>

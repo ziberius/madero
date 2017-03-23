@@ -162,10 +162,10 @@
 
                         <!--Publicidad Vertical-->
                         <div class="widget" ng-show="publicidadCuadrada.length > 0">
-                            <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
+                            <img class="img-responsive center-block anuncioSmall" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
                         </div><!-- widget -->
                         <div class="widget" ng-show="publicidadCuadrada.length > 1">
-                            <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[1].thumbnailImageUrl}}"/>
+                            <img class="img-responsive center-block anuncioSmall" ng-src="{{publicidadCuadrada[1].thumbnailImageUrl}}"/>
                         </div><!-- widget -->
                     </div><!--/#sitebar-->
                 </div>
@@ -197,7 +197,7 @@
         <div class="section">
             <div class="row">
 
-                <!--TODO ???-->
+                <!--
                 <div class="col-sm-12 col-md-3 text-center">
                     <h3>Etiquetas del Día</h3>
                     <ul class="list-unstyled">
@@ -208,7 +208,7 @@
                         <li>#reformalaboral</li>
                         <li>#animalessalvajes</li>
                     </ul>
-                </div>
+                </div>TODO ???-->
 
                 <div ng-show="atacamaPosts[9]">
                     <div class="col-sm-12 col-md-2">
@@ -249,9 +249,28 @@
                         </div>
                     </div>
                 </div>
+                <div ng-show="atacamaPosts[11]">
+                    <div class="col-sm-12 col-md-2">
+                        <div class="post medium-post">
+
+                            <div class="post-content nopaddingtop">
+                                <h2 class="entry-title">
+                                    <a ng-click="detail(atacamaPosts[11].id)">{{atacamaPosts[11].shortTitle}}</a>
+                                </h2>
+                            </div>
+                            <div class="entry-header">
+                                <div class="entry-thumbnail">
+                                    <a ng-click="detail(atacamaPosts[11].id)"><img class="img-responsive"
+                                                                                   src="{{atacamaPosts[11].thumbnailImageUrl}}"
+                                                                                   alt=""/></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-sm-12 col-md-5" ng-show="publicidadCuadrada.length > 2">
-                    <img class="img-responsive center-block" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
+                    <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
                 </div>
 
 
@@ -261,7 +280,7 @@
         <div class="section">
             <div class="row">
 
-                <div ng-repeat="n in [11, 12, 13, 14, 15, 16]">
+                <div ng-repeat="n in [ 12, 13, 14, 15, 16,17]">
                     <div ng-show="atacamaPosts[n]">
                         <div class="col-md-2">
                             <div class="post medium-post">

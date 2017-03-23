@@ -60,13 +60,13 @@
 
                                                     <ul class="list-inline share-link">
                                                         <li><a href="#"><img
-                                                                        src="/main/web/images/others/social1.png"
+                                                                        src="/madero/main/web/images/others/social1.png"
                                                                         alt=""/></a></li>
-                                                        <li><a href="#"><img src="/main/web/images/others/social2.png"
+                                                        <li><a href="#"><img src="/madero/main/web/images/others/social2.png"
                                                                              alt=""/></a></li>
-                                                        <li><a href="#"><img src="/main/web/images/others/social3.png"
+                                                        <li><a href="#"><img src="/madero/main/web/images/others/social3.png"
                                                                              alt=""/></a></li>
-                                                        <li><a href="#"><img src="/main/web/images/others/social4.png"
+                                                        <li><a href="#"><img src="/madero/main/web/images/others/social4.png"
                                                                              alt=""/></a></li>
                                                     </ul>
                                                 </div>
@@ -130,7 +130,7 @@
                                           <li class="media">
                                               <div class="media-left">
                                                   <a href="#"><img class="media-object"
-                                                                   src="/main/web/images/others/author.png" alt=""></a>
+                                                                   src="/madero/main/web/images/others/author.png" alt=""></a>
                                               </div>
                                               <div class="media-body">
                                                   <h2><a href="#">Juan Perez</a></h2>
@@ -143,7 +143,7 @@
                                           <li class="media">
                                               <div class="media-left">
                                                   <a href="#"><img class="media-object"
-                                                                   src="/main/web/images/others/author.png" alt=""></a>
+                                                                   src="/madero/main/web/images/others/author.png" alt=""></a>
                                               </div>
                                               <div class="media-body">
                                                   <h2><a href="#">Gonzalo Vilches</a></h2>
@@ -230,33 +230,6 @@
                                 </div>
                             </div>
 
-                            <div class="widget">
-                                <div class="add">
-                                    <a href="#"><img class="img-responsive" src="/main/web/images/post/Add/add6.jpg"
-                                                     alt=""/></a>
-                                </div>
-                            </div>
-                            <div class="widget">
-                                <h2 class="section-title">Video Tendencias</h2>
-                                <div class="post video-post medium-post">
-                                    <div class="entry-header">
-                                        <div class="entry-thumbnail embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item"
-                                                    src="https://www.youtube.com/embed/Ji2ohWJfEIQ"
-                                                    allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div><!--/post-->
-                                <div class="post video-post medium-post">
-                                    <div class="entry-header">
-                                        <div class="entry-thumbnail embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item"
-                                                    src="https://www.youtube.com/embed/0aqiPyTJv8E"
-                                                    allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div><!--/post-->
-                            </div>
                         </div><!--/#sitebar-->
                     </div>
                 </div>

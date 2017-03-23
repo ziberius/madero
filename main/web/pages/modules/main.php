@@ -52,16 +52,10 @@
         </div>
         <div class="section">
             <div class="row">
-                <img class="img-responsive center-block" style="max-height:120px" src="/main/web/images/post/banner.jpg" />
-            </div>
-        </div>                
-
-        <div class="section">
-            <div class="row">
                 <div class="col-sm-3">
                     <h1 class="section-title title"><a href="#listing">Nacional</a></h1>
                     <div class="left-sidebar">
-  
+
                         <div ng-click="" style="cursor: pointer" class="post medium-post" ng-repeat="noticia in nacionales">
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
@@ -82,9 +76,6 @@
 
                         <div class="load-more text-center">
                             <a class="btn btn-primary btn-block" ng-click="masNacionales()">Cargar Más Noticias...</a>
-                        </div>
-                        <div class="top5">
-                            <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg">
                         </div>
                     </div><!--/left-sidebar--> 	
                 </div>
@@ -351,84 +342,84 @@
                                 <div id="photo-gallery" class="carousel slide carousel-fade" data-ride="carousel">						
                                     <div class="carousel-inner">
                                         <div class="item active">
-                                            <a><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria1.jpeg" alt="" /></a>
+                                            <a><img class="img-responsive img-rounded img-maxheight-40" src="/madero/main/web/images/post/programacion/galeria1.jpeg" alt="" /></a>
                                             <!-- <h2>Noticias</h2> -->
                                         </div>
                                         <div class="item">
-                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria2.jpeg" alt="" /></a>
+                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/madero/main/web/images/post/programacion/galeria2.jpeg" alt="" /></a>
                                             <!-- <h2>Deportes</h2> -->
                                         </div>
                                         <div class="item">
-                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria3.jpeg" alt="" /></a>
+                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/madero/main/web/images/post/programacion/galeria3.jpeg" alt="" /></a>
                                             <!-- <h2>Daniela Madero <a class="btn btn-default" role="button" href="#">Madero FM - Copiapó</a></h2> -->
                                         </div>
                                         <div class="item">
-                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria4.jpeg" alt="" /></a>
+                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/madero/main/web/images/post/programacion/galeria4.jpeg" alt="" /></a>
                                             <!-- <h2>Patricia Palma <a class="btn btn-default" role="button" href="#">Madero FM - Antofagasta</a></h2> -->
                                         </div>
                                         <div class="item">
-                                            <a><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria5.jpeg" alt="" /></a>
+                                            <a><img class="img-responsive img-rounded img-maxheight-40" src="/madero/main/web/images/post/programacion/galeria5.jpeg" alt="" /></a>
                                             <!-- <h2>Joel Castro <a class="btn btn-default" role="button" href="#">Madero FM - Copiapó</a></h2> -->
                                         </div>
                                         <div class="item">
-                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria6.jpeg" alt="" /></a>
+                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/madero/main/web/images/post/programacion/galeria6.jpeg" alt="" /></a>
                                             <!-- <h2>Enrique Mursell <a class="btn btn-default" role="button" href="#">Madero FM - La Serena & Coquimbo</a></h2> -->
                                         </div>
                                         <div class="item">
-                                            <a><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria7.jpeg" alt="" /></a>
+                                            <a><img class="img-responsive img-rounded img-maxheight-40" src="/madero/main/web/images/post/programacion/galeria7.jpeg" alt="" /></a>
                                             <!-- <h2>Andrea Meseguer <a class="btn btn-default" role="button" href="#">Madero FM - Copiapó</a></h2> -->
                                         </div>
                                         <div class="item">
-                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/main/web/images/post/programacion/galeria8.jpeg" alt="" /></a>
+                                            <a ><img class="img-responsive img-rounded img-maxheight-40" src="/madero/main/web/images/post/programacion/galeria8.jpeg" alt="" /></a>
                                             <!-- <h2>José Salazar <a class="btn btn-default" role="button" href="#">Madero FM - Antofagasta</a></h2> -->
                                         </div>
                                     </div><!--/carousel-inner-->
 
                                     <ol class="gallery-indicators carousel-indicators">
                                         <li data-target="#photo-gallery" data-slide-to="0" class="active">
-                                            <img class="img-responsive" src="/main/web/images/gallery/galeria1.jpeg" alt="" />
+                                            <img class="img-responsive" src="/madero/main/web/images/gallery/galeria1.jpeg" alt="" />
                                         </li>
                                         <li data-target="#photo-gallery" data-slide-to="1">
-                                            <img class="img-responsive" src="/main/web/images/gallery/galeria2.jpeg" alt="" />
+                                            <img class="img-responsive" src="/madero/main/web/images/gallery/galeria2.jpeg" alt="" />
                                         </li>   
                                         <li data-target="#photo-gallery" data-slide-to="2">
-                                            <img class="img-responsive" src="/main/web/images/gallery/galeria3.jpeg" alt="" />
+                                            <img class="img-responsive" src="/madero/main/web/images/gallery/galeria3.jpeg" alt="" />
                                         </li>
                                         <li data-target="#photo-gallery" data-slide-to="3">
-                                            <img class="img-responsive" src="/main/web/images/gallery/galeria4.jpeg" alt="" />
+                                            <img class="img-responsive" src="/madero/main/web/images/gallery/galeria4.jpeg" alt="" />
                                         </li>
                                         <li data-target="#photo-gallery" data-slide-to="4">
-                                            <img class="img-responsive" src="/main/web/images/gallery/galeria5.jpeg" alt="" />
+                                            <img class="img-responsive" src="/madero/main/web/images/gallery/galeria5.jpeg" alt="" />
                                         </li>
                                         <li data-target="#photo-gallery" data-slide-to="5">
-                                            <img class="img-responsive" src="/main/web/images/gallery/galeria6.jpeg" alt="" />
+                                            <img class="img-responsive" src="/madero/main/web/images/gallery/galeria6.jpeg" alt="" />
                                         </li>
                                         <li data-target="#photo-gallery" data-slide-to="6">
-                                            <img class="img-responsive" src="/main/web/images/gallery/galeria7.jpeg" alt="" />
+                                            <img class="img-responsive" src="/madero/main/web/images/gallery/galeria7.jpeg" alt="" />
                                         </li>
                                         <li data-target="#photo-gallery" data-slide-to="7">
-                                            <img class="img-responsive" src="/main/web/images/gallery/galeria8.jpeg" alt="" />
+                                            <img class="img-responsive" src="/madero/main/web/images/gallery/galeria8.jpeg" alt="" />
                                         </li>
                                     </ol><!--/gallery-indicators-->
-
+                                    <!--
                                     <div class="gallery-turner">
                                         <a class="left-photo" href="#photo-gallery" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
                                         <a class="right-photo" href="#photo-gallery" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div><!--/photo-gallery--> 
-                            <div class="section">
+                            <!--<div class="section">
                                 <div class="row">
-                                    <img class="img-responsive center-block" style="max-height:120px" src="/main/web/images/post/banner.jpg">
+                                    <video ng-src="{{publicidadHorizontal.content | trustAsResourceUrl}}" controls autoplay >HTML5 Video is required for this example</video> 
                                 </div>
-                            </div>                                    
+                            </div> -->                                    
                         </div><!--/.middle-content-->
                     </div><!--/#site-content-->
                 </div>
                 <div class="col-sm-3">
                     <div id="sitebar">							
                         <?php require_once("../include/internacionales.php"); ?>
-                                  
+
                         <div class="widget">
                             <h2 class="section-title">Redes Sociales</h2>
                             <div class="row">
@@ -452,15 +443,7 @@
                                 </div>
                             </div><!--/post-->
                         </div>
-                        
-                        <div class="top5">
-                            <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg">
-                        </div>
 
-                        <div class="top5">
-                            <img class="img-responsive center-block" src="/main/web/images/anuncio_vertical.jpg">
-                        </div>                        
-                        
                         <!--
                         <div class="widget">
                             <h2 class="section-title">Opinión</h2>
@@ -470,8 +453,8 @@
                                     <div class="img-opinion left">
                                         <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
                                         <div>
-                                            <img class="left" src="/main/web/images/cv.png" style="width:20px;height:20px" />
-                                            <img class="right" src="/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
+                                            <img class="left" src="/madero/main/web/images/cv.png" style="width:20px;height:20px" />
+                                            <img class="right" src="/madero/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
                                         </div>                                
                                     </div>                             
                                 </div>
@@ -487,8 +470,8 @@
                                     <div class="img-opinion left">
                                         <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
                                         <div>
-                                            <img class="left" src="/main/web/images/cv.png" style="width:20px;height:20px" />
-                                            <img class="right" src="/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
+                                            <img class="left" src="/madero/main/web/images/cv.png" style="width:20px;height:20px" />
+                                            <img class="right" src="/madero/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
                                         </div>                                
                                     </div>                             
                                 </div>
@@ -504,8 +487,8 @@
                                     <div class="img-opinion left">
                                         <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
                                         <div>
-                                            <img class="left" src="/main/web/images/cv.png" style="width:20px;height:20px" />
-                                            <img class="right" src="/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
+                                            <img class="left" src="/madero/main/web/images/cv.png" style="width:20px;height:20px" />
+                                            <img class="right" src="/madero/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
                                         </div>                                
                                     </div>                             
                                 </div>
@@ -521,8 +504,8 @@
                                     <div class="img-opinion left">
                                         <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
                                         <div>
-                                            <img class="left" src="/main/web/images/cv.png" style="width:20px;height:20px" />
-                                            <img class="right" src="/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
+                                            <img class="left" src="/madero/main/web/images/cv.png" style="width:20px;height:20px" />
+                                            <img class="right" src="/madero/main/web/images/icon-twitter.jpg" style="width:20px;height:20px" />
                                         </div>                                
                                     </div>                             
                                 </div>

@@ -10,7 +10,7 @@
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
                                     <a href="{{post.embedly[0].url}}" target="_blank"><img class="img-responsive"
-                                                                                           src="{{post.embedly[0].thumbnail_url}}"
+                                                                                           ng-src="{{post.embedly[0].thumbnail_url}}"
                                                                                            alt=""/></a>
                                 </div>
                             </div>

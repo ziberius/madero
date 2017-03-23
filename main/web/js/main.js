@@ -84,8 +84,8 @@ jQuery(function ($) {
     });
 
 
-    $("#mostrarWhatsapp").on('click',function(){
-       $("#spanWhatsapp").fadeToggle(); 
+    $(".mostrarWhatsapp").on('click',function(){
+       $(".spanWhatsapp").fadeToggle(); 
     });
 
 });
