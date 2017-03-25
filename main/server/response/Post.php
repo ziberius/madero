@@ -17,7 +17,7 @@ class Post
     private $modified;
     private $modified_gmt;
 
-    private $embedly;
+    private $oembed;
 
     private $categories;
 
@@ -207,14 +207,14 @@ class Post
         $this->post_meta = $post_meta;
     }
 
-    public function getEmbedly()
+    public function getOembed()
     {
-        return $this->embedly;
+        return $this->oembed;
     }
 
-    public function setEmbedly($embedly)
+    public function setOembed($oembed)
     {
-        $this->embedly = $embedly;
+        $this->oembed = $oembed;
     }
 
     public function getTags()

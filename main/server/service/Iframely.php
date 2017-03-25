@@ -3,15 +3,12 @@ require_once dirname(__FILE__) . '/../ini/IniFile.php';
 require_once dirname(__FILE__) . '/../lib/log4php/Logger.php';
 Logger::configure(dirname(__FILE__) . '/../log/log4phpConfig.xml');
 
-class Embedly
+class Iframely
 {
-    const MAX_URLS = 20;
-
     private $hostname;
-    private $apiVersion;
-    private $key;
+    private $api_key;
     private $userAgent;
-    private $action;
+    private $path;
 
     private $log;
 
@@ -19,62 +16,25 @@ class Embedly
     {
         $this->log = Logger::getLogger(__CLASS__);
         $instance = IniFile::getInstance();
-
-        $this->key = $instance->getValue(IniFile::EMBEDLY_KEY);
+        $this->api_key = $instance->getValue(IniFile::OEMBED_API_KEY);
         $this->userAgent = getenv('HTTP_USER_AGENT');
-        $this->hostname = 'api.embedly.com';
-        $this->apiVersion = '1';
-        $this->action = 'oembed';
+        $this->hostname = 'iframe.ly';
+        $this->path = '/api/oembed';
     }
 
     /**
-     * @param $urls
-     * @param $width
-     * @param $height
-     * @return object
-     * @throws Exception
-     */
-    public function getOEmbedsWithWidthHeight($urls, $width, $height)
-    {
-        if (!is_array($urls)) {
-            throw new Exception("urls must be array");
-        }
-
-        if (sizeof($urls) > self::MAX_URLS) {
-            throw new Exception('Max of ' . self::MAX_URLS . ' urls can be queried at once');
-        }
-
-        if (!is_numeric($width)) {
-            throw new Exception(sprintf('width must be numeric [%s]', $width));
-        }
-
-        if (!is_numeric($height)) {
-            throw new Exception(sprintf('height must be numeric [%s]', $height));
-        }
-
-        $parameters = array('urls' => $urls, 'width' => $width, 'height' => $height, 'key' => $this->key);
-
-        return (object)$this->getResponse($parameters);
-    }
-
-    /**
-     * @param $urls
+     * @param $url
      * @return mixed array
      * @throws Exception
      */
-    public function getOembeds($urls)
+    public function getOembeds($url)
     {
 
-        if (!is_array($urls)) {
-            throw new Exception("urls must be array");
+        if (!is_string($url)) {
+            throw new Exception("urls must be string");
         }
 
-        if (sizeof($urls) > self::MAX_URLS) {
-            throw new Exception('Max of ' . self::MAX_URLS . ' urls can be queried at once');
-        }
-
-
-        $parameters = array('urls' => $urls, 'key' => $this->key);
+        $parameters = array('url' => $url, 'api_key' => $this->api_key);
 
         return $this->getResponse($parameters);
 
@@ -82,10 +42,9 @@ class Embedly
 
     private function getResponse($parameters)
     {
-        $path = sprintf("/%s/%s", $this->apiVersion, $this->action);
-        $formatedParams = $this->formatParameters($parameters);
+        $formattedParams = $this->formatParameters($parameters);
 
-        $apiUrl = sprintf("http://%s%s?%s", $this->hostname, $path, $formatedParams);
+        $apiUrl = sprintf("http://%s%s?%s", $this->hostname, $this->path, $formattedParams);
         $this->log->info(sprintf('URL to Api: %s', $apiUrl));
 
         $resource = curl_init($apiUrl);
@@ -100,15 +59,13 @@ class Embedly
 
         $httpCode = curl_getinfo($resource, CURLINFO_HTTP_CODE);
         if ($httpCode !== 200) {
-            throw new Exception(sprintf('HTTP error code %s', $httpCode));
+            $this->log->error(sprintf('HTTP error code %s', $httpCode));
         }
 
         $responseDecode = json_decode($response, true);
 
-        foreach ($responseDecode as $item) {
-            if ($item['type'] == 'error') {
-                $this->log->error($item);
-            }
+        if (isset($responseDecode['error'])) {
+            $this->log->error($responseDecode);
         }
         return $responseDecode;
     }
@@ -139,6 +96,5 @@ class Embedly
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 25);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
     }
-
 
 }

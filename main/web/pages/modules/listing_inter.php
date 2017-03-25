@@ -5,12 +5,12 @@
                 <div ng-repeat="postInterDest in internacionalesDestacadas">
 
                     <div class="post feature-post"
-                         style="background-image:url({{postInterDest.embedly[0].thumbnail_url}}); background-size:cover">
+                         style="background-image:url({{postInterDest.oembed.thumbnail_url}}); background-size:cover">
                         <div class="post-content">
-                            <div class="catagory"><a href="{{postInterDest.embedly[0].url}}" target="_blank">{{postInterDest.embedly[0].provider_name}}</a>
+                            <div class="catagory"><a href="{{postInterDest.oembed.url}}" target="_blank">{{postInterDest.oembed.provider_name}}</a>
                             </div>
                             <h2 class="entry-title">
-                                <a href="{{postInterDest.embedly[0].url}}" target="_blank">{{postInterDest.embedly[0].title}}</a>
+                                <a href="{{postInterDest.oembed.url}}" target="_blank">{{postInterDest.oembed.title}}</a>
                             </h2>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                         <div class="post medium-post">
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a href="{{post.embedly[0].url}}"><img class="img-responsive internacionalDestacadas" ng-src="{{post.embedly[0].thumbnail_url}}" alt="" /></a>
+                                    <a href="{{post.oembed.url}}"><img class="img-responsive internacionalDestacadas" ng-src="{{post.oembed.thumbnail_url}}" alt="" /></a>
                                 </div>
                             </div>
                             <div class="post-content">								
@@ -38,7 +38,7 @@
                                     </ul>
                                 </div>
                                 <h2 class="entry-title">
-                                    <a href="{{post.embedly[0].url}}">{{post.embedly[0].title}}</a>
+                                    <a href="{{post.oembed.url}}">{{post.oembed.title}}</a>
                                 </h2>
                             </div>
                         </div><!--/post--> 
@@ -55,12 +55,12 @@
                         <div class="post video-post medium-post">
                             <div class="entry-header">
                                 <div class="entry-thumbnail embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" ng-src="{{post.embedly[0].url| trustAsResourceUrl}}" allowfullscreen></iframe>
+                                    <iframe class="embed-responsive-item" ng-src="{{post.oembed.url| trustAsResourceUrl}}" allowfullscreen></iframe>
                                 </div>
                             </div>
                             <div class="post-content">								
                                 <h2 class="entry-title">
-                                    <a href="{{post.embedly[0].url}}">{{post.embedly[0].title}}</a>
+                                    <a href="{{post.oembed.url}}">{{post.oembed.title}}</a>
                                 </h2>
                             </div>
                         </div><!--/post--> 
@@ -74,7 +74,7 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div id="site-content" class="site-content">
-                        <h1 class="section-title title"><a href="listing.html">Internacionales</a></h1>
+                        <h1 class="section-title title"><a href="#internacional">Internacionales</a></h1>
                         <div class="middle-content">								
                             <div class="section">
                                 <div class="row">
@@ -82,7 +82,7 @@
                                         <div class="post medium-post">
                                             <div class="entry-header">
                                                 <div class="entry-thumbnail">
-                                                    <a href="{{post.embedly[0].url}}"><img class="img-responsive" ng-src="{{post.embedly[0].thumbnail_url}}" alt="" /></a>
+                                                    <a href="{{post.oembed.url}}"><img class="img-responsive" ng-src="{{post.oembed.thumbnail_url}}" alt="" /></a>
                                                 </div>
                                             </div>
                                             <div class="post-content">								
@@ -92,7 +92,7 @@
                                                     </ul>
                                                 </div>
                                                 <h2 class="entry-title">
-                                                    <a href="{{post.embedly[0].url}}">{{post.embedly[0].title| limitTo: 70}}...</a>
+                                                    <a href="{{post.oembed.url}}">{{post.oembed.title| limitTo: 70}}...</a>
                                                 </h2>
                                             </div>
                                         </div><!--/post--> 
@@ -108,7 +108,7 @@
                 <div class="col-sm-3">
                     <div id="sitebar">							
                         <div ng-show="nacionales.length > 0" class="widget">
-                            <h1 class="section-title title"><a href="listing.html">Otras noticias</a></h1>
+                            <h1 class="section-title title"><a href="#listing">Otras noticias</a></h1>
                             <ul class="post-list">
                                 <li ng-repeat="post in nacionales">
                                     <div class="post small-post">

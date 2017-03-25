@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . '/Embedly.php';
+require_once dirname(__FILE__) . '/Iframely.php';
 require_once dirname(__FILE__) . '/../util/Converter.php';
 require_once dirname(__FILE__) . '/../response/Category.php';
 
@@ -64,13 +64,13 @@ class Processor
                 $post->setCategories($categoriesMap[$idPost]);
             }
 
-            $this->getEmbedly($post);
+            $this->getOembed($post);
 
         }
         return $postMap;
     }
 
-    private function getEmbedly(&$post)
+    private function getOembed(&$post)
     {
         if (!empty($post->getCategories())) {
             foreach ($post->getCategories() as $category) {
@@ -82,10 +82,10 @@ class Processor
                     if (filter_var($url, FILTER_VALIDATE_URL)) {
                         $this->log->debug(sprintf('content is a validated url [%s]', $url));
 
-                        $embedly = new Embedly();
-                        $oembeds = $embedly->getOembeds(array($url));
+                        $oembedService = new Iframely();
+                        $oembeds = $oembedService->getOembeds($url);
                         $this->log->debug($oembeds);
-                        $post->setEmbedly($oembeds);
+                        $post->setOembed($oembeds);
 
                     }
                 }

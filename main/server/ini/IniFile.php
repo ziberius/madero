@@ -2,12 +2,11 @@
 
 class IniFile
 {
-
     const DB_HOST = "DB_HOST";
     const DB_NAME = "DB_NAME";
     const DB_USER = "DB_USER";
     const DB_PASSWORD = "DB_PASSWORD";
-    const EMBEDLY_KEY = "EMBEDLY_KEY";
+    const OEMBED_API_KEY = "OEMBED_API_KEY";
 
     private $ini;
     private $fileName = "config.ini";

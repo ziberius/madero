@@ -226,7 +226,7 @@ angular
                 var cont = 0;
                 var listo = false;
                 angular.forEach(data, function (post) {
-                    if (!listo && post.embedly !== null && post.embedly.length > 0 && post.embedly[0].type === type) {
+                    if (!listo && post.oembed !== null && post.oembed.type === type) {
                         cont++;
                         response.push(myService.getSingleNews(post));
                         if (cont === limit) {
@@ -653,7 +653,7 @@ angular
             getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO + "," + Constants.Category.DESTACADO, emptyExclusion,  function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
-                    $scope.internacionalesDestacadas = news.getMultipleNewsInternacional(data.data, "link", 6);
+                    $scope.internacionalesDestacadas = news.getMultipleNewsInternacional(data.data, "rich", 6);
 
                 } else {
                     $scope.internacionalesDestacadas = null;
@@ -664,7 +664,7 @@ angular
             getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "6", Constants.Category.EXTERNO+ "," + Constants.Category.DESTACADO, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
-                    $scope.internacionalesDestacadas2 = news.getMultipleNewsInternacional(data.data, "link", 8);
+                    $scope.internacionalesDestacadas2 = news.getMultipleNewsInternacional(data.data, "rich", 8);
 
                 } else {
                     $scope.internacionalesDestacadas2 = null;
@@ -698,7 +698,7 @@ angular
                 getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalBig, $scope.offSetInternacionales, Constants.Category.EXTERNO, Constants.Category.DESTACADO, function (response) {
                     var data = response.data;
                     if (data !== null && data.status === 'OK') {
-                        $scope.internacionales = news.getMultipleNewsInternacional(data.data, "link", 15);
+                        $scope.internacionales = news.getMultipleNewsInternacional(data.data, "rich", 15);
 
                     } else {
                         $scope.internacionales = null;
@@ -1058,7 +1058,7 @@ angular
                 getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), Constants.Limits.InternationalMedium, "0", Constants.Category.EXTERNO, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
-                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "link", 5);
+                    $scope.internationalPosts = news.getMultipleNewsInternacional(data.data, "rich", 5);
 
                 } else {
                     $scope.internationalPosts = null;

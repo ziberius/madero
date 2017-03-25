@@ -33,19 +33,19 @@
                     </h2>
                 </div>
             </div><!--/post-->
-            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaDeporte[0].embedly[0].thumbnail_url + ')'}" style="background-size:cover;">
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaDeporte[0].oembed.thumbnail_url + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="{{destacadaDeporte.embedly[0].url}}" target="_blank">Deportes</a></div>
+                    <div class="catagory"><a href="{{destacadaDeporte.oembed.url}}" target="_blank">Deportes</a></div>
                     <h2 class="entry-title">
-                        <a href="{{destacadaDeporte.embedly[0].url}}" target="_blank">{{destacadaDeporte[0].embedly[0].title}}</a>
+                        <a href="{{destacadaDeporte.oembed.url}}" target="_blank">{{destacadaDeporte[0].oembed.title}}</a>
                     </h2>
                 </div>
             </div>
-            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaInternacional[0].embedly[0].thumbnail_url + ')'}" style="background-size:cover;">
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaInternacional[0].oembed.thumbnail_url + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="{{destacadaInternacional.embedly[0].url}}" target="_blank">Internacional</a></div>
+                    <div class="catagory"><a href="{{destacadaInternacional.oembed.url}}" target="_blank">Internacional</a></div>
                     <h2 class="entry-title">
-                        <a href="{{destacadaInternacional.embedly[0].url}}" target="_blank">{{destacadaInternacional[0].embedly[0].title}}</a>
+                        <a href="{{destacadaInternacional.oembed.url}}" target="_blank">{{destacadaInternacional[0].oembed.title}}</a>
                     </h2>
                 </div>
             </div>
