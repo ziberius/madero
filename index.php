@@ -7,6 +7,11 @@
         <meta name="description" content="">
         <meta name="author" content="">        
         <?php require_once('main/web/pages/include/head.php'); ?>
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Your Website Title" />
+        <meta property="og:description"   content="Your description" />
+        <meta property="og:image"         content="{{imageFacebook}}" />
+        
         <title>Madero FM</title>
     </head>
     <body ng-cloak>
