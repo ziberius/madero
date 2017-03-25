@@ -516,7 +516,7 @@ angular
                 loadSliders();
             });
         })
-        .controller('viewController', function ($scope, $routeParams, getPosts, news, $location,navigate,Constants) {
+        .controller('viewController', function ($scope, $routeParams, getPosts, news, $location,$rootScope,Constants) {
             var emptyExclusion = '';
 
             $scope.url = "http://" + $location.host() + $location.path();
@@ -529,7 +529,7 @@ angular
 
                     var idCategory = $scope.mainPost.categories[0].id;
                     getOtherPost(idCategory);
-
+                    $rootScope.imageFacebook = $scope.mainPost.thumbnailImageUrl;
                 } else {
                     $scope.mainPost = null;
                     showMessage("No se encontraron resultados");
