@@ -2634,6 +2634,18 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
     animation: spin 2s linear infinite;
 }
 
+.menuXs{
+    display:none;
+    width:0px;
+    height:100%;
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:999999;
+    background-color:gray;
+    padding-right:15px;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);

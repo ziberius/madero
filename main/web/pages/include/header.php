@@ -2,6 +2,7 @@
     <div class="navbar-inverse barraSuperior">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <ul class="list-inline social-icons text-left">
+              
                 <li><a href="https://www.facebook.com/radiomaderofm" target="_blank"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="https://twitter.com/radiomaderofm" target="_blank" ><i class="fa fa-twitter"></i></a></li>
                 <!-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
@@ -9,9 +10,15 @@
                 <!-- <li><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
                 <li><a ><i class="fa fa-youtube"></i></a></li>
                 <li><a class="mostrarWhatsapp" ><i class="fa fa-whatsapp"></i></a><span style="display:none" class="spanWhatsapp">+56 972 281 896</span></li>
+                <li class="visible-xs-inline visible-sm-inline">                    
+                    <a id="radiotvLink">
+                        <i class="fa fa-play-circle" ></i>
+                    </a>
+                </li>                  
+
             </ul>
         </div>
-        <div class="hidden-xs col-sm-12 col-md-6 col-lg-6">
+        <div class="hidden-sm hidden-xs col-md-6 col-lg-6">
             <ul class="list-inline text-right radiolist" style="padding-top:0.3em">
                 <li><span>Escuchanos en:</span></li>
                 <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_antofagasta/mp3/icecast.audio', 'Antofagasta', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" ><img class="imgicon" src="/madero/main/web/images/ico/radio_play.png" /> Antofagasta</a></li>
@@ -78,7 +85,7 @@
         <div class="panel-body text-center">
             <ul class="menu vertical radiolist">
                 <li><a onClick="window.open('http://media.digitalproserver.com/v2/live/maderotv/', 'Antofagasta', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/madero/main/web/images/radio.jpg" style="width:20px;height:20px" />Antofagasta</a></li>
-                <li><a onClick="window.open('http://media.digitalproserver.com/v2/live/maderotv2/', 'Atacama', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/madero/main/web/images/radio.jpg" style="width:20px;height:20px" />Atacama</a></li>
+                <li><a onClick="window.open('http://media.digitalproserver.com/v2/live/maderotv2/', 'Coquimbo', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/madero/main/web/images/radio.jpg" style="width:20px;height:20px" />Coquimbo</a></li>
             </ul>              
         </div>
     </div>

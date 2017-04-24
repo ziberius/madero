@@ -26,12 +26,12 @@
                                 <div class="margin">
                                     <div class="s-12 m-12 l-8 margin-m-bottom">
                                         <ul>
-                                            <li>UF: ${{dailyIndicators.uf.valor | number}}</li>
-                                            <li>Dólar: ${{dailyIndicators.dolar.valor | number}}</li>
-                                            <li>Euro: ${{dailyIndicators.euro.valor | number}}</li>
+                                            <li>UF: ${{dailyIndicators.uf.valor| number}}</li>
+                                            <li>Dólar: ${{dailyIndicators.dolar.valor| number}}</li>
+                                            <li>Euro: ${{dailyIndicators.euro.valor| number}}</li>
                                             <li>IPC: {{dailyIndicators.ipc.valor}}%</li>
-                                            <li>UTM: ${{dailyIndicators.utm.valor | number}}</li>
-                                            <li>Libra de Cobre: ${{dailyIndicators.libra_cobre.valor | number}} USD</li>
+                                            <li>UTM: ${{dailyIndicators.utm.valor| number}}</li>
+                                            <li>Libra de Cobre: ${{dailyIndicators.libra_cobre.valor| number}} USD</li>
                                         </ul>
 
                                     </div>
@@ -83,6 +83,33 @@
         </div>
     </div>
 </footer>
+
+<div id="radiotvModal" class="modal fade" style="margin-top:30%;border-radius:5px" role="dialog">
+    <div class="modal-dialog modal-sm center-block" style="width:40%">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#ed1c24;color:white">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Emisiones</h4>
+            </div>
+            <div class="modal-body">        
+                <ul class="menu vertical radiolist">
+                    <li><span>Madero TV:</span></li>
+                    <li><a onClick="window.open('http://media.digitalproserver.com/v2/live/maderotv/', 'Antofagasta', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/madero/main/web/images/radio.jpg" style="width:20px;height:20px" />Antofagasta</a></li>
+                    <li><a onClick="window.open('http://media.digitalproserver.com/v2/live/maderotv2/', 'Coquimbo', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/madero/main/web/images/radio.jpg" style="width:20px;height:20px" />Coquimbo</a></li>
+                    <li><span>Escuchanos en:</span></li>
+                    <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_antofagasta/mp3/icecast.audio', 'Antofagasta', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" ><img class="imgicon" src="/madero/main/web/images/ico/radio_play.png" /> Antofagasta</a></li>
+                    <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_copiapo/mp3/icecast.audio', 'Atacama', 'resizable,height=260,width=370'); return false;" href="#" target="_blank"  ><img class="imgicon" src="/madero/main/web/images/ico/radio_play.png" /> Atacama</a></li>
+                    <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_serena/mp3/icecast.audio', 'Coquimbo', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" ><img class="imgicon" src="/madero/main/web/images/ico/radio_play.png" /> Coquimbo</a></li>
+                    <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_serena/mp3/icecast.audio', 'Nacional', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" ><img class="imgicon" src="/madero/main/web/images/ico/radio_play.png" /> Nacional</a></li>
+
+                </ul>              
+
+            </div>
+        </div>
+    </div>
+</div>  
 
 <script type="text/javascript" src="/madero/main/web/lib/jquery.js"></script>
 <script type="text/javascript" src="/madero/main/web/lib/bootstrap.min.js"></script>

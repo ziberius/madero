@@ -87,6 +87,10 @@ jQuery(function ($) {
     $(".mostrarWhatsapp").on('click',function(){
        $(".spanWhatsapp").fadeToggle(); 
     });
+    
+    $("#radiotvLink").on('click',function(){
+       $("#radiotvModal").modal("show");
+    });    
 
 });
 
