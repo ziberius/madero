@@ -67,6 +67,7 @@ class Iframely
         if (isset($responseDecode['error'])) {
             $this->log->error($responseDecode);
         }
+        curl_close($resource);
         return $responseDecode;
     }
 

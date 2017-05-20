@@ -104,12 +104,56 @@ $(document).ready(function() {
             html += '<div>' + weather.high + ' &deg;' + weather.units.temp +' / ' + weather.low + ' &deg;' + weather.units.temp +'</div>';
             html += '<div>Humedad: ' + weather.humidity + '%</div></div>';
             html += "<div class='col-md-6'><img src='" + weather.image + "' /></div>";
-            $("#weather").html(html);
+            $("#weather1").html(html);
         },
         error: function (error) {
-            $("#weather").html('<p>Error al intentar obtener información del clima. </p>');
+            $("#weather1").html('');
         }
     }); 
-    
+      $.simpleWeather({
+        woeid: '349862', //2357536
+        location: '',
+        unit: 'c',
+        success: function (weather) {
+            var html = '<div class="col-md-6"><h4>Antofagasta ' + weather.temp + '&deg;' + weather.units.temp + '</h4>';
+            html += '<div>' + weather.high + ' &deg;' + weather.units.temp +' / ' + weather.low + ' &deg;' + weather.units.temp +'</div>';
+            html += '<div>Humedad: ' + weather.humidity + '%</div></div>';
+            html += "<div class='col-md-6'><img src='" + weather.image + "' /></div>";
+            $("#weather2").html(html);
+        },
+        error: function (error) {
+            $("#weather2").html('');
+        }
+    }); 
+      $.simpleWeather({
+        woeid: '346830', //2357536
+        location: '',
+        unit: 'c',
+        success: function (weather) {
+            var html = '<div class="col-md-6"><h4>Atacama ' + weather.temp + '&deg;' + weather.units.temp + '</h4>';
+            html += '<div>' + weather.high + ' &deg;' + weather.units.temp +' / ' + weather.low + ' &deg;' + weather.units.temp +'</div>';
+            html += '<div>Humedad: ' + weather.humidity + '%</div></div>';
+            html += "<div class='col-md-6'><img src='" + weather.image + "' /></div>";
+            $("#weather3").html(html);
+        },
+        error: function (error) {
+            $("#weather3").html('');
+        }
+    }); 
+      $.simpleWeather({
+        woeid: '349878', //2357536
+        location: '',
+        unit: 'c',
+        success: function (weather) {
+            var html = '<div class="col-md-6"><h4>Coquimbo ' + weather.temp + '&deg;' + weather.units.temp + '</h4>';
+            html += '<div>' + weather.high + ' &deg;' + weather.units.temp +' / ' + weather.low + ' &deg;' + weather.units.temp +'</div>';
+            html += '<div>Humedad: ' + weather.humidity + '%</div></div>';
+            html += "<div class='col-md-6'><img src='" + weather.image + "' /></div>";
+            $("#weather4").html(html);
+        },
+        error: function (error) {
+            $("#weather4").html('');
+        }
+    }); 
     
 });

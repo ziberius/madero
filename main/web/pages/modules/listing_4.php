@@ -14,13 +14,13 @@
                                         <div class="col-sm-12 col-md-8">
 
                                             <div class="post feature-post"
-                                                 style="background-image:url({{sportPosts[0].oembed.thumbnail_url}}); background-size:cover ;height:595px;">
+                                                 style="background-image:url({{sportPosts[0].thumbnailImageUrl}}); background-size:cover ;height:595px;">
                                                 <div class="post-content">
-                                                    <div class="catagoryLeft"><a
-                                                            href="{{sportPosts[0].oembed.url}}">{{sportPosts[0].oembed.provider_name}}</a>
+                                                    <div class="catagoryLeft"><a ng-click="detail(sportPosts[0].id)"
+                                                           >Deportes</a>
                                                     </div>
                                                     <h2 class="entry-title entryLeft">
-                                                        <a href="{{sportPosts[0].oembed.url}}">{{sportPosts[0].oembed.title}}</a>
+                                                        <a ng-click="detail(sportPosts[0].id)">{{sportPosts[0].title}}</a>
                                                     </h2>
                                                 </div>
                                             </div><!--/post-->
@@ -36,9 +36,9 @@
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
 
-                                                                <a href="{{sportPosts[1].oembed.url}}"><img
+                                                                <a ng-click="detail(sportPosts[1].id)"><img
                                                                         class="img-responsive img-sport-news-middle center-block"
-                                                                        ng-src="{{sportPosts[1].oembed.thumbnail_url}}"
+                                                                        ng-src="{{sportPosts[1].thumbnailImageUrl}}"
                                                                         alt=""/></a>
                                                             </div>
                                                         </div>
@@ -46,13 +46,13 @@
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                            href="{{sportPosts[1].oembed.url}}"><i
+                                                                           ng-click="detail(sportPosts[1].id)"><i
                                                                                 class="fa fa-clock-o"></i>{{sportPosts[1].formattedDate}}
                                                                         </a></li>
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a href="{{sportPosts[1].oembed.url}}">{{sportPosts[1].oembed.title}}</a>
+                                                                <a ng-click="detail(sportPosts[1].id)">{{sportPosts[1].title}}</a>
                                                             </h2>
                                                         </div>
                                                     </div><!--/post-->
@@ -64,9 +64,9 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="{{sportPosts[2].oembed.url}}"><img
+                                                                <a ng-click="detail(sportPosts[2].id)"><img
                                                                         class="img-responsive img-sport-news-middle center-block"
-                                                                        ng-src="{{sportPosts[2].oembed.thumbnail_url}}"
+                                                                        ng-src="{{sportPosts[2].thumbnailImageUrl}}"
                                                                         alt=""/></a>
                                                             </div>
                                                         </div>
@@ -74,13 +74,13 @@
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                            href="{{sportPosts[2].oembed.url}}"><i
+                                                                            ng-click="detail(sportPosts[2].id)"><i
                                                                                 class="fa fa-clock-o"></i>{{sportPosts[2].formattedDate}}
                                                                         </a></li>
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a href="{{sportPosts[2].oembed.url}}">{{sportPosts[2].oembed.title}}</a>
+                                                                <a ng-click="detail(sportPosts[2].id)">{{sportPosts[2].title}}</a>
                                                             </h2>
                                                         </div>
                                                     </div><!--/post-->
@@ -97,9 +97,9 @@
                                                     <div class="post medium-post">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
-                                                                <a href="{{sportPosts[n].oembed.url}}"><img
+                                                                <a ng-click="detail(sportPosts[n].id)"><img
                                                                         class="img-responsive img-sport-news-middle center-block"
-                                                                        ng-src="{{sportPosts[n].oembed.thumbnail_url}}"
+                                                                        ng-src="{{sportPosts[n].thumbnailImageUrl}}"
                                                                         alt=""/></a>
                                                             </div>
                                                         </div>
@@ -107,13 +107,13 @@
                                                             <div class="entry-meta">
                                                                 <ul class="list-inline">
                                                                     <li class="publish-date"><a
-                                                                            href="{{sportPosts[n].oembed.url}}"><i
+                                                                            ng-click="detail(sportPosts[n].id)"><i
                                                                                 class="fa fa-clock-o"></i>{{sportPosts[n].formattedDate}}</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
                                                             <h2 class="entry-title">
-                                                                <a href="{{sportPosts[n].oembed.url}}">{{sportPosts[n].oembed.title}}</a>
+                                                                <a ng-click="detail(sportPosts[n].id)">{{sportPosts[n].title}}</a>
                                                             </h2>
                                                         </div>
                                                     </div>
@@ -141,6 +141,11 @@
                         <div class="widget">
                             <?php require_once dirname(__FILE__) . '/../include/internacionales.php'; ?>
                         </div><!--/#widget-->
+                        <div class="row margin-top-bottom">
+                            <div class="col-md-12">
+                                <img class="img-responsive" ng-src="{{publicidadVertical.thumbnailImageUrl}}" /> 
+                            </div>
+                        </div>                        
 
                     </div><!--/#sitebar-->
                 </div>
@@ -153,12 +158,12 @@
             <div ng-repeat="sportPostHigh in sportPostsHighlighted">
 
                 <div class="post feature-post"
-                     style="background-image:url({{sportPostHigh.oembed.thumbnail_url}}); background-size:cover">
+                     style="background-image:url({{sportPostHigh.thumbnailImageUrl}}); background-size:cover">
                     <div class="post-content">
-                        <div class="catagory"><a href="{{sportPostHigh.oembed.url}}">{{sportPostHigh.categories[0].name}}</a>
+                        <div class="catagory"><a ng-click="detail(sportPostHigh.id)">Deportes</a>
                         </div>
                         <h2 class="entry-title">
-                            <a href="{{sportPostHigh.oembed.url}}">{{sportPostHigh.oembed.title}}</a>
+                            <a ng-click="detail(sportPostHigh.id)">{{sportPostHigh.title}}</a>
                         </h2>
                     </div>
                 </div>
@@ -178,13 +183,13 @@
 
                             <div class="post-content nopaddingtop">
                                 <h2 class="entry-title">
-                                    <a href="{{sportPosts[9].oembed.url}}">{{sportPosts[9].oembed.title}}</a>
+                                    <a ng-click="detail(sportPosts[9].id)">{{sportPosts[9].title}}</a>
                                 </h2>
                             </div>
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a href="{{sportPosts[9].oembed.url}}"><img class="img-responsive"
-                                                                                    ng-src="{{sportPosts[9].oembed.thumbnail_url}}"
+                                    <a ng-click="detail(sportPosts[9].id)"><img class="img-responsive"
+                                                                                    ng-src="{{sportPosts[9].thumbnailImageUrl}}"
                                                                                     alt=""/></a>
                                 </div>
                             </div>
@@ -198,13 +203,13 @@
 
                             <div class="post-content nopaddingtop">
                                 <h2 class="entry-title">
-                                    <a href="{{sportPosts[10].oembed.url}}">{{sportPosts[10].oembed.title}}</a>
+                                    <a ng-click="detail(sportPosts[10].id)">{{sportPosts[10].title}}</a>
                                 </h2>
                             </div>
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a href="{{sportPosts[10].oembed.url}}"><img class="img-responsive"
-                                                                                     ng-src="{{sportPosts[10].oembed.thumbnail_url}}"
+                                    <a ng-click="detail(sportPosts[10].id)"><img class="img-responsive"
+                                                                                     ng-src="{{sportPosts[10].thumbnailImageUrl}}"
                                                                                      alt=""/></a>
                                 </div>
                             </div>
@@ -228,13 +233,13 @@
 
                                 <div class="post-content nopaddingtop">
                                     <h2 class="entry-title">
-                                        <a href="{{sportPosts[n].oembed.url}}"">{{sportPosts[n].oembed.title}}</a>
+                                        <a ng-click="detail(sportPosts[n].id)">{{sportPosts[n].title}}</a>
                                     </h2>
                                 </div>
                                 <div class="entry-header">
                                     <div class="entry-thumbnail">
-                                        <a href="{{sportPosts[n].oembed.url}}"><img class="img-responsive"
-                                                                                        ng-src="{{sportPosts[n].oembed.thumbnail_url}}"
+                                        <a ng-click="detail(sportPosts[n].id)"><img class="img-responsive"
+                                                                                        ng-src="{{sportPosts[n].thumbnailImageUrl}}"
                                                                                         alt=""/></a>
                                     </div>
                                 </div>

@@ -70,8 +70,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div id="weather"></div>
+                <div class="col-sm-4 carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div id="weather1" class="item active"></div>
+                        <div id="weather2" class="item"></div>
+                        <div id="weather3" class="item"></div>
+                        <div id="weather4" class="item"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -125,3 +130,13 @@
 <script src="/madero/main/web/lib/angular-simple-logger.min.js" type="text/javascript"></script>
 <script src="/madero/main/web/js/controller.js" type="text/javascript"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86337148-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

@@ -85,7 +85,6 @@ h5 {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
-    text-transform: capitalize;
 }
 
 .padding {
@@ -847,7 +846,6 @@ img.mfp-img {
 
 .post .entry-title {
     font-size: 18px;
-    text-transform: capitalize;
     margin-top: 10px;
 }
 
@@ -2511,8 +2509,7 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
 }
 
 #top-news .post .entry-header .entry-thumbnail img {
-    max-height: 400px;
-    height: auto;
+    height: 320px;
     width: auto;
 }
 
@@ -2562,6 +2559,21 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
     width: auto;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+a .img-nacionales-portada{
+    width:250px;
+    height:140px;
+}
+
+a .img-antofagasta-portada{
+    width:290px;
+    height:216px;
+}
+
+a .img-serena-portada{
+    width:272px;
+    height:170px;
 }
 
 .imgicon {
@@ -2644,6 +2656,11 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
     z-index:999999;
     background-color:gray;
     padding-right:15px;
+}
+
+.margin-top-bottom{
+    margin-top:10px;
+    margin-bottom:10px;
 }
 
 @-webkit-keyframes spin {

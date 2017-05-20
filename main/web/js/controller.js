@@ -39,6 +39,9 @@ angular
                 PUBLICIDAD_VERTICAL_ATACAMA: '111',
                 PUBLICIDAD_HORIZONTAL_LA_SERENA: '112',
                 PUBLICIDAD_VERTICAL_LA_SERENA: '113',
+                PUBLICIDAD_VERTICAL_PORTADA: '114',
+                PUBLICIDAD_HORIZONTAL_PORTADA_XL: '115',
+                PUBLICIDAD_VERTICAL_DEPORTES:'116',
                 DEPORTES: '107'
             },
             Limits: {
@@ -101,7 +104,14 @@ angular
         .service('navigate', function ($location, $rootScope) {
 
             $rootScope.detail = function (idPost) {
-                $location.path("/view/" + idPost);
+                if (idPost.indexOf('http') === -1) {
+                    $location.path("/view/" + idPost);
+                } else {
+                    var win = window.open(idPost, '_blank');
+                    if (win) {
+                        win.focus();
+                    }
+                }
             };
 
         })
@@ -206,7 +216,14 @@ angular
                 var thumbnailImagePost = getThumbnailImagePost(data);
                 noticia.thumbnailImageUrl = thumbnailImagePost === null ? null : thumbnailImagePost.guid;
 
-                noticia.shortTitle = data.title.substring(0, 70) + '...';
+                noticia.shortTitle = data.title.substring(0, 65) + '...';
+
+                if (noticia.oembed !== null) {
+                    noticia.thumbnailImageUrl = noticia.oembed.thumbnail_url;
+                    noticia.title = noticia.oembed.title;
+                    noticia.id = noticia.oembed.url;
+
+                }
 
                 return noticia;
             };
@@ -279,7 +296,7 @@ angular
                     }
                 };
             }])
-        .controller('mainController', function ($rootScope, $scope, Constants, getPosts, news, navigate) {
+        .controller('mainController', function ($timeout, $scope, Constants, getPosts, news, navigate) {
 
             var emptyExclusion = '';
 
@@ -473,13 +490,35 @@ angular
                     }
             );
 
-            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_PORTADA, '', function (response) {
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "2", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_PORTADA, '', function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
-                    $scope.publicidadHorizontal = data.data[0];
+                    $scope.publicidadHorizontal = news.getMultipleNews(data.data);
 
                 } else {
                     $scope.publicidadHorizontal = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });
+
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "2", "0", Constants.Category.PUBLICIDAD_VERTICAL_PORTADA, '', function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.publicidadVertical = news.getMultipleNews(data.data);
+
+                } else {
+                    $scope.publicidadVertical = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });
+
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_HORIZONTAL_PORTADA_XL, '', function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.publicidadHorizontalXL = news.getSingleNews(data.data[0]);
+
+                } else {
+                    $scope.publicidadHorizontalXL = null;
                     showMessage("No se encontraron resultados");
                 }
             });
@@ -984,6 +1023,17 @@ angular
                     showMessage("No se encontraron resultados");
                 }
             });
+            
+            getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_VERTICAL_DEPORTES, emptyExclusion, function (response) {
+                var data = response.data;
+                if (data !== null && data.status === 'OK') {
+                    $scope.publicidadVertical = news.getSingleNews(data.data[0]);
+
+                } else {
+                    $scope.publicidadVertical = null;
+                    showMessage("No se encontraron resultados");
+                }
+            });            
 
             $scope.loadSportPostsHighlightedCarousel = function () {
                 $("#sport-posts-highlighted-carousel").owlCarousel({
