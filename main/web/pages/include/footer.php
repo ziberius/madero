@@ -89,20 +89,26 @@
     </div>
 </footer>
 
-<div id="radiotvModal" class="modal fade" style="margin-top:30%;border-radius:5px" role="dialog">
-    <div class="modal-dialog modal-sm center-block" style="width:40%">
+<div id="radiotvModal" class="modal fade" style="margin-top:30%;border-radius:5px" role="dialog" ng-controller="tvModalController">
+    <div class="modal-dialog modal-sm center-block" style="width:60%">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header" style="background-color:#ed1c24;color:white">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button ng-click="cerrarRadios()" type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Emisiones</h4>
             </div>
-            <div class="modal-body">        
+            <div class="modal-body"> 
+                <div>
+                    <img id="playImgModal" class="img-responsive" src="/madero/main/web/images/maderotv/play.jpeg" />
+                    <iframe id="tvIframeModal" style="display:none;width:100%;height:210px" class="vrudo"  allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                </div>
+
                 <ul class="menu vertical radiolist">
                     <li><span>Madero TV:</span></li>
-                    <li><a onClick="window.open('http://media.digitalproserver.com/v2/live/maderotv/', 'Antofagasta', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/madero/main/web/images/radio.jpg" style="width:20px;height:20px" />Antofagasta</a></li>
-                    <li><a onClick="window.open('http://media.digitalproserver.com/v2/live/maderotv2/', 'Coquimbo', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" class="btn btn-default btnRadio" role="button"><img src="/madero/main/web/images/radio.jpg" style="width:20px;height:20px" />Coquimbo</a></li>
+                    <li><a ng-click="cargarRadio('ANTOFAGASTA')" class="btn btnRadio" role="button"><i class="fa fa-play" ></i> Antofagasta</a></li>
+                    <li><a ng-click="cargarRadio('ATACAMA')" class="btn btnRadio" role="button"><i class="fa fa-play" ></i> Atacama</a></li>
+                    <li><a ng-click="cargarRadio('DESIERTO')" class="btn btnRadio" role="button"><i class="fa fa-play" ></i> Desierto</a></li>
                     <li><span>Escuchanos en:</span></li>
                     <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_antofagasta/mp3/icecast.audio', 'Antofagasta', 'resizable,height=260,width=370'); return false;" href="#" target="_blank" ><img class="imgicon" src="/madero/main/web/images/ico/radio_play.png" /> Antofagasta</a></li>
                     <li><a onClick="window.open('http://unlimited1-cl.digitalproserver.com/madero_copiapo/mp3/icecast.audio', 'Atacama', 'resizable,height=260,width=370'); return false;" href="#" target="_blank"  ><img class="imgicon" src="/madero/main/web/images/ico/radio_play.png" /> Atacama</a></li>
@@ -131,12 +137,11 @@
 <script src="/madero/main/web/js/controller.js" type="text/javascript"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.js"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-86337148-1', 'auto');
-  ga('send', 'pageview');
+                        (function(i, s, o, g, r, a, m){i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function(){
+                        (i[r].q = i[r].q || []).push(arguments)}, i[r].l = 1 * new Date(); a = s.createElement(o),
+                                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                        ga('create', 'UA-86337148-1', 'auto');
+                        ga('send', 'pageview');
 
 </script>

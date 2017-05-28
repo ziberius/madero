@@ -58,10 +58,6 @@ jQuery(function ($) {
     }());
 
 
-    $("#cerrarRadios").on('click', function () {
-        $("#maderoRadios").fadeOut();
-    });
-
     $(".imageSlide").owlCarousel({
         autoPlay: true,
         slideSpeed: 300,

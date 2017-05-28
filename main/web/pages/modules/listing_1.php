@@ -157,11 +157,9 @@
 
                         <!--Publicidad Vertical-->
                         <div class="widget" ng-show="publicidadCuadrada.length > 0">
-                            <img class="img-responsive anuncioSmall center-block" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
+                            <img class="img-responsive anuncioMedium center-block" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
                         </div><!-- widget -->
-                        <div class="widget" ng-show="publicidadCuadrada.length > 1">
-                            <img class="img-responsive anuncioSmall center-block" ng-src="{{publicidadCuadrada[1].thumbnailImageUrl}}"/>
-                        </div><!-- widget -->
+
 
                     </div><!--/#sitebar-->
                 </div>

@@ -2280,8 +2280,14 @@ span.badge {
     background-color: #ed1c24;
 }
 
+.radiolist{
+    background-color:#323232;
+    color:white;
+}
+
 .radioList a {
-    color: #fff;
+    width:100%;
+    color: white;
     -webkit-transition: all 0.6s ease-in-out;
     -moz-transition: all 0.6s ease-in-out;
     -ms-transition: all 0.6s ease-in-out;
@@ -2290,11 +2296,11 @@ span.badge {
 }
 
 .radiolist a:hover {
-    color: #ed1c24;
+    color: white;
 }
 
 .btnRadio {
-    width: 120px;
+    width: 100%;
     text-align: left;
 }
 

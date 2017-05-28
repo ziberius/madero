@@ -41,7 +41,7 @@ angular
                 PUBLICIDAD_VERTICAL_LA_SERENA: '113',
                 PUBLICIDAD_VERTICAL_PORTADA: '114',
                 PUBLICIDAD_HORIZONTAL_PORTADA_XL: '115',
-                PUBLICIDAD_VERTICAL_DEPORTES:'116',
+                PUBLICIDAD_VERTICAL_DEPORTES: '116',
                 DEPORTES: '107'
             },
             Limits: {
@@ -119,17 +119,17 @@ angular
             this.getPostsFromCategory = function (start_date, end_date, limit, offset, categories, exclusions, success) {
                 $rootScope.loading = true;
                 $http.post('/madero/main/server/Service.php',
-                {
-                    "service": "getPostsFromCategory",
-                    "parameters": {
-                        "start_date": start_date,
-                        "end_date": end_date,
-                        "limit": limit,
-                        "offset": offset,
-                        "categories": categories,
-                        "exclusions": exclusions
-                    }
-                }
+                        {
+                            "service": "getPostsFromCategory",
+                            "parameters": {
+                                "start_date": start_date,
+                                "end_date": end_date,
+                                "limit": limit,
+                                "offset": offset,
+                                "categories": categories,
+                                "exclusions": exclusions
+                            }
+                        }
                 ).then(function (res) {
                     success(res);
                 }).catch(function (e) {
@@ -142,12 +142,12 @@ angular
             this.getPostFromId = function (idPost, success) {
                 $rootScope.loading = true;
                 $http.post('/madero/main/server/Service.php',
-                {
-                    "service": "getPostsFromId",
-                    "parameters": {
-                        "id_post": idPost
-                    }
-                }
+                        {
+                            "service": "getPostsFromId",
+                            "parameters": {
+                                "id_post": idPost
+                            }
+                        }
                 ).then(function (response) {
                     success(response);
 
@@ -161,15 +161,15 @@ angular
             this.searchPostsByText = function (limit, offset, keyword, success) {
                 $rootScope.loading = true;
                 $http.post('/madero/main/server/Service.php',
-                {
-                    "service": "searchPosts",
-                    "parameters":
-                    {
-                        "limit": limit,
-                        "offset": offset,
-                        "keyword": keyword
-                    }
-                }
+                        {
+                            "service": "searchPosts",
+                            "parameters":
+                                    {
+                                        "limit": limit,
+                                        "offset": offset,
+                                        "keyword": keyword
+                                    }
+                        }
                 ).then(function (response) {
                     success(response);
                 }).catch(function (e) {
@@ -182,17 +182,17 @@ angular
             this.searchPostsByAuthor = function (start_date, end_date, limit, offset, author, success) {
                 $rootScope.loading = true;
                 $http.post('/madero/main/server/Service.php',
-                {
-                    "service": "getNewsFromAuthor",
-                    "parameters":
-                    {
-                        "start-date": start_date,
-                        "end-date": end_date,
-                        "limit": limit,
-                        "offset": offset,
-                        "id-author": author
-                    }
-                }
+                        {
+                            "service": "getNewsFromAuthor",
+                            "parameters":
+                                    {
+                                        "start-date": start_date,
+                                        "end-date": end_date,
+                                        "limit": limit,
+                                        "offset": offset,
+                                        "id-author": author
+                                    }
+                        }
                 ).then(function (response) {
                     success(response);
                 }).catch(function (e) {
@@ -296,6 +296,52 @@ angular
                     }
                 };
             }])
+
+        .controller("tvController", function ($scope) {
+            $scope.cargarRadio = function (radio) {
+                $("#playImg").hide();
+                $("#tvIframe").show();
+                switch (radio) {
+                    case "ANTOFAGASTA":
+                        $("#tvIframe").attr("src", "http://media.digitalproserver.com/v2/live/maderotv/");
+                        break;
+                    case "COQUIMBO":
+                        $("#tvIframe").attr("src", "http://media.digitalproserver.com/v2/live/maderotv2/");
+                        break;
+                    case "DESIERTO":
+                        $("#tvIframe").attr("src", "http://rudo.video/live/desiertotv");
+                        break;
+                }
+            };
+            $scope.cerrarRadios = function () {
+                $("#maderoRadios").fadeOut();
+                $("#tvIframe").attr("src", "");
+            };
+        })
+
+        .controller("tvModalController", function ($scope) {
+            $scope.cargarRadio = function (radio) {
+                $("#playImgModal").hide();
+                $("#tvIframeModal").show();
+                switch (radio) {
+                    case "ANTOFAGASTA":
+                        $("#tvIframeModal").attr("src", "http://media.digitalproserver.com/v2/live/maderotv/");
+                        break;
+                    case "COQUIMBO":
+                        $("#tvIframeModal").attr("src", "http://media.digitalproserver.com/v2/live/maderotv2/");
+                        break;
+                    case "DESIERTO":
+                        $("#tvIframeModal").attr("src", "http://rudo.video/live/desiertotv");
+                        break;
+                }
+            };
+            $scope.cerrarRadios = function () {
+                $("#tvIframeModal").attr("src", "");
+                $("#tvIframeModal").hide();
+                $("#playImgModal").show();
+            };
+        })
+
         .controller('mainController', function ($timeout, $scope, Constants, getPosts, news, navigate) {
 
             var emptyExclusion = '';
@@ -1023,7 +1069,7 @@ angular
                     showMessage("No se encontraron resultados");
                 }
             });
-            
+
             getPosts.getPostsFromCategory(getDateFromNow(Constants.Limits.StartRangeNews), getDateFromNow(0), "1", "0", Constants.Category.PUBLICIDAD_VERTICAL_DEPORTES, emptyExclusion, function (response) {
                 var data = response.data;
                 if (data !== null && data.status === 'OK') {
@@ -1033,7 +1079,7 @@ angular
                     $scope.publicidadVertical = null;
                     showMessage("No se encontraron resultados");
                 }
-            });            
+            });
 
             $scope.loadSportPostsHighlightedCarousel = function () {
                 $("#sport-posts-highlighted-carousel").owlCarousel({

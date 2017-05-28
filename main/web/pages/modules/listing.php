@@ -13,8 +13,7 @@
                                     <div class="row" style="margin-bottom:1em">
                                         <div class="col-sm-12 col-md-8">
 
-                                            <div class="post feature-post"
-                                                 style="background-image:url({{nationalPosts[0].thumbnailImageUrl}}); background-size:cover ;height:595px;">
+                                            <div class="post feature-post" style="background-image:url({{nationalPosts[0].thumbnailImageUrl}}); background-size:cover ;height:595px;">
                                                 <div class="post-content">
                                                     <div class="catagoryLeft"><a ng-click="detail(nationalPosts[0].id)">{{nationalPosts[0].categories[0].name}}</a>
                                                     </div>
