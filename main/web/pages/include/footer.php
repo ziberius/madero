@@ -12,7 +12,7 @@
     </div>
 </div><!--/.footer-top-->
 
-<footer id="footer" ng-controller="footerController">
+<footer id="footer" ng-cloak ng-controller="footerController">
     <div class="bottom-widgets">
         <div class="container-fluid">
             <div class="row">
@@ -122,26 +122,3 @@
     </div>
 </div>  
 
-<script type="text/javascript" src="/madero/main/web/lib/jquery.js"></script>
-<script type="text/javascript" src="/madero/main/web/lib/bootstrap.min.js"></script>
-<script type="text/javascript" src="/madero/main/web/lib/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="/madero/main/web/lib/owl.carousel.min.js"></script>
-<script type="text/javascript" src="/madero/main/web/js/main.js"></script>
-<script type="text/javascript" src="/madero/main/web/lib/jquery.simpleWeather.min.js"></script>
-<script src="/madero/main/web/lib/angular.min.js"></script>
-<script src="/madero/main/web/lib/angular-route.min.js"></script>
-<script src="/madero/main/web/lib/angular-animate.min.js"></script>
-<script src="/madero/main/web/lib/angular-locale_es-cl.min.js" type="text/javascript"></script>
-<script src="/madero/main/web/lib/lodash.min.js" type="text/javascript"></script>
-<script src="/madero/main/web/lib/angular-simple-logger.min.js" type="text/javascript"></script>
-<script src="/madero/main/web/js/controller.js" type="text/javascript"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.js"></script>
-<script>
-                        (function(i, s, o, g, r, a, m){i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function(){
-                        (i[r].q = i[r].q || []).push(arguments)}, i[r].l = 1 * new Date(); a = s.createElement(o),
-                                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-                        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-                        ga('create', 'UA-86337148-1', 'auto');
-                        ga('send', 'pageview');
-
-</script>

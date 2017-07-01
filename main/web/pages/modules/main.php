@@ -3,9 +3,9 @@
         <div class="section" id="main-slider">
             <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaAntofagasta[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a ng-click="detail(destacadaAntofagasta[0].id)">Antofagasta</a></div>
+                    <div class="catagory"><a ng-click="detail(destacadaAntofagasta[0].id,destacadaAntofagasta[0])">Antofagasta</a></div>
                     <h2 class="entry-title">
-                        <a ng-click="detail(destacadaAntofagasta[0].id)">{{destacadaAntofagasta[0].title}}</a>
+                        <a ng-click="detail(destacadaAntofagasta[0].id,destacadaAntofagasta[0])">{{destacadaAntofagasta[0].title}}</a>
                     </h2>
                 </div>                                       
             </div>             
@@ -33,19 +33,19 @@
                     </h2>
                 </div>
             </div><!--/post-->
-            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaDeporte[0].oembed.thumbnail_url + ')'}" style="background-size:cover;">
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaDeporte[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="{{destacadaDeporte.oembed.url}}" target="_blank">Deportes</a></div>
+                    <div class="catagory"><a ng-click="detail(destacadaDeporte[0].id)">Deportes</a></div>
                     <h2 class="entry-title">
-                        <a href="{{destacadaDeporte.oembed.url}}" target="_blank">{{destacadaDeporte[0].oembed.title}}</a>
+                        <a ng-click="detail(destacadaDeporte[0].id)">{{destacadaDeporte[0].title}}</a>
                     </h2>
                 </div>
             </div>
-            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaInternacional[0].oembed.thumbnail_url + ')'}" style="background-size:cover;">
+            <div class="post feature-post" ng-style="{'background-image':'url(' + destacadaInternacional[0].thumbnailImageUrl + ')'}" style="background-size:cover;">
                 <div class="post-content">
-                    <div class="catagory"><a href="{{destacadaInternacional.oembed.url}}" target="_blank">Internacional</a></div>
+                    <div class="catagory"><a ng-click="detail(destacadaInternacional[0].id)">Internacional</a></div>
                     <h2 class="entry-title">
-                        <a href="{{destacadaInternacional.oembed.url}}" target="_blank">{{destacadaInternacional[0].oembed.title}}</a>
+                        <a ng-click="detail(destacadaInternacional[0].id)">{{destacadaInternacional[0].title}}</a>
                     </h2>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                         <div ng-click="" style="cursor: pointer" class="post medium-post" ng-repeat="noticia in nacionales">
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a ng-click="detail(noticia.id)"><img class="img-responsive img-nacionales-portada" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
+                                    <a ng-click="detail(noticia.id)"><img class="img-responsive img-nacionales-portada img-rounded" ng-src="{{noticia.thumbnailImageUrl}}" alt="" /></a>
                                 </div>
                             </div>  
                             <div class="post-content">								
@@ -145,7 +145,8 @@
 
                             <div class="section">
                                 <div class="row">
-                                    <img class="img-responsive" ng-src="{{publicidadHorizontal[0].thumbnailImageUrl}}" /> 
+                                    <!--<img class="img-responsive" ng-src="{{publicidadHorizontal[0].thumbnailImageUrl}}" />--> 
+                                    <a href="https://tarifas.servel.cl/administracion/pdf_radioemisora/RE%20-%20731" target="_blank"><img class="img-responsive" src="/madero/main/web/images/tarifario.jpg" /></a>
                                 </div>
                             </div>
 
@@ -395,7 +396,7 @@
                             </div><!--/photo-gallery--> 
                             <div class="section top10">
                                 <div class="row">
-                                    <img class="img-responsive" ng-src="{{publicidadHorizontalXL.thumbnailImageUrl}}" /> 
+                                    <img class="img-responsive center-block" ng-src="{{publicidadHorizontal[2].thumbnailImageUrl}}" /> 
                                 </div>
                             </div>                                   
                         </div><!--/.middle-content-->

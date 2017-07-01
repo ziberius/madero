@@ -885,7 +885,7 @@ img.mfp-img {
 
 .catagoryLeft {
     position: absolute;
-    top: 20px;
+    top: 10px;
     left: 1em;
     z-index: 2;
 }
@@ -2524,62 +2524,61 @@ a.text-dark-hover:hover, a.primary-color-dark a.text-primary-hover:hover {
 }
 
 .medium-post .entry-header .entry-thumbnail .img-national-news-middle {
-    max-height: 200px;
-    height: auto;
+    height: 200px;
     width: auto;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.medium-post .entry-header .entry-thumbnail {
-    background-color: lightgrey;
-}
 
 .medium-post .entry-header .entry-thumbnail .img-antofagasta-news-middle {
-    max-height: 200px;
-    height: auto;
+    height: 200px;
     width: auto;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
 .medium-post .entry-header .entry-thumbnail .img-atacama-news-middle {
-    max-height: 200px;
-    height: auto;
+    height: 200px;
     width: auto;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
 .medium-post .entry-header .entry-thumbnail .img-coquimbo-news-middle {
-    max-height: 200px;
-    height: auto;
+    height: 200px;
     width: auto;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
 .medium-post .entry-header .entry-thumbnail .img-sport-news-middle {
-    max-height: 200px;
-    height: auto;
+    height: 200px;
     width: auto;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
 a .img-nacionales-portada{
-    width:250px;
+    width:235px;
     height:140px;
+    margin-left:auto;
+    margin-right:auto;
+    box-shadow:5px 5px 5px gray;
 }
 
 a .img-antofagasta-portada{
     width:290px;
     height:216px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 a .img-serena-portada{
     width:272px;
     height:170px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .imgicon {
@@ -2610,6 +2609,15 @@ a .img-serena-portada{
 .internacionalDestacadas{
     max-height:150px;
 }
+
+.internacional-small{
+    box-shadow:5px 5px 5px grey;
+}
+
+.internacional-small .entry-header{
+    margin-top:5%;
+}
+
 
 .loader {
     position: fixed;
@@ -2667,6 +2675,39 @@ a .img-serena-portada{
 .margin-top-bottom{
     margin-top:10px;
     margin-bottom:10px;
+}
+
+.postImageBelow a img{
+    height:150px;
+}
+
+.postImageBelow .post-content{
+    height:100px;
+}
+
+.postImageInter a img{
+    height:240px;
+}
+
+.postImageBelow .post.medium-post{
+    box-shadow:10px 10px 5px grey;
+}
+.postImageBelow .entry-title a{
+    font-size:14px;
+}
+
+.postImageBelow .entry-title{
+    text-align:justify;
+    font-size:14px;
+}
+
+#enlaceInput.ng-hide {
+  opacity: 0;
+}
+
+#enlaceInput.ng-hide-add,
+#enlaceInput.ng-hide-remove {
+  transition: all linear 0.5s;
 }
 
 @-webkit-keyframes spin {

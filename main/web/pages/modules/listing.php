@@ -157,7 +157,9 @@
                         <div class="widget">
                             <?php require_once dirname(__FILE__) . '/../include/internacionales.php'; ?>
                         </div><!--/#widget-->
-
+                        <div class="widget" ng-show="publicidadCuadrada.length > 0">
+                            <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
+                        </div><!-- widget -->
                     </div><!--/#sitebar-->
                 </div>
             </div>
@@ -184,7 +186,7 @@
         </div><!-- #main-slider -->
 
         <!--More local news-->
-        <div class="section">
+        <div class="section postImageBelow">
             <div class="row">
 
                 <div ng-show="nationalPosts[9]">
@@ -246,23 +248,17 @@
                     </div>
                 </div>
 
-
-                <!--TODO 
-                <div class="col-sm-12 col-md-3 text-center">
-                    <h3>Etiquetas del Día</h3>
-                    <ul class="list-unstyled">
-                        <li>#Torneodeclausura2017</li>
-                        <li>#Presidenciales2016</li>
-                        <li>#donaldtrump</li>
-                        <li>#celebridades</li>
-                        <li>#reformalaboral</li>
-                        <li>#animalessalvajes</li>
-                    </ul>
-                </div>???-->
+                <div class="col-sm-12 col-md-3 col-lg-3" ng-show="publicidadCuadrada.length > 0">
+                    <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadCuadrada[1].thumbnailImageUrl}}"/>
+                </div>
+                
+                <div class="col-sm-12 col-md-3 col-lg-3" ng-show="publicidadCuadrada.length > 1">
+                    <img class="img-responsive anuncioMedium center-block" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
+                </div>   
             </div>
         </div>
 
-        <div class="section">
+        <div class="section postImageBelow">
             <div class="row">
 
                 <div ng-repeat="n in [12,13,14,15,16,17]">
@@ -293,6 +289,12 @@
         <div class="load-more text-center">
             <a class="btn btn-primary btn-block" ng-click="moreNationalPost()">Cargar Más...</a>
         </div>
+        
+        <!--Publicidad horizontal-->
+        <div class="row top5">
+            <img class="img-responsive center-block" style="max-height:120px"
+                 ng-src="{{publicidadHorizontal.thumbnailImageUrl}}" />
+        </div>          
 
     </div><!--/.container-fluid-->
 </div> <!-- / .main -->

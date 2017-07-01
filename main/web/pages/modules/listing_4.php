@@ -141,10 +141,8 @@
                         <div class="widget">
                             <?php require_once dirname(__FILE__) . '/../include/internacionales.php'; ?>
                         </div><!--/#widget-->
-                        <div class="row margin-top-bottom">
-                            <div class="col-md-12">
-                                <img class="img-responsive" ng-src="{{publicidadVertical.thumbnailImageUrl}}" /> 
-                            </div>
+                        <div class="widget" ng-show="publicidadVertical.length > 0">
+                            <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadVertical[0].thumbnailImageUrl}}" /> 
                         </div>                        
 
                     </div><!--/#sitebar-->
@@ -174,11 +172,11 @@
 
 
         <!--More local news-->
-        <div class="section">
+        <div class="section postImageBelow">
             <div class="row">
 
                 <div ng-show="sportPosts[9]">
-                    <div class="col-sm-12 col-md-2">
+                    <div class="col-sm-12 col-md-2 col-lg-2">
                         <div class="post medium-post">
 
                             <div class="post-content nopaddingtop">
@@ -198,12 +196,12 @@
                 </div>
 
                 <div ng-show="sportPosts[10]">
-                    <div class="col-sm-12 col-md-2">
+                    <div class="col-sm-12 col-md-2 col-lg-2">
                         <div class="post medium-post">
 
                             <div class="post-content nopaddingtop">
                                 <h2 class="entry-title">
-                                    <a ng-click="detail(sportPosts[10].id)">{{sportPosts[10].title}}</a>
+                                    <a ng-click="detail(sportPosts[10].id)">{{sportPosts[10].shortTitle}}</a>
                                 </h2>
                             </div>
                             <div class="entry-header">
@@ -216,6 +214,14 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" ng-show="publicidadVertical.length > 0">
+                    <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadVertical[1].thumbnailImageUrl}}"/>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" ng-show="publicidadVertical.length > 1">
+                    <img class="img-responsive anuncioMedium center-block" ng-src="{{publicidadVertical[2].thumbnailImageUrl}}"/>
+                </div>                  
 
 
                 <!--TODO ???-->
@@ -223,7 +229,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section postImageBelow">
             <div class="row">
 
                 <div ng-repeat="n in [11, 12, 13, 14, 15, 16]">
@@ -233,7 +239,7 @@
 
                                 <div class="post-content nopaddingtop">
                                     <h2 class="entry-title">
-                                        <a ng-click="detail(sportPosts[n].id)">{{sportPosts[n].title}}</a>
+                                        <a ng-click="detail(sportPosts[n].id)">{{sportPosts[n].shortTitle}}</a>
                                     </h2>
                                 </div>
                                 <div class="entry-header">

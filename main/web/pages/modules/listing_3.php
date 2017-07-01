@@ -162,10 +162,7 @@
 
                         <!--Publicidad Vertical-->
                         <div class="widget" ng-show="publicidadCuadrada.length > 0">
-                            <img class="img-responsive center-block anuncioSmall" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
-                        </div><!-- widget -->
-                        <div class="widget" ng-show="publicidadCuadrada.length > 1">
-                            <img class="img-responsive center-block anuncioSmall" ng-src="{{publicidadCuadrada[1].thumbnailImageUrl}}"/>
+                            <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
                         </div><!-- widget -->
 
                     </div><!--/#sitebar-->
@@ -195,7 +192,7 @@
 
 
         <!--More local news-->
-        <div class="section">
+        <div class="section postImageBelow">
             <div class="row">
 
                 <!--
@@ -270,14 +267,18 @@
                     </div>
                 </div>
 
-                <div class="col-sm-12 col-md-5" ng-show="publicidadCuadrada.length > 2">
-                    <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
+                <div class="col-sm-12 col-md-3 col-lg-3" ng-show="publicidadCuadrada.length > 0">
+                    <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadCuadrada[1].thumbnailImageUrl}}"/>
                 </div>
+                
+                <div class="col-sm-12 col-md-3 col-lg-3" ng-show="publicidadCuadrada.length > 1">
+                    <img class="img-responsive anuncioMedium center-block" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
+                </div>                 
 
             </div>
         </div>
 
-        <div class="section">
+        <div class="section postImageBelow">
             <div class="row">
 
                 <div ng-repeat="n in [12, 13, 14, 15, 16,17]">

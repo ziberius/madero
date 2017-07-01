@@ -4,7 +4,7 @@
         <div ng-repeat="post in internationalPosts">
             <div ng-show="post.oembed">
                 <li>
-                    <div class="post small-post">
+                    <div class="post small-post internacional-small">
                         <div class="entry-header">
                             <div class="entry-thumbnail">
                                 <a href="{{post.oembed.url}}" target="_blank"><img class="img-responsive"

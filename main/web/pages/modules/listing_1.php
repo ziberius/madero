@@ -65,7 +65,7 @@
 
                                             <div ng-show="antofagastaPosts[2]">
                                                 <div class="row">
-                                                    <div class="post medium-post">
+                                                    <div class="post medium-post" style="padding-left: 15px; padding-right: 15px;">
                                                         <div class="entry-header">
                                                             <div class="entry-thumbnail">
                                                                 <a ng-click="detail(antofagastaPosts[2].id)"><img
@@ -188,7 +188,7 @@
 
 
         <!--More local news-->
-        <div class="section">
+        <div class="section postImageBelow">
             <div class="row">
 
                 <!--
@@ -206,7 +206,7 @@
 
 
                 <div ng-show="antofagastaPosts[9]">
-                    <div class="col-sm-12 col-md-2">
+                    <div class="col-sm-12 col-md-2 col-lg-2">
                         <div class="post medium-post">
 
                             <div class="post-content nopaddingtop">
@@ -226,7 +226,7 @@
                 </div>
 
                 <div ng-show="antofagastaPosts[10]">
-                    <div class="col-sm-12 col-md-2">
+                    <div class="col-sm-12 col-md-2 col-lg-2">
                         <div class="post medium-post">
 
                             <div class="post-content nopaddingtop">
@@ -245,7 +245,7 @@
                     </div>
                 </div>
                 <div ng-show="antofagastaPosts[11]">
-                    <div class="col-sm-12 col-md-2">
+                    <div class="col-sm-12 col-md-2 col-lg-2">
                         <div class="post medium-post">
 
                             <div class="post-content nopaddingtop">
@@ -264,14 +264,18 @@
                     </div>
                 </div>
 
-                <div class="col-sm-12 col-md-5" ng-show="publicidadCuadrada.length > 2">
-                    <img class="img-responsive anuncioMedium center-block" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
+                <div class="col-sm-12 col-md-3 col-lg-3" ng-show="publicidadCuadrada.length > 0">
+                    <img class="img-responsive anuncioMedium center-block" ng-src="{{publicidadCuadrada[1].thumbnailImageUrl}}"/>
                 </div>
+                
+                <div class="col-sm-12 col-md-3 col-lg-3" ng-show="publicidadCuadrada.length > 1">
+                    <img class="img-responsive anuncioMedium center-block" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
+                </div>                
 
             </div>
         </div>
 
-        <div class="section">
+        <div class="section postImageBelow">
             <div class="row">
 
                 <div ng-repeat="n in [ 12, 13, 14, 15, 16,17]">

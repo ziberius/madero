@@ -28,7 +28,7 @@
                         <div class="post medium-post">
                             <div class="entry-header">
                                 <div class="entry-thumbnail">
-                                    <a href="{{post.oembed.url}}"><img class="img-responsive internacionalDestacadas" ng-src="{{post.oembed.thumbnail_url}}" alt="" /></a>
+                                    <a href="{{post.oembed.url}}" target="_blank"><img class="img-responsive internacionalDestacadas" ng-src="{{post.oembed.thumbnail_url}}" alt="" /></a>
                                 </div>
                             </div>
                             <div class="post-content">								
@@ -38,7 +38,7 @@
                                     </ul>
                                 </div>
                                 <h2 class="entry-title">
-                                    <a href="{{post.oembed.url}}">{{post.oembed.title}}</a>
+                                    <a href="{{post.oembed.url}}" target="_blank">{{post.oembed.title}}</a>
                                 </h2>
                             </div>
                         </div><!--/post--> 
@@ -60,7 +60,7 @@
                             </div>
                             <div class="post-content">								
                                 <h2 class="entry-title">
-                                    <a href="{{post.oembed.url}}">{{post.oembed.title}}</a>
+                                    <a href="{{post.oembed.url}}" >{{post.oembed.title}}</a>
                                 </h2>
                             </div>
                         </div><!--/post--> 
@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <div ng-show="internacionales.length > 0" class="section">
+        <div ng-show="internacionales.length > 0" class="section postImageInter">
             <div class="row">
                 <div class="col-sm-9">
                     <div id="site-content" class="site-content">
@@ -78,11 +78,11 @@
                         <div class="middle-content">								
                             <div class="section">
                                 <div class="row">
-                                    <div ng-repeat="post in internacionales" class="col-sm-6 col-md-4">
+                                    <div ng-repeat="post in internacionales" class="col-sm-6 col-md-4 col-lg-4">
                                         <div class="post medium-post">
                                             <div class="entry-header">
                                                 <div class="entry-thumbnail">
-                                                    <a href="{{post.oembed.url}}"><img class="img-responsive" ng-src="{{post.oembed.thumbnail_url}}" alt="" /></a>
+                                                    <a href="{{post.oembed.url}}" target="_blank"><img class="img-responsive" ng-src="{{post.oembed.thumbnail_url}}" alt="" /></a>
                                                 </div>
                                             </div>
                                             <div class="post-content">								
@@ -92,7 +92,7 @@
                                                     </ul>
                                                 </div>
                                                 <h2 class="entry-title">
-                                                    <a href="{{post.oembed.url}}">{{post.oembed.title| limitTo: 70}}...</a>
+                                                    <a href="{{post.oembed.url}}" target="_blank">{{post.oembed.title| limitTo: 70}}...</a>
                                                 </h2>
                                             </div>
                                         </div><!--/post--> 
@@ -104,6 +104,11 @@
                     <div class="load-more text-center">
                         <a class="btn btn-primary btn-block" ng-click="masInternacionales()">Cargar Más Noticias...</a>
                     </div>
+                    <!--Publicidad horizontal-->
+                    <div class="row top5">
+                        <img class="img-responsive center-block" style="max-height:120px"
+                             ng-src="{{publicidadHorizontal.thumbnailImageUrl}}" />
+                    </div>                      
                 </div>
                 <div class="col-sm-3">
                     <div id="sitebar">							
@@ -111,7 +116,7 @@
                             <h1 class="section-title title"><a href="#listing">Otras noticias</a></h1>
                             <ul class="post-list">
                                 <li ng-repeat="post in nacionales">
-                                    <div class="post small-post">
+                                    <div class="post small-post internacional-small">
                                         <div class="entry-header">
                                             <div class="entry-thumbnail">
                                                 <a ng-click="detail(post.id)"><img class="img-responsive" ng-src="{{post.thumbnailImageUrl}}" alt="" /></a>
@@ -127,6 +132,18 @@
                                 </li>
                             </ul>
                         </div><!--/#widget-->
+                        <!--Publicidad Vertical-->
+                        <div class="widget" ng-show="publicidadCuadrada.length > 0">
+                            <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadCuadrada[0].thumbnailImageUrl}}"/>
+                        </div><!-- widget -->   
+                        
+                        <div class="widget" ng-show="publicidadCuadrada.length > 1">
+                            <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadCuadrada[1].thumbnailImageUrl}}"/>
+                        </div><!-- widget -->  
+                        
+                        <div class="widget" ng-show="publicidadCuadrada.length > 2">
+                            <img class="img-responsive center-block anuncioMedium" ng-src="{{publicidadCuadrada[2].thumbnailImageUrl}}"/>
+                        </div><!-- widget -->                           
 
                     </div><!--/#sitebar-->
                 </div>

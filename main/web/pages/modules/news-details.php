@@ -1,3 +1,6 @@
+<?php
+$url = $_SERVER[REQUEST_URI];
+?>
 <div class="main">
     <div id="newsdetails" class="container-fluid">
         <div class="section">
@@ -59,15 +62,20 @@
 
 
                                                     <ul class="list-inline share-link">
-                                                        <li><a href="#"><img
-                                                                        src="/madero/main/web/images/others/social1.png"
-                                                                        alt=""/></a></li>
-                                                        <li><a href="#"><img src="/madero/main/web/images/others/social2.png"
-                                                                             alt=""/></a></li>
-                                                        <li><a href="#"><img src="/madero/main/web/images/others/social3.png"
-                                                                             alt=""/></a></li>
-                                                        <li><a href="#"><img src="/madero/main/web/images/others/social4.png"
-                                                                             alt=""/></a></li>
+                                                        <li><a ng-click="mostrarEnlace()"><img
+                                                                    src="/madero/main/web/images/others/social1.png"
+                                                                    alt=""/></a></li>
+                                                        <li id="enlaceInput" ng-show="enlace" class="btn-group-sm">
+                                                            <input  ng-readonly="true" type="text" ng-init="copiado = false;" ng-model="url"  style="width:400px;margin-right:10px" />
+                                                            <button style="max-height: 31px;" class="btn btn-sm btn-primary" ng-click="btnCopiarMensaje()" ng-click-copy="{{url}}">Copiar</button>
+                                                        </li>
+                                                        <li><span id="copiadoMensaje" style="display:none" class="text-success">Copiado</span></li>
+                                        <!--<li><a href="#"><img src="/madero/main/web/images/others/social2.png"
+                                                             alt=""/></a></li>
+                                        <li><a href="#"><img src="/madero/main/web/images/others/social3.png"
+                                                             alt=""/></a></li>
+                                        <li><a href="#"><img src="/madero/main/web/images/others/social4.png"
+                                                             alt=""/></a></li>-->
                                                     </ul>
                                                 </div>
                                             </div>
@@ -94,9 +102,9 @@
                                         </div>
                                         <div class="entry-thumbnail">
                                             <a ng-click="detail(post.id)"><img
-                                                        class="img-responsive"
-                                                        src="{{post.thumbnailImageUrl}}"
-                                                        alt=""/></a>
+                                                    class="img-responsive"
+                                                    src="{{post.thumbnailImageUrl}}"
+                                                    alt=""/></a>
                                         </div>
                                     </div>
 
@@ -104,9 +112,9 @@
                                         <div class="entry-meta">
                                             <ul class="list-inline">
                                                 <li class="publish-date"><i
-                                                            class="fa fa-clock-o">{{post.formattedDate}}</i></li>
-                                                <!--<li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
-                                                <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>-->
+                                                        class="fa fa-clock-o">{{post.formattedDate}}</i></li>
+                                            <!--<li class="views"><a href="#"><i class="fa fa-eye"></i>21k</a></li>
+                                            <li class="loves"><a href="#"><i class="fa fa-heart-o"></i>372</a></li>-->
                                             </ul>
                                         </div>
                                         <h2 class="entry-title">
@@ -119,87 +127,6 @@
                             </div>
                         </div>
                     </div><!--/.section -->
-
-
-                    <!--Commentaries-->
-                    <!--      <div class="row">
-                              <div class="col-sm-12">
-                                  <div class="comments-wrapper">
-                                      <h1 class="section-title title">Comentarios</h1>
-                                      <ul class="media-list">
-                                          <li class="media">
-                                              <div class="media-left">
-                                                  <a href="#"><img class="media-object"
-                                                                   src="/madero/main/web/images/others/author.png" alt=""></a>
-                                              </div>
-                                              <div class="media-body">
-                                                  <h2><a href="#">Juan Perez</a></h2>
-                                                  <h3 class="date"><a href="#">15 de Diciembre 2016</a></h3>
-                                                  <p>Estoy totalmente de acuerdo con la medida. Será un cambio para mejor y es
-                                                      el camino a seguir. </p>
-                                                  <a class="replay" href="#">Contestar</a>
-                                              </div>
-                                          </li>
-                                          <li class="media">
-                                              <div class="media-left">
-                                                  <a href="#"><img class="media-object"
-                                                                   src="/madero/main/web/images/others/author.png" alt=""></a>
-                                              </div>
-                                              <div class="media-body">
-                                                  <h2><a href="#">Gonzalo Vilches</a></h2>
-                                                  <h3 class="date"><a href="#">15 de Diciembre 2016</a></h3>
-                                                  <p>Yo difiero con esta medida, creo que el camino correcto es el contrario.
-                                                      Debemos presionar a nuestras autoridades para que rectifiquen el camino
-                                                      a seguir. </p>
-                                                  <a class="replay" href="#">Contestar</a>
-                                              </div>
-                                          </li>
-
-
-                                      </ul>
-
-                                      <div class="comments-box">
-                                          <h1 class="section-title title">Dejar Comentario</h1>
-                                          <form id="comment-form" name="comment-form" method="post">
-                                              <div class="row">
-                                                  <div class="col-sm-4">
-                                                      <div class="form-group">
-                                                          <label>Nombre</label>
-                                                          <input type="text" name="name" class="form-control"
-                                                                 required="required">
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-sm-4">
-                                                      <div class="form-group">
-                                                          <label>Email</label>
-                                                          <input type="email" name="email" class="form-control"
-                                                                 required="required">
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-sm-4">
-                                                      <div class="form-group">
-                                                          <label>Asunto</label>
-                                                          <input type="text" name="subject" class="form-control">
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-sm-12">
-                                                      <div class="form-group">
-                                                          <label>Mensaje</label>
-                                                          <textarea name="comment" id="comment" required="required"
-                                                                    class="form-control" rows="5"></textarea>
-                                                      </div>
-                                                      <div class="text-center">
-                                                          <button type="submit" class="btn btn-primary">Send</button>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </form>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>-->
-
-
                 </div><!--/.col-sm-9 -->
 
 
